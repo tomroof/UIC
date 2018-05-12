@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="134px" height="134px" viewBox="0 0 134 134" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 49.3 (51167) - http://www.bohemiancoding.com/sketch -->
+    <title>Badge</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <rect id="path-1" x="0" y="0" width="134" height="134" rx="67"></rect>
+    </defs>
+    <g id="Zilla-Slab/Lato" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="⟶-Congrats" transform="translate(-121.000000, -144.000000)">
+            <g id="Badge" transform="translate(121.000000, 144.000000)">
+                <g id="002-medal-copy-3">
+                    <mask id="mask-2" fill="white">
+                        <use xlink:href="#path-1"></use>
+                    </mask>
+                    <use id="Mask" fill="#FF6D7F" xlink:href="#path-1"></use>
+                    <g id="003-achievement" mask="url(#mask-2)" fill-rule="nonzero">
+                        <g transform="translate(17.866667, 31.266667)">
+                            <rect id="Rectangle-path" fill="#FFDA44" x="21.6964498" y="0" width="25.5193751" height="29.3165651"></rect>
+                            <polygon id="Shape" fill="#6E76E5" points="38.8124458 76.6764242 26.6463286 67.9139973 0 96.7063111 0 102.733333 51.3645912 102.733333 51.3645912 67.6338155"></polygon>
+                            <polygon id="Shape" fill="#515BE0" points="76.0849293 67.9139973 63.9208875 76.6764242 51.3645912 67.6338155 51.3645912 102.733333 102.733333 102.733333 102.733333 96.7063111"></polygon>
+                            <path d="M76.0849293,67.9139973 L55.5139802,45.6885227 L76.0849293,67.9139973 Z" id="Shape" fill="#99E9EC"></path>
+                            <polygon id="Shape" fill="#99E9EC" points="51.3645912 67.6338155 51.3645912 45.6885227 47.2158249 45.6885227 26.6463286 67.9139973 38.8124458 76.6764242"></polygon>
+                            <polygon id="Shape" fill="#99E9EC" points="51.3645912 67.6338155 63.9208875 76.6764242 76.0849293 67.9139973 63.9208875 76.6764242"></polygon>
+                            <polygon id="Shape" fill="#66DDE2" points="51.3645912 45.6885227 51.3645912 67.6338155 63.9208875 76.6764242 76.0849293 67.9139973 55.5139802 45.6885227"></polygon>
+                            <path d="M55.5139802,45.6885227 C55.5175084,45.6885227 55.5175084,0 55.5175084,0 L47.2158249,0 L47.2158249,45.6885227 L55.5139802,45.6885227 Z" id="Shape" fill="#957856"></path>
+                        </g>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

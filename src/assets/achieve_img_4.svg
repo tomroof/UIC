@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="50px" height="50px" viewBox="0 0 50 50" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 49.3 (51167) - http://www.bohemiancoding.com/sketch -->
+    <title>002-medal copy 3</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <rect id="path-1" x="0" y="0" width="50" height="50" rx="25"></rect>
+    </defs>
+    <g id="Zilla-Slab/Lato" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="⟶-Achievements" transform="translate(-25.000000, -439.000000)">
+            <g id="4" transform="translate(25.000000, 439.000000)">
+                <g id="Icon">
+                    <g id="002-medal-copy-3">
+                        <mask id="mask-2" fill="white">
+                            <use xlink:href="#path-1"></use>
+                        </mask>
+                        <use id="Mask" fill="#FF6D7F" xlink:href="#path-1"></use>
+                        <g id="003-achievement" mask="url(#mask-2)" fill-rule="nonzero">
+                            <g transform="translate(6.666667, 11.666667)">
+                                <rect id="Rectangle-path" fill="#FFDA44" x="8.09569024" y="0" width="9.52215488" height="10.9390168"></rect>
+                                <polygon id="Shape" fill="#6E76E5" points="14.4822559 28.6106061 9.94265993 25.3410438 0 36.0844444 0 38.3333333 19.1658923 38.3333333 19.1658923 25.2364983"></polygon>
+                                <polygon id="Shape" fill="#515BE0" points="28.389899 25.3410438 23.8510774 28.6106061 19.1658923 25.2364983 19.1658923 38.3333333 38.3333333 38.3333333 38.3333333 36.0844444"></polygon>
+                                <path d="M28.389899,25.3410438 L20.7141717,17.0479562 L28.389899,25.3410438 Z" id="Shape" fill="#99E9EC"></path>
+                                <polygon id="Shape" fill="#99E9EC" points="19.1658923 25.2364983 19.1658923 17.0479562 17.6178451 17.0479562 9.94265993 25.3410438 14.4822559 28.6106061"></polygon>
+                                <polygon id="Shape" fill="#99E9EC" points="19.1658923 25.2364983 23.8510774 28.6106061 28.389899 25.3410438 23.8510774 28.6106061"></polygon>
+                                <polygon id="Shape" fill="#66DDE2" points="19.1658923 17.0479562 19.1658923 25.2364983 23.8510774 28.6106061 28.389899 25.3410438 20.7141717 17.0479562"></polygon>
+                                <path d="M20.7141717,17.0479562 C20.7154882,17.0479562 20.7154882,0 20.7154882,0 L17.6178451,0 L17.6178451,17.0479562 L20.7141717,17.0479562 Z" id="Shape" fill="#957856"></path>
+                            </g>
+                        </g>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

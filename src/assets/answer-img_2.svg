@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="135px" height="94px" viewBox="0 0 135 94" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 49.3 (51167) - http://www.bohemiancoding.com/sketch -->
+    <title>Group 5</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Zilla-Slab/Lato" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="⟶-Questions" transform="translate(-40.000000, -444.000000)">
+            <g id="Answers" transform="translate(35.000000, 279.000000)">
+                <g id="3" transform="translate(0.000000, 160.000000)">
+                    <g id="Group-5" transform="translate(5.000000, 5.000000)">
+                        <path d="M0,5.0040358 C0,2.24038314 2.23054312,0 5.00522566,0 L129.994774,0 C132.759084,0 135,2.23089406 135,5.0040358 L135,94 L0,94 L0,5.0040358 Z" id="Mask-Copy" fill="#FFFD91"></path>
+                        <g id="gym" transform="translate(30.000000, 32.000000)" fill-rule="nonzero">
+                            <g id="Group" transform="translate(0.000000, 3.816514)" fill="#0080CE">
+                                <rect id="Rectangle-path" x="0" y="0.0733944954" width="12.2563477" height="24.2201835"></rect>
+                                <rect id="Rectangle-path" x="62.7436523" y="0.0733944954" width="12.2563477" height="24.2201835"></rect>
+                            </g>
+                            <g id="Group" transform="translate(0.000000, 16.000000)" fill="#0051C8">
+                                <rect id="Rectangle-path" x="0" y="0" width="12.2563477" height="12.1100917"></rect>
+                                <rect id="Rectangle-path" x="62.7436523" y="0" width="12.2563477" height="12.1100917"></rect>
+                            </g>
+                            <rect id="Rectangle-path" fill="#DCCABA" x="15.7236328" y="9.42238532" width="43.5527344" height="13.1552294"></rect>
+                            <rect id="Rectangle-path" fill="#C5AA8F" x="15.7236328" y="16" width="43.5527344" height="6.57761468"></rect>
+                            <g id="Group" transform="translate(8.496094, 0.000000)" fill="#49B8EB">
+                                <rect id="Rectangle-path" x="0.0981445313" y="0.0366972477" width="12.2563477" height="31.9266055"></rect>
+                                <rect id="Rectangle-path" x="45.6533203" y="0.0366972477" width="12.2563477" height="31.9266055"></rect>
+                            </g>
+                            <g id="Group" transform="translate(8.496094, 16.000000)" fill="#00A9E7">
+                                <rect id="Rectangle-path" x="0.0981445313" y="0" width="12.2563477" height="15.9633028"></rect>
+                                <rect id="Rectangle-path" x="45.6533203" y="0" width="12.2563477" height="15.9633028"></rect>
+                            </g>
+                        </g>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>
