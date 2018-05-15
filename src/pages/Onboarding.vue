@@ -6,7 +6,7 @@
       </div>
       <div>
         <h1>Welcome</h1>
-        <p>Lorem ipsum dolor sit amet, 
+        <p>Lorem ipsum dolor sit amet,
           consectetur adipiscing</p>
         <ComponentButton @click="navigateToSelectCharacter">Get Started</ComponentButton>
       </div>
@@ -47,24 +47,27 @@ h1 {
   font-family: 'Zilla Slab', serif;
   color: rgba(255,255,255,1);
   margin: 1rem 0;
+  font-weight: 600;
 }
 
 p {
-  font-family: sans-serif;
+  font-family: 'Lato', sans-serif;
   text-align: center;
   font-size: 19px;
   color: rgba(255,255,255,0.7);
+  font-weight: 300;
+  width: 90%;
+  margin: 0 auto;
 }
 
 .login {
-  height: 36px;
-  font-family: 'Gotham';
+  font-family: 'Lato';
   text-decoration: underline;
   font-size: 18px;
   text-decoration: underline;
   color: rgba(255,255,255,0.7);
   display: inherit;
   text-align: center;
-  margin-top: 80px;
+  margin-top: 50px;
 }
 </style>

@@ -1,5 +1,5 @@
 <template>
-  <div class='container'>
+  <NavigationLayout :back="true" :menu="true">
     <div>
       <h1>My Courses</h1>
     </div>
@@ -54,11 +54,13 @@
         <div class="complete">Complete</div>
       </div>
     </div>
-  </div>
+  </NavigationLayout>
 </template>
 
 <script>
+import NavigationLayout from '@/layouts/NavigationLayout'
 import Switcher from '@/components/CoursesSwitcher'
+
   export default {
     data: () => ({
       menuNames: [
@@ -73,6 +75,7 @@ import Switcher from '@/components/CoursesSwitcher'
       }
     },
     components: {
+      NavigationLayout,
       Switcher
     }
   }

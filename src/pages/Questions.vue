@@ -1,7 +1,7 @@
 <template>
-  <NavigationLayout :back="true" :steps="steps" :menu="true">
+  <NavigationLayout :close="true" :steps="steps" :menu="true">
     <Question :question="question" @selectAnswer='handelAnswerSelect'/>
-    <div class="next-btn" v-if="showNextBtn" @click="$router.push('/congrats')">next</div>
+    <div class="next-btn" v-if="showNextBtn" @click="$router.push('/congrats')">Next</div>
   </NavigationLayout>
 </template>
 

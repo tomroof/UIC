@@ -1,7 +1,7 @@
 <template>
   <div class="container" :style="{paddingTop: topImage ? '20px' : '0'}" >
     <img v-if="topImage" :src="topImage" class="top">
-    <NavigationControls :back="back" :menu="menu" :steps='steps' />
+    <NavigationControls :back="back" :close="close" :menu="menu" :steps='steps' />
     <slot />
   </div>
 </template>
@@ -11,7 +11,7 @@
 import NavigationControls from '@/components/NavigationControls'
 
 export default {
-  props: ['topImage', 'back', 'menu', 'steps'],
+  props: ['topImage', 'back', 'menu', 'steps', 'close'],
   components: {
     NavigationControls
   }

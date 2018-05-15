@@ -5,7 +5,7 @@
         <img src='@/assets/course_detail.png' class="background">
         <img src="@/assets/heart.png" class="heart">
         <h1>Cavity Prevention</h1>
-        <div class="lvl">LVL 4</div>
+        <div class="lvl">LVL 1</div>
         <div class="stats_wrapper">
           <div class="stats">
             <img class="icon" src="@/assets/students.png" alt="students">
@@ -152,5 +152,3 @@ export default {
     }
   }
 </style>
-
-

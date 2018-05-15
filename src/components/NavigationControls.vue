@@ -1,6 +1,7 @@
 <template>
   <div class="navigation">
     <img @click="$router.go(-1)" v-if="back" src="@/assets/back.png" alt="">
+    <img @click="$router.go(-1)" v-if="close" src="@/assets/close.svg" alt="">
     <div class="steps">
       <div v-for="(step, index) in steps" :key="index">
         <img v-if="step && step.active" class='step-img' src="@/assets/active-step-dash.svg" alt="">
@@ -13,7 +14,7 @@
 
 <script>
 export default {
-  props: ['back', 'menu', 'steps']
+  props: ['back', 'menu', 'steps', 'close']
 }
 </script>
 

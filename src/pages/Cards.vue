@@ -1,5 +1,5 @@
 <template>
-  <NavigationLayout :topImage="require('@/assets/top.png')" :back="true" :menu="true">
+  <NavigationLayout :back="true" :menu="true">
     <div>
       <h1>Cavity Prevention</h1>
       <TabsSwitcher :tabs="tabs">
@@ -14,7 +14,7 @@
                   <div class="content">
                     <div class="title">{{card.name}}</div>
                     <div class="article">{{card.type}}</div>
-                    <div class="text">Lorem ipsum dolor sit amet,consectetur adipiscing elit sed eiusmod tempor</div>
+                    <div class="text">{{card.desc}}</div>
 
                     <ComponentButton
                             type="submit"
@@ -41,7 +41,6 @@
 import NavigationLayout from '@/layouts/NavigationLayout'
 import TabsSwitcher from '@/components/shared/TabsSwitcher'
 import ReviewCard from '@/components/cards/ReviewCard'
-
 import ComponentButton from '@/components/Button'
 
 // data
@@ -64,9 +63,9 @@ export default {
     cards () {
       return [0,1,2,3,4].map((e, i) => {
         return {
-          name: 'Introduction ' + i,
+          name: 'What Is Inside Your Mouth',
           type: 'Article',
-          desc: 'Lorem ipsum dolor sit amet,consectetur adipiscing elit sed eiusmod tempor'
+          desc: 'Lorem ipsum dolor sit amet'
         }
       })
     }
@@ -176,10 +175,10 @@ export default {
     z-index: 6;
     position: absolute;
     top: 115px;
-    left: 28px;
     color: #fff;
     font-size: 18px;
     text-align: center;
+    width: 100%;
 
   }
   .title {
@@ -189,7 +188,8 @@ export default {
     color: #FFFFFF;
     letter-spacing: 0;
     text-align: center;
-    margin-top: 20px;
+    margin: 20px auto;
+    width: 90%
   }
 
   .article {
@@ -202,8 +202,6 @@ export default {
   .text {
     font-family: 'Lato';
     font-weight: 300;
-    opacity: 0.8;
-    width: 220px;
     opacity: 0.7;
     font-size: 17px;
     color: #FFFFFF;
@@ -214,7 +212,7 @@ export default {
 
 
   .reviews {
-    margin-top: 60px;
+    margin-top: 40px;
 
     .card {
       margin-bottom: 15px;

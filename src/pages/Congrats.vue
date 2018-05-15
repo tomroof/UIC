@@ -9,23 +9,25 @@
       <div class="subheading">
         You unlocked a new badge!
       </div>
-      <ComponentButton type="submit" v-bind:class="{ loading: loading }" @click="$router.push('/achievements')">
-        Awesome!
+      <ComponentButton type="submit" v-bind:class="{ loading: loading }" @click="$router.push('/courses')">
+        Next Lesson
       </ComponentButton>
     </div>
 
     <div class="footer">
-      <div class="icon"><img src="@/assets/share-icon.svg" alt="share"></div>
+      <div class="icon" @click="$router.push('/achievements')"><img src="@/assets/user.svg" alt="share"></div>
       <div class="icon" @click="$router.push('/achievements')"><img src="@/assets/achievments-icon.svg" alt="achievements"></div>
     </div>
   </div>
 </template>
 
 <script>
+import NavigationLayout from '@/layouts/NavigationLayout'
 import ComponentButton from '@/components/Button'
 
 export default {
   components: {
+    NavigationLayout,
     ComponentButton
   }
 }
