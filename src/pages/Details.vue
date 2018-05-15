@@ -1,5 +1,5 @@
 <template>
-  <NavigationLayout :back="true">
+  <NavigationLayout :back="true" :menu="true">
     <div class="container">
       <div class="course_wrapper">
         <img src='@/assets/course_detail.png' class="background">
