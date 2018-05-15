@@ -1,6 +1,7 @@
 <template>
   <div class="question">
     <h2>{{questionCard.text}}</h2>
+    <p>{{questionCard.desc}}</p>
     <div class="answers">
       <AnswerCard
         v-for="(answer, index) in questionCard.answers"
@@ -38,10 +39,12 @@ import AnswerCard from '@/components/cards/AnswerCard'
     dropActiveAnswers () {
       this.$set(this, 'questionCard', {
         text: this.question.text,
+        desc: this.question.desc,
         answers: this.question.answers.map((a) => {
           return {
             image: a.image,
             text: a.text,
+            desc: a.desc,
             selected: false
           }
         })
@@ -79,5 +82,43 @@ h2 {
     min-width: 145px;
     cursor: pointer;
   }
+}
+.single {
+  .card {
+    overflow: hidden;
+    margin-bottom: 15px;
+    width: 100%;
+    cursor: pointer;
+    min-width: auto;
+  }
+}
+.trio {
+  .card {
+    overflow: hidden;
+    margin-bottom: 15px;
+    width: 100px;
+    cursor: pointer;
+    min-width: auto;
+  }
+}
+.quatro {
+  .card {
+    overflow: hidden;
+    margin-bottom: 15px;
+    width: 58px;
+    cursor: pointer;
+    min-width: auto;
+  }
+}
+p {
+  font-family: 'Lato';
+  font-weight: 300;
+  font-size: 16px;
+  color: #FFFFFF;
+  line-height: 24px;
+  padding-left: 10px;
+  padding-right: 10px;
+  margin-top: -40px;
+  margin-bottom: 20px;
 }
 </style>

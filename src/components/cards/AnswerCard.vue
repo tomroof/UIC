@@ -42,4 +42,14 @@ img {
 
   padding: 16px 0px;
 }
+.trio {
+  .text {
+    padding: 0 16px 16px 16px;
+  }
+}
+.no-text {
+  .text {
+    display: none;
+  }
+}
 </style>

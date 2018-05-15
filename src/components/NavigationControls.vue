@@ -8,13 +8,14 @@
         <img v-else class='step-img' src="@/assets/step-dash.svg" alt="">
       </div>
     </div>
-    <img v-if="menu" src="@/assets/big_dots.png" alt="">
+    <img v-if="menu" @click="$router.push('/menu')" src="@/assets/big_dots.png" alt="">
+    <img v-if="closemenu" @click="$router.go(-1)" src="@/assets/close.svg" alt="">
   </div>
 </template>
 
 <script>
 export default {
-  props: ['back', 'menu', 'steps', 'close']
+  props: ['back', 'menu', 'steps', 'close', 'closemenu']
 }
 </script>
 

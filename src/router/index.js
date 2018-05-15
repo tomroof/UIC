@@ -10,6 +10,13 @@ import SelectAge from '@/pages/SelectAge'
 import Achievements from '@/pages/Achievements'
 import Congrats from '@/pages/Congrats'
 import Questions from '@/pages/Questions'
+import QuestionsOne from '@/pages/QuestionsOne'
+import QuestionsTwo from '@/pages/QuestionsTwo'
+import QuestionsThree from '@/pages/QuestionsThree'
+import QuestionsFour from '@/pages/QuestionsFour'
+import QuestionsFive from '@/pages/QuestionsFive'
+import QuestionsSix from '@/pages/QuestionsSix'
+import Menu from '@/pages/Menu'
 
 Vue.use(Router)
 
@@ -62,9 +69,39 @@ export default new Router({
       component: Congrats
     },
     {
-      path: '/questions',
-      name: 'Questions',
-      component: Questions
+      path: '/questionsone',
+      name: 'Questions One',
+      component: QuestionsOne
+    },
+    {
+      path: '/questionstwo',
+      name: 'Questions Two',
+      component: QuestionsTwo
+    },
+    {
+      path: '/questionsthree',
+      name: 'Questions Three',
+      component: QuestionsThree
+    },
+    {
+      path: '/questionsfour',
+      name: 'Questions Four',
+      component: QuestionsFour
+    },
+    {
+      path: '/questionsfive',
+      name: 'Questions Five',
+      component: QuestionsFive
+    },
+    {
+      path: '/questionssix',
+      name: 'Questions Six',
+      component: QuestionsSix
+    },
+    {
+      path: '/menu',
+      name: 'Menu',
+      component: Menu
     }
   ]
 })
