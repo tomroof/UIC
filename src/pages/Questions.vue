@@ -7,7 +7,7 @@
 
 <script>
 import NavigationLayout from '@/layouts/NavigationLayout'
-import Question from '@/components/question'
+import Question from '@/components/Question'
 
 export default {
   name: 'QuestionsPage',
