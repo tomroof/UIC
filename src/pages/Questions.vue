@@ -1,64 +1,20 @@
 <template>
-  <NavigationLayout :close="true" :steps="steps" :menu="true">
-    <Question :question="question" @selectAnswer='handelAnswerSelect'/>
-    <div class="next-btn" v-if="showNextBtn" @click="$router.push('/congrats')">Next</div>
+  <NavigationLayout :back="true" :menu="true">
+    <CourseContainer></CourseContainer>
   </NavigationLayout>
 </template>
 
 <script>
 import NavigationLayout from '@/layouts/NavigationLayout'
-import Question from '@/components/Question'
+import CourseContainer from '@/containers/Course'
 
 export default {
   name: 'QuestionsPage',
+
   components: {
     NavigationLayout,
-    Question
+    CourseContainer
   },
-
-  data () {
-    return {
-      showNextBtn: false
-    }
-  },
-
-  computed: {
-    question () {
-      return {
-        text: 'What will you do to prevent the cavity monsters?',
-        answers: [
-          {
-            text: 'Brush Teeth',
-            image: 'answer-img.svg'
-          },
-          {
-            text: 'Eat Candy',
-            image: 'answer-img_1.svg'
-          },
-          {
-            text: 'Exercise',
-            image: 'answer-img_2.svg'
-          },
-          {
-            text: 'Watch TV',
-            image: 'answer-img_3.svg'
-          }
-        ]
-      }
-    },
-    steps () {
-      // replace with actual data from vuex
-      return [0,1,2,3,4,5].map((q, index) => {
-        return index === 0 ? {active: true} : {active: false}
-      })
-    }
-  },
-
-  methods: {
-    handelAnswerSelect () {
-      this.showNextBtn = true
-    }
-  }
 }
 </script>
 

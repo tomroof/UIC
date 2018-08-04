@@ -33,6 +33,8 @@ li {
 
 img {
   margin-right: 25px;
+  width: 50px;
+  height: auto;
 }
 
 .name {

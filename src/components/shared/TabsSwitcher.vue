@@ -56,7 +56,7 @@ export default {
       cursor: pointer;
       font-family: 'Zilla Slab';
       font-weight: 600;
-      letter-spacing: 1px;
+      letter-spacing: 0.3px;
 
       &.active {
         opacity: 1;

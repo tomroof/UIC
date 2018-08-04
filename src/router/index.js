@@ -7,16 +7,16 @@ import Cards from '@/pages/Cards'
 import Login from '@/pages/Login'
 import SelectCharacter from '@/pages/SelectCharacter'
 import SelectAge from '@/pages/SelectAge'
+import SelectTeam from '@/pages/SelectTeam'
 import Achievements from '@/pages/Achievements'
 import Congrats from '@/pages/Congrats'
 import Questions from '@/pages/Questions'
-import QuestionsOne from '@/pages/QuestionsOne'
-import QuestionsTwo from '@/pages/QuestionsTwo'
-import QuestionsThree from '@/pages/QuestionsThree'
-import QuestionsFour from '@/pages/QuestionsFour'
-import QuestionsFive from '@/pages/QuestionsFive'
-import QuestionsSix from '@/pages/QuestionsSix'
-import Menu from '@/pages/Menu'
+import Account from '@/pages/Account'
+import  Course from '@/pages/Course'
+import About from '@/pages/About'
+import Team from '@/pages/Team'
+import Article from '@/pages/Article'
+import Code from '@/pages/Code'
 
 Vue.use(Router)
 
@@ -59,6 +59,11 @@ export default new Router({
       component: SelectAge
     },
     {
+      path: '/select-team',
+      name: 'SelectTeam',
+      component: SelectTeam
+    },
+    {
       path: '/achievements',
       name: 'Achievements',
       component: Achievements
@@ -69,39 +74,39 @@ export default new Router({
       component: Congrats
     },
     {
-      path: '/questionsone',
-      name: 'Questions One',
-      component: QuestionsOne
+      path: '/questions',
+      name: 'Questions',
+      component: Questions
     },
     {
-      path: '/questionstwo',
-      name: 'Questions Two',
-      component: QuestionsTwo
+      path: '/account',
+      name: 'Account',
+      component: Account
     },
     {
-      path: '/questionsthree',
-      name: 'Questions Three',
-      component: QuestionsThree
+      path: '/course/:id',
+      name: 'Course',
+      component: Course
     },
     {
-      path: '/questionsfour',
-      name: 'Questions Four',
-      component: QuestionsFour
+      path: '/about',
+      name: 'About',
+      component: About
     },
     {
-      path: '/questionsfive',
-      name: 'Questions Five',
-      component: QuestionsFive
+      path: '/team',
+      name: 'Team',
+      component: Team
     },
     {
-      path: '/questionssix',
-      name: 'Questions Six',
-      component: QuestionsSix
+      path: '/article',
+      name: 'Article',
+      component: Article
     },
     {
-      path: '/menu',
-      name: 'Menu',
-      component: Menu
+      path: '/code',
+      name: 'Code',
+      component: Code
     }
   ]
 })

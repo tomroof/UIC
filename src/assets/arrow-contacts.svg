@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="6px" height="10px" viewBox="0 0 6 10" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 50.2 (55047) - http://www.bohemiancoding.com/sketch -->
+    <title>arrow</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" opacity="0.300000012">
+        <g id="⟶-Team" transform="translate(-349.000000, -405.000000)" fill="#FFFFFF">
+            <g id="Settings" transform="translate(20.000000, 360.000000)">
+                <polygon id="arrow" points="329 46.125 330.125 45 335 49.875 330.125 54.75 329 53.625 332.75 49.875"></polygon>
+            </g>
+        </g>
+    </g>
+</svg>

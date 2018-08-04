@@ -1,25 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<svg width="93px" height="93px" viewBox="0 0 93 93" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-    <!-- Generator: Sketch 50 (54983) - http://www.bohemiancoding.com/sketch -->
-    <title>Artboard</title>
+<svg width="34px" height="34px" viewBox="0 0 34 34" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 50.2 (55047) - http://www.bohemiancoding.com/sketch -->
+    <title>clock</title>
     <desc>Created with Sketch.</desc>
     <defs></defs>
-    <g id="Artboard" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-        <g id="clock" transform="translate(22.000000, 22.000000)" fill-rule="nonzero">
-            <circle id="Oval" fill="#6EB1E1" cx="24.5" cy="24.5" r="24.5"></circle>
-            <circle id="Oval" fill="#FCFCFD" cx="25" cy="25" r="20"></circle>
-            <g id="Group" transform="translate(11.000000, 9.000000)" fill="#4F5565">
-                <path d="M13.1644,16.8995367 C12.1472,16.8995367 11.3334,16.1179209 11.3334,15.1409492 L11.3334,1.78874576 C11.3334,0.811774011 12.1472,0.0301581921 13.1644,0.0301581921 C14.1816,0.0301581921 14.9954,0.811774011 14.9954,1.78874576 L14.9954,15.1409492 C14.9954,16.1179209 14.1816,16.8995367 13.1644,16.8995367 Z" id="Shape"></path>
-                <path d="M14.9954,15.0106158 L14.9954,15.3037458 C14.9954,16.2155989 14.2494,16.932096 13.3,16.932096 L1.7715,16.932096 C0.8221,16.932096 0.0761,16.2155989 0.0761,15.3037458 L0.0761,15.0106158 C0.0761,14.0987627 0.8221,13.3822655 1.7715,13.3822655 L13.3,13.3822655 C14.2494,13.3823616 14.9954,14.0987627 14.9954,15.0106158 Z" id="Shape"></path>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="⟶-Questions" transform="translate(-38.000000, -220.000000)" fill-rule="nonzero">
+            <g id="clock" transform="translate(38.000000, 220.000000)">
+                <circle id="Oval" fill="#6EB1E1" cx="17" cy="17" r="17"></circle>
+                <circle id="Oval" fill="#FCFCFD" cx="17" cy="17" r="14"></circle>
+                <g id="Group" transform="translate(8.000000, 6.000000)" fill="#4F5565">
+                    <path d="M8.77626667,11.9290847 C8.09813333,11.9290847 7.5556,11.3773559 7.5556,10.6877288 L7.5556,1.26264407 C7.5556,0.573016949 8.09813333,0.0212881356 8.77626667,0.0212881356 C9.4544,0.0212881356 9.99693333,0.573016949 9.99693333,1.26264407 L9.99693333,10.6877288 C9.99693333,11.3773559 9.4544,11.9290847 8.77626667,11.9290847 Z" id="Shape"></path>
+                    <path d="M9.99693333,10.5957288 L9.99693333,10.8026441 C9.99693333,11.4463051 9.4996,11.9520678 8.86666667,11.9520678 L1.181,11.9520678 C0.548066667,11.9520678 0.0507333333,11.4463051 0.0507333333,10.8026441 L0.0507333333,10.5957288 C0.0507333333,9.9520678 0.548066667,9.44630508 1.181,9.44630508 L8.86666667,9.44630508 C9.4996,9.44637288 9.99693333,9.9520678 9.99693333,10.5957288 Z" id="Shape"></path>
+                </g>
+                <g id="Group" transform="translate(4.000000, 4.000000)" fill="#646B79">
+                    <rect id="Rectangle-path" x="12.4764635" y="0.0409319899" width="1.08813602" height="1.48782872"></rect>
+                    <rect id="Rectangle-path" x="12.4764635" y="24.4900353" width="1.08813602" height="1.48782872"></rect>
+                    <rect id="Rectangle-path" x="24.4900353" y="12.4764635" width="1.48782872" height="1.08813602"></rect>
+                    <rect id="Rectangle-path" x="0.0409319899" y="12.4764635" width="1.48782872" height="1.08813602"></rect>
+                    <circle id="Oval" cx="13.0094307" cy="13.0094307" r="2.7091738"></circle>
+                </g>
+                <circle id="Oval" fill="#F0582F" cx="17" cy="17" r="1"></circle>
             </g>
-            <g id="Group" transform="translate(6.000000, 6.000000)" fill="#646B79">
-                <rect id="Rectangle-path" x="18.2348312" y="0.0598236776" width="1.59035264" height="2.17451889"></rect>
-                <rect id="Rectangle-path" x="18.2348312" y="35.7931285" width="1.59035264" height="2.17451889"></rect>
-                <rect id="Rectangle-path" x="35.7931285" y="18.2348312" width="2.17451889" height="1.59035264"></rect>
-                <rect id="Rectangle-path" x="0.0598236776" y="18.2348312" width="2.17451889" height="1.59035264"></rect>
-                <circle id="Oval" cx="19.0137834" cy="19.0137834" r="3.95956171"></circle>
-            </g>
-            <circle id="Oval" fill="#F0582F" cx="24.5" cy="24.5" r="1.5"></circle>
         </g>
     </g>
 </svg>

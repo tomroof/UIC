@@ -6,7 +6,8 @@
 
 <script>
 export default {
-  props: ['selected']
+  props: ['selected'],
+  name: 'BaseCard'
 }
 </script>
 
@@ -14,12 +15,33 @@ export default {
   .card {
     border: 2px solid rgba(0, 0, 0, 0);
     height: 100%;
-    background: #25606B;
+    background: rgba(46, 74, 110, 0.5);
     border-radius: 10px;
-    box-shadow: rgba(33, 73, 95, 0.06) 0 4px 6px;
+    box-shadow: 0 4px 6px 0 rgba(33,73,95,0.06);
   }
   .card--selected {
-    background:linear-gradient(rgba(39, 138, 181, 0.55), rgba(39, 138, 181, 0.8));
-    border: 2px solid #278AB5;
+    background: #32BEA6;
+    border: 2px solid #259A86;
+    box-shadow: 0 2px 3px 0 rgba(31,49,74,0.10);
+  }
+
+  .image-1 {
+    background: #FF6D7F;
+  }
+
+  .image-2 {
+    background: #278AB5;
+  }
+
+  .image-3 {
+    background: #87DBA2;
+  }
+
+  .image-4 {
+    background: #FFEBAE;
+  }
+
+  .image-5 {
+    background: #32BEA6;
   }
 </style>

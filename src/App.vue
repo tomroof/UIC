@@ -28,7 +28,7 @@ h1 {
 }
 
 #app {
-  overflow-y: scroll;
+  overflow-y: auto;
   height: 100vh;
   width: 100%;
   background-image: linear-gradient(19deg, #5EA58E 10%, #0A6D60 81%);

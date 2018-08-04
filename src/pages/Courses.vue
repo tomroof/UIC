@@ -1,57 +1,19 @@
 <template>
-  <NavigationLayout :back="true" :menu="true">
-    <div>
-      <h1>My Courses</h1>
-    </div>
-    <Switcher :menuNames="menuNames" />
+  <NavigationLayout :back="true" :menu="true" :topImage="$store.state.character">
+    <h1>Topics</h1>
     <div class="courses_wrapper">
-      <div @click="navigateToCourse" class="course">
-        <div class="course_top">
-          <img class="icon" src="@/assets/Courses/1.png" alt="">
-          <img class="dotts" src="@/assets/Courses/dotts.png" alt="">
-          <div class="px-0">Cavity Prevention</div>
-        </div>
-        <div class="progress_bar"></div>
-      </div>
-      <div @click="navigateToCourse" class="course">
-        <div class="course_top">
-          <img class="icon" src="@/assets/Courses/2.png" alt="">
-          <img class="dotts" src="@/assets/Courses/dotts.png" alt="">
-          <div class="px-0">Baby Teeth</div>
-        </div>
-        <div class="progress_bar"></div>
-      </div>
-      <div @click="navigateToCourse" class="course">
-        <div class="course_top">
-          <img class="icon" src="@/assets/Courses/3.png" alt="">
-          <img class="dotts" src="@/assets/Courses/dotts.png" alt="">
-          <div class="px-0">Proper Brushing</div>
-        </div>
-        <div class="progress_bar"></div>
-      </div>
-      <div @click="navigateToCourse" class="course">
-        <div class="course_top">
-          <img class="icon" src="@/assets/Courses/4.png" alt="">
-          <img class="dotts" src="@/assets/Courses/dotts.png" alt="">
-          <div class="px-0">Prenatal Oral Care</div>
-        </div>
-        <div class="progress_bar"></div>
-      </div>
-      <div @click="navigateToCourse" class="course">
-        <div class="course_top">
-          <img class="icon" src="@/assets/Courses/5.png" alt="">
-          <img class="dotts" src="@/assets/Courses/dotts.png" alt="">
-          <div class="px-0">Sugary Sweets</div>
-        </div>
-        <div class="complete">Complete</div>
-      </div>
-      <div @click="navigateToCourse" class="course">
-        <div class="course_top">
-          <img class="icon" src="@/assets/Courses/6.png" alt="">
-          <img class="dotts" src="@/assets/Courses/dotts.png" alt="">
-          <div class="px-0">Home Dental Care</div>
-        </div>
-        <div class="complete">Complete</div>
+      <div v-for="course in getCourses" class="course" @click="() => navigateToCourse(course.id)" :key="course.id">
+        <radial-progress-bar
+          :diameter="145"
+          :totalSteps="11"
+          :completedSteps="course.progress"
+          :startColor="'#87DBA2'"
+          :stopColor="'#87DBA2'"
+          :innerStrokeColor="'#2E5C69'"
+        >
+          <div class="course_top" :style="{ background: `url(${course.image}) no-repeat center / cover` }" />
+        </radial-progress-bar>
+        <div class="course_bottom">{{course.name}}</div>
       </div>
     </div>
   </NavigationLayout>
@@ -60,6 +22,8 @@
 <script>
 import NavigationLayout from '@/layouts/NavigationLayout'
 import Switcher from '@/components/CoursesSwitcher'
+import RadialProgressBar from 'vue-radial-progress'
+import { mapGetters } from 'vuex'
 
   export default {
     data: () => ({
@@ -70,13 +34,17 @@ import Switcher from '@/components/CoursesSwitcher'
       ]
     }),
     methods: {
-      navigateToCourse() {
+      navigateToCourse(id) {
         this.$router.push('/details')
       }
     },
+    computed: {
+      ...mapGetters(['getCourses'])
+    },
     components: {
+      Switcher,
       NavigationLayout,
-      Switcher
+      RadialProgressBar
     }
   }
 </script>
@@ -97,31 +65,40 @@ h2 {
   color: rgba(255,255,255,1);
   font-weight: 700;
 }
-
+h3 {
+  font-size: 20px;
+  font-family: 'Zilla Slab', serif;
+  color: rgba(255,255,255,1);
+  font-weight: 700;
+  padding: 20px 0;
+}
 
 .courses_wrapper {
   display: flex;
   flex-flow: row wrap;
-  justify-content: space-between;
+  justify-content: center;
   width: 100%;
-
 }
 
 .course {
   display: flex;
   flex-flow: column nowrap;
   justify-content: space-between;
+  align-items: center;
   position: relative;
 
-  width: calc(50% - 10px);
-  min-height: 157px;
+  width: 50%;
   margin-bottom: 20px;
-  background-color: rgba(46, 74, 110, .5) !important;
   border-radius: 10px;
   font-size: 18px;
   box-shadow: none;
-  padding: 15px;
+  padding: 5px;
   color: #fff;
+
+  &:first-child,
+  &:last-child {
+    width: 100%;
+  }
 
   .icon {
     width: 40px;
@@ -134,6 +111,10 @@ h2 {
     right: 15px;
     width: auto;
     height: 16px;
+  }
+  .title {
+    text-align: center;
+    padding: 5px;
   }
 
 .complete {
@@ -162,10 +143,58 @@ h2 {
   }
 }
 
+.game {
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: space-between;
+  position: relative;
+
+  width: calc(50% - 10px);
+  margin-bottom: 20px;
+  background-color: rgba(46, 74, 110, .5) !important;
+  border-radius: 10px;
+  font-size: 18px;
+  box-shadow: none;
+  padding: 5px;
+  color: #fff;
+
+  img {
+    width: 100%;
+  }
+  .title {
+    text-align: center;
+  }
+}
+
 .card__text {
   font-size: 18px;
   font-family: 'Zilla Slab', serif;
   color: rgba(255,255,255,1);
   font-weight: 700;
+}
+
+.course_top {
+  border-radius: 50%;
+  overflow: hidden;
+  width: 116px;
+  height: 116px;
+  position: relative;
+  align-self: center;
+
+  img {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+}
+
+.course_bottom {
+  text-align: center;
+  margin-top: 10px;
+  font-family: 'Zilla Slab', serif;
+  font-size: 18px;
+  color: #FFFFFF;
+  letter-spacing: 0;
 }
 </style>

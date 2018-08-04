@@ -1,38 +1,36 @@
 <template>
   <NavigationLayout :back="true" :menu="true">
-    <div>
-      <h1>Cavity Prevention</h1>
-      <TabsSwitcher :tabs="tabs">
-        <div class="cards" slot="form_0">
-          <div>
-              <v-touch v-on:swipeleft="goToNextCard" v-on:swiperight="goToPrevCard" >
-                <div class="card"
-                      :key="index"
-                      :class="{main: card == activeCard, prev: checkIsPrev(card), next: checkIsNext(card)}"
-                      v-for="(card, index) in cards" >
-                  <img  src='@/assets/card.png' class="card">
-                  <div class="content">
-                    <div class="title">{{card.name}}</div>
-                    <div class="article">{{card.type}}</div>
-                    <div class="text">{{card.desc}}</div>
+    <h1>Cavity Prevention</h1>
+    <TabsSwitcher :tabs="tabs">
+      <div class="cards" slot="form_0">
+        <div>
+            <v-touch v-on:swipeleft="goToNextCard" v-on:swiperight="goToPrevCard" >
+              <div class="card"
+                    :key="index"
+                    :class="{main: card == activeCard, prev: checkIsPrev(card), next: checkIsNext(card)}"
+                    v-for="(card, index) in cards" >
+                <img  src='@/assets/card.png' class="card">
+                <div class="content">
+                  <div class="title">{{card.name}}</div>
+                  <div class="article">{{card.type}}</div>
+                  <div class="text">Lorem ipsum dolor sit amet,consectetur adipiscing elit sed eiusmod tempor</div>
 
-                    <ComponentButton
-                            type="submit"
-                            @click="$router.push('/questionsone')"
-                      >
-                      Start
-                    </ComponentButton>
-                  </div>
+                  <ComponentButton
+                          type="submit"
+                          @click="$router.push('/course/1')"
+                    >
+                    Start
+                  </ComponentButton>
                 </div>
-              </v-touch>
-          </div>
+              </div>
+            </v-touch>
         </div>
+      </div>
 
-        <div slot="form_1" class='reviews'>
-          <ReviewCard v-if="review && review.author" v-for="(review, index) in reviews" :key="index" :review="review" />
-        </div>
-      </TabsSwitcher>
-    </div>
+      <div slot="form_1" class='reviews'>
+        <ReviewCard v-if="review && review.author" v-for="(review, index) in reviews" :key="index" :review="review" />
+      </div>
+    </TabsSwitcher>
   </NavigationLayout>
 </template>
 
@@ -41,6 +39,7 @@
 import NavigationLayout from '@/layouts/NavigationLayout'
 import TabsSwitcher from '@/components/shared/TabsSwitcher'
 import ReviewCard from '@/components/cards/ReviewCard'
+
 import ComponentButton from '@/components/Button'
 
 // data
@@ -63,9 +62,9 @@ export default {
     cards () {
       return [0,1,2,3,4].map((e, i) => {
         return {
-          name: 'What Is Inside Your Mouth',
+          name: 'Introduction ' + i,
           type: 'Article',
-          desc: 'Lorem ipsum dolor sit amet'
+          desc: 'Lorem ipsum dolor sit amet,consectetur adipiscing elit sed eiusmod tempor'
         }
       })
     }
@@ -175,10 +174,10 @@ export default {
     z-index: 6;
     position: absolute;
     top: 115px;
+    left: 28px;
     color: #fff;
     font-size: 18px;
     text-align: center;
-    width: 100%;
 
   }
   .title {
@@ -188,8 +187,7 @@ export default {
     color: #FFFFFF;
     letter-spacing: 0;
     text-align: center;
-    margin: 20px auto;
-    width: 90%
+    margin-top: 20px;
   }
 
   .article {
@@ -202,6 +200,8 @@ export default {
   .text {
     font-family: 'Lato';
     font-weight: 300;
+    opacity: 0.8;
+    width: 220px;
     opacity: 0.7;
     font-size: 17px;
     color: #FFFFFF;
@@ -212,7 +212,7 @@ export default {
 
 
   .reviews {
-    margin-top: 40px;
+    margin-top: 60px;
 
     .card {
       margin-bottom: 15px;

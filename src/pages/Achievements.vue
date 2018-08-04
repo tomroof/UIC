@@ -1,5 +1,5 @@
 <template>
-  <NavigationLayout :back="true" :menu="true">
+  <NavigationLayout :back="true">
     <h1>Aсhievements</h1>
     <Switcher :menuNames='menuNames'/>
     <AchievementsList :achievements="achievements" />

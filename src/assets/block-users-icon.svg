@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="29px" height="29px" viewBox="0 0 29 29" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 50.2 (55047) - http://www.bohemiancoding.com/sketch -->
+    <title>Group 3</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <rect id="path-1" x="0" y="0" width="25" height="25" rx="5"></rect>
+        <filter x="-14.0%" y="-10.0%" width="128.0%" height="128.0%" filterUnits="objectBoundingBox" id="filter-2">
+            <feOffset dx="0" dy="1" in="SourceAlpha" result="shadowOffsetOuter1"></feOffset>
+            <feGaussianBlur stdDeviation="1" in="shadowOffsetOuter1" result="shadowBlurOuter1"></feGaussianBlur>
+            <feColorMatrix values="0 0 0 0 0.121568627   0 0 0 0 0.192156863   0 0 0 0 0.290196078  0 0 0 0.13 0" type="matrix" in="shadowBlurOuter1"></feColorMatrix>
+        </filter>
+    </defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="⟶-More" transform="translate(-18.000000, -538.000000)">
+            <g id="Settings" transform="translate(20.000000, 408.000000)">
+                <g id="blocked" transform="translate(0.000000, 131.000000)">
+                    <g id="Group-3">
+                        <g id="Rectangle-3">
+                            <use fill="black" fill-opacity="1" filter="url(#filter-2)" xlink:href="#path-1"></use>
+                            <use fill="#25606B" fill-rule="evenodd" xlink:href="#path-1"></use>
+                        </g>
+                        <path d="M12.5,7 C9.475,7 7,9.475 7,12.5 C7,15.525 9.475,18 12.5,18 C15.525,18 18,15.525 18,12.5 C18,9.475 15.525,7 12.5,7 Z M8.1,12.5 C8.1,10.08 10.08,8.1 12.5,8.1 C13.49,8.1 14.425,8.43 15.195,9.035 L9.035,15.195 C8.43,14.425 8.1,13.49 8.1,12.5 Z M12.5,16.9 C11.51,16.9 10.575,16.57 9.805,15.965 L15.965,9.805 C16.57,10.575 16.9,11.51 16.9,12.5 C16.9,14.92 14.92,16.9 12.5,16.9 Z" id="Shape" stroke="#FFFFFF" fill="#FFFFFF" fill-rule="nonzero"></path>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

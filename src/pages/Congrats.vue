@@ -2,6 +2,8 @@
   <div class="congrats-page">
     <div class="header">
       <img src="@/assets/congrats-img.svg" alt="">
+      <h1>I Know My Teeth</h1>
+      <h3>+100 <span>points</span></h3>
     </div>
 
     <div class="section">
@@ -9,25 +11,23 @@
       <div class="subheading">
         You unlocked a new badge!
       </div>
-      <ComponentButton type="submit" v-bind:class="{ loading: loading }" @click="$router.push('/courses')">
-        Next Lesson
+      <ComponentButton type="submit" @click="$router.push('/courses')">
+        Continue
       </ComponentButton>
     </div>
 
     <div class="footer">
-      <div class="icon" @click="$router.push('/achievements')"><img src="@/assets/user.svg" alt="share"></div>
+      <div class="icon"><img src="@/assets/share-icon.svg" alt="share"></div>
       <div class="icon" @click="$router.push('/achievements')"><img src="@/assets/achievments-icon.svg" alt="achievements"></div>
     </div>
   </div>
 </template>
 
 <script>
-import NavigationLayout from '@/layouts/NavigationLayout'
 import ComponentButton from '@/components/Button'
 
 export default {
   components: {
-    NavigationLayout,
     ComponentButton
   }
 }
@@ -35,7 +35,7 @@ export default {
 
 <style scoped lang="scss">
 .header {
-  background-image: url('../assets/confetti.png');
+  // background-image: url('../assets/confetti.png');
 
   display: flex;
   flex-direction: column;
@@ -44,8 +44,21 @@ export default {
   align-content: center;
   align-items: center;
 
-  padding-top: 150px;
-  padding-bottom: 85px;
+  padding-top: 60px;
+  padding-bottom: 40px;
+  h1 {
+    font-size: 25px;
+    margin: 1rem 0 0.5rem 0;
+  }
+  h3 {
+    font-family: 'Zilla Slab';
+    font-size: 22px;
+    color: #FFFFFF;
+    font-weight: normal;
+    span {
+      font-size: 16px;
+    }
+  }
 }
 
 .section {
@@ -60,6 +73,7 @@ export default {
     color: #FFFFFF;
     text-align: center;
     line-height: 20px;
+    margin: 1rem 0;
   }
 
   .subheading {

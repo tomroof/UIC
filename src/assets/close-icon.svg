@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="19px" height="19px" viewBox="0 0 19 19" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 50.2 (55047) - http://www.bohemiancoding.com/sketch -->
+    <title>close</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Zilla-Slab/Lato" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" stroke-linecap="round" stroke-linejoin="round">
+        <g id="⟶-Questions" transform="translate(-25.000000, -38.000000)" fill="#3FC9DD" stroke="#3FC9DD" stroke-width="1.5">
+            <path d="M36.0607809,46.2884615 L45.3492424,46.2884615 L45.3492424,48.7115385 L36.0607809,48.7115385 L36.0607809,58 L33.6377039,58 L33.6377039,48.7115385 L24.3492424,48.7115385 L24.3492424,46.2884615 L33.6377039,46.2884615 L33.6377039,37 L36.0607809,37 L36.0607809,46.2884615 Z" id="close" transform="translate(34.849242, 47.500000) rotate(45.000000) translate(-34.849242, -47.500000) "></path>
+        </g>
+    </g>
+</svg>

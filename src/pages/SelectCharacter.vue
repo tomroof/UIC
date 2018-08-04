@@ -1,6 +1,6 @@
 <template>
   <NavigationLayout :back="true" :menu="true">
-    <h1>Select A Character</h1>
+    <h1>Select Coach</h1>
     <div>
       <div
         v-for="(row, index) in rows"
@@ -22,13 +22,13 @@
       </div>
     </div>
     <div class="continue-button">
-      <ComponentButton @click="nextStep" >Continue</ComponentButton>
+      <ComponentButton @click="buttonHandler">Continue</ComponentButton>
     </div>
   </NavigationLayout>
 </template>
 
 <script>
-import { isFinite, inRange, chunk } from 'lodash'
+import { isFinite, chunk } from 'lodash'
 import NavigationLayout from '@/layouts/NavigationLayout'
 
 import CharacterCard from '@/components/cards/CharacterCard'
@@ -51,49 +51,35 @@ export default {
       cards: {
         gender: [
           {
-            value: 'girl',
-            src: require('@/assets/characters/character-girl-1.png'),
-            text: "Girl"
-          }, {
-            value: 'boy',
-            src: require('@/assets/characters/character-boy-1.png'),
-            text: "Boy"
-          }
-        ],
-        boys: [
-          {
             value: '1',
-            src: require('@/assets/characters/character-boy-1.png'),
-          },
-          {
+            src: require('@/assets/characters/character-girl-1.png')
+          }, {
             value: '2',
-            src: require('@/assets/characters/character-boy-2.png'),
+            src: require('@/assets/characters/character-boy-1.png')
           },
           {
             value: '3',
-            src: require('@/assets/characters/character-boy-3.png'),
-          },
-          {
-            value: '4',
-            src: require('@/assets/characters/character-boy-4.png'),
-          },
-        ],
-        girls: [
-          {
-            value: '1',
-            src: require('@/assets/characters/character-girl-1.png'),
-          },
-          {
-            value: '2',
             src: require('@/assets/characters/character-girl-2.png'),
           },
           {
-            value: '3',
+            value: '4',
+            src: require('@/assets/characters/character-boy-3.png'),
+          },
+          {
+            value: '5',
             src: require('@/assets/characters/character-girl-3.png'),
           },
           {
-            value: '4',
+            value: '6',
+            src: require('@/assets/characters/character-boy-4.png'),
+          },
+          {
+            value: '7',
             src: require('@/assets/characters/character-girl-4.png'),
+          },
+          {
+            value: '8',
+            src: require('@/assets/characters/character-boy-2.png'),
           },
         ]
       }
@@ -129,22 +115,20 @@ export default {
       }
     },
     selectCard (value) {
+      this.character = value
       if (this.step === 1) {
         this.value.gender = value
       } else if (this.step === 2) {
         return this.value.character = value
       }
     },
-    nextStep() {
-      if (this.value.gender) {
-        const { currentRoute } = this.$router
-        if (this.step === 1) {
-          this.step = 2
-          this.$router.push({ path: currentRoute.path, query: { step: 2 } })
-        } else {
-          this.$router.push('/select-age')
+    buttonHandler(value) {
+      this.cards.gender.map((element) => {
+        if (element.value === this.character) {
+          this.$store.commit('setCharacter', element.src)
         }
-      }
+      })
+      this.$router.push('/select-age')
     }
   }
 }
@@ -161,9 +145,5 @@ export default {
     &:not(:last-child) {
       margin-right: 15px;
     }
-  }
-
-  .continue-button {
-    margin-top: 100px;
   }
 </style>
