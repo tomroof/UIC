@@ -22,7 +22,7 @@ import Popup from '@/components/Popup'
 import { events } from '@/helpers/events'
 
   export default {
-    props: ['question', 'openPopupFalse', 'openPopupTrue', 'isQuestion'],
+    props: ['question', 'index', 'openPopupFalse', 'openPopupTrue', 'isQuestion'],
     components: {
       BaseQuestion,
       AnswerIconCard,
@@ -57,6 +57,7 @@ import { events } from '@/helpers/events'
       dropActiveAnswers () {
         this.$set(this, 'questionCard', {
           text: this.question.text,
+          desc: this.question.desc,
           answers: this.question.answers.map((a) => {
             return {
               image: a.image,
@@ -71,7 +72,7 @@ import { events } from '@/helpers/events'
         this.$emit('isQuestionHandler', false)
         this.dropActiveAnswers()
         this.questionCard.answers.find((a) => a.text === answer.text).selected = true
-        this.$emit('selectAnswer', answer.isCorrect)
+        this.$emit('selectAnswer', {isCorrect: answer.isCorrect, index: this.index})
       }
     }
   }

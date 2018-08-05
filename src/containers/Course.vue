@@ -23,6 +23,7 @@
         <IconsQuestion
           v-if="question.type === 'icons'"
           :question="question"
+          :index="index"
           @selectAnswer="handelAnswerSelect"
           :openPopupFalse="openPopupFalse"
           :openPopupTrue="openPopupTrue"
@@ -112,6 +113,7 @@ export default {
         return {
           label: q.text,
           slot: q.id,
+          options: {nextDisabled: this.curse.questions[index] ? this.curse.questions[index].type === 'icons': false},
           nextLabel: this.curse.questions[index + 1] ? this.curse.questions[index + 1].text : null
         }
       })
@@ -169,8 +171,9 @@ export default {
       }
     },
 
-    handelAnswerSelect (isCorrect) {
-      this.isAnswerCorrect = isCorrect
+    handelAnswerSelect (data) {
+      this.steps[data.index].options.nextDisabled = false
+      this.isAnswerCorrect = data.isCorrect
     },
 
     isQuestionHandler(bool, buttonText) {
