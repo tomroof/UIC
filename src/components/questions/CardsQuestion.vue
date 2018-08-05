@@ -7,7 +7,7 @@
           :answer="answer"
           :key="index"
           :selected="answer.selected"
-          @click="handleAnswerClick(answer, question)"/>
+          @click="handleAnswerClick(answer)"/>
       </div>
     </div>
   </BaseQuestion>
@@ -18,7 +18,7 @@ import AnswerCard from '@/components/cards/AnswerCard'
 import BaseQuestion from '@/components/questions/BaseQuestion'
 
   export default {
-    props: ['question'],
+    props: ['question', 'index'],
     components: {
       BaseQuestion,
       AnswerCard
@@ -51,10 +51,10 @@ import BaseQuestion from '@/components/questions/BaseQuestion'
         })
       })
     },
-      handleAnswerClick (answer) {
+    handleAnswerClick (answer) {
         this.dropActiveAnswers()
         this.questionCard.answers.find((a) => a.text === answer.text).selected = true
-        this.$emit('selectAnswer')
+        this.$emit('selectAnswer', {isCorrect: true, index: this.index})
       }
     }
   }

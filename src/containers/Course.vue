@@ -12,6 +12,7 @@
         <CardsQuestion
           v-if="question.type === 'cards'"
           :question="question"
+          :index="index"
           @selectAnswer='handelAnswerSelect' />
 
         <VideoQuestion
@@ -78,6 +79,7 @@ export default {
 
   data () {
     return {
+      currentQuestionType: null,
       isAnswerCorrect: null,
       openPopupFalse: false,
       openPopupTrue: false,
@@ -88,6 +90,7 @@ export default {
 
   mounted() {
     events.$on('nextSlide', () => {
+      this.currentQuestionType = null;
       this.isQuestion = true;
       this.isAnswerCorrect = null;
       this.$refs.wizard.goNext(true);
@@ -97,6 +100,7 @@ export default {
 
     events.$on('thisSlide', () => {
       this.isQuestion = true;
+      this.currentQuestionType = null;
       this.isAnswerCorrect = null;
       this.openPopupFalse = false;
       this.openPopupTrue = false;
@@ -114,7 +118,8 @@ export default {
         return {
           label: q.text,
           slot: q.id,
-          options: {nextDisabled: this.curse.questions[index] ? this.curse.questions[index].type === 'icons': false},
+          type: this.curse.questions[index].type,
+          options: {nextDisabled: this.curse.questions[index] ? (this.curse.questions[index].type === 'icons' || this.curse.questions[index].type === 'cards'): false},
           nextLabel: this.curse.questions[index + 1] ? this.curse.questions[index + 1].text : null
         }
       })
@@ -130,9 +135,11 @@ export default {
           return false
         }
         else {
-          this.openPopupTrue = true
-          this.$store.commit('updateCourseProgress', { id: this.$route.params.id, currentProgress: currentPage + 1 })
-          return false
+          if (this.currentQuestionType === 'icons') {
+            this.openPopupTrue = true
+            this.$store.commit('updateCourseProgress', { id: this.$route.params.id, currentProgress: currentPage + 1 })
+            return false
+          }
         }
       }
 
@@ -181,6 +188,7 @@ export default {
     },
 
     handelAnswerSelect (data) {
+      this.currentQuestionType = this.steps[data.index].type
       this.steps[data.index].options.nextDisabled = false
       this.isAnswerCorrect = data.isCorrect
     },
