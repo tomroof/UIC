@@ -25,6 +25,7 @@
           :question="question"
           :index="index"
           @selectAnswer="handelAnswerSelect"
+          @selectContinue="handelContinue"
           :openPopupFalse="openPopupFalse"
           :openPopupTrue="openPopupTrue"
           @isQuestionHandler="isQuestionHandler" />
@@ -169,6 +170,14 @@ export default {
         this.isAnswerCorrect = null
         return false
       }
+    },
+
+    handelContinue () {
+      this.isQuestion = true;
+      this.isAnswerCorrect = null;
+      this.openPopupFalse = false;
+      this.openPopupTrue = false;
+      this.$refs.wizard.goNext(true);
     },
 
     handelAnswerSelect (data) {

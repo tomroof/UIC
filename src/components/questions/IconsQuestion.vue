@@ -9,7 +9,7 @@
             @click="handleAnswerClick(answer, question)"/>
         </div>
       </div>
-      <popup :openPopupFalse="openPopupFalse" :openPopupTrue="openPopupTrue" />
+      <popup :openPopupFalse="openPopupFalse" :openPopupTrue="openPopupTrue" @selectContinue="selectContinue" />
     </div>
   </BaseQuestion>
 </template>
@@ -68,11 +68,16 @@ import { events } from '@/helpers/events'
           })
         })
       },
+
       handleAnswerClick (answer) {
         this.$emit('isQuestionHandler', false)
         this.dropActiveAnswers()
         this.questionCard.answers.find((a) => a.text === answer.text).selected = true
         this.$emit('selectAnswer', {isCorrect: answer.isCorrect, index: this.index})
+      },
+
+      selectContinue () {
+        this.$emit('selectContinue')        
       }
     }
   }

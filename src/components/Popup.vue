@@ -81,7 +81,8 @@ import { events } from '@/helpers/events'
 
     methods: {
       toNextSlide() {
-        events.$emit('nextSlide');
+        this.$emit('selectContinue')
+        // events.$emit('nextSlide');
       },
 
       toThisSlide() {
