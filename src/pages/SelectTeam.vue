@@ -1,6 +1,6 @@
 <template>
   <NavigationLayout :back="true" :menu="true" :topImage="$store.state.character">
-    <h1>Select Team</h1>
+    <h1>My Dental Office</h1>
     <div class="content team">
       <base-card v-for="(item, index) in team" :key="item.title"
         :class="getButtonClassName(index + 1)"
@@ -87,8 +87,7 @@ export default {
       font-size: 20px;
       color: #FFFFFF;
       letter-spacing: 0;
-      padding-left: 10px;
-      padding-bottom: 2px;
+      padding: 10px;
     }
   }
 }

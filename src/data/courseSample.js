@@ -1,5 +1,5 @@
 export default {
-  name: 'Course name',
+  name: 'Cavity Prevention',
   questions: [
     {
       text: 'What’s inside your mouth?',
@@ -344,10 +344,66 @@ export default {
       type: 'calc',
       variants: [
         {
+          text: 'Brushing after each meal',
           value: 'clock',
           image: 'clock.svg'
         },
         {
+          text: 'Healthy snacks',
+          value: 'tooth',
+          image: 'tooth.svg'
+        }
+      ]
+    },
+    {
+      text: 'Cavity Math',
+      desc: 'Arrange the icons to find the answer.',
+      id: '24',
+      type: 'calc',
+      variants: [
+        {
+          text: 'Sugary snacks',
+          value: 'clock',
+          image: 'clock.svg'
+        },
+        {
+          text: 'Not brushing',
+          value: 'tooth',
+          image: 'tooth.svg'
+        }
+      ]
+    },
+    {
+      text: 'Cavity Math',
+      desc: 'Arrange the icons to find the answer.',
+      id: '25',
+      type: 'calc',
+      variants: [
+        {
+          text: 'Brushing after each meal',
+          value: 'clock',
+          image: 'clock.svg'
+        },
+        {
+          text: 'Sugary snacks',
+          value: 'tooth',
+          image: 'tooth.svg'
+        }
+      ]
+    },
+    {
+      text: 'Cavity Math',
+      desc: 'Arrange the icons to find the answer.',
+      id: '26',
+      type: 'calc',
+      variants: [
+        {
+          text: 'Healthy snacks',
+          value: 'clock',
+          image: 'clock.svg'
+        },
+        {
+          text: 'Not brushing',
           value: 'tooth',
           image: 'tooth.svg'
         }
@@ -356,58 +412,58 @@ export default {
     {
       text: 'Happy Mouth',
       desc: 'Drag the icons to the mouth to find the answer.',
-      id: '24',
-      type: 'mouth',
-      variants: [
-        {
-          value: 'donut',
-          image: 'donut.svg'
-        },
-        {
-          value: 'apple',
-          image: 'apple.svg',
-          isCorrect: true
-        },
-      ]
-    },
-    {
-      text: 'Happy Mouth',
-      desc: 'Drag the icons to the mouth to find the answer.',
-      id: '25',
-      type: 'mouth',
-      variants: [
-        {
-          value: 'donut',
-          image: 'donut.svg'
-        },
-        {
-          value: 'apple',
-          image: 'apple.svg',
-          isCorrect: true
-        },
-      ]
-    },
-    {
-      text: 'Happy Mouth',
-      desc: 'Drag the icons to the mouth to find the answer.',
-      id: '26',
-      type: 'mouth',
-      variants: [
-        {
-          value: 'donut',
-          image: 'donut.svg'
-        },
-        {
-          value: 'apple',
-          image: 'apple.svg',
-          isCorrect: true
-        },
-      ]
-    },
-    {
-      text: 'Happy Mouth',
-      desc: 'Drag the icons to the mouth to find the answer.',
       id: '27',
+      type: 'mouth',
+      variants: [
+        {
+          value: 'donut',
+          image: 'donut.svg'
+        },
+        {
+          value: 'apple',
+          image: 'apple.svg',
+          isCorrect: true
+        },
+      ]
+    },
+    {
+      text: 'Happy Mouth',
+      desc: 'Drag the icons to the mouth to find the answer.',
+      id: '28',
+      type: 'mouth',
+      variants: [
+        {
+          value: 'donut',
+          image: 'donut.svg'
+        },
+        {
+          value: 'apple',
+          image: 'apple.svg',
+          isCorrect: true
+        },
+      ]
+    },
+    {
+      text: 'Happy Mouth',
+      desc: 'Drag the icons to the mouth to find the answer.',
+      id: '29',
+      type: 'mouth',
+      variants: [
+        {
+          value: 'donut',
+          image: 'donut.svg'
+        },
+        {
+          value: 'apple',
+          image: 'apple.svg',
+          isCorrect: true
+        },
+      ]
+    },
+    {
+      text: 'Happy Mouth',
+      desc: 'Drag the icons to the mouth to find the answer.',
+      id: '30',
       type: 'mouth',
       variants: [
         {
