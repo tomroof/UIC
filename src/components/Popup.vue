@@ -42,10 +42,10 @@
             <div class="img__false">
             </div>
           </div>
-          <div class="title-text title-text__false">
+          <div class="title-text">
             Uh-oh! <br />
-            The cavity monster <br />
-            is coming!
+            The cavity monsters <br />
+            are coming!
           </div>
         </div>
         <component-button :popup="true" @click="toThisSlide">
@@ -60,7 +60,7 @@
             <div class="img-char" :style="{background: `url(${$store.state.character}) no-repeat center / contain`}">
             </div>
           </div>
-          <div class="title-text title-text__false">
+          <div class="title-text">
             Are you sure you <br />
             want to leave?
           </div>
@@ -211,16 +211,11 @@ import { events } from '@/helpers/events'
 }
 
 .title-text {
-  margin-top: 8px;
-  margin-bottom: 26px;
+  margin-top: 30px;
+  margin-bottom: 48px;
 
   font-size: 23px;
   text-align: center;
-}
-
-.title-text__false {
-  margin-top: 30px;
-  margin-bottom: 48px;
 }
 
 .description {

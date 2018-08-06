@@ -51,6 +51,7 @@ import BaseQuestion from '@/components/questions/BaseQuestion'
     dropActiveAnswers () {
       this.$set(this, 'questionCard', {
         text: this.question.text,
+        desc: this.question.desc,
         answers: this.question.answers.map((a) => {
           return {
             ...a,

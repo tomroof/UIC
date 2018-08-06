@@ -1,26 +1,31 @@
 export default [
   {
-    title: 'UIC School of Dentistry',
+    title: 'UIC College of Dentistry',
     img: 'uic-school-front.jpg',
     background: '#FF6D7F'
   },
   {
-    title: 'Chicago Smiles',
+    title: 'UI Health Mile Square',
     img: 'team-2.jpg',
     background: '#278AB5'
   },
   {
-    title: 'Image Dental',
+    title: 'Lawndale Christian Health Center',
     img: 'team-3.jpg',
     background: '#87DBA2'
   },
   {
-    title: 'East Erie Dental',
+    title: 'Angel Harvey Family Health Center of the Infant Welfare',
     img: 'team-4.jpg',
     background: '#FFEBAE'
   },
   {
-    title: 'Stone Dental Group',
+    title: 'Salud Family Health Centers',
+    img: 'team-5.jpg',
+    background: '#32BEA6'
+  },
+  {
+    title: 'Rada Clinic',
     img: 'team-5.jpg',
     background: '#32BEA6'
   }
