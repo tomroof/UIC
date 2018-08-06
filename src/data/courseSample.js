@@ -86,7 +86,7 @@ export default {
       link: 'https://www.youtube.com/embed/zGoBFU1q4g0'
     },
     {
-      text: 'Good For Me or Good for Cavity Monsters?',
+      text: 'Good for me or good for cavity monsters?',
       desc: 'Click to find out.',
       id: '9',
       type: 'cards',
@@ -104,7 +104,7 @@ export default {
       ]
     },
     {
-      text: 'Good For Me or Good for Cavity Monsters?',
+      text: 'Good for me or good for cavity monsters?',
       desc: 'Click to find out.',
       id: '10',
       type: 'cards',
@@ -122,7 +122,7 @@ export default {
       ]
     },
     {
-      text: 'Good For Me or Good for Cavity Monsters?',
+      text: 'Good for me or good for cavity monsters?',
       desc: 'Click to find out.',
       id: '11',
       type: 'cards',
@@ -140,7 +140,7 @@ export default {
       ]
     },
     {
-      text: 'Good For Me or Good for Cavity Monsters?',
+      text: 'Good for me or good for cavity monsters?',
       desc: 'Click to find out.',
       id: '12',
       type: 'cards',
@@ -158,7 +158,7 @@ export default {
       ]
     },
     {
-      text: 'Good For Me or Good for Cavity Monsters?',
+      text: 'Good for me or good for cavity monsters?',
       desc: 'Click to find out.',
       id: '13',
       type: 'cards',
@@ -176,7 +176,7 @@ export default {
       ]
     },
     {
-      text: 'Good For Me or Good for Cavity Monsters?',
+      text: 'Good for me or good for cavity monsters?',
       desc: 'Click to find out.',
       id: '14',
       type: 'cards',
@@ -194,7 +194,7 @@ export default {
       ]
     },
     {
-      text: 'Good For Me or Good for Cavity Monsters?',
+      text: 'Good for me or good for cavity monsters?',
       desc: 'Click to find out.',
       id: '15',
       type: 'cards',
@@ -212,7 +212,7 @@ export default {
       ]
     },
     {
-      text: 'Good For Me or Good for Cavity Monsters?',
+      text: 'Good for me or good for cavity monsters?',
       desc: 'Click to find out.',
       id: '16',
       type: 'cards',
@@ -230,7 +230,7 @@ export default {
       ]
     },
     {
-      text: 'Good For Me or Good for Cavity Monsters?',
+      text: 'Good for me or good for cavity monsters?',
       desc: 'Click to find out.',
       id: '17',
       type: 'cards',
@@ -248,7 +248,7 @@ export default {
       ]
     },
     {
-      text: 'Good For Me or Good for Cavity Monsters?',
+      text: 'Good for me or good for cavity monsters?',
       desc: 'Click to find out.',
       id: '18',
       type: 'cards',
@@ -266,7 +266,7 @@ export default {
       ]
     },
     {
-      text: 'Good For Me or Good for Cavity Monsters?',
+      text: 'Good for me or good for cavity monsters?',
       desc: 'Click to find out.',
       id: '19',
       type: 'cards',
@@ -284,7 +284,7 @@ export default {
       ]
     },
     {
-      text: 'Good For Me or Good for Cavity Monsters?',
+      text: 'Good for me or good for cavity monsters?',
       desc: 'Click to find out.',
       id: '20',
       type: 'cards',
@@ -302,7 +302,7 @@ export default {
       ]
     },
     {
-      text: 'Good For Me or Good for Cavity Monsters?',
+      text: 'Good for me or good for cavity monsters?',
       desc: 'Click to find out.',
       id: '21',
       type: 'cards',
@@ -320,7 +320,7 @@ export default {
       ]
     },
     {
-      text: 'Good For Me or Good for Cavity Monsters?',
+      text: 'Good for me or good for cavity monsters?',
       desc: 'Click to find out.',
       id: '22',
       type: 'cards',
@@ -344,14 +344,14 @@ export default {
       type: 'calc',
       variants: [
         {
-          text: 'Brushing after each meal',
+          text: 'Brushing twice a day',
           value: 'clock',
-          image: 'clock.svg'
+          image: 'brush-twice.svg'
         },
         {
           text: 'Healthy snacks',
           value: 'tooth',
-          image: 'tooth.svg'
+          image: 'broccoli.svg'
         }
       ]
     },
@@ -363,13 +363,13 @@ export default {
       variants: [
         {
           text: 'Sugary snacks',
-          value: 'clock',
-          image: 'clock.svg'
+          value: 'candy',
+          image: 'candy.svg'
         },
         {
           text: 'Not brushing',
-          value: 'tooth',
-          image: 'tooth.svg'
+          value: 'not-brushing',
+          image: 'not-brushing.svg'
         }
       ]
     },
@@ -381,13 +381,13 @@ export default {
       variants: [
         {
           text: 'Brushing after each meal',
-          value: 'clock',
-          image: 'clock.svg'
+          value: 'brushing-after-meal',
+          image: 'brushing-after-meal.svg'
         },
         {
           text: 'Sugary snacks',
-          value: 'tooth',
-          image: 'tooth.svg'
+          value: 'candy',
+          image: 'candy.svg'
         }
       ]
     },
@@ -399,13 +399,13 @@ export default {
       variants: [
         {
           text: 'Healthy snacks',
-          value: 'clock',
-          image: 'clock.svg'
+          value: 'broccoli',
+          image: 'broccoli.svg'
         },
         {
           text: 'Not brushing',
-          value: 'tooth',
-          image: 'tooth.svg'
+          value: 'not-brushing',
+          image: 'not-brushing.svg'
         }
       ]
     },

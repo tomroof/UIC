@@ -6,12 +6,12 @@
 
     <div class="inner">
       <h1>University of Illinois School of Dentistry</h1>
-    
+
       <div class="contacts">
         <div class="title">CONTACT</div>
         <div class="items">
           <div class="item">
-            <div class="icon" :style="{background: `url(${require('@/assets/address.png')}) no-repeat center / contain`}" />
+            <div class="icon" :style="{background: `url(${require('@/assets/address.svg')}) no-repeat center / contain`}" />
             <div class="info">801 S Paulina St, Chicago, IL 60612</div>
             <div class="arrow" :style="{background: `url(${require('@/assets/arrow-contacts.svg')}) no-repeat center / contain`}"/>
           </div>

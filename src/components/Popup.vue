@@ -15,11 +15,11 @@
             </component-button>
           </div>
         </div>
-      </div>        
+      </div>
       <div class="container" v-else>
         <div class="title">
           <div class="img-wrapper img-wrapper__true">
-            <div class="img__true">
+            <div class="img-char" :style="{background: `url(${$store.state.character}) no-repeat center / contain`}">
             </div>
           </div>
           <div class="title-text">
@@ -206,7 +206,7 @@ import { events } from '@/helpers/events'
   height: 215px;
   margin: 0 auto;
 
-  background: url('../assets/donut-answer.svg') no-repeat bottom/contain; 
+  background: url('../assets/donut-answer.svg') no-repeat bottom/contain;
 }
 
 .title-text-mouth {

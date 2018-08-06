@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <svg width="29px" height="29px" viewBox="0 0 29 29" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-    <!-- Generator: Sketch 50.2 (55047) - http://www.bohemiancoding.com/sketch -->
-    <title>Group 4</title>
+    <!-- Generator: Sketch 51.2 (57519) - http://www.bohemiancoding.com/sketch -->
+    <title>Group 2</title>
     <desc>Created with Sketch.</desc>
     <defs>
         <rect id="path-1" x="0" y="0" width="25" height="25" rx="5"></rect>
@@ -11,18 +11,16 @@
             <feColorMatrix values="0 0 0 0 0.121568627   0 0 0 0 0.192156863   0 0 0 0 0.290196078  0 0 0 0.13 0" type="matrix" in="shadowBlurOuter1"></feColorMatrix>
         </filter>
     </defs>
-    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+    <g id="Screens" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
         <g id="⟶-Team" transform="translate(-18.000000, -396.000000)">
             <g id="Settings" transform="translate(20.000000, 360.000000)">
                 <g id="login" transform="translate(0.000000, 37.000000)">
-                    <g id="Group-4">
+                    <g id="Group-2">
                         <g id="Rectangle-3">
                             <use fill="black" fill-opacity="1" filter="url(#filter-2)" xlink:href="#path-1"></use>
                             <use fill="#87DBA2" fill-rule="evenodd" xlink:href="#path-1"></use>
                         </g>
-                        <text id="location" font-family="FontAwesome5FreeSolid, Font Awesome 5 Free" font-size="12" font-weight="700" fill="#FFFFFF">
-                            <tspan x="6" y="18"></tspan>
-                        </text>
+                        <path d="M16.4062252,7.61721225 C16.7030996,7.47658759 16.9960677,7.46486887 17.2851293,7.58205609 C17.574191,7.69924331 17.781222,7.90627395 17.9062216,8.20314836 C18.0312212,8.50002277 18.0234088,8.79689682 17.8827842,9.09377123 L13.4062323,18.843748 C13.2343579,19.1874973 12.976546,19.3945279 12.6327967,19.4648403 C12.2890474,19.5351526 11.9726419,19.4687466 11.6835802,19.265622 C11.3945185,19.0624973 11.2499875,18.7656233 11.2499875,18.3749991 L11.2499875,14.2500089 L7.12499732,14.2500089 C6.73437313,14.2500089 6.43749908,14.1054779 6.23437444,13.8164162 C6.03124981,13.5273545 5.96484383,13.210949 6.03515617,12.8671997 C6.1054685,12.5234504 6.31249914,12.2656386 6.65624844,12.0937641 L16.4062252,7.61721225 Z" id="location" fill="#FFFFFF"></path>
                     </g>
                 </g>
             </g>
