@@ -10,7 +10,7 @@
               Happy Mouth
             </div>
             <component-button :popup="true" @click="toNextSlide">
-              <img src='../assets/refresh.svg'>Play Again
+              <img src='../assets/refresh.svg' class="refresh-icon">Play Again
             </component-button>
           </div>
         </div>
@@ -206,6 +206,11 @@ import { events } from '@/helpers/events'
 
   font-size: 23px;
   text-align: center;
+}
+
+.refresh-icon {
+  margin-left: 5px;
+  margin-right: 15px;
 }
 
 .container {
