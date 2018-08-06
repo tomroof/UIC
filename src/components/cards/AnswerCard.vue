@@ -2,15 +2,23 @@
   <div class="answer-container" @click="$emit('click')">
     <transition name="rotateCard">
       <div class="answer-wrapper" key="question" v-if="!selected" >
-        <div class="image">
+        <div class="img-mouth__true">
           <img :src="image" alt="">
+          <div class="avatar"
+            :style="{ backgroundImage: `url(${$store.state.character})` }"
+          >
+          </div>
         </div>
         <div class="text">{{answer.text}}</div>
       </div>
 
       <div v-else key="answer" class="answer-wrapper" :class="{'correct': answer.answerData.isCorrect, 'not-correct': !answer.answerData.isCorrect}">
-        <div class="image">
+        <div class="img-mouth__true">
           <img :src="image" alt="">
+          <div class="avatar"
+            :style="{ backgroundImage: `url(${$store.state.character})` }"
+          >
+          </div>
         </div>
         <div class="text">{{answer.answerData.text}}</div>
       </div>
@@ -72,17 +80,52 @@ export default {
 </style>
 
 <style scoped lang="scss">
-.image {
-  background-color: #3FC9DD;
+.img-mouth__true {
+  overflow: hidden;
+  width: 230px;
+  height: 215px;
+  margin: 0 auto;
+  background-color: #3ec9dc;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  position: relative;
+
   img {
+    position: absolute;
+    bottom: 30px; 
     width: 100%;
-    max-width: 130px;
-    max-height: 150px;
+    max-width: 80px;
+    max-height: 80px;
     margin: 0 auto;
+    left: 5px;
     display: inherit;
-    padding: 20px 0;
   }
 }
+
+.image {
+  background-color: #3FC9DD;
+  width: 100%;
+  height: 160px;
+  position: relative;
+  
+}
+
+.avatar {
+  position: absolute;
+  width: 129px;
+  height: 180px;
+  right: 5px;
+  bottom: -40px;
+  background-position: center bottom;
+  background-size: contain;
+  background-repeat: no-repeat;
+  border-radius: none !important;
+  background-color: transparent !important;
+  border: none !important;
+  box-shadow: none;
+} 
+
+
 .text {
   /* Exercise: */
   font-family: 'Zilla Slab';
