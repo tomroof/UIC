@@ -6,11 +6,11 @@
           <div class="title">
             <div class="img-mouth__true">
             </div>
-            <div class="title-text">
+            <div class="title-text-mouth">
               Happy Mouth
             </div>
             <component-button :popup="true" @click="toNextSlide">
-              Play Again
+              <img src='../assets/refresh.svg'>Play Again
             </component-button>
           </div>
         </div>
@@ -36,21 +36,37 @@
       </div>
     </div>
     <div class="popup" v-if="openPopupFalse">
-      <div class="container">
-        <div class="title">
-          <div class="img-wrapper img-wrapper__false">
-            <div class="img__false">
+      <div v-if="type==='mouth'">
+        <div class="mouth-container-false">
+          <div class="title">
+            <div class="img-mouth__false">
             </div>
-          </div>
-          <div class="title-text">
-            Uh-oh! <br />
-            The cavity monsters <br />
-            are coming!
+            <div class="title-text-mouth">
+              Cravity Monsters
+            </div>
+            <component-button :popup="true" @click="toNextSlide">
+              <img src='../assets/refresh.svg'>Play Again
+            </component-button>
           </div>
         </div>
-        <component-button :popup="true" @click="toThisSlide">
-          Try again
-        </component-button>
+      </div>
+      <div v-else>
+        <div class="container">
+          <div class="title">
+            <div class="img-wrapper img-wrapper__false">
+              <div class="img__false">
+              </div>
+            </div>
+            <div class="title-text">
+              Uh-oh! <br />
+              The cavity monsters <br />
+              are coming!
+            </div>
+          </div>
+          <component-button :popup="true" @click="toThisSlide">
+            Try again
+          </component-button>
+        </div>
       </div>
     </div>
     <div class="popup popup-back" v-if="popupBack">
@@ -152,6 +168,20 @@ import { events } from '@/helpers/events'
   border-radius: 10px;
 }
 
+.mouth-container-false {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
+  max-width: 295px;
+  width: 100%;
+  padding: 9px 9px 20px 9px;
+
+  background: #ac4852;
+  border-radius: 10px;
+}
+
 .img-mouth__true {
   overflow: hidden;
   width: 270px;
@@ -161,6 +191,22 @@ import { events } from '@/helpers/events'
   background: url('../assets/apple-answer.svg') no-repeat bottom/contain;
 }
 
+.img-mouth__false {
+  overflow: hidden;
+  width: 270px;
+  height: 215px;
+  margin: 0 auto;
+  margin-bottom: 20px;
+  background: url('../assets/donut-answer.svg') no-repeat bottom/contain; 
+}
+
+.title-text-mouth {
+  margin-top: 25px;
+  margin-bottom: 25px;
+
+  font-size: 23px;
+  text-align: center;
+}
 
 .container {
   position: absolute;
