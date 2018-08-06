@@ -26,7 +26,7 @@
           </draggable>
         </div>
       </div>
-      <popup :openPopupFalse="openPopupFalse" :openPopupTrue="openPopupTrue" />
+      <popup :type="question.type" :openPopupFalse="openPopupFalse" :openPopupTrue="openPopupTrue" />
     </div>
   </BaseQuestion>
 </template>
@@ -81,6 +81,7 @@
       dropActiveAnswers () {
         this.$set(this, 'questionCard', {
           text: this.question.text,
+          desc: this.question.desc,
           answers: this.question.answers.map((a) => {
             return {
               ...a,

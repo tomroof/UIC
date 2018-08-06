@@ -13,7 +13,8 @@
           v-if="question.type === 'cards'"
           :question="question"
           :index="index"
-          @selectAnswer='handelAnswerSelect' />
+          @selectAnswer='handelAnswerSelect' 
+          @isQuestionHandler="isQuestionHandler" />
 
         <VideoQuestion
           v-if="question.type === 'video'"

@@ -30,14 +30,22 @@ import BaseQuestion from '@/components/questions/BaseQuestion'
       }
     },
 
-  watch: {
-    question:{
-      handler: function (newVal) {
-        this.questionCard = newVal
-      },
-      immediate: true
-    }
-  },
+    mounted() {
+      this.$emit('isQuestionHandler', true, 'Check');
+    },
+
+    updated() {
+      this.$emit('isQuestionHandler', false, 'Check');
+    },
+
+    watch: {
+      question:{
+        handler: function (newVal) {
+          this.questionCard = newVal
+        },
+        immediate: true
+      }
+    },
 
     methods: {
     dropActiveAnswers () {

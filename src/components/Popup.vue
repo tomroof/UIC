@@ -1,22 +1,32 @@
 <template>
   <div>
     <div class="popup" v-if="openPopupTrue">
-      <div class="container">
-        <div class="title">
-          <div class="img-wrapper img-wrapper__true">
-            <div class="img__true">
+      <div v-if="type==='mouth'">
+        <div class="mouth-container">
+          <div class="title">
+            <div class="img-mouth__true">
             </div>
           </div>
-          <div class="title-text">
-            You are correct!
+        </div>
+      </div>        
+      <div v-else>
+        <div class="container">
+          <div class="title">
+            <div class="img-wrapper img-wrapper__true">
+              <div class="img__true">
+              </div>
+            </div>
+            <div class="title-text">
+              You are correct!
+            </div>
           </div>
+          <div class="description">
+            Brushing your teeth twice a day is the best way to stop those nasty cavity monsters.
+          </div>
+          <component-button :popup="true" @click="toNextSlide">
+            Continue
+          </component-button>
         </div>
-        <div class="description">
-          Brushing your teeth twice a day is the best way to stop those nasty cavity monsters.
-        </div>
-        <component-button :popup="true" @click="toNextSlide">
-          Continue
-        </component-button>
       </div>
     </div>
     <div class="popup" v-if="openPopupFalse">
@@ -68,6 +78,7 @@ import { events } from '@/helpers/events'
 
   export default {
     props: {
+      type: String,
       openPopupTrue: Boolean,
       openPopupFalse: Boolean,
       popupBack: Boolean,
@@ -81,8 +92,7 @@ import { events } from '@/helpers/events'
 
     methods: {
       toNextSlide() {
-        this.$emit('selectContinue')
-        // events.$emit('nextSlide');
+        events.$emit('nextSlide');
       },
 
       toThisSlide() {
@@ -121,6 +131,30 @@ import { events } from '@/helpers/events'
 
   background: rgba(11, 30, 38, 0.5);
 }
+
+.mouth-container {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
+  max-width: 295px;
+  width: 100%;
+  padding: 9px;
+
+  background: #2e7a6e;
+  border-radius: 10px;
+}
+
+.img-mouth__true {
+  overflow: hidden;
+  width: 270px;
+  height: 215px;
+  margin: 0 auto;
+
+  background: url('../assets/apple-answer.svg') no-repeat bottom/contain;
+}
+
 
 .container {
   position: absolute;
