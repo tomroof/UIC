@@ -21,7 +21,7 @@
           I am 9 or older
         </div>
       </div>
-      <ComponentButton @click="$router.push('/select-team')">Continue </ComponentButton>
+      <ComponentButton @click="continueButtonClick" :disabled="selected === null">Continue </ComponentButton>
     </div>
   </NavigationLayout>
 </template>
@@ -40,9 +40,13 @@ export default {
     getButtonClassName (number) {
       return ['age-button', number === this.selected ? 'age-button--selected' : '']
     },
-     handleButtonClick (number) {
+    handleButtonClick (number) {
        this.selected = number
-     }
+    },
+    continueButtonClick () {
+      if (this.selected === null) return
+      this.$router.push('/select-team')
+    }
   },
   components: {
     NavigationLayout,
