@@ -6,6 +6,10 @@
           <div class="title">
             <div class="img-mouth__true">
               <img class="avatar-image" :src='avatarImage'>
+              <div class="avatar"
+                :style="{ backgroundImage: `url(${$store.state.character})` }"
+              >
+              </div>
             </div>
             <div class="title-text-mouth">
               Happy Mouth
@@ -196,9 +200,26 @@ import { events } from '@/helpers/events'
   width: 270px;
   height: 215px;
   margin: 0 auto;
-
-  background: url('../assets/mouth_pop_correct.png') no-repeat bottom/contain;
+  background-color: #3ec9dc;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  position: relative;
 }
+
+.avatar {
+  position: absolute;
+  width: 129px;
+  height: 180px;
+  right: 20px;
+  bottom: -40px;
+  background-position: center bottom;
+  background-size: contain;
+  background-repeat: no-repeat;
+  border-radius: none !important;
+  background-color: transparent !important;
+  border: none !important;
+  box-shadow: none;
+} 
 
 .img-mouth__false {
   overflow: hidden;
