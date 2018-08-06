@@ -8,19 +8,19 @@ export default {
       link: 'https://www.youtube.com/embed/zGoBFU1q4g0'
     },
     {
-      text: 'How to Stop the Cavity Monsters.',
+      text: 'How to stop the cavity monsters.',
       id: '2',
       type: 'video',
       link: 'https://www.youtube.com/embed/zGoBFU1q4g0'
     },
     {
-      text: 'Brushing Away the Cavity Monsters!',
+      text: 'Brushing away the cavity monsters!',
       id: '3',
       type: 'video',
       link: 'https://www.youtube.com/embed/zGoBFU1q4g0'
     },
     {
-      text: 'Cavity Math',
+      text: 'Cavity Math instructions.',
       id: '4',
       type: 'video',
       link: 'https://www.youtube.com/embed/zGoBFU1q4g0'
@@ -80,7 +80,7 @@ export default {
       ]
     },
     {
-      text: 'Cavity Math',
+      text: 'What snacks do my teeth love?',
       id: '8',
       type: 'video',
       link: 'https://www.youtube.com/embed/zGoBFU1q4g0'
