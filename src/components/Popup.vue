@@ -6,6 +6,12 @@
           <div class="title">
             <div class="img-mouth__true">
             </div>
+            <div class="title-text">
+              Happy Mouth
+            </div>
+            <component-button :popup="true" @click="toNextSlide">
+              Play Again
+            </component-button>
           </div>
         </div>
       </div>        
@@ -140,7 +146,7 @@ import { events } from '@/helpers/events'
 
   max-width: 295px;
   width: 100%;
-  padding: 9px;
+  padding: 9px 9px 20px 9px;
 
   background: #2e7a6e;
   border-radius: 10px;
@@ -151,7 +157,7 @@ import { events } from '@/helpers/events'
   width: 270px;
   height: 215px;
   margin: 0 auto;
-
+  margin-bottom: 20px;
   background: url('../assets/apple-answer.svg') no-repeat bottom/contain;
 }
 
