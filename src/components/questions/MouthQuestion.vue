@@ -26,7 +26,7 @@
           </draggable>
         </div>
       </div>
-      <popup :type="question.type" :openPopupFalse="openPopupFalse" :openPopupTrue="openPopupTrue" />
+      <popup :answers="fields[2]" :type="question.type" :openPopupFalse="openPopupFalse" :openPopupTrue="openPopupTrue" />
     </div>
   </BaseQuestion>
 </template>

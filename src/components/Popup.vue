@@ -5,12 +5,13 @@
         <div class="mouth-container">
           <div class="title">
             <div class="img-mouth__true">
+              <img class="avatar-image" :src='avatarImage'>
             </div>
             <div class="title-text-mouth">
               Happy Mouth
             </div>
             <component-button :popup="true" @click="toNextSlide">
-              <img src='../assets/refresh.svg' class="refresh-icon">Play Again
+              <img src='@/assets/refresh.svg' class="refresh-icon">Play Again
             </component-button>
           </div>
         </div>
@@ -38,12 +39,13 @@
         <div class="mouth-container-false">
           <div class="title">
             <div class="img-mouth__false">
+              <img class="avatar-image" :src='avatarImage'>
             </div>
             <div class="title-text-mouth">
               Cravity Monsters
             </div>
             <component-button :popup="true" @click="toNextSlide">
-              <img src='../assets/refresh.svg' class="refresh-icon">Play Again
+              <img src='@/assets/refresh.svg' class="refresh-icon">Play Again
             </component-button>
           </div>
         </div>
@@ -96,19 +98,24 @@ import ComponentButton from '@/components/Button'
 import { events } from '@/helpers/events'
 
   export default {
-    props: {
-      type: String,
-      openPopupTrue: Boolean,
-      openPopupFalse: Boolean,
-      popupBack: Boolean,
-      closePopup: Function,
-      exitCourse: Function
-    },
-
+    props: ['type', 'answers', 'openPopupTrue', 'openPopupFalse', 'popupBack', 'closePopup', 'exitCourse'],
     components: {
       ComponentButton
     },
 
+    data () {
+      return {
+        avatarImage: null
+      }
+    },
+
+    watch: {
+      answers:{
+        handler: function (newVal) {
+          this.avatarImage = require('@/assets/' + newVal[0].image)
+        }
+      }
+    },
     methods: {
       toNextSlide() {
         events.$emit('nextSlide');
@@ -179,13 +186,18 @@ import { events } from '@/helpers/events'
   border-radius: 10px;
 }
 
+.avatar-image {
+  margin-top: 80px;
+  margin-left: 20px;
+}
+
 .img-mouth__true {
   overflow: hidden;
   width: 270px;
   height: 215px;
   margin: 0 auto;
 
-  background: url('../assets/apple-answer.svg') no-repeat bottom/contain;
+  background: url('../assets/mouth_pop_correct.png') no-repeat bottom/contain;
 }
 
 .img-mouth__false {
