@@ -17,6 +17,7 @@ import About from '@/pages/About'
 import Team from '@/pages/Team'
 import Article from '@/pages/Article'
 import Code from '@/pages/Code'
+import Terms from '@/pages/Terms'
 
 Vue.use(Router)
 
@@ -107,6 +108,11 @@ export default new Router({
       path: '/code',
       name: 'Code',
       component: Code
+    },
+    {
+      path: '/terms',
+      name: 'Terms',
+      component: Terms
     }
   ]
 })
