@@ -154,7 +154,7 @@ export default {
       this.calcProgress(currentPage)
       if (this.steps.length - 1 === currentPage) {
 
-        this.$router.push('/congrats')
+        this.$router.push('/congrats/1')
       } else {
         return true //return false if you want to prevent moving to next page
       }
@@ -220,10 +220,10 @@ export default {
 
 .progress-bar {
   position: absolute;
-  width: 250px;
+  width: calc(100% - 120px);
   height: 8px;
   top: 5px;
-  left: 65px;
+  left: 60px;
 }
 
 .progress-background-bar {

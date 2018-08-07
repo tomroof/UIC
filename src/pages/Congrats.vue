@@ -1,34 +1,59 @@
 <template>
-  <div class="congrats-page">
-    <div class="header">
-      <img src="@/assets/congrats-img.svg" alt="">
-      <h1>I Know My Teeth</h1>
-      <h3>+100 <span>points</span></h3>
-    </div>
-
-    <div class="section">
-      <h1>Congrats!</h1>
-      <div class="subheading">
-        You unlocked a new badge!
+  <NavigationLayout :back="true"  :menu="true" :topImage="$store.state.character">
+    <div class="congrats-page">
+      <div class="header">
+        <img src="@/assets/congrats-img.svg" alt="">
+        <h1>{{rewardTitle}}</h1>
+        <h3>+{{rewardPoint}} <span>points</span></h3>
       </div>
-      <ComponentButton type="submit" @click="$router.push('/courses')">
-        Continue
-      </ComponentButton>
-    </div>
 
-    <div class="footer">
-      <div class="icon"><img src="@/assets/share-icon.svg" alt="share"></div>
-      <div class="icon" @click="$router.push('/achievements')"><img src="@/assets/achievments-icon.svg" alt="achievements"></div>
+      <div class="section">
+        <h1>Congrats!</h1>
+        <div class="subheading">
+          You unlocked a new badge!
+        </div>
+        <ComponentButton type="submit" @click="$router.push('/courses')">
+          Continue
+        </ComponentButton>
+      </div>
+
+      <div class="footer">
+        <div class="icon"><img src="@/assets/user_icon.svg" alt="share"></div>
+        <div class="icon" @click="$router.push('/achievements')"><img src="@/assets/achievments-icon.svg" alt="achievements"></div>
+      </div>
     </div>
-  </div>
+  </NavigationLayout>
 </template>
 
 <script>
 import ComponentButton from '@/components/Button'
-
+import NavigationLayout from '@/layouts/NavigationLayout'
 export default {
+  name: 'CongratsPage',
   components: {
-    ComponentButton
+    ComponentButton,
+    NavigationLayout
+  },
+  mounted() {
+    console.log(this.$route.params)
+    switch (parseInt(this.$route.params.id)) {
+      case 1: 
+        this.rewardTitle = 'Profile Completed'
+        this.rewardPoint = 100
+        break;
+
+      case 2:
+        this.rewardTitle = 'Cavity Monster Hero'
+        this.rewardPoint = 100
+        break;
+    }
+    console.log(this.rewardTitle)
+  },
+  data () {
+    return {
+      rewardTitle: '',
+      rewardPoint: 0
+    }
   }
 }
 </script>
@@ -47,12 +72,13 @@ export default {
   padding-top: 60px;
   padding-bottom: 40px;
   h1 {
-    font-size: 25px;
+    font-weight: 300;
+    font-size: 30px;
     margin: 1rem 0 0.5rem 0;
   }
   h3 {
-    font-family: 'Zilla Slab';
-    font-size: 22px;
+    font-size: 27px;
+    font-weight: 100;
     color: #FFFFFF;
     font-weight: normal;
     span {
@@ -95,11 +121,7 @@ export default {
 .footer {
   display: flex;
   justify-content: space-between;
-  position: absolute;
   z-index: 10;
-  width: 100%;
-  bottom: 0;
-
   .icon {
     padding: 25px;
   }

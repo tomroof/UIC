@@ -69,7 +69,7 @@ export default new Router({
       component: Achievements
     },
     {
-      path: '/congrats',
+      path: '/congrats/:id',
       name: 'Congrats',
       component: Congrats
     },
