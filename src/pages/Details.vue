@@ -5,7 +5,11 @@
         <img src='@/assets/course_detail.png' class="background">
         <img src="@/assets/heart.png" class="heart">
         <h1>Cavity Prevention</h1>
-        <div class="lvl">LVL 4</div>
+        <div class="progress-bar">
+          <div class="progress-background-bar"></div>
+          <div class="progress-active-bar" :style="{ width: `${currentProgress}%` }"></div>
+        </div>
+        <!-- <div class="lvl">LVL 4</div>
         <div class="stats_wrapper">
           <div class="stats">
             <img class="icon" src="@/assets/students.png" alt="students">
@@ -22,7 +26,7 @@
             <div class="count">11</div>
             <div class="name">Lessons</div>
           </div>
-        </div>
+        </div> -->
         <img @click="$router.push('/course/1')" class="download" src="@/assets/download_btn.png" alt="btn">
       </div>
       <v-touch @swipeup="handleSwipeTop">
@@ -46,7 +50,12 @@ export default {
   },
   components: {
     NavigationLayout
-  }
+  },
+  data () {
+    return {
+      currentProgress: 30,
+    }
+  },
 }
 </script>
 
@@ -150,5 +159,31 @@ export default {
       font-size: 15px;
       color: #FFFFFF;
     }
+  }
+  .progress-bar {
+    position: absolute;
+    width: calc(100% - 120px);
+    height: 10px;
+    margin-top: 30px;
+    left: 60px;
+  }
+
+  .progress-background-bar {
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    position: absolute;
+    background-color: #217b71;
+    border-radius: 4px;
+  }
+
+  .progress-active-bar {
+    left: 0;
+    top: 0;
+    bottom: 0;
+    position: absolute;
+    background-color: #87daa2;
+    border-radius: 4px;
   }
 </style>

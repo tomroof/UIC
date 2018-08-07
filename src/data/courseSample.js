@@ -56,7 +56,7 @@ export default {
         },
         {
           text: 'Wait until tomorrow',
-          image: 'candy.svg',
+          image: 'wait.svg',
           isCorrect: false
         },
       ]
@@ -69,12 +69,12 @@ export default {
       answers: [
         {
           text: 'Brush for 2 minutes',
-          image: 'brush.svg',
+          image: 'clock.svg',
           isCorrect: true
         },
         {
           text: 'Brush for 1 minute',
-          image: 'candy.svg',
+          image: 'clock.svg',
           isCorrect: false
         },
       ]
@@ -88,12 +88,12 @@ export default {
         {
           text: 'Brush once a day',
           image: 'brush.svg',
-          isCorrect: true
+          isCorrect: false
         },
         {
           text: 'Brush twice a day',
-          image: 'candy.svg',
-          isCorrect: false
+          image: 'brush-twice.svg',
+          isCorrect: true
         },
       ]
     },
