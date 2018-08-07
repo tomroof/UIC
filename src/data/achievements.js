@@ -1,17 +1,17 @@
 export default [
   {
-    name: 'Quick Learner',
-    goal: 'Completed 1 course',
+    name: 'Cavity Monster Hero',
+    goal: 'Completing Cavity Prevention',
     image: 'achieve_img_1.svg'
   },
   {
-    name: 'Master Mind!',
-    goal: 'Got 1st place on leaderboard',
+    name: 'I Know My Teeth',
+    goal: 'Completing Baby Teeth',
     image: 'achieve_img_2.svg'
   },
   {
-    name: 'Super Learner',
-    goal: 'Completed more than 5 courses',
+    name: 'Brushing Selfie',
+    goal: 'Take a selfie',
     image: 'achieve_img_3.svg'
   },
   {
