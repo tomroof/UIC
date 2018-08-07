@@ -11,6 +11,7 @@
             :answer="variant"
             :key="index"
             :selected="variant.selected"
+            :result="false"
             @click="handleAnswerClick(answer, question)"/>
         </draggable>
       </div>
@@ -23,6 +24,7 @@
               :answer="variant"
               :key="i"
               :selected="variant.selected"
+              :result="true"
               @click="handleAnswerClick(answer, question)"/>
           </draggable>
         </div>
@@ -38,6 +40,7 @@
               :answer="variant"
               :key="i"
               :selected="variant.selected"
+              :result="true"
               @click="handleAnswerClick(answer, question)"/>
           </draggable>
         </div>

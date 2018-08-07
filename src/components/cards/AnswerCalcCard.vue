@@ -1,5 +1,5 @@
 <template>
-  <div class="answer-wrapper" >
+  <div :class="{'answer-wrapper': true, 'answer-result-wrapper': result}">
     <div class="image">
       <img :src="image" alt="">
     </div>
@@ -13,7 +13,7 @@ import BaseCard from './BaseCard'
 export default {
   name: 'ReviewCard',
 
-  props: ['answer', 'selected'],
+  props: ['answer', 'selected', 'result'],
   components: {
     BaseCard
   },
@@ -30,19 +30,20 @@ export default {
 
 <style scoped lang="scss">
 .answer-wrapper {
-  margin-bottom: 15px;
-  margin: 7.5px 0 !important;
-
   border: 10px solid rgba(0,0,0,0);
   background: rgba(39,138,181,0.60);
   background: rgba(39,138,181,0.25);
   background: rgba(46,74,110,0.60);
   box-shadow: 0 2px 3px 0 rgba(31,49,74,0.10);
   border-radius: 10px;
-
-  width: 150px;
-  margin: 7.5px 20px !important;
+  width: 120px;
+  margin: 7.5px 30px !important;
   cursor: pointer;
+}
+
+.answer-result-wrapper {
+  width: 110px;
+  margin: 0 0 20px 0 !important;  
 }
 
 .answer-container {
