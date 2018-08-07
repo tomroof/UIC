@@ -1,5 +1,9 @@
 <template>
   <div class="curse-container">
+    <div class="progress-bar">
+      <div class="progress-background-bar"></div>
+      <div class="progress-active-bar" :style="{ width: `${currentProgress}%` }"></div>
+    </div>
     <vue-good-wizard
       ref="wizard"
       :steps="steps"
@@ -85,6 +89,7 @@ export default {
       openPopupFalse: false,
       openPopupTrue: false,
       isQuestion: false,
+      currentProgress: 0,
       buttonText: 'Continue'
     }
   },
@@ -139,19 +144,28 @@ export default {
           if (this.currentQuestionType === 'icons') {
             this.openPopupTrue = true
             this.$store.commit('updateCourseProgress', { id: this.$route.params.id, currentProgress: currentPage + 1 })
+            this.calcProgress(currentPage)
             return false
           }
         }
       }
 
       this.$store.commit('updateCourseProgress', { id: this.$route.params.id, currentProgress: currentPage + 1 })
-
+      this.calcProgress(currentPage)
       if (this.steps.length - 1 === currentPage) {
 
         this.$router.push('/congrats')
       } else {
         return true //return false if you want to prevent moving to next page
       }
+    },
+
+    calcProgress (currentPage) {
+      var progress = ((currentPage + 1) / this.steps.length) * 100
+      if (progress > 100) {
+        progress = 100
+      } 
+      this.currentProgress = progress
     },
 
     openSuccessPopup () {
@@ -203,10 +217,38 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+
+.progress-bar {
+  position: absolute;
+  width: 250px;
+  height: 8px;
+  top: 5px;
+  left: 65px;
+}
+
+.progress-background-bar {
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  position: absolute;
+  background-color: #217b71;   
+  border-radius: 4px;  
+}
+
+.progress-active-bar {
+  left: 0;
+  top: 0;
+  bottom: 0;
+  position: absolute;
+  background-color: #87daa2; 
+  border-radius: 4px;  
+}
+
 .curse-container {
   /deep/ .wizard__steps {
     height: auto;
-    display: flex;
+    display: none;
     justify-content: center;
     max-width: calc(100% - 40px);
   }
