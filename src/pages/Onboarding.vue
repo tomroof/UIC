@@ -15,11 +15,11 @@
     </div>
     <div class="cookie-bar" v-if="showCookieBar">
       <div>
-        This website uses cookies to improve user experience. By using our website you consent to all cookies in accordance with our <a href="/">Cookie Policy</a>
+        This website uses cookies to improve user experience. By using our website you consent to all cookies in accordance with our <a href="/terms">Cookie Policy</a>
       </div>
       <div class="close-button">
         <img src="@/assets/close-white.svg" @click="closeCookieBar">
-      </div>       
+      </div>
     </div>
   </div>
 </template>
