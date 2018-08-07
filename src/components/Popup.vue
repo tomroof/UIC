@@ -27,14 +27,16 @@
             </div>
           </div>
           <div class="title-text">
-            You are correct!
+            Yeah!<br/>
+            You’re fighting<br/>
+            the cavity monsters!
+          </div>
+          <div class="points-text">
+            +20 <span>points</span>
           </div>
         </div>
-        <div class="description">
-          Brushing your teeth twice a day is the best way to stop those nasty cavity monsters.
-        </div>
         <component-button :popup="true" @click="toNextSlide">
-          Continue
+          Play Again
         </component-button>
       </div>
     </div>
@@ -133,7 +135,7 @@ import { events } from '@/helpers/events'
   }
 </script>
 
-<style scoped>
+<style scoped lang="scss">
 .img-back {
   background: #87DBA2;
   width: 60px !important;
@@ -219,7 +221,7 @@ import { events } from '@/helpers/events'
   background-color: transparent !important;
   border: none !important;
   box-shadow: none;
-} 
+}
 
 .img-mouth__false {
   overflow: hidden;
@@ -299,6 +301,17 @@ import { events } from '@/helpers/events'
   text-align: center;
 }
 
+.points-text {
+  margin-top: -20px;
+  margin-bottom: 30px;
+
+  font-size: 30px;
+  text-align: center;
+  span {
+    font-size: 20px;
+    font-weight: 300;
+  }
+}
 .description {
   margin-bottom: 53px;
 

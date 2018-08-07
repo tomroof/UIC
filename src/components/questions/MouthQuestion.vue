@@ -157,6 +157,7 @@
 }
 
 .answers {
+  margin-top: 40px;
   display: flex;
   flex-wrap: wrap;
   justify-content: space-around;

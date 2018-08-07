@@ -1,13 +1,13 @@
 <template>
   <BaseQuestion :questionCard="questionCard">
     <div class="question-content" slot="questionContent">
-      <div class="variants">
+      <div class="answers">
         <draggable
-          v-model="questionCard.variants"
+          v-model="questionCard.answers"
           class="dragArea"
-          :options="{group:'variants'}">
-          <AnswerIconCard
-            v-for="(variant, index) in questionCard.variants"
+          :options="{group:'answers'}">
+          <AnswerCalcCard
+            v-for="(variant, index) in questionCard.answers"
             :answer="variant"
             :key="index"
             :selected="variant.selected"
@@ -17,8 +17,8 @@
 
       <div class="answers">
         <div class="field">
-          <draggable v-model="fields[0]" :options="{group:'variants'}" class="dragArea" @change="handleDragChange">
-            <AnswerIconCard
+          <draggable v-model="fields[0]" :options="{group:'answers'}" class="dragArea" @change="handleDragChange">
+            <AnswerCalcCard
               v-for="(variant, i) in fields[0]"
               :answer="variant"
               :key="i"
@@ -32,8 +32,8 @@
         </div>
 
         <div class="field">
-          <draggable v-model="fields[1]" :options="{group:'variants'}" class="dragArea" @change="handleDragChange">
-            <AnswerIconCard
+          <draggable v-model="fields[1]" :options="{group:'answers'}" class="dragArea" @change="handleDragChange">
+            <AnswerCalcCard
               v-for="(variant, i) in fields[1]"
               :answer="variant"
               :key="i"
@@ -42,20 +42,20 @@
           </draggable>
         </div>
 
-        <div class="row-gap">
+        <!-- <div class="row-gap">
           <img src="@/assets/eq-icon.png" alt="">
         </div>
 
         <div class="field">
-          <draggable v-model="fields[2]" :options="{group:'variants'}" class="dragArea" @change="handleDragChange">
-            <AnswerIconCard
+          <draggable v-model="fields[2]" :options="{group:'answers'}" class="dragArea" @change="handleDragChange">
+            <AnswerCalcCard
               v-for="(variant, i) in fields[2]"
               :answer="variant"
               :key="i"
               :selected="variant.selected"
               @click="handleAnswerClick(answer, question)"/>
           </draggable>
-        </div>
+        </div> -->
 
       </div>
     </div>
@@ -63,7 +63,7 @@
 </template>
 
 <script>
-  import AnswerIconCard from '@/components/cards/AnswerIconCard'
+  import AnswerCalcCard from '@/components/cards/AnswerCalcCard'
   import BaseQuestion from '@/components/questions/BaseQuestion'
 
   import draggable from 'vuedraggable'
@@ -71,7 +71,7 @@
   export default {
     props: ['question'],
     components: {
-      AnswerIconCard,
+      AnswerCalcCard,
       BaseQuestion,
       draggable
     },
@@ -170,7 +170,7 @@
   }
 }
 
-.variants {
+.answers {
   min-height: 78px;
 }
 
@@ -186,9 +186,9 @@
   cursor: pointer;
   margin: 4px;
   text-align: center;
-  min-width: 58px;
-  max-width: 58px;
-  height: 67px;
+  min-width: 155px;
+  max-width: 115px;
+  height: 132px;
 
   /deep/ .info {
     display: none;

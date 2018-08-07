@@ -31,11 +31,11 @@ import BaseQuestion from '@/components/questions/BaseQuestion'
     },
 
     mounted() {
-      this.$emit('isQuestionHandler', true, 'Check');
+      this.$emit('isQuestionHandler', true, 'Play Next');
     },
 
     updated() {
-      this.$emit('isQuestionHandler', false, 'Check');
+      this.$emit('isQuestionHandler', false, 'Play Next');
     },
 
     watch: {

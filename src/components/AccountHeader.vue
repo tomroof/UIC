@@ -1,7 +1,11 @@
 <template>
   <div class="header">
-    <div class="avatar">
-      <img :src="getAvatar(user.avatar)" alt="User avatar">
+    <div class="avatar-holder">
+      <img class="avatar-image" :src='avatarImage'>
+      <div class="avatar"
+        :style="{ backgroundImage: `url(${$store.state.character})` }"
+      >
+      </div>
     </div>
 
     <div class="info">
@@ -34,6 +38,7 @@ export default {
 <style lang="scss" scoped>
 .header {
   display: flex;
+  margin: 20px 0 40px 0;
 }
 
 .avatar {
@@ -41,6 +46,7 @@ export default {
   overflow: hidden;
   width: 100px;
   height: 100px;
+  margin: 0;
 
   text-align: center;
   display: flex;
@@ -49,7 +55,7 @@ export default {
 }
 
 .info {
-  padding-left: 20px;
+  padding: 10px 0 0 20px;
 }
 
 .name {

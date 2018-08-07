@@ -2,12 +2,8 @@
   <div class="answer-container" @click="$emit('click')">
     <transition name="rotateCard">
       <div class="answer-wrapper" key="question" v-if="!selected" >
-        <div class="img-mouth__true">
+        <div class="img-mouth">
           <img :src="image" alt="">
-          <div class="avatar"
-            :style="{ backgroundImage: `url(${$store.state.character})` }"
-          >
-          </div>
         </div>
         <div class="text">{{answer.text}}</div>
       </div>
@@ -80,10 +76,23 @@ export default {
 </style>
 
 <style scoped lang="scss">
+.img-mouth {
+    background-color: #3FC9DD;
+
+   img {
+     width: 100%;
+     max-width: 130px;
+     max-height: 150px;
+     margin: 0 auto;
+     display: inherit;
+     padding: 20px 0;
+   }
+ }
+
 .img-mouth__true {
   overflow: hidden;
   width: 230px;
-  height: 215px;
+  height: 150px;
   margin: 0 auto;
   background-color: #3ec9dc;
   border-top-left-radius: 10px;
@@ -92,12 +101,12 @@ export default {
 
   img {
     position: absolute;
-    bottom: 30px; 
+    bottom: 30px;
     width: 100%;
     max-width: 80px;
     max-height: 80px;
     margin: 0 auto;
-    left: 5px;
+    left: 15px;
     display: inherit;
   }
 }
@@ -107,15 +116,15 @@ export default {
   width: 100%;
   height: 160px;
   position: relative;
-  
+
 }
 
 .avatar {
   position: absolute;
   width: 129px;
-  height: 180px;
+  height: 130px;
   right: 5px;
-  bottom: -40px;
+  bottom: -35px;
   background-position: center bottom;
   background-size: contain;
   background-repeat: no-repeat;
@@ -123,7 +132,7 @@ export default {
   background-color: transparent !important;
   border: none !important;
   box-shadow: none;
-} 
+}
 
 
 .text {
@@ -134,7 +143,7 @@ export default {
   letter-spacing: 0;
   text-align: center;
 
-  padding: 16px 0px;
+  padding: 16px 0 6px 0;
 }
 
 .answer-wrapper {

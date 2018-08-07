@@ -22,12 +22,15 @@
 
       <div class="cards-row">
         <base-card @click="goToRoute('/account')">
-          <img class="card-photo" src="@/assets/account-img.jpg" />
+          <div class="avatar-menu"
+            :style="{ backgroundImage: `url(${$store.state.character})` }"
+          >
+          </div>
           <div class="text">Account</div>
         </base-card>
 
         <base-card @click="goToRoute('/about')">
-          <img class="card-photo" src="@/assets/about-img.jpg" />
+          <img class="card-photo about-menu" src="@/assets/logo.svg" />
           <div class="text">About</div>
         </base-card>
       </div>
@@ -95,5 +98,22 @@ export default {
       width: 100%;
     }
   }
+}
+.avatar-menu {
+  height: 90px;
+  background-position: 50% 5px;
+  background-size: contain;
+  background-repeat: no-repeat;
+  overflow: hidden;
+  background-color: #FFEBAE;
+}
+.about-menu {
+  height: 86px;
+  background-position: 50% 5px;
+  background-size: contain;
+  background-repeat: no-repeat;
+  overflow: hidden;
+  background-color: #83B9D1;
+  padding: 5px;
 }
 </style>

@@ -32,14 +32,14 @@ export default {
       type: 'icons',
       answers: [
         {
-          text: 'Brush twice a day every day',
-          image: 'brush.svg',
-          isCorrect: true
+          text: 'Never brush my teeth',
+          image: 'not-brushing.svg',
+          isCorrect: false
         },
         {
-          text: 'Never brush my teeth',
-          image: 'candy.svg',
-          isCorrect: false
+          text: 'Brush twice a day',
+          image: 'brush-twice.svg',
+          isCorrect: true
         },
       ]
     },
@@ -51,7 +51,7 @@ export default {
       answers: [
         {
           text: 'Brush after a snack',
-          image: 'brush.svg',
+          image: 'brushing-after-meal.svg',
           isCorrect: true
         },
         {
@@ -80,15 +80,33 @@ export default {
       ]
     },
     {
-      text: 'What snacks do my teeth love?',
+      text: 'Stop the cavity monster.',
+      desc: 'How do we stop the cavity monsters?',
       id: '8',
+      type: 'icons',
+      answers: [
+        {
+          text: 'Brush once a day',
+          image: 'brush.svg',
+          isCorrect: true
+        },
+        {
+          text: 'Brush twice a day',
+          image: 'candy.svg',
+          isCorrect: false
+        },
+      ]
+    },
+    {
+      text: 'What snacks do my teeth love?',
+      id: '9',
       type: 'video',
       link: 'https://www.youtube.com/embed/zGoBFU1q4g0'
     },
     {
       text: 'Good for me or good for cavity monsters?',
       desc: 'Click to find out.',
-      id: '9',
+      id: '10',
       type: 'cards',
       answers: [
         {
@@ -106,7 +124,7 @@ export default {
     {
       text: 'Good for me or good for cavity monsters?',
       desc: 'Click to find out.',
-      id: '10',
+      id: '11',
       type: 'cards',
       answers: [
         {
@@ -124,7 +142,7 @@ export default {
     {
       text: 'Good for me or good for cavity monsters?',
       desc: 'Click to find out.',
-      id: '11',
+      id: '12',
       type: 'cards',
       answers: [
         {
@@ -142,7 +160,7 @@ export default {
     {
       text: 'Good for me or good for cavity monsters?',
       desc: 'Click to find out.',
-      id: '12',
+      id: '13',
       type: 'cards',
       answers: [
         {
@@ -160,7 +178,7 @@ export default {
     {
       text: 'Good for me or good for cavity monsters?',
       desc: 'Click to find out.',
-      id: '13',
+      id: '14',
       type: 'cards',
       answers: [
         {
@@ -178,7 +196,7 @@ export default {
     {
       text: 'Good for me or good for cavity monsters?',
       desc: 'Click to find out.',
-      id: '14',
+      id: '15',
       type: 'cards',
       answers: [
         {
@@ -196,7 +214,7 @@ export default {
     {
       text: 'Good for me or good for cavity monsters?',
       desc: 'Click to find out.',
-      id: '15',
+      id: '16',
       type: 'cards',
       answers: [
         {
@@ -214,7 +232,7 @@ export default {
     {
       text: 'Good for me or good for cavity monsters?',
       desc: 'Click to find out.',
-      id: '16',
+      id: '17',
       type: 'cards',
       answers: [
         {
@@ -232,7 +250,7 @@ export default {
     {
       text: 'Good for me or good for cavity monsters?',
       desc: 'Click to find out.',
-      id: '17',
+      id: '18',
       type: 'cards',
       answers: [
         {
@@ -250,7 +268,7 @@ export default {
     {
       text: 'Good for me or good for cavity monsters?',
       desc: 'Click to find out.',
-      id: '18',
+      id: '19',
       type: 'cards',
       answers: [
         {
@@ -268,7 +286,7 @@ export default {
     {
       text: 'Good for me or good for cavity monsters?',
       desc: 'Click to find out.',
-      id: '19',
+      id: '20',
       type: 'cards',
       answers: [
         {
@@ -286,7 +304,7 @@ export default {
     {
       text: 'Good for me or good for cavity monsters?',
       desc: 'Click to find out.',
-      id: '20',
+      id: '21',
       type: 'cards',
       answers: [
         {
@@ -304,7 +322,7 @@ export default {
     {
       text: 'Good for me or good for cavity monsters?',
       desc: 'Click to find out.',
-      id: '21',
+      id: '22',
       type: 'cards',
       answers: [
         {
@@ -322,7 +340,7 @@ export default {
     {
       text: 'Good for me or good for cavity monsters?',
       desc: 'Click to find out.',
-      id: '22',
+      id: '23',
       type: 'cards',
       answers: [
         {
@@ -340,9 +358,9 @@ export default {
     {
       text: 'Cavity Math',
       desc: 'Arrange the icons to find the answer.',
-      id: '23',
+      id: '24',
       type: 'calc',
-      variants: [
+      answers: [
         {
           text: 'Brushing twice a day',
           value: 'clock',
@@ -358,9 +376,9 @@ export default {
     {
       text: 'Cavity Math',
       desc: 'Arrange the icons to find the answer.',
-      id: '24',
+      id: '25',
       type: 'calc',
-      variants: [
+      answers: [
         {
           text: 'Sugary snacks',
           value: 'candy',
@@ -376,9 +394,9 @@ export default {
     {
       text: 'Cavity Math',
       desc: 'Arrange the icons to find the answer.',
-      id: '25',
+      id: '26',
       type: 'calc',
-      variants: [
+      answers: [
         {
           text: 'Brushing after each meal',
           value: 'brushing-after-meal',
@@ -394,9 +412,9 @@ export default {
     {
       text: 'Cavity Math',
       desc: 'Arrange the icons to find the answer.',
-      id: '26',
+      id: '27',
       type: 'calc',
-      variants: [
+      answers: [
         {
           text: 'Healthy snacks',
           value: 'broccoli',
@@ -412,29 +430,12 @@ export default {
     {
       text: 'Happy Mouth',
       desc: 'Drag the icons to the mouth to find the answer.',
-      id: '27',
-      type: 'mouth',
-      variants: [
-        {
-          value: 'donut',
-          image: 'donut.svg'
-        },
-        {
-          value: 'apple',
-          image: 'apple.svg',
-          isCorrect: true
-        },
-      ]
-    },
-    {
-      text: 'Happy Mouth',
-      desc: 'Drag the icons to the mouth to find the answer.',
       id: '28',
       type: 'mouth',
       variants: [
         {
-          value: 'donut',
-          image: 'donut.svg'
+          value: 'soda',
+          image: 'soda.svg'
         },
         {
           value: 'apple',
@@ -450,13 +451,13 @@ export default {
       type: 'mouth',
       variants: [
         {
-          value: 'donut',
-          image: 'donut.svg'
+          value: 'brush',
+          image: 'brush.svg',
+          isCorrect: true
         },
         {
-          value: 'apple',
-          image: 'apple.svg',
-          isCorrect: true
+          value: 'donut',
+          image: 'donut.svg'
         },
       ]
     },
@@ -467,12 +468,80 @@ export default {
       type: 'mouth',
       variants: [
         {
-          value: 'donut',
-          image: 'donut.svg'
+          value: 'chocolate',
+          image: 'chocolate.svg'
         },
         {
-          value: 'apple',
-          image: 'apple.svg',
+          value: 'water',
+          image: 'water.svg',
+          isCorrect: true
+        },
+      ]
+    },
+    {
+      text: 'Happy Mouth',
+      desc: 'Drag the icons to the mouth to find the answer.',
+      id: '31',
+      type: 'mouth',
+      variants: [
+        {
+          value: 'floss',
+          image: 'floss.svg',
+          isCorrect: true
+        },
+        {
+          value: 'cookie',
+          image: 'cookie.svg'
+        },
+      ]
+    },
+    {
+      text: 'Happy Mouth',
+      desc: 'Drag the icons to the mouth to find the answer.',
+      id: '32',
+      type: 'mouth',
+      variants: [
+        {
+          value: 'toothpaste',
+          image: 'toothpaste.svg',
+          isCorrect: true
+        },
+        {
+          value: 'chips',
+          image: 'chips.svg'
+        },
+      ]
+    },
+    {
+      text: 'Happy Mouth',
+      desc: 'Drag the icons to the mouth to find the answer.',
+      id: '33',
+      type: 'mouth',
+      variants: [
+        {
+          value: 'candy',
+          image: 'candy.svg'
+        },
+        {
+          value: 'floss',
+          image: 'floss.svg',
+          isCorrect: true
+        },
+      ]
+    },
+    {
+      text: 'Happy Mouth',
+      desc: 'Drag the icons to the mouth to find the answer.',
+      id: '34',
+      type: 'mouth',
+      variants: [
+        {
+          value: 'ice-cream',
+          image: 'ice-cream.svg'
+        },
+        {
+          value: 'brush-twice',
+          image: 'brush-twice.svg',
           isCorrect: true
         },
       ]
