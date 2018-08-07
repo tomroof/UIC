@@ -13,6 +13,14 @@
         </div>
       </div>
     </div>
+    <div class="cookie-bar" v-if="showCookieBar">
+      <div>
+        This website uses cookies to improve user experience. By using our website you consent to all cookies in accordance with our <a href="/">Cookie Policy</a>
+      </div>
+      <div class="close-button">
+        <img src="@/assets/close-white.svg" @click="closeCookieBar">
+      </div>       
+    </div>
   </div>
 </template>
 
@@ -23,9 +31,18 @@ export default {
   components: {
     ComponentButton
   },
+  data () {
+    return {
+      showCookieBar: true,
+    }
+  },
   methods: {
     navigateToSelectCharacter () {
       this.$router.push('/select-character')
+    },
+
+    closeCookieBar () {
+      this.showCookieBar = false
     }
   }
 }
@@ -33,6 +50,9 @@ export default {
 
 <style lang="scss" scoped>
 
+.container {
+  margin-bottom: 100px;
+}
 .cards {
   padding-top: 35px;
   width: 100%;
@@ -89,4 +109,26 @@ p {
 .login-wrapper {
   text-align: center;
 }
+
+.cookie-bar {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  display: flex;
+  font-size: 12px;
+  background-color: rgba(10, 30, 30, 0.9);
+  color: white;
+  padding: 15px;
+  font-weight: 300;
+
+  a {
+    color: white;
+  }
+
+  .close-button {
+    padding: 10px 0px 10px 10px;
+  }
+}
+
 </style>
