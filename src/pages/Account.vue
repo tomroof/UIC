@@ -28,7 +28,6 @@ export default {
     return {
       user: {
         avatar: 'account-img.jpg',
-        name: 'Nimasha Perera',
         points: '550',
         badges: [
           {
@@ -81,7 +80,8 @@ export default {
             },
             {
               name: 'Edit Profile',
-              icon: 'update-interests-icon.svg'
+              icon: 'update-interests-icon.svg',
+              link: '/select-character'
             }
           ]
         }
