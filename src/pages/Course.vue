@@ -1,23 +1,39 @@
 <template>
-  <NavigationLayout :closeCourseButton="true" :menu="true">
-    <CourseContainer :curseId="$route.params.id || 0"></CourseContainer>
-  </NavigationLayout>
+  <div>
+    <NavigationLayout :closeCourseButton="true" :menu="true">
+      <CourseContainer :curseId="$route.params.id || 0" @moduleCompleted="moduleCompleted"></CourseContainer>
+    </NavigationLayout>
+    <RewardCard v-if="showRewardCard" @continue="rewardContinue"></RewardCard>
+  </div>
 </template>
 
 <script>
 import NavigationLayout from '@/layouts/NavigationLayout'
 import CourseContainer from '@/containers/Course'
+import RewardCard from '@/components/cards/RewardCard'
 
 export default {
   name: 'CoursePage',
 
-  components: {
-    NavigationLayout,
-    CourseContainer
+  data () {
+    return {
+      showRewardCard: false
+    }
   },
 
-  data () {
-    return {}
+  components: {
+    NavigationLayout,
+    CourseContainer,
+    RewardCard
+  },
+
+  methods: {
+    moduleCompleted() {
+      this.showRewardCard = true
+    },
+    rewardContinue () {
+      this.showRewardCard = false
+    }
   }
 }
 </script>

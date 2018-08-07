@@ -62,8 +62,10 @@ import VideoQuestion from '@/components/questions/VideoQuestion'
 import IconsQuestion from '@/components/questions/IconsQuestion'
 import CalcQuestion from '@/components/questions/CalcQuestion'
 import MouthQuestion from '@/components/questions/MouthQuestion'
+
 // data
 import CourseData from '@/data/courseSample'
+
 // events
 import { events } from '@/helpers/events'
 
@@ -84,6 +86,7 @@ export default {
 
   data () {
     return {
+      previousQuestionType: null,
       currentQuestionType: null,
       isAnswerCorrect: null,
       openPopupFalse: false,
@@ -96,6 +99,7 @@ export default {
 
   mounted() {
     events.$on('nextSlide', () => {
+      this.previousQuestionType = null;
       this.currentQuestionType = null;
       this.isQuestion = true;
       this.isAnswerCorrect = null;
@@ -106,6 +110,7 @@ export default {
 
     events.$on('thisSlide', () => {
       this.isQuestion = true;
+      this.previousQuestionType = null;
       this.currentQuestionType = null;
       this.isAnswerCorrect = null;
       this.openPopupFalse = false;
@@ -133,7 +138,17 @@ export default {
   },
 
   methods: {
+    checkModuleComplete (page) {
+      let nextQuestionType = this.steps[page + 1].type
+      if (this.currentQuestionType != null && nextQuestionType != this.currentQuestionType) {
+        this.$emit('moduleCompleted')        
+      }
+      this.currentQuestionType = this.steps[page + 1].type
+    },
+
     nextClicked (currentPage) {
+      this.checkModuleComplete(currentPage)
+
       if (this.isQuestion) return false
       if (this.isAnswerCorrect !== null) {
         if (!this.checkAnswer()) {
@@ -203,7 +218,6 @@ export default {
     },
 
     handelAnswerSelect (data) {
-      this.currentQuestionType = this.steps[data.index].type
       this.steps[data.index].options.nextDisabled = false
       this.isAnswerCorrect = data.isCorrect
     },
