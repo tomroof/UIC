@@ -50,14 +50,14 @@ export default {
       type: 'icons',
       answers: [
         {
-          text: 'Brush after a snack',
-          image: 'brushing-after-meal.svg',
-          isCorrect: true
-        },
-        {
           text: 'Wait until tomorrow',
           image: 'wait.svg',
           isCorrect: false
+        },
+        {
+          text: 'Brush after a snack',
+          image: 'brushing-after-meal.svg',
+          isCorrect: true
         },
       ]
     },
@@ -486,7 +486,7 @@ export default {
       variants: [
         {
           value: 'floss',
-          image: 'floss.svg',
+          image: 'dental-floss.svg',
           isCorrect: true
         },
         {
@@ -523,8 +523,8 @@ export default {
           image: 'candy.svg'
         },
         {
-          value: 'floss',
-          image: 'floss.svg',
+          value: 'grapes',
+          image: 'grapes.svg',
           isCorrect: true
         },
       ]
