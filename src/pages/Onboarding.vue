@@ -14,7 +14,7 @@
       </div>
     </div>
     <div class="cookie-bar" v-if="showCookieBar">
-      <div>
+      <div class="cookie-bar-content">
         This website uses cookies to improve user experience. By using our website you consent to all cookies in accordance with our <a href="/terms">Cookie Policy</a>
       </div>
       <div class="close-button">
