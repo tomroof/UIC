@@ -116,6 +116,14 @@ export default {
       this.openPopupFalse = false;
       this.openPopupTrue = false;
     })
+
+    events.$on('openSuccessPopup', () => {
+      this.openSuccessPopup();
+    })
+
+    events.$on('openFailedPopup', () => {
+      this.openFailedPopup();
+    })
   },
 
   computed: {

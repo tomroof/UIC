@@ -34,8 +34,39 @@
 
 <script>
   import * as bodymovin from '@/data/bodymovin.js';
+  import { events } from '@/helpers/events'
+  import AnswerMouthCard from '@/components/cards/AnswerMouthCard'
+  import BaseQuestion from '@/components/questions/BaseQuestion'
+  import Popup from '@/components/Popup'
+  import draggable from 'vuedraggable'
 
-  function animateMouth() {
+  function loadMouthAnimation() {
+    var anim;
+    var animData = {
+        container: document.getElementById('bodymovin'),
+        renderer: 'svg',
+        loop: false,
+        autoplay: false,
+        rendererSettings: {
+            progressiveLoad:false
+        },
+        path:'/static/mouth-smile.json'
+    };
+    anim = bodymovin.loadAnimation(animData);
+    anim.setSpeed(1);    
+    anim.addEventListener('complete', completedSmileAnim);
+ }
+
+  function playSmileAnimation() {
+    bodymovin.play();
+  }
+
+  function completedSmileAnim() {
+    events.$emit('openSuccessPopup');
+  }
+
+  function playSadAnimation() {
+    bodymovin.destroy();
     var anim;
     var animData = {
         container: document.getElementById('bodymovin'),
@@ -45,17 +76,16 @@
         rendererSettings: {
             progressiveLoad:false
         },
-        path:'http://citytocoast.com/mouth/mouth-smile.json'
+        path:'/static/mouth-sad.json'
     };
     anim = bodymovin.loadAnimation(animData);
-    anim.setSpeed(1);    
+    anim.setSpeed(1);     
+    anim.addEventListener('complete', completedSadAnim);
   }
 
-  import AnswerMouthCard from '@/components/cards/AnswerMouthCard'
-  import BaseQuestion from '@/components/questions/BaseQuestion'
-  import Popup from '@/components/Popup'
-
-  import draggable from 'vuedraggable'
+  function completedSadAnim() {
+    events.$emit('openFailedPopup');
+  }
 
   export default {
     props: ['question', 'openPopupTrue', 'openPopupFalse', 'openSuccessPopup', 'openFailedPopup'],
@@ -78,6 +108,10 @@
       }
     },
 
+    mounted () {
+      loadMouthAnimation()
+    },
+
     computed: {
       // TODO get curse by prop Id
       curse () {
@@ -95,13 +129,16 @@
     },
 
     methods: {
+      test () {
+        console.log('test')
+      },
       handleDragChange (e) {
         if (e.added.element.isCorrect) {
           // this.openSuccessPopup()
-          animateMouth()
+          playSmileAnimation()
         }
         else {
-          this.openFailedPopup()
+          playSadAnimation()
           this.question.variants = [...this.question.variants, e.added.element]
         }
       },
@@ -181,7 +218,6 @@
   #bodymovin {
     width: 325px;
     height: 153px;
-    background: url('../../assets/mouth.svg') no-repeat bottom/contain;
   }
 }
 
