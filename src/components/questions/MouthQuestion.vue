@@ -22,7 +22,7 @@
               :answer="variant"
               :key="i"
             />
-            <img src="@/assets/mouth.svg">
+            <div id="bodymovin"></div>
           </draggable>
         </div>
       </div>
@@ -31,7 +31,26 @@
   </BaseQuestion>
 </template>
 
+
 <script>
+  import * as bodymovin from '@/data/bodymovin.js';
+
+  function animateMouth() {
+    var anim;
+    var animData = {
+        container: document.getElementById('bodymovin'),
+        renderer: 'svg',
+        loop: false,
+        autoplay: true,
+        rendererSettings: {
+            progressiveLoad:false
+        },
+        path:'http://citytocoast.com/mouth/mouth-smile.json'
+    };
+    anim = bodymovin.loadAnimation(animData);
+    anim.setSpeed(1);    
+  }
+
   import AnswerMouthCard from '@/components/cards/AnswerMouthCard'
   import BaseQuestion from '@/components/questions/BaseQuestion'
   import Popup from '@/components/Popup'
@@ -59,6 +78,13 @@
       }
     },
 
+    computed: {
+      // TODO get curse by prop Id
+      curse () {
+        return animationData
+      },
+    },
+
     watch: {
       question:{
         handler: function (newVal) {
@@ -71,7 +97,8 @@
     methods: {
       handleDragChange (e) {
         if (e.added.element.isCorrect) {
-          this.openSuccessPopup()
+          // this.openSuccessPopup()
+          animateMouth()
         }
         else {
           this.openFailedPopup()
@@ -139,7 +166,7 @@
 .field {
   min-height: 66px;
   padding: 0 10px;
-  width: calc(40% - 10px);
+  width: calc(100% - 10px);
   margin-top: 8px;
 
   .field-content {
@@ -149,6 +176,12 @@
 
   .answer-card {
     display: none;
+  }
+
+  #bodymovin {
+    width: 325px;
+    height: 153px;
+    background: url('../../assets/mouth.svg') no-repeat bottom/contain;
   }
 }
 
@@ -196,6 +229,12 @@
   /deep/ .title {
     display: none !important;
   }
+}
+
+@media screen and (max-width : 360px) {
+    .answers {
+      margin-top: 0px;
+    }
 }
 
 </style>
