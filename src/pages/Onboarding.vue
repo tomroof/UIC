@@ -126,9 +126,38 @@ p {
     color: white;
   }
 
-  .close-button {
-    padding: 10px 0px 10px 10px;
+  .cookie-bar-content {
+    width: calc(100% - 50px);
   }
+  .close-button {
+    width: 50px;
+    position: relative;
+
+    img {
+      position: absolute;
+      right: 10px;
+      top: 0px;
+    }
+  }
+}
+
+
+@media screen and (max-width : 768px) {
+    .cookie-bar .close-button img {
+      top: 5px;        
+    }
+}
+
+@media screen and (max-width : 480px) {
+    .cookie-bar .close-button img {
+      top: 10px;        
+    }
+}
+
+@media screen and (max-width : 320px) {
+    .cookie-bar .close-button img {
+      top: 15px;        
+    }
 }
 
 </style>
