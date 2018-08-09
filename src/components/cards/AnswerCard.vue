@@ -12,7 +12,7 @@
         <div class="img-mouth__true">
           <img :src="image" alt="">
           <div class="avatar"
-            :style="{ backgroundImage: `url(${$store.state.character})` }"
+            :style="{ backgroundImage: answer.answerData.isCorrect ? `url(${$store.state.character})` : `url(${require('@/assets/monster.png')})` }"
           >
           </div>
         </div>
@@ -124,7 +124,7 @@ export default {
   width: 129px;
   height: 130px;
   right: 5px;
-  bottom: -35px;
+  bottom: -15px;
   background-position: center bottom;
   background-size: contain;
   background-repeat: no-repeat;
