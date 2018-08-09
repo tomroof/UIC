@@ -68,12 +68,25 @@ import CourseData from '@/data/courseSample'
 
 // events
 import { events } from '@/helpers/events'
+import AudioManager from '@/helpers/audioManager'
 
 export default {
   name: 'CourseContainer',
 
   props: {
-    curseId: String
+    curseId: String,
+    clickRewardContinue: Boolean
+  },
+
+  watch: {
+    clickRewardContinue:{
+      handler: function (newVal) {
+        if (newVal === true) {
+          this.checkNextPageAudio()
+        }
+      },
+      immediate: true
+    }
   },
 
   components: {
@@ -87,7 +100,6 @@ export default {
   data () {
     return {
       previousQuestionType: null,
-      currentQuestionType: null,
       isAnswerCorrect: null,
       openPopupFalse: false,
       openPopupTrue: false,
@@ -110,7 +122,6 @@ export default {
     events.$on('thisSlide', () => {
       this.isQuestion = true;
       this.previousQuestionType = null;
-      this.currentQuestionType = null;
       this.isAnswerCorrect = null;
       this.openPopupFalse = false;
       this.openPopupTrue = false;
@@ -146,19 +157,52 @@ export default {
 
   methods: {
     checkModuleComplete () {
-      let page = this.$refs.wizard.currentStep
-      let nextQuestionType = this.steps[page + 1].type
-      if (this.currentQuestionType != null && nextQuestionType != this.currentQuestionType) {
-        if (this.currentQuestionType === "icons" || this.currentQuestionType === "cards" || this.currentQuestionType === "calc") { 
-          this.$emit('moduleCompleted')          
+      if (this.$refs.wizard.currentStep) {
+        let page = this.$refs.wizard.currentStep
+        if (this.steps.length >= page) {
+          let currentQuestionType = this.steps[page].type
+          let nextQuestionType = this.steps[page + 1].type
+          if (currentQuestionType != null && nextQuestionType != currentQuestionType) {
+            if (currentQuestionType === "icons" || currentQuestionType === "cards" || currentQuestionType === "calc") { 
+              this.$emit('moduleCompleted')
+              return
+            }        
+          }
+          this.checkAudioPlay(page)        
         }        
+      }      
+    },
+
+    checkNextPageAudio () {
+      if (this.$refs.wizard.currentStep) {
+        let page = this.$refs.wizard.currentStep
+        let currentQuestionType = this.steps[page].type
+
+        if (currentQuestionType === "calc") {
+          AudioManager.playAudio('first_question_for_calc')
+        }
+      }      
+    },
+  
+    checkAudioPlay (page) {
+      if (this.steps.length >= page) {
+        let nextPage = page + 1
+        let currentQuestionType = this.steps[page].type
+        let nextQuestionType = this.steps[nextPage].type
+
+        if (currentQuestionType === nextQuestionType) {
+          return
+        }
+
+        if (nextQuestionType === "icons") {
+          AudioManager.playAudio('first_question_for_icons')
+        } else if (nextQuestionType === "cards") {
+          AudioManager.playAudio('first_question_for_cards')
+        } 
       }
-      this.currentQuestionType = this.steps[page + 1].type
     },
 
     nextClicked (currentPage) {
-      this.checkModuleComplete()
-
       if (this.isQuestion) return false
       if (this.isAnswerCorrect !== null) {
         if (!this.checkAnswer()) {
@@ -166,7 +210,11 @@ export default {
           return false
         }
         else {
-          if (this.currentQuestionType === 'icons') {
+          let page = this.$refs.wizard.currentStep
+          let currentQuestionType = this.steps[page].type
+
+          if (currentQuestionType === 'icons') {
+            this.checkModuleComplete()
             this.openPopupTrue = true
             this.$store.commit('updateCourseProgress', { id: this.$route.params.id, currentProgress: currentPage + 1 })
             this.calcProgress(currentPage)
@@ -175,6 +223,7 @@ export default {
         }
       }
 
+      this.checkModuleComplete()
       this.$store.commit('updateCourseProgress', { id: this.$route.params.id, currentProgress: currentPage + 1 })
       this.calcProgress(currentPage)
       if (this.steps.length - 1 === currentPage) {

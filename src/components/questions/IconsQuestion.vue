@@ -20,6 +20,7 @@ import BaseQuestion from '@/components/questions/BaseQuestion'
 import Popup from '@/components/Popup'
 
 import { events } from '@/helpers/events'
+import AudioManager from '@/helpers/audioManager'
 
   export default {
     props: ['question', 'index', 'openPopupFalse', 'openPopupTrue', 'isQuestion'],
@@ -74,6 +75,12 @@ import { events } from '@/helpers/events'
         this.dropActiveAnswers()
         this.questionCard.answers.find((a) => a.text === answer.text).selected = true
         this.$emit('selectAnswer', {isCorrect: answer.isCorrect, index: this.index})
+
+        if (answer.isCorrect) {
+          AudioManager.playAudio('icons_select_correct')
+        } else {
+          AudioManager.playAudio('icons_select_wrong')
+        }
       }
     }
   }

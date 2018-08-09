@@ -28,6 +28,8 @@
 <script>
 import ComponentButton from '@/components/Button'
 import NavigationLayout from '@/layouts/NavigationLayout'
+import AudioManager from '@/helpers/audioManager'
+
 export default {
   name: 'CongratsPage',
   components: {
@@ -35,7 +37,6 @@ export default {
     NavigationLayout
   },
   mounted() {
-    console.log(this.$route.params)
     switch (parseInt(this.$route.params.id)) {
       case 1: 
         this.rewardTitle = 'Profile Completed'
@@ -47,6 +48,8 @@ export default {
         this.rewardPoint = 100
         break;
     }
+
+    AudioManager.playAudio('unlocked_badge')
   },
   data () {
     return {

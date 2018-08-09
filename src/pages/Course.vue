@@ -1,7 +1,7 @@
 <template>
   <div>
     <NavigationLayout :closeCourseButton="true" :menu="true">
-      <CourseContainer :curseId="$route.params.id || 0" @moduleCompleted="moduleCompleted"></CourseContainer>
+      <CourseContainer :curseId="$route.params.id || 0" :clickRewardContinue="clickRewardContinue" @moduleCompleted="moduleCompleted"></CourseContainer>
     </NavigationLayout>
     <RewardCard v-if="showRewardCard" @continue="rewardContinue"></RewardCard>
   </div>
@@ -11,13 +11,15 @@
 import NavigationLayout from '@/layouts/NavigationLayout'
 import CourseContainer from '@/containers/Course'
 import RewardCard from '@/components/cards/RewardCard'
+import AudioManager from '@/helpers/audioManager'
 
 export default {
   name: 'CoursePage',
 
   data () {
     return {
-      showRewardCard: false
+      showRewardCard: false,
+      clickRewardContinue: false
     }
   },
 
@@ -30,9 +32,12 @@ export default {
   methods: {
     moduleCompleted () {
       this.showRewardCard = true
+      this.clickRewardContinue = false
+      AudioManager.playAudio('good_job')
     },
     rewardContinue () {
       this.showRewardCard = false
+      this.clickRewardContinue = true
     }
   }
 }
