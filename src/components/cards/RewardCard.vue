@@ -1,23 +1,23 @@
 <template>
   <div class="main">
     <div class="container">
-      <div class="content-box">
-        <div class="header">
-          <div class="avatar"
-            :style="{ backgroundImage: `url(${$store.state.character})` }"
-          >
-          </div>
+    <div class="content-box">
+      <div class="header">
+        <div class="avatar"
+          :style="{ backgroundImage: `url(${$store.state.character})` }"
+        >
         </div>
-
-        <div class="content">
-          <h1>Good Job!</h1>
-          <h3 class='description-text'>You completed a module.</h3>
-          <h3 class='point-text'><span>+40 </span>points</h3>
-        </div>
-
-        <ComponentButton class="continue-button" @click="continueButtonClick">Continue </ComponentButton>
       </div>
+
+      <div class="content">
+        <h1>Good Job!</h1>
+        <h3 class='description-text'>You completed a module.</h3>
+        <h3 class='point-text'><span>+40 </span>points</h3>
+      </div>
+
+      <ComponentButton class="continue-button" @click="continueButtonClick">Continue </ComponentButton>
     </div>
+  </div>
   </div>
 </template>
 
@@ -92,7 +92,6 @@ export default {
 .content {
   margin: 17px;
   text-align: center;
-  height: 100%;
 
   h1 {
     font-weight: 300;
@@ -120,24 +119,17 @@ export default {
 }
 
 .continue-button {
-  position: fixed;
+    position: fixed;
     bottom: 0;
     left: 50%;
     -webkit-transform: translateX(-50%);
     transform: translateX(-50%);
-    font-family: 'Zilla Slab';
-    font-weight: 300;
-    font-size: 19px;
-    height: 50px;
     text-align: center;
-    letter-spacing: 0.94px;
     background-color: #278ab5;
     border-radius: 100px;
-    margin: 30px auto;
     color: #FFFFFF;
     -webkit-box-shadow: 0px 30px 29px -22px rgba(0, 0, 0, 0.39);
     box-shadow: 0px 30px 29px -22px rgba(0, 0, 0, 0.39);
     width: 300px !important;
-    padding: 14px 22px 18px 22px;
 }
 </style>

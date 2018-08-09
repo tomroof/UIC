@@ -99,8 +99,7 @@ export default {
 
   mounted() {
     events.$on('nextSlide', () => {
-      this.previousQuestionType = null;
-      this.currentQuestionType = null;
+      this.checkModuleComplete()
       this.isQuestion = true;
       this.isAnswerCorrect = null;
       this.$refs.wizard.goNext(true);
@@ -146,16 +145,19 @@ export default {
   },
 
   methods: {
-    checkModuleComplete (page) {
+    checkModuleComplete () {
+      let page = this.$refs.wizard.currentStep
       let nextQuestionType = this.steps[page + 1].type
       if (this.currentQuestionType != null && nextQuestionType != this.currentQuestionType) {
-        this.$emit('moduleCompleted')        
+        if (this.currentQuestionType === "icons" || this.currentQuestionType === "cards" || this.currentQuestionType === "calc") { 
+          this.$emit('moduleCompleted')          
+        }        
       }
       this.currentQuestionType = this.steps[page + 1].type
     },
 
     nextClicked (currentPage) {
-      this.checkModuleComplete(currentPage)
+      this.checkModuleComplete()
 
       if (this.isQuestion) return false
       if (this.isAnswerCorrect !== null) {

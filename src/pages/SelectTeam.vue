@@ -38,7 +38,7 @@ export default {
     },
     continueButtonClick () {
       if (this.selected === null) return
-      this.$router.push('/courses')
+        this.$router.push('/congrats/1')
     }
   },
   components: {

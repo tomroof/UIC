@@ -47,7 +47,6 @@ export default {
         this.rewardPoint = 100
         break;
     }
-    console.log(this.rewardTitle)
   },
   data () {
     return {

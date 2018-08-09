@@ -28,7 +28,7 @@ export default {
   },
 
   methods: {
-    moduleCompleted() {
+    moduleCompleted () {
       this.showRewardCard = true
     },
     rewardContinue () {
