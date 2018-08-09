@@ -435,7 +435,8 @@ export default {
       variants: [
         {
           value: 'soda',
-          image: 'soda.svg'
+          image: 'soda.svg',
+          isCorrect: false
         },
         {
           value: 'apple',
@@ -457,7 +458,8 @@ export default {
         },
         {
           value: 'donut',
-          image: 'donut.svg'
+          image: 'donut.svg',
+          isCorrect: false
         },
       ]
     },
@@ -469,7 +471,8 @@ export default {
       variants: [
         {
           value: 'chocolate',
-          image: 'chocolate.svg'
+          image: 'chocolate.svg',
+          isCorrect: false
         },
         {
           value: 'water',
@@ -491,7 +494,8 @@ export default {
         },
         {
           value: 'cookie',
-          image: 'cookie.svg'
+          image: 'cookie.svg',
+          isCorrect: false
         },
       ]
     },
@@ -508,7 +512,8 @@ export default {
         },
         {
           value: 'chips',
-          image: 'chips.svg'
+          image: 'chips.svg',
+          isCorrect: false
         },
       ]
     },
@@ -520,7 +525,8 @@ export default {
       variants: [
         {
           value: 'candy',
-          image: 'candy.svg'
+          image: 'candy.svg',
+          isCorrect: false
         },
         {
           value: 'grapes',
@@ -537,7 +543,8 @@ export default {
       variants: [
         {
           value: 'ice-cream',
-          image: 'ice-cream.svg'
+          image: 'ice-cream.svg',
+          isCorrect: false
         },
         {
           value: 'brush-twice',
