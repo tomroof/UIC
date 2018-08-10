@@ -38,8 +38,11 @@
 
         <CalcQuestion
           v-if="question.type === 'calc'"
+          :index="index"
           :question="question"
-          @selectAnswer='handelAnswerSelect' />
+          :openPopupTrue="openPopupTrue"
+          @selectAnswer='handelAnswerSelect' 
+          @isQuestionHandler="isQuestionHandler" />
 
         <MouthQuestion
           v-if="question.type === 'mouth'"
@@ -148,7 +151,7 @@ export default {
           label: q.text,
           slot: q.id,
           type: this.curse.questions[index].type,
-          options: {nextDisabled: this.curse.questions[index] ? (this.curse.questions[index].type === 'icons' || this.curse.questions[index].type === 'cards'): false},
+          options: {nextDisabled: this.curse.questions[index] ? (this.curse.questions[index].type === 'icons' || this.curse.questions[index].type === 'cards' || this.curse.questions[index].type === 'calc'): false},
           nextLabel: this.curse.questions[index + 1] ? this.curse.questions[index + 1].text : null
         }
       })
@@ -157,7 +160,7 @@ export default {
 
   methods: {
     checkModuleComplete () {
-      if (this.$refs.wizard.currentStep) {
+      if (this.$refs.wizard != null) {
         let page = this.$refs.wizard.currentStep
         if (page < this.steps.length - 1 && this.steps[page].type !== null) {
           let currentQuestionType = this.steps[page].type
@@ -174,7 +177,7 @@ export default {
     },
 
     checkNextPageAudio () {
-      if (this.$refs.wizard.currentStep !== null) {
+      if (this.$refs.wizard !== null) {
         let page = this.$refs.wizard.currentStep
         let currentQuestionType = this.steps[page].type
 
@@ -205,16 +208,35 @@ export default {
     nextClicked (currentPage) {
       if (this.isQuestion) return false
       if (this.isAnswerCorrect !== null) {
+
+        let page = this.$refs.wizard.currentStep
+        let currentQuestionType = this.steps[page].type
+        let currentQuestionSlot = this.steps[page].slot
+
+        // Play correct sound for only icons
+        if (currentQuestionType === 'icons') {
+          if (this.isAnswerCorrect === true) {
+            AudioManager.playAudio('icons_select_correct')
+          } else {
+            AudioManager.playAudio('icons_select_wrong')
+          }
+        }
+        else if (currentQuestionType === 'calc') {
+          if (currentQuestionSlot === '24') {
+            AudioManager.playAudio('calc_question_1')
+          } else if (currentQuestionSlot === '25') {
+            AudioManager.playAudio('calc_question_2')
+          } else if (currentQuestionSlot === '26' || currentQuestionSlot === '27') {
+            AudioManager.playAudio('calc_question_3_4')
+          }  
+        }        
+        
         if (!this.checkAnswer()) {
           this.openPopupFalse = true
           return false
         }
         else {
-          let page = this.$refs.wizard.currentStep
-          let currentQuestionType = this.steps[page].type
-
-          if (currentQuestionType === 'icons') {
-            this.checkModuleComplete()
+          if (currentQuestionType === 'icons' || currentQuestionType === 'calc') {
             this.openPopupTrue = true
             this.$store.commit('updateCourseProgress', { id: this.$route.params.id, currentProgress: currentPage + 1 })
             this.calcProgress(currentPage)

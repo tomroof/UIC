@@ -44,7 +44,6 @@
               @click="handleAnswerClick(answer, question)"/>
           </draggable>
         </div>
-
         <!-- <div class="row-gap">
           <img src="@/assets/eq-icon.png" alt="">
         </div>
@@ -61,6 +60,7 @@
         </div> -->
 
       </div>
+      <popup :openPopupTrue="openPopupTrue"/>
     </div>
   </BaseQuestion>
 </template>
@@ -68,19 +68,30 @@
 <script>
   import AnswerCalcCard from '@/components/cards/AnswerCalcCard'
   import BaseQuestion from '@/components/questions/BaseQuestion'
+  import Popup from '@/components/Popup'
 
   import draggable from 'vuedraggable'
 
   export default {
-    props: ['question'],
+    props: ['question', 'index', 'openPopupTrue'],
     components: {
       AnswerCalcCard,
       BaseQuestion,
+      Popup,
       draggable
+    },
+
+    mounted() {
+      this.$emit('isQuestionHandler', true, 'Play Next');
+    },
+
+    updated() {
+      this.$emit('isQuestionHandler', false, 'Play Next');
     },
 
     data () {
       return {
+        addedCareNumber: 0,
         questionCard: this.question || {},
         fields: {
           0: [],
@@ -101,6 +112,15 @@
 
     methods: {
       handleDragChange (e) {
+        if (e.added != null) {
+          this.addedCareNumber ++
+        } else {
+          this.addedCareNumber --
+        }
+
+        if (this.addedCareNumber >= 2) {
+          this.$emit('selectAnswer', {isCorrect: true, index: this.index})
+        }
       },
       dropActiveAnswers () {
         this.$set(this, 'questionCard', {

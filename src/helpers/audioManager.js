@@ -29,6 +29,18 @@ export default {
       src: 'unlocked-new-badge.mp3',
       id: 'unlocked_badge'
     },
+    {
+      src: 'cavity-math_thats-right.mp3',
+      id: 'calc_question_1'
+    },
+    {
+      src: 'cavity-math_oh-no.mp3',
+      id: 'calc_question_2'
+    },
+    {
+      src: 'cavity-math_remember.mp3',
+      id: 'calc_question_3_4'
+    },
   ],
 
   playAudio (id) {
