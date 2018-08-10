@@ -159,7 +159,7 @@ export default {
     checkModuleComplete () {
       if (this.$refs.wizard.currentStep) {
         let page = this.$refs.wizard.currentStep
-        if (this.steps.length >= page) {
+        if (page < this.steps.length - 1 && this.steps[page].type !== null) {
           let currentQuestionType = this.steps[page].type
           let nextQuestionType = this.steps[page + 1].type
           if (currentQuestionType != null && nextQuestionType != currentQuestionType) {
@@ -174,7 +174,7 @@ export default {
     },
 
     checkNextPageAudio () {
-      if (this.$refs.wizard.currentStep) {
+      if (this.$refs.wizard.currentStep !== null) {
         let page = this.$refs.wizard.currentStep
         let currentQuestionType = this.steps[page].type
 
@@ -185,7 +185,7 @@ export default {
     },
   
     checkAudioPlay (page) {
-      if (this.steps.length >= page) {
+      if (page < this.steps.length - 1) {
         let nextPage = page + 1
         let currentQuestionType = this.steps[page].type
         let nextQuestionType = this.steps[nextPage].type

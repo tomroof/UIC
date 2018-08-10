@@ -58,7 +58,21 @@
  }
 
   function playSmileAnimation() {
-    bodymovin.play();
+    bodymovin.destroy();
+    var anim;
+    var animData = {
+        container: document.getElementById('bodymovin'),
+        renderer: 'svg',
+        loop: false,
+        autoplay: true,
+        rendererSettings: {
+            progressiveLoad:false
+        },
+        path:'/static/mouth-smile.json'
+    };
+    anim = bodymovin.loadAnimation(animData);
+    anim.setSpeed(1);    
+    anim.addEventListener('complete', completedSmileAnim);
   }
 
   function completedSmileAnim() {
@@ -129,9 +143,6 @@
     },
 
     methods: {
-      test () {
-        console.log('test')
-      },
       handleDragChange (e) {
         if (e.added.element.isCorrect) {
           // this.openSuccessPopup()

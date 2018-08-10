@@ -125,7 +125,7 @@ export default {
   justify-content: space-between;
   z-index: 10;
   .icon {
-    padding: 25px;
+    padding: 0px 20px 0px 20px;
   }
 }
 
