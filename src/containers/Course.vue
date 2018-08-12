@@ -120,6 +120,7 @@ export default {
       this.$refs.wizard.goNext(true);
       this.openPopupFalse = false;
       this.openPopupTrue = false;
+      this.checkCompleteCourse()
     })
 
     events.$on('thisSlide', () => {
@@ -249,10 +250,18 @@ export default {
       this.$store.commit('updateCourseProgress', { id: this.$route.params.id, currentProgress: currentPage + 1 })
       this.calcProgress(currentPage)
       if (this.steps.length - 1 === currentPage) {
-
         this.$router.push('/congrats/1')
       } else {
         return true //return false if you want to prevent moving to next page
+      }
+    },
+
+    checkCompleteCourse () {
+      if (this.$refs.wizard != null) {
+        let currentPage = this.$refs.wizard.currentStep
+        if (this.steps.length - 1 === currentPage) {
+          this.$router.push('/congrats/1')
+        }
       }
     },
 
