@@ -8,6 +8,11 @@ import VueTouch from 'vue-touch'
 import Vuelidate from 'vuelidate'
 import VueGoodWizard from 'vue-good-wizard'
 import VueYouTubeEmbed from 'vue-youtube-embed'
+import VueVideoPlayer from 'vue-video-player'
+import 'video.js/dist/video-js.css'
+import 'vue-video-player/src/custom-theme.css'
+
+Vue.use(VueVideoPlayer, { global: true, componentId: "video-player" })
 
 
 Vue.use(VueYouTubeEmbed)

@@ -5,20 +5,11 @@
         <!-- <object class="video" :data="question.link"></object> -->
 
         <div class="player">
-          <youtube
-            :video-id="videoId"
-            player-width="100%"
-            player-height="100%"
-            @ready="onVideoReady"
-            @buffering="onVideoStarts"
-            @ended="onVideoEnded"
-            ref="player"
-          >
-          </youtube>
-          <div v-if="isStartButtonVisible" @click="restartVideo" class="button">
-            <div class="icon" :style="{background: `url(${require('@/assets/play.png')}) no-repeat center / contain`}" />
-            <div class="text">{{ buttonText }}</div>
-          </div>
+          <video-player class="vjs-custom-skin"
+           ref="player"
+           :options="playerOptions"
+           >
+          </video-player>
         </div>
       </div>
     </div>
@@ -28,8 +19,6 @@
 <script>
 import AnswerCard from '@/components/cards/AnswerCard'
 import BaseQuestion from '@/components/questions/BaseQuestion'
-import { getIdFromURL } from 'vue-youtube-embed'
-
 
 export default {
   props: ['question'],
@@ -38,12 +27,29 @@ export default {
     AnswerCard
   },
 
+  created() {
+    window.addEventListener('resize', this.handleResize)
+    this.handleResize();
+  },
+  destroyed() {
+    window.removeEventListener('resize', this.handleResize)
+  },
+
   data () {
     return {
+      window: {
+        width: 0,
+        height: 0
+      },
       questionCard: this.question || {},
       videoId: this.$youtube.getIdFromURL(this.question.link),
-      isStartButtonVisible: false,
-      buttonText: 'Watch Me'
+      playerOptions: {
+        width: 375,
+          sources: [{
+            type: "video/mp4",
+            src: require('../../assets/video/lonely-astronaut.mp4')
+          }],
+        }
     }
   },
 
@@ -57,6 +63,14 @@ export default {
   },
 
   methods: {
+    handleResize() {
+      this.window.width = window.innerWidth;
+      this.window.height = window.innerHeight;
+
+      if (this.window.width <= 375) {
+        this.playerOptions.width = this.window.width
+      }
+    },
     dropActiveAnswers () {
       this.$set(this, 'questionCard', {
         text: this.question.text,
@@ -73,22 +87,6 @@ export default {
       this.dropActiveAnswers()
       this.questionCard.answers.find((a) => a.text === answer.text).selected = true
       this.$emit('selectAnswer')
-    },
-    onVideoReady (event) {
-      this.isStartButtonVisible = true
-    },
-    onVideoStarts () {
-      this.isStartButtonVisible = false
-    },
-    onVideoEnded() {
-      this.buttonText = 'Watch Again'
-      this.onVideoReady()
-    },
-    restartVideo() {
-        this.$refs.player.player.loadVideoByUrl({
-        mediaContentUrl: this.question.link,
-        startSeconds: 0
-      })
     }
   },
 
@@ -99,7 +97,6 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-
 .answers {
   display: flex;
   flex-wrap: wrap;
