@@ -2,10 +2,10 @@
   <NavigationLayout :back="true" :menu="true" :topImage="$store.state.character">
     <h1>Topics</h1>
     <div class="courses_wrapper">
-      <div v-for="course in getCourses" class="course" @click="() => navigateToCourse(course.id)" :key="course.id">
+      <div v-for="course in getCourses" class="course" @click="() => navigateToCourse(course.url_prefix)" :key="course.id">
         <radial-progress-bar
           :diameter="145"
-          :totalSteps="11"
+          :totalSteps="100"
           :completedSteps="course.progress"
           :startColor="'#87DBA2'"
           :stopColor="'#87DBA2'"
@@ -34,8 +34,8 @@ import { mapGetters } from 'vuex'
       ]
     }),
     methods: {
-      navigateToCourse(id) {
-        this.$router.push('/details')
+      navigateToCourse(url_prefix) {
+        this.$router.push('/details/' + url_prefix)
       }
     },
     computed: {

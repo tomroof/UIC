@@ -77,7 +77,7 @@ export default {
   name: 'CourseContainer',
 
   props: {
-    curseId: String,
+    curseId: Number,
     clickRewardContinue: Boolean
   },
 
@@ -239,7 +239,6 @@ export default {
         else {
           if (currentQuestionType === 'icons' || currentQuestionType === 'calc') {
             this.openPopupTrue = true
-            this.$store.commit('updateCourseProgress', { id: this.$route.params.id, currentProgress: currentPage + 1 })
             this.calcProgress(currentPage)
             return false
           }
@@ -247,7 +246,6 @@ export default {
       }
 
       this.checkModuleComplete()
-      this.$store.commit('updateCourseProgress', { id: this.$route.params.id, currentProgress: currentPage + 1 })
       this.calcProgress(currentPage)
       if (this.steps.length - 1 === currentPage) {
         this.$router.push('/congrats/1')
@@ -259,6 +257,8 @@ export default {
     checkCompleteCourse () {
       if (this.$refs.wizard != null) {
         let currentPage = this.$refs.wizard.currentStep
+        this.calcProgress(currentPage)
+        
         if (this.steps.length - 1 === currentPage) {
           this.$router.push('/congrats/1')
         }
@@ -271,6 +271,7 @@ export default {
         progress = 100
       } 
       this.currentProgress = progress
+      this.$store.commit('updateCourseProgress', { id: this.curseId, currentProgress: progress })
     },
 
     openSuccessPopup () {

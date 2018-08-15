@@ -1,7 +1,7 @@
 <template>
   <div>
     <NavigationLayout :closeCourseButton="true" :menu="true">
-      <CourseContainer :curseId="$route.params.id || 0" :clickRewardContinue="clickRewardContinue" @moduleCompleted="moduleCompleted"></CourseContainer>
+      <CourseContainer :curseId="curseId" :clickRewardContinue="clickRewardContinue" @moduleCompleted="moduleCompleted"></CourseContainer>
     </NavigationLayout>
     <RewardCard v-if="showRewardCard" @continue="rewardContinue"></RewardCard>
   </div>
@@ -12,6 +12,7 @@ import NavigationLayout from '@/layouts/NavigationLayout'
 import CourseContainer from '@/containers/Course'
 import RewardCard from '@/components/cards/RewardCard'
 import AudioManager from '@/helpers/audioManager'
+import { mapGetters } from 'vuex'
 
 export default {
   name: 'CoursePage',
@@ -27,6 +28,23 @@ export default {
     NavigationLayout,
     CourseContainer,
     RewardCard
+  },
+
+  computed: {
+    ...mapGetters(['getCourses']),
+    curseId () {
+
+      if (this.$route.params.url_prefix === null || this.$route.params.url_prefix.length === 0) {
+        return 0
+      } 
+
+      for (var i = 0; i < this.getCourses.length; i++) {
+        var q = this.getCourses[i];
+        if (q.url_prefix === this.$route.params.url_prefix) {
+          return q.id
+        }
+      }
+    }
   },
 
   methods: {

@@ -30,7 +30,7 @@ export default new Router({
       component: Onboarding
     },
     {
-      path: '/details',
+      path: '/details/:url_prefix',
       name: 'Details',
       component: Details
     },
@@ -85,7 +85,7 @@ export default new Router({
       component: Account
     },
     {
-      path: '/course/:id',
+      path: '/course/:url_prefix',
       name: 'Course',
       component: Course
     },

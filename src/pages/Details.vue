@@ -4,7 +4,7 @@
       <div class="course_wrapper">
         <img src='@/assets/course_detail.png' class="background">
         <img src="@/assets/heart.png" class="heart">
-        <h1>Cavity Prevention</h1>
+        <h1>{{ courseName }}</h1>
         <div class="progress-bar">
           <div class="progress-background-bar"></div>
           <div class="progress-active-bar" :style="{ width: `${currentProgress}%` }"></div>
@@ -27,7 +27,7 @@
             <div class="name">Lessons</div>
           </div>
         </div> -->
-        <img @click="$router.push('/course/1')" class="download" src="@/assets/download_btn.png" alt="btn">
+        <img @click="playCourse" class="download" src="@/assets/download_btn.png" alt="btn">
       </div>
       <v-touch @swipeup="handleSwipeTop">
         <div class="swipe_up">
@@ -41,11 +41,28 @@
 
 <script>
 import NavigationLayout from '@/layouts/NavigationLayout'
+import { mapGetters } from 'vuex'
 
 export default {
+  computed: {
+    ...mapGetters(['getCourses']),
+    courseName () {
+      for (var i = 0; i < this.getCourses.length; i++) {
+        var q = this.getCourses[i];
+        if (q.url_prefix === this.$route.params.url_prefix) {
+          return q.name
+        }
+      }
+    }
+  },
+
   methods: {
     handleSwipeTop () {
       this.$router.push('/cards')
+    },
+
+    playCourse () {
+      this.$router.push('/course/' + this.$route.params.url_prefix)
     }
   },
   components: {
