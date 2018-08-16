@@ -1,9 +1,17 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
+import VuexPersist from 'vuex-persist'
 
 Vue.use(Vuex)
 
+const vuexPersist = new VuexPersist({
+  key: 'topics',
+  storage: localStorage
+})
+
+
 export default new Vuex.Store({
+  plugins: [vuexPersist.plugin],
   state: {
     character: '/static/img/character-girl-4.0b3adca.png',
     courses: [

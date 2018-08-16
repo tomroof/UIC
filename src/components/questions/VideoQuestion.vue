@@ -2,8 +2,6 @@
   <BaseQuestion :questionCard="questionCard">
     <div class="question-content" slot="questionContent">
       <div class="answers">
-        <!-- <object class="video" :data="question.link"></object> -->
-
         <div class="player">
           <video-player class="vjs-custom-skin"
            ref="player"
@@ -47,7 +45,7 @@ export default {
         width: 375,
           sources: [{
             type: "video/mp4",
-            src: require('../../assets/video/lonely-astronaut.mp4')
+            src: require(this.question.link)
           }],
         }
     }
