@@ -6,8 +6,11 @@
           <video-player class="vjs-custom-skin"
            ref="player"
            :options="playerOptions"
+           @pause="onPlayerPause($event)"
+           @ended="onPlayerEnded($event)"
            >
           </video-player>
+          <ComponentButton v-if="showPlayButton" class="watch-button" @click="playVideo"><img :src="image">Watch Me</ComponentButton>
         </div>
       </div>
     </div>
@@ -17,12 +20,14 @@
 <script>
 import AnswerCard from '@/components/cards/AnswerCard'
 import BaseQuestion from '@/components/questions/BaseQuestion'
+import ComponentButton from '@/components/Button'
 
 export default {
   props: ['question'],
   components: {
     BaseQuestion,
-    AnswerCard
+    AnswerCard,
+    ComponentButton
   },
 
   created() {
@@ -33,6 +38,14 @@ export default {
     window.removeEventListener('resize', this.handleResize)
   },
 
+  computed: {
+    image () {
+      return this.finishedVideoPlaying === true
+              ? require('../../assets/refresh.svg')
+              : require('../../assets/play.png')
+    }
+  },
+
   data () {
     return {
       window: {
@@ -40,13 +53,15 @@ export default {
         height: 0
       },
       questionCard: this.question || {},
-      videoId: this.$youtube.getIdFromURL(this.question.link),
+      showPlayButton: true,
+      finishedVideoPlaying: false,
       playerOptions: {
         width: 375,
         sources: [{
           type: "video/mp4",
           src: require('../../assets/video/' + this.question.link)
         }],
+        poster: require('../../assets/video/' + this.question.poster)
       }
     }
   },
@@ -61,7 +76,22 @@ export default {
   },
 
   methods: {
-    handleResize() {
+    playVideo () {
+      this.finishedVideoPlaying = false
+      this.showPlayButton = false
+      this.$refs.player.player.play()
+    },
+
+    onPlayerPause (player) {
+      this.showPlayButton = true
+    },
+
+    onPlayerEnded (player) {
+      this.finishedVideoPlaying = true
+      this.showPlayButton = true
+    },
+
+    handleResize () {
       this.window.width = window.innerWidth;
       this.window.height = window.innerHeight;
 
@@ -69,6 +99,7 @@ export default {
         this.playerOptions.width = this.window.width
       }
     },
+
     dropActiveAnswers () {
       this.$set(this, 'questionCard', {
         text: this.question.text,
@@ -94,7 +125,25 @@ export default {
 }
 </script>
 
+<style>
+  .vjs-custom-skin > .video-js .vjs-big-play-button {
+    top: 50%;
+    left: 50%;
+    margin-left: -1.5em;
+    margin-top: -1em;
+    visibility: hidden;
+  }
+</style>
+
 <style lang="scss" scoped>
+.watch-button {
+  width: 200px !important;
+  img {
+    margin-right: 10px;
+    width: 15px;
+  }
+}
+
 .answers {
   display: flex;
   flex-wrap: wrap;
