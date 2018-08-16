@@ -14,7 +14,7 @@
         >
           <CharacterCard
             :selected="isCardSelected(card.value)"
-            @click="selectCard(card.value)"
+            @click="selectCard(card.value, card.sex)"
             :src="card.src"
             :text="card.text"
           />
@@ -45,6 +45,7 @@ export default {
   data () {
     return {
       selectedCard: false,
+      selectedGender: null,
       value: {
         gender: null,
         character: null
@@ -53,33 +54,41 @@ export default {
         gender: [
           {
             value: '1',
+            sex: 'girl',
             src: require('@/assets/characters/character-girl-1.png')
           }, {
             value: '2',
+            sex: 'boy',
             src: require('@/assets/characters/character-boy-1.png')
           },
           {
             value: '3',
+            sex: 'girl',
             src: require('@/assets/characters/character-girl-2.png'),
           },
           {
             value: '4',
+            sex: 'boy',
             src: require('@/assets/characters/character-boy-3.png'),
           },
           {
             value: '5',
+            sex: 'girl',
             src: require('@/assets/characters/character-girl-3.png'),
           },
           {
             value: '6',
+            sex: 'boy',
             src: require('@/assets/characters/character-boy-4.png'),
           },
           {
             value: '7',
+            sex: 'girl',
             src: require('@/assets/characters/character-girl-4.png'),
           },
           {
             value: '8',
+            sex: 'boy',
             src: require('@/assets/characters/character-boy-2.png'),
           },
         ]
@@ -115,9 +124,11 @@ export default {
         return this.value.character === value
       }
     },
-    selectCard (value) {
+    selectCard (value, sex) {
       this.selectedCard = true      
       this.character = value
+      this.selectedGender = sex
+
       if (this.step === 1) {
         this.value.gender = value
       } else if (this.step === 2) {
@@ -131,6 +142,8 @@ export default {
           this.$store.commit('setCharacter', element.src)
         }
       })
+
+      this.$store.commit('setGender', this.selectedGender)
       this.$router.push('/select-age')
     }
   }

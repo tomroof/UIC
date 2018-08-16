@@ -50,7 +50,7 @@ export default {
     }
 
     this.$store.commit('addPoints', this.rewardPoint)
-    AudioManager.playAudio('unlocked_badge')
+    AudioManager.playAudio('unlocked_badge', this.$store.state.gender)
   },
   data () {
     return {

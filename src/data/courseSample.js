@@ -5,29 +5,37 @@ export default {
       text: 'What’s inside your mouth?',
       id: '1',
       type: 'video',
-      link: 'lonely-astronaut.mp4',
-      poster: 'lonely-astronaut-cover.jpg'
+      boy_video_link: 'lonely-astronaut.mp4',
+      boy_video_poster: 'lonely-astronaut-cover.jpg',
+      girl_video_link: 'lonely-astronaut.mp4',
+      girl_video_poster: 'lonely-astronaut-cover.jpg'
     },
     {
       text: 'How to stop the cavity monsters.',
       id: '2',
       type: 'video',
-      link: 'lonely-astronaut.mp4',
-      poster: 'lonely-astronaut-cover.jpg'
+      boy_video_link: 'lonely-astronaut.mp4',
+      boy_video_poster: 'lonely-astronaut-cover.jpg',
+      girl_video_link: 'lonely-astronaut.mp4',
+      girl_video_poster: 'lonely-astronaut-cover.jpg'
     },
     {
       text: 'Brushing away the cavity monsters!',
       id: '3',
       type: 'video',
-      link: 'lonely-astronaut.mp4',
-      poster: 'lonely-astronaut-cover.jpg'
+      boy_video_link: 'lonely-astronaut.mp4',
+      boy_video_poster: 'lonely-astronaut-cover.jpg',
+      girl_video_link: 'lonely-astronaut.mp4',
+      girl_video_poster: 'lonely-astronaut-cover.jpg'
     },
     {
       text: 'Cavity Math instructions.',
       id: '4',
       type: 'video',
-      link: 'lonely-astronaut.mp4',
-      poster: 'lonely-astronaut-cover.jpg'
+      boy_video_link: 'lonely-astronaut.mp4',
+      boy_video_poster: 'lonely-astronaut-cover.jpg',
+      girl_video_link: 'lonely-astronaut.mp4',
+      girl_video_poster: 'lonely-astronaut-cover.jpg'
     },
     {
       text: 'Stop the cavity monster.',
@@ -105,8 +113,10 @@ export default {
       text: 'What snacks do my teeth love?',
       id: '9',
       type: 'video',
-      link: 'lonely-astronaut.mp4',
-      poster: 'lonely-astronaut-cover.jpg'
+      boy_video_link: 'lonely-astronaut.mp4',
+      boy_video_poster: 'lonely-astronaut-cover.jpg',
+      girl_video_link: 'lonely-astronaut.mp4',
+      girl_video_poster: 'lonely-astronaut-cover.jpg'
     },
     {
       text: 'Good for me or good for cavity monsters?',

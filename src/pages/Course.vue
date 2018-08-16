@@ -50,7 +50,7 @@ export default {
     moduleCompleted () {
       this.showRewardCard = true
       this.clickRewardContinue = false
-      AudioManager.playAudio('good_job')
+      AudioManager.playAudio('good_job', this.$store.state.gender)
     },
     rewardContinue () {
       this.showRewardCard = false

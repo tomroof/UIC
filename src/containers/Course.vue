@@ -188,7 +188,7 @@ export default {
         let currentQuestionType = this.steps[page].type
 
         if (currentQuestionType === "calc") {
-          AudioManager.playAudio('first_question_for_calc')
+          AudioManager.playAudio('first_question_for_calc', this.$store.state.gender)
         }
       }      
     },
@@ -204,9 +204,9 @@ export default {
         }
 
         if (nextQuestionType === "icons") {
-          AudioManager.playAudio('first_question_for_icons')
+          AudioManager.playAudio('first_question_for_icons', this.$store.state.gender)
         } else if (nextQuestionType === "cards") {
-          AudioManager.playAudio('first_question_for_cards')
+          AudioManager.playAudio('first_question_for_cards', this.$store.state.gender)
         } 
       }
     },
@@ -222,18 +222,18 @@ export default {
         // Play correct sound for only icons
         if (currentQuestionType === 'icons') {
           if (this.isAnswerCorrect === true) {
-            AudioManager.playAudio('icons_select_correct')
+            AudioManager.playAudio('icons_select_correct', this.$store.state.gender)
           } else {
-            AudioManager.playAudio('icons_select_wrong')
+            AudioManager.playAudio('icons_select_wrong', this.$store.state.gender)
           }
         }
         else if (currentQuestionType === 'calc') {
           if (currentQuestionSlot === '24') {
-            AudioManager.playAudio('calc_question_1')
+            AudioManager.playAudio('calc_question_1', this.$store.state.gender)
           } else if (currentQuestionSlot === '25') {
-            AudioManager.playAudio('calc_question_2')
+            AudioManager.playAudio('calc_question_2', this.$store.state.gender)
           } else if (currentQuestionSlot === '26' || currentQuestionSlot === '27') {
-            AudioManager.playAudio('calc_question_3_4')
+            AudioManager.playAudio('calc_question_3_4', this.$store.state.gender)
           }  
         }        
         

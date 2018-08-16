@@ -59,9 +59,9 @@ export default {
         width: 375,
         sources: [{
           type: "video/mp4",
-          src: require('../../assets/video/' + this.question.link)
+          src: this.$store.state.gender === 'boy' ? require('../../assets/video/' + this.question.boy_video_link) : require('../../assets/video/' + this.question.girl_video_link)
         }],
-        poster: require('../../assets/video/' + this.question.poster)
+        poster: this.$store.state.gender === 'boy' ? require('../../assets/video/' + this.question.boy_video_poster) : require('../../assets/video/' + this.question.girl_video_poster)
       }
     }
   },

@@ -13,6 +13,7 @@ const vuexPersist = new VuexPersist({
 export default new Vuex.Store({
   plugins: [vuexPersist.plugin],
   state: {
+    gender: null,
     character: '/static/img/character-girl-4.0b3adca.png',
     points: 0,
     topic: 0,
@@ -146,6 +147,10 @@ export default new Vuex.Store({
   mutations: {
     setCharacter(state, char) {
       state.character = char
+    },
+
+    setGender(state, gender) {
+      state.gender = gender
     },
 
     setTopic(state, topic) {
