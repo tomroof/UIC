@@ -11,7 +11,7 @@
            @ended="onPlayerEnded($event)"
            >
           </video-player>
-          <ComponentButton v-if="showPlayButton" class="watch-button" @click="playVideo"><img :src="image">Watch Me</ComponentButton>
+          <ComponentButton v-if="showPlayButton" class="watch-button" @click="playVideo"><img :src="image">{{buttonTitle}}</ComponentButton>
         </div>
       </div>
     </div>
@@ -44,6 +44,13 @@ export default {
       return this.finishedVideoPlaying === true
               ? require('../../assets/refresh.svg')
               : require('../../assets/play.png')
+    },
+
+    buttonTitle () {
+      return this.finishedVideoPlaying === true
+              ? 'Watch Again'
+              : 'Watch Me'
+      
     }
   },
 
@@ -87,6 +94,9 @@ export default {
       this.finishedVideoPlaying = false
       this.showPlayButton = false
       player.play()
+
+      player.controlBar.show();
+      player.bigPlayButton.hide();
     },
 
     onPlayerPause (player) {
@@ -94,9 +104,12 @@ export default {
     },
 
     onPlayerEnded (player) {
-      console.log(player.posterImage);
       this.finishedVideoPlaying = true
       this.showPlayButton = true
+
+      player.currentTime(0);
+      player.controlBar.hide();
+      player.bigPlayButton.show();
     },
 
     handleResize () {
