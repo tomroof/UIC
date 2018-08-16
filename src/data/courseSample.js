@@ -5,37 +5,37 @@ export default {
       text: 'What’s inside your mouth?',
       id: '1',
       type: 'video',
-      boy_video_link: 'lonely-astronaut.mp4',
-      boy_video_poster: 'lonely-astronaut-cover.jpg',
-      girl_video_link: 'lonely-astronaut.mp4',
-      girl_video_poster: 'lonely-astronaut-cover.jpg'
+      boy_video_link: 'module1-male.mp4',
+      boy_video_poster: 'module1-cover.jpg',
+      girl_video_link: 'module1-female.mp4',
+      girl_video_poster: 'module1-cover.jpg'
     },
     {
       text: 'How to stop the cavity monsters.',
       id: '2',
       type: 'video',
-      boy_video_link: 'lonely-astronaut.mp4',
-      boy_video_poster: 'lonely-astronaut-cover.jpg',
-      girl_video_link: 'lonely-astronaut.mp4',
-      girl_video_poster: 'lonely-astronaut-cover.jpg'
+      boy_video_link: 'module3-male.mp4',
+      boy_video_poster: 'module3-cover.jpg',
+      girl_video_link: 'module3-female.mp4',
+      girl_video_poster: 'module3-cover.jpg'
     },
     {
       text: 'Brushing away the cavity monsters!',
       id: '3',
       type: 'video',
-      boy_video_link: 'lonely-astronaut.mp4',
-      boy_video_poster: 'lonely-astronaut-cover.jpg',
-      girl_video_link: 'lonely-astronaut.mp4',
-      girl_video_poster: 'lonely-astronaut-cover.jpg'
+      boy_video_link: 'module4-male.mp4',
+      boy_video_poster: 'module4-cover.jpg',
+      girl_video_link: 'module4-female.mp4',
+      girl_video_poster: 'module4-cover.jpg'
     },
     {
       text: 'Cavity Math instructions.',
       id: '4',
       type: 'video',
-      boy_video_link: 'lonely-astronaut.mp4',
-      boy_video_poster: 'lonely-astronaut-cover.jpg',
-      girl_video_link: 'lonely-astronaut.mp4',
-      girl_video_poster: 'lonely-astronaut-cover.jpg'
+      boy_video_link: 'module5-male.mp4',
+      boy_video_poster: 'module5-cover.jpg',
+      girl_video_link: 'module5-female.mp4',
+      girl_video_poster: 'module5-cover.jpg'
     },
     {
       text: 'Stop the cavity monster.',
@@ -113,9 +113,9 @@ export default {
       text: 'What snacks do my teeth love?',
       id: '9',
       type: 'video',
-      boy_video_link: 'lonely-astronaut.mp4',
+      boy_video_link: 'module1-male.mp4',
       boy_video_poster: 'lonely-astronaut-cover.jpg',
-      girl_video_link: 'lonely-astronaut.mp4',
+      girl_video_link: 'module1-male.mp4',
       girl_video_poster: 'lonely-astronaut-cover.jpg'
     },
     {
