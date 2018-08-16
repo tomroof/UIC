@@ -6,6 +6,7 @@
           <video-player class="vjs-custom-skin"
            ref="player"
            :options="playerOptions"
+           @play="onPlayerPlay($event)"
            @pause="onPlayerPause($event)"
            @ended="onPlayerEnded($event)"
            >
@@ -82,11 +83,18 @@ export default {
       this.$refs.player.player.play()
     },
 
+    onPlayerPlay (player) {
+      this.finishedVideoPlaying = false
+      this.showPlayButton = false
+      player.play()
+    },
+
     onPlayerPause (player) {
       this.showPlayButton = true
     },
 
     onPlayerEnded (player) {
+      console.log(player.posterImage);
       this.finishedVideoPlaying = true
       this.showPlayButton = true
     },
@@ -126,6 +134,11 @@ export default {
 </script>
 
 <style>
+  .vjs-ended .vjs-poster {
+    display: inline-block;
+  }
+
+
   .vjs-custom-skin > .video-js .vjs-big-play-button {
     top: 50%;
     left: 50%;
