@@ -1,7 +1,6 @@
 <template>
   <div class="header">
     <div class="avatar-holder">
-      <img class="avatar-image" :src='avatarImage'>
       <div class="avatar"
         :style="{ backgroundImage: `url(${$store.state.character})` }"
       >
@@ -10,12 +9,12 @@
 
     <div class="info">
       <div class="name">{{user.name}}</div>
-      <div class="points">{{user.points}} points</div>
+      <div class="points">{{user.points}} Points</div>
       <div class="badges">
         <span class="badge"
-          v-for="(badge, index) in user.badges"
+          v-for="(badge, index) in badges"
           :key="index">
-          <img :src="getAvatar(badge.image)" alt="" :title="badge.name">
+          <img :src="getAvatar(badge.badge_image)" alt="" :title="badge.name">
         </span>
       </div>
     </div>
@@ -23,9 +22,27 @@
 </template>
 
 <script>
+import { mapGetters } from 'vuex'
+
 export default {
   name: 'AccountHeader',
   props: ['user'],
+
+  computed: {
+    ...mapGetters(['getAchievements']),
+    badges () {
+      var results = []
+      var index = 0
+      for (var i = 0; i < this.getAchievements.length; i++) {
+        var item = this.getAchievements[i]
+        if (item.completed) {
+          results[index] = item
+          index ++
+        }
+      }
+      return results
+    }
+  },
 
   methods: {
     getAvatar (name) {
@@ -52,10 +69,18 @@ export default {
   display: flex;
   justify-content: center;
   align-content: center;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+
+  box-sizing: border-box;
+  border-radius: 50%;
+  box-shadow: rgba(255, 255, 255, 0.12 ) 0 0 0 8px;
+  background-color: #FFEBAE;
 }
 
 .info {
-  padding: 10px 0 0 20px;
+  padding: 15px 0 0 25px;
 }
 
 .name {

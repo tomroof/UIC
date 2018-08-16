@@ -14,6 +14,75 @@ export default new Vuex.Store({
   plugins: [vuexPersist.plugin],
   state: {
     character: '/static/img/character-girl-4.0b3adca.png',
+    points: 0,
+    topic: 0,
+    achievements: [
+      {
+        id: 1,
+        name: 'Cavity Monster Hero',
+        goal: 'Completing Cavity Prevention',
+        image: 'achieve_img_1.svg',
+        badge_image: 'achieve_img_1_badge.svg',
+        completed: false
+      },
+      {
+        id: 2,
+        name: 'I Know My Teeth',
+        goal: 'Completing Baby Teeth',
+        image: 'achieve_img_2.svg',
+        badge_image: 'achieve_img_2_badge.svg',
+        completed: false
+      },
+      {
+        id: 3,
+        name: 'Brushing Selfie',
+        goal: 'Take a selfie',
+        image: 'achieve_img_3.svg',
+        badge_image: 'achieve_img_3_badge.svg',
+        completed: false
+      },
+      {
+        id: 4,
+        name: 'The Achiever',
+        goal: 'Logged in everyday for a month',
+        image: 'achieve_img_4.svg',
+        badge_image: 'achieve_img_4_badge.svg',
+        completed: false
+      },
+      {
+        id: 5,
+        name: 'Cavity Math',
+        goal: 'Logged in everyday for a month',
+        image: 'achieve_img_4.svg',
+        badge_image: 'achieve_img_1_badge.svg',
+        completed: false
+      },
+      {
+        id: 6,
+        name: 'Sugar',
+        goal: 'Logged in everyday for a month',
+        image: 'achieve_img_4.svg',
+        badge_image: 'achieve_img_2_badge.svg',
+        completed: false
+      },
+      {
+        id: 7,
+        name: 'Memory',
+        goal: 'Logged in everyday for a month',
+        image: 'achieve_img_4.svg',
+        badge_image: 'achieve_img_3_badge.svg',
+        completed: false
+      },
+      {
+        id: 8,
+        name: 'Matching',
+        goal: 'Logged in everyday for a month',
+        image: 'achieve_img_4.svg',
+        badge_image: 'achieve_img_4_badge.svg',
+        completed: false
+      }
+    ],
+
     courses: [
       {
         name: 'Cavity Prevention',
@@ -79,13 +148,26 @@ export default new Vuex.Store({
       state.character = char
     },
 
+    setTopic(state, topic) {
+      state.topic = topic
+    },
+
+    addPoints(state, point) {
+      state.points += point
+    },
+
     updateCourseProgress(state, payload) {
       const { id, currentProgress } = payload
       state.courses.find(item => item.id === +id).progress = currentProgress
+    },
+
+    completeArchievement(state, id) {
+      state.achievements.find(item => item.id === +id).completed = true
     }
   },
 
   getters: {
-    getCourses: (state) => state.courses
+    getCourses: (state) => state.courses,
+    getAchievements: (state) => state.achievements
   }
 })

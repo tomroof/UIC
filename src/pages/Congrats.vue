@@ -49,6 +49,7 @@ export default {
         break;
     }
 
+    this.$store.commit('addPoints', this.rewardPoint)
     AudioManager.playAudio('unlocked_badge')
   },
   data () {

@@ -43,11 +43,11 @@ export default {
       videoId: this.$youtube.getIdFromURL(this.question.link),
       playerOptions: {
         width: 375,
-          sources: [{
-            type: "video/mp4",
-            src: require(this.question.link)
-          }],
-        }
+        sources: [{
+          type: "video/mp4",
+          src: require('../../assets/video/' + this.question.link)
+        }],
+      }
     }
   },
 

@@ -17,8 +17,8 @@ export default {
 
   computed: {
     image () {
-      return typeof this.achieve.image === 'undefined' || this.achieve.image.length === 0
-              ? require('../../assets/ach_locked.svg')
+      return typeof this.achieve.image === 'undefined' || this.achieve.image.length === 0 || this.achieve.completed === false
+              ? require('../../assets/achieve_lock_img.png')
               : require(`../../assets/${this.achieve.image}`)
     }
   }

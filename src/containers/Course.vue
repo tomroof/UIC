@@ -113,14 +113,19 @@ export default {
   },
 
   mounted() {
+    this.$store.commit('setTopic', this.curseId)
+
     events.$on('nextSlide', () => {
       this.checkModuleComplete()
       this.isQuestion = true;
       this.isAnswerCorrect = null;
-      this.$refs.wizard.goNext(true);
       this.openPopupFalse = false;
       this.openPopupTrue = false;
       this.checkCompleteCourse()
+
+      if (this.$refs.wizard) {
+        this.$refs.wizard.goNext(true);  
+      }      
     })
 
     events.$on('thisSlide', () => {
@@ -260,8 +265,45 @@ export default {
         this.calcProgress(currentPage)
         
         if (this.steps.length - 1 === currentPage) {
+          this.checkAchievement()
           this.$router.push('/congrats/1')
         }
+      }
+    },
+
+    checkAchievement () {
+      switch (this.curseId) {
+        case 1:
+          this.$store.commit('completeArchievement', 1)
+          break;
+
+        case 2:
+          this.$store.commit('completeArchievement', 2)
+          break;
+
+        case 3:
+          this.$store.commit('completeArchievement', 3)
+          break;
+
+        case 4:
+          this.$store.commit('completeArchievement', 4)
+          break;
+
+        case 5:
+          this.$store.commit('completeArchievement', 5)
+          break;
+
+        case 6:
+          this.$store.commit('completeArchievement', 6)
+          break;
+
+        case 7:
+          this.$store.commit('completeArchievement', 7)
+          break;
+
+        case 8:
+          this.$store.commit('completeArchievement', 8)
+          break;
       }
     },
 

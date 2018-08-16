@@ -28,45 +28,27 @@ export default {
     return {
       user: {
         avatar: 'account-img.jpg',
-        points: '550',
-        badges: [
-          {
-            name: 'badge name',
-            image: 'achieve_img_3.svg'
-          },
-          {
-            name: 'badge name 1',
-            image: 'achieve_img_2.svg'
-          },
-          {
-            name: 'badge name 1',
-            image: 'achieve_img_1.svg'
-          },
-          {
-            name: 'badge name 1',
-            image: 'achieve_img_4.svg'
-          }
-        ]
+        points: this.$store.state.points
       },
       menus: [
         {
           name: 'General',
           items: [
             {
-              name: 'Achievements',
-              icon: 'achievements-icon.svg',
-              count: '50',
-              link: '/achievements'
-            },
-            {
               name: 'Favorite Courses',
               icon: 'fav-courses-icon.svg',
               link: '/courses'
             },
             {
-              name: 'My Team',
+              name: 'My Friends',
               icon: 'my-friends-icon.svg',
-              link: '/team'
+              link: '/team',
+              count: '50',
+            },
+            {
+              name: 'Achievements',
+              icon: 'achievements-icon.svg',
+              link: '/achievements'
             }
           ]
         },
@@ -74,15 +56,20 @@ export default {
           name: 'Settings',
           items: [
             {
-              name: 'Add Code',
+              name: 'Edit Login Details',
               icon: 'edit-login-details-icon.svg',
-              link: '/code'
+              link: '/select-character'
             },
             {
-              name: 'Edit Profile',
+              name: 'Update Interests',
               icon: 'update-interests-icon.svg',
-              link: '/select-character'
-            }
+              link: '/code'
+            }, 
+            {
+              name: 'Blocked Users',
+              icon: 'block-users-icon.svg',
+              link: '/code'
+            }                       
           ]
         }
       ]

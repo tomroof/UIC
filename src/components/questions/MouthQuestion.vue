@@ -3,11 +3,11 @@
     <div class="question-content" slot="questionContent">
       <div class="variants">
         <draggable
-          v-model="questionCard.variants"
+          v-model="variants"
           class="dragArea"
           :options="{group:'variants'}">
           <AnswerMouthCard
-            v-for="(variant, index) in questionCard.variants"
+            v-for="(variant, index) in variants"
             :answer="variant"
             :key="index"
           />
@@ -113,6 +113,7 @@
     data () {
       return {
         questionCard: this.question || {},
+        variants: [],
         fields: {
           0: [],
           1: [],
@@ -137,6 +138,7 @@
       question:{
         handler: function (newVal) {
           this.questionCard = newVal
+          this.variants = newVal.variants
         },
         immediate: true
       }

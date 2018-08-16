@@ -5,25 +5,25 @@ export default {
       text: 'What’s inside your mouth?',
       id: '1',
       type: 'video',
-      link: '../../assets/video/lonely-astronaut.mp4'
+      link: 'lonely-astronaut.mp4'
     },
     {
       text: 'How to stop the cavity monsters.',
       id: '2',
       type: 'video',
-      link: '../../assets/video/lonely-astronaut.mp4'
+      link: 'lonely-astronaut.mp4'
     },
     {
       text: 'Brushing away the cavity monsters!',
       id: '3',
       type: 'video',
-      link: '../../assets/video/lonely-astronaut.mp4'
+      link: 'lonely-astronaut.mp4'
     },
     {
       text: 'Cavity Math instructions.',
       id: '4',
       type: 'video',
-      link: '../../assets/video/lonely-astronaut.mp4'
+      link: 'lonely-astronaut.mp4'
     },
     {
       text: 'Stop the cavity monster.',
@@ -101,7 +101,7 @@ export default {
       text: 'What snacks do my teeth love?',
       id: '9',
       type: 'video',
-      link: '../../assets/video/lonely-astronaut.mp4'
+      link: 'lonely-astronaut.mp4'
     },
     {
       text: 'Good for me or good for cavity monsters?',

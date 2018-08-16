@@ -3,11 +3,11 @@
     <div class="question-content" slot="questionContent">
       <div class="answers">
         <draggable
-          v-model="questionCard.answers"
+          v-model="answers"
           class="dragArea"
           :options="{group:'answers'}">
           <AnswerCalcCard
-            v-for="(variant, index) in questionCard.answers"
+            v-for="(variant, index) in answers"
             :answer="variant"
             :key="index"
             :selected="variant.selected"
@@ -69,6 +69,7 @@
   import AnswerCalcCard from '@/components/cards/AnswerCalcCard'
   import BaseQuestion from '@/components/questions/BaseQuestion'
   import Popup from '@/components/Popup'
+  import { events } from '@/helpers/events'
 
   import draggable from 'vuedraggable'
 
@@ -83,6 +84,7 @@
 
     mounted() {
       this.$emit('isQuestionHandler', true, 'Play Next');
+      events.$on('dropAnswer', this.dropActiveAnswers)
     },
 
     updated() {
@@ -93,6 +95,7 @@
       return {
         addedCareNumber: 0,
         questionCard: this.question || {},
+        answers: [],
         fields: {
           0: [],
           1: [],
@@ -105,6 +108,7 @@
       question:{
         handler: function (newVal) {
           this.questionCard = newVal
+          this.answers = newVal.answers
         },
         immediate: true
       }
@@ -117,18 +121,21 @@
         } else {
           this.addedCareNumber --
         }
-
         if (this.addedCareNumber >= 2) {
+          this.$emit('isQuestionHandler', false)
+          this.dropActiveAnswers()
           this.$emit('selectAnswer', {isCorrect: true, index: this.index})
         }
       },
       dropActiveAnswers () {
         this.$set(this, 'questionCard', {
           text: this.question.text,
+          desc: this.question.desc,
           answers: this.question.answers.map((a) => {
             return {
               image: a.image,
               text: a.text,
+              value: a.value,
               selected: false
             }
           })

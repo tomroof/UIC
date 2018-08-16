@@ -1,13 +1,17 @@
 export default [
   {
+    id: 1,
     name: 'Cavity Monster Hero',
     goal: 'Completing Cavity Prevention',
-    image: 'achieve_img_1.svg'
+    image: 'achieve_img_1.svg',
+    badge_image: 'achieve_img_1.svg'
   },
   {
+    id: 2,
     name: 'I Know My Teeth',
     goal: 'Completing Baby Teeth',
-    image: 'achieve_img_2.svg'
+    image: 'achieve_img_2.svg',
+    badge_image: 'achieve_img_2.svg'
   },
   {
     name: 'Brushing Selfie',

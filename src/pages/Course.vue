@@ -33,7 +33,6 @@ export default {
   computed: {
     ...mapGetters(['getCourses']),
     curseId () {
-
       if (this.$route.params.url_prefix === null || this.$route.params.url_prefix.length === 0) {
         return 0
       } 

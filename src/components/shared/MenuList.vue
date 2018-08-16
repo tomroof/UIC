@@ -5,7 +5,7 @@
       <li v-for="(item, index) in items" :key="index" @click="goToRoute(item.link)">
         <div class="col">
           <img  class="icon" :src="getAvatar(item.icon)" alt="">
-          <div>{{item.name}}</div>
+          <div class="title">{{item.name}}</div>
         </div>
         <div class="col">
           <div class="count" v-if="item.count">{{item.count}}+</div>
@@ -76,6 +76,11 @@ li {
   .icon {
     margin: 15px;
     margin-left: 0;
+  }
+
+  .title {
+    font-family: 'Lato';
+    font-weight: 300;
   }
 
   .count {
