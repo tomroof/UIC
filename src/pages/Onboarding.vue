@@ -154,7 +154,33 @@ p {
     }
 }
 
+@media screen and (max-width : 375px) {
+
+  .content {
+    margin-top: 30px;
+  }
+
+  .button-wrapper {
+    margin-top: 10px;
+  }
+}
+
 @media screen and (max-width : 320px) {
+    .cards {
+      padding-top: 15px;
+      img {
+        width: 170px;
+      }
+    }
+
+    h1 {
+      font-size: 24px;
+    }
+
+    p {
+      font-size: 18px;
+      line-height: 23px;
+    }
     .cookie-bar .close-button img {
       top: 15px;        
     }
