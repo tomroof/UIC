@@ -5,6 +5,7 @@
         <img src='@/assets/course_detail.png' class="background">
         <img src="@/assets/heart.png" class="heart">
         <h1>{{ courseName }}</h1>
+        <div class="learn-title">Learn how to stop the cavity monsters!</div>
         <div class="progress-bar">
           <div class="progress-background-bar"></div>
           <div class="progress-active-bar" :style="{ width: `${currentProgress}%` }"></div>
@@ -107,6 +108,14 @@ export default {
     text-align: center;
   }
 
+  .learn-title {
+    margin-top: 5px;
+    text-align: center;
+    opacity: 0.5;
+    font-size: 14px;
+    color: #FFFFFF;
+  }
+
   .lvl {
     width: 65px;
     border-radius: 4px;
@@ -152,10 +161,10 @@ export default {
 
   .download {
     position: absolute;
-    width: 70px;
+    width: 90px;
     height: auto;
-    bottom: -35px;
-    left: 39%;
+    bottom: -47px;
+    left: 35%;
   }
 
   .swipe_up {
@@ -181,7 +190,7 @@ export default {
     position: absolute;
     width: calc(100% - 120px);
     height: 10px;
-    margin-top: 30px;
+    margin-top: 20px;
     left: 60px;
   }
 
