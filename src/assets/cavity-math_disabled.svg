@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="149px" height="86px" viewBox="0 0 149 86" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 50.2 (55047) - http://www.bohemiancoding.com/sketch -->
+    <title>Group 4</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <path d="M0,4.99544665 C0,2.23653765 2.23656957,0 5.00010254,0 L143.999897,0 C146.761378,0 149,2.23413232 149,4.99544665 L149,86 L0,86 L0,4.99544665 Z" id="path-1"></path>
+    </defs>
+    <g id="Zilla-Slab/Lato" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="⟶-My-Courses" transform="translate(-201.000000, -167.000000)">
+            <g id="Grid" transform="translate(20.000000, 162.000000)">
+                <g id="2" transform="translate(176.000000, 0.000000)">
+                    <g id="Group-4" transform="translate(5.000000, 5.000000)">
+                        <mask id="mask-2" fill="white">
+                            <use xlink:href="#path-1"></use>
+                        </mask>
+                        <use id="Mask-Copy-3" fill="#cbcbcb" xlink:href="#path-1"></use>
+                        <g id="calculator" mask="url(#mask-2)" fill-rule="nonzero">
+                            <g transform="translate(57.000000, 16.000000)">
+                                <polygon id="XMLID_853_" fill="#acacac" points="4 50 4 18 0 18 0 54 18 54 18 50"></polygon>
+                                <polygon id="XMLID_854_" fill="#818181" points="32 50 18 50 18 54 36 54 36 18 32 18"></polygon>
+                                <path d="M0,0 L0,17.5675676 L4,17.5675676 L4,50 L18,50 L32,50 L32,17.5675676 L36,17.5675676 L36,0 L0,0 Z M8,4.05405405 L28,4.05405405 L28,13.5135135 L8,13.5135135 L8,4.05405405 Z M12,45.9459459 L8,45.9459459 L8,41.8918919 L12,41.8918919 L12,45.9459459 Z M12,37.8378378 L8,37.8378378 L8,33.7837838 L12,33.7837838 L12,37.8378378 Z M12,29.7297297 L8,29.7297297 L8,25.6756757 L12,25.6756757 L12,29.7297297 Z M12,21.6216216 L8,21.6216216 L8,17.5675676 L12,17.5675676 L12,21.6216216 Z M20,45.9459459 L16,45.9459459 L16,41.8918919 L20,41.8918919 L20,45.9459459 Z M20,37.8378378 L16,37.8378378 L16,33.7837838 L20,33.7837838 L20,37.8378378 Z M20,29.7297297 L16,29.7297297 L16,25.6756757 L20,25.6756757 L20,29.7297297 Z M20,21.6216216 L16,21.6216216 L16,17.5675676 L20,17.5675676 L20,21.6216216 Z M28,45.9459459 L24,45.9459459 L24,33.7837838 L28,33.7837838 L28,45.9459459 Z M28,29.7297297 L24,29.7297297 L24,25.6756757 L28,25.6756757 L28,29.7297297 Z M28,21.6216216 L24,21.6216216 L24,17.5675676 L28,17.5675676 L28,21.6216216 Z" id="XMLID_42_" fill="#dddddd"></path>
+                                <rect id="XMLID_855_" fill="#FFFFFF" x="8" y="18" width="4" height="4"></rect>
+                                <rect id="XMLID_869_" fill="#b1b1b1" x="16" y="18" width="4" height="4"></rect>
+                                <rect id="XMLID_870_" fill="#8c8c8c" x="24" y="18" width="4" height="4"></rect>
+                                <rect id="XMLID_871_" fill="#FFFFFF" x="8" y="26" width="4" height="4"></rect>
+                                <rect id="XMLID_872_" fill="#FFFFFF" x="16" y="26" width="4" height="4"></rect>
+                                <rect id="XMLID_873_" fill="#FFFFFF" x="24" y="26" width="4" height="4"></rect>
+                                <rect id="XMLID_874_" fill="#FFFFFF" x="8" y="34" width="4" height="4"></rect>
+                                <rect id="XMLID_875_" fill="#FFFFFF" x="16" y="34" width="4" height="4"></rect>
+                                <rect id="XMLID_876_" fill="#FFFFFF" x="24" y="34" width="4" height="12"></rect>
+                                <rect id="XMLID_877_" fill="#FFFFFF" x="8" y="42" width="4" height="4"></rect>
+                                <rect id="XMLID_878_" fill="#FFFFFF" x="16" y="42" width="4" height="4"></rect>
+                                <rect id="XMLID_879_" fill="#565659" x="8" y="4" width="20" height="9"></rect>
+                            </g>
+                        </g>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

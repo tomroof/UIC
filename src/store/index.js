@@ -88,57 +88,73 @@ export default new Vuex.Store({
       {
         name: 'Cavity Prevention',
         image: require('@/assets/cavity-prevention.svg'),
+        disabled_image: require('@/assets/cavity-prevention.svg'),
         id: 1,
         url_prefix: 'cavity-prevention',
+        active: true,
         progress: 0
       },
       {
         name: 'Baby Teeth',
         image: require('@/assets/baby-teeth.svg'),
+        disabled_image: require('@/assets/baby-teeth_disabled.svg'),
         id: 2,
         url_prefix: 'baby-teeth',
+        active: false,
         progress: 0
       },
       {
         name: 'Proper Brushing',
         image: require('@/assets/proper-brushing.svg'),
+        disabled_image: require('@/assets/proper-brushing_disabled.svg'),
         id: 3,
         url_prefix: 'proper-brushing',
+        active: false,
         progress: 0
       },
       {
         name: 'Prenatal Oral Care',
         image: require('@/assets/prenatal.svg'),
+        disabled_image: require('@/assets/prenatal_disabled.svg'),
         id: 4,
         url_prefix: 'prenatal-oral-care',
+        active: false,
         progress: 0
       },
       {
         name: 'Cavity Math',
         image: require('@/assets/cavity-math.svg'),
+        disabled_image: require('@/assets/cavity-math_disabled.svg'),
         id: 5,
         url_prefix: 'cavity-math',
+        active: false,
         progress: 0
       },
       {
         name: 'Sugar',
         image: require('@/assets/sugar.svg'),
+        disabled_image: require('@/assets/sugar_disabled.svg'),
         id: 6,
         url_prefix: 'sugar',
+        active: false,
         progress: 0
       },
       {
         name: 'Memory',
         image: require('@/assets/memory.svg'),
+        disabled_image: require('@/assets/memory_disabled.svg'),
         id: 7,
         url_prefix: 'memory',
+        active: false,
         progress: 0
       },
       {
         name: 'Matching',
         image: require('@/assets/matching.svg'),
+        disabled_image: require('@/assets/matching_disabled.svg'),
         id: 8,
         url_prefix: 'matching',
+        active: false,
         progress: 0
       }
     ]

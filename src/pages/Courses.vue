@@ -2,7 +2,7 @@
   <NavigationLayout :back="true" :menu="true" :topImage="$store.state.character">
     <h1>Topics</h1>
     <div class="courses_wrapper">
-      <div v-for="course in getCourses" class="course" @click="() => navigateToCourse(course.url_prefix)" :key="course.id">
+      <div v-for="course in getCourses" class="course" :key="course.id" @click="navigateToCourse(course)">
         <radial-progress-bar
           :diameter="145"
           :totalSteps="100"
@@ -11,7 +11,7 @@
           :stopColor="'#87DBA2'"
           :innerStrokeColor="'#2E5C69'"
         >
-          <div class="course_top" :style="{ background: `url(${course.image}) no-repeat center / cover` }" />
+          <div class="course_top" :style="{ background: course.active ? `url(${course.image}) no-repeat center / cover` : `url(${course.disabled_image}) no-repeat center / cover` }" />
         </radial-progress-bar>
         <div class="course_bottom">{{course.name}}</div>
       </div>
@@ -34,8 +34,10 @@ import { mapGetters } from 'vuex'
       ]
     }),
     methods: {
-      navigateToCourse(url_prefix) {
-        this.$router.push('/details/' + url_prefix)
+      navigateToCourse(course) {
+        if (course.active) {
+          this.$router.push('/details/' + course.url_prefix)
+        }        
       }
     },
     computed: {
@@ -78,6 +80,16 @@ h3 {
   flex-flow: row wrap;
   justify-content: center;
   width: 100%;
+}
+
+.disable-course-overlay {
+  background-color: gray;
+  opacity: 0.5;
+  width: 100px;
+  height: 100px;
+  position: absolute;
+  left: 0px;
+  top: 0px;
 }
 
 .course {

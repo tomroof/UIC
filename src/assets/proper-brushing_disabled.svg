@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="149px" height="86px" viewBox="0 0 149 86" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 50.2 (55047) - http://www.bohemiancoding.com/sketch -->
+    <title>Group 4</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <path d="M0,4.99544665 C0,2.23653765 2.23656957,0 5.00010254,0 L143.999897,0 C146.761378,0 149,2.23413232 149,4.99544665 L149,86 L0,86 L0,4.99544665 Z" id="path-1"></path>
+    </defs>
+    <g id="Zilla-Slab/Lato" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="⟶-My-Courses" transform="translate(-201.000000, -167.000000)">
+            <g id="Grid" transform="translate(20.000000, 162.000000)">
+                <g id="2" transform="translate(176.000000, 0.000000)">
+                    <g id="Group-4" transform="translate(5.000000, 5.000000)">
+                        <mask id="mask-2" fill="white">
+                            <use xlink:href="#path-1"></use>
+                        </mask>
+                        <use id="Mask-Copy-3" fill="#b9b9b9" xlink:href="#path-1"></use>
+                        <g id="226507" mask="url(#mask-2)" fill-rule="nonzero">
+                            <g transform="translate(29.000000, 22.000000)">
+                                <polygon id="Shape" fill="#ededed" points="39 21.1926467 42.1453669 26.8543631 47.8073038 30 52 25.8073533 48.8546331 20.1454833 43.1926962 17"></polygon>
+                                <rect id="Rectangle-path" fill="#dbdbdb" transform="translate(41.500000, 28.000000) rotate(45.000000) translate(-41.500000, -28.000000) " x="35" y="25" width="13" height="6"></rect>
+                                <polygon id="Shape" fill="#ededed" points="48 12.1926467 51.1454833 17.8543631 56.8071997 21 61 16.8070461 52.1926467 8"></polygon>
+                                <rect id="Rectangle-path" fill="#dbdbdb" transform="translate(50.500000, 19.000000) rotate(45.000000) translate(-50.500000, -19.000000) " x="44" y="16" width="13" height="6"></rect>
+                                <path d="M59.676729,15.927384 L0.913354164,75.5948439 C-0.304295154,76.8312237 -0.304607612,78.8361767 0.913354164,80.0727152 C2.13100348,81.3090949 4.10558261,81.3090949 5.32338816,80.0727152 L64.086763,20.4054139 C65.3044123,19.1690341 65.3044123,17.164081 64.086763,15.9275426 C62.8691137,14.6908456 60.8945346,14.6908456 59.676729,15.927384 Z" id="Shape" fill="#727272"></path>
+                                <path d="M51.0841087,1.90472383 C53.6386304,4.44574215 53.6386304,8.56517463 51.0841087,11.1061929 C48.4962336,13.6800753 40.2123272,21.9206617 37.6246094,24.4945441 C35.8947969,26.2152127 35.3384879,28.6592038 35.951592,30.8473246 C33.8451381,31.308517 31.5542968,30.7249451 29.9158913,29.0953569 C27.3613696,26.5543386 27.3613696,22.4349061 29.9158913,19.8938878 C32.5034518,17.3196924 40.7878301,9.07957551 43.3753906,6.50553664 C45.1052031,4.78486802 45.6615121,2.34087694 45.048408,0.152756101 C47.1550192,-0.308592793 49.4457032,0.274979129 51.0841087,1.90472383 Z" id="Shape" fill="#9e9e9e"></path>
+                            </g>
+                        </g>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>
