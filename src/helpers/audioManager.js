@@ -53,7 +53,7 @@ export default {
     },
   ],
 
-  playAudio (id, gender) {
+  playAudio (id, gender, callback) {
     this.sounds.map((sound) => {
       if (sound.id === id) {
         var audio;
@@ -63,6 +63,12 @@ export default {
           audio = new Audio(require('@/assets/audio/' + sound.src_girl));
         }
         
+        audio.onended = function() {
+          if (callback) {
+            callback()
+          }
+        };
+
         audio.play();    
         return
       }

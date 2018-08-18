@@ -1,6 +1,6 @@
 <template>
   <div class="answer-container" @click="$emit('click')">
-    <transition name="rotateCard">
+    <transition name="rotateCard" v-on:after-leave="completedTransaction">
       <div class="answer-wrapper" key="question" v-if="!selected" >
         <div class="img-mouth">
           <img :src="image" alt="">
@@ -36,6 +36,9 @@ export default {
   methods: {
     getButtonClassName (number) {
       return ['card', number === this.selected ? 'card--selected' : '']
+    },
+    completedTransaction () {
+      this.$emit('completed')
     }
   },
 
@@ -45,7 +48,7 @@ export default {
               ? require('../../assets/answer-img.svg')
               : require(`../../assets/${this.answer.image}`)
     }
-  }
+  },
 }
 </script>
 

@@ -7,7 +7,9 @@
           :answer="answer"
           :key="index"
           :selected="answer.selected"
-          @click="handleAnswerClick(answer)"/>
+          @click="handleAnswerClick(answer)"
+          @completed="handleAnswerCompleted(answer)"
+          />
       </div>
     </div>
   </BaseQuestion>
@@ -18,7 +20,7 @@ import AnswerCard from '@/components/cards/AnswerCard'
 import BaseQuestion from '@/components/questions/BaseQuestion'
 
   export default {
-    props: ['question', 'index'],
+    props: ['question', 'index', 'enabledSelection'],
     components: {
       BaseQuestion,
       AnswerCard
@@ -48,25 +50,28 @@ import BaseQuestion from '@/components/questions/BaseQuestion'
     },
 
     methods: {
-    dropActiveAnswers () {
-      this.$set(this, 'questionCard', {
-        text: this.question.text,
-        desc: this.question.desc,
-        answers: this.question.answers.map((a) => {
-          return {
-            ...a,
-            selected: false
-          }
+      dropActiveAnswers () {
+        this.$set(this, 'questionCard', {
+          text: this.question.text,
+          desc: this.question.desc,
+          answers: this.question.answers.map((a) => {
+            return {
+              ...a,
+              selected: false
+            }
+          })
         })
-      })
-    },
-    handleAnswerClick (answer) {
+      },
+      handleAnswerClick (answer) {
+        if (!this.enabledSelection) return
         this.dropActiveAnswers()
         this.questionCard.answers.find((a) => a.text === answer.text).selected = true
-        this.$emit('selectAnswer', {isCorrect: true, index: this.index})
+      },
+      handleAnswerCompleted (answer) {
+         this.$emit('selectAnswer', {isCorrect: true, index: this.index})
       }
-    }
-  }
+  },
+}
 </script>
 
 <style lang="scss" scoped>

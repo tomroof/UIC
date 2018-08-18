@@ -5,7 +5,7 @@
         <draggable
           v-model="answers"
           class="dragArea"
-          :options="{group:'answers'}">
+          :options="{group:'answers', disabled: !enabledSelection}">
           <AnswerCalcCard
             v-for="(variant, index) in answers"
             :answer="variant"
@@ -18,7 +18,7 @@
 
       <div class="answers">
         <div class="field">
-          <draggable v-model="fields[0]" :options="{group:'answers'}" class="dragArea" @change="handleDragChange">
+          <draggable v-model="fields[0]" :options="{group:'answers', disabled: !enabledSelection}" class="dragArea" @change="handleDragChange">
             <AnswerCalcCard
               v-for="(variant, i) in fields[0]"
               :answer="variant"
@@ -34,7 +34,7 @@
         </div>
 
         <div class="field">
-          <draggable v-model="fields[1]" :options="{group:'answers'}" class="dragArea" @change="handleDragChange">
+          <draggable v-model="fields[1]" :options="{group:'answers', disabled: !enabledSelection}" class="dragArea" @change="handleDragChange">
             <AnswerCalcCard
               v-for="(variant, i) in fields[1]"
               :answer="variant"
@@ -74,7 +74,7 @@
   import draggable from 'vuedraggable'
 
   export default {
-    props: ['question', 'index', 'openPopupTrue'],
+    props: ['question', 'index', 'openPopupTrue', 'enabledSelection'],
     components: {
       AnswerCalcCard,
       BaseQuestion,

@@ -17,6 +17,7 @@
           v-if="question.type === 'cards'"
           :question="question"
           :index="index"
+          :enabledSelection="enabledSelection"
           @selectAnswer='handelAnswerSelect' 
           @isQuestionHandler="isQuestionHandler" />
 
@@ -30,6 +31,7 @@
           v-if="question.type === 'icons'"
           :question="question"
           :index="index"
+          :enabledSelection="enabledSelection"
           @selectAnswer="handelAnswerSelect"
           @selectContinue="handelContinue"
           :openPopupFalse="openPopupFalse"
@@ -40,6 +42,7 @@
           v-if="question.type === 'calc'"
           :index="index"
           :question="question"
+          :enabledSelection="enabledSelection"
           :openPopupTrue="openPopupTrue"
           @selectAnswer='handelAnswerSelect' 
           @isQuestionHandler="isQuestionHandler" />
@@ -47,13 +50,14 @@
         <MouthQuestion
           v-if="question.type === 'mouth'"
           :question="question"
+          :enabledSelection="enabledSelection"
           :openPopupFalse="openPopupFalse"
           :openPopupTrue="openPopupTrue"
           :openSuccessPopup="openSuccessPopup"
           :openFailedPopup="openFailedPopup"
           @selectAnswer='handelAnswerSelect' />
 
-        <span v-if="steps[index].nextLabel" class="next-label">Next Up: {{steps[index].nextLabel}}</span>
+        <span v-if="steps[index].nextType != 'cards' && steps[index].nextLabel" class="next-label">Next Up: {{steps[index].nextLabel}}</span>
       </div>
     </vue-good-wizard>
   </div>
@@ -102,6 +106,7 @@ export default {
 
   data () {
     return {
+      enabledSelection: false,
       previousQuestionType: null,
       isAnswerCorrect: null,
       openPopupFalse: false,
@@ -117,6 +122,7 @@ export default {
 
     events.$on('nextSlide', () => {
       this.checkModuleComplete()
+      this.enableSelected = false
       this.isQuestion = true;
       this.isAnswerCorrect = null;
       this.openPopupFalse = false;
@@ -157,8 +163,9 @@ export default {
           label: q.text,
           slot: q.id,
           type: this.curse.questions[index].type,
-          options: {nextDisabled: this.curse.questions[index] ? (this.curse.questions[index].type === 'icons' || this.curse.questions[index].type === 'cards' || this.curse.questions[index].type === 'calc'): false},
-          nextLabel: this.curse.questions[index + 1] ? this.curse.questions[index + 1].text : null
+          options: {nextDisabled: this.curse.questions[index] ? (this.curse.questions[index].type === 'icons' || this.curse.questions[index].type === 'cards' || this.curse.questions[index].type === 'calc' || this.curse.questions[index].type === 'mouth'): false},
+          nextLabel: this.curse.questions[index + 1] ? this.curse.questions[index + 1].text : null,
+          nextType: this.curse.questions[index + 1] ? this.curse.questions[index + 1].type : null,
         }
       })
     }
@@ -188,7 +195,8 @@ export default {
         let currentQuestionType = this.steps[page].type
 
         if (currentQuestionType === "calc") {
-          AudioManager.playAudio('first_question_for_calc', this.$store.state.gender)
+          this.enabledSelection = false
+          AudioManager.playAudio('first_question_for_calc', this.$store.state.gender, this.endedIntroAudio)
         }
       }      
     },
@@ -199,20 +207,28 @@ export default {
         let currentQuestionType = this.steps[page].type
         let nextQuestionType = this.steps[nextPage].type
 
+        this.enabledSelection = true
         if (currentQuestionType === nextQuestionType) {
           return
         }
 
         if (nextQuestionType === "icons") {
-          AudioManager.playAudio('first_question_for_icons', this.$store.state.gender)
+          this.enabledSelection = false 
+          AudioManager.playAudio('first_question_for_icons', this.$store.state.gender, this.endedIntroAudio)
         } else if (nextQuestionType === "cards") {
-          AudioManager.playAudio('first_question_for_cards', this.$store.state.gender)
+          this.enabledSelection = false
+          AudioManager.playAudio('first_question_for_cards', this.$store.state.gender, this.endedIntroAudio)
         } 
       }
     },
 
+    endedIntroAudio () {
+      this.enabledSelection = true
+    },
+
     nextClicked (currentPage) {
       if (this.isQuestion) return false
+      if (this.steps[currentPage].options.nextDisabled) return false
       if (this.isAnswerCorrect !== null) {
 
         let page = this.$refs.wizard.currentStep
@@ -452,7 +468,7 @@ export default {
       .wizard__next,
       .final-step {
         position: fixed;
-        bottom: 0;
+        bottom: 30px;
         left: 50%;
         transform: translateX(-50%);
         font-family: 'Zilla Slab';
@@ -483,7 +499,7 @@ export default {
 
 .next-label {
   position: fixed;
-  bottom: 15%;
+  bottom: 20px;
   left: 50%;
   transform: translateX(-50%);
   width: 90%;

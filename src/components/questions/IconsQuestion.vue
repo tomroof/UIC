@@ -22,7 +22,7 @@ import Popup from '@/components/Popup'
 import { events } from '@/helpers/events'
 
   export default {
-    props: ['question', 'index', 'openPopupFalse', 'openPopupTrue', 'isQuestion'],
+    props: ['question', 'index', 'openPopupFalse', 'openPopupTrue', 'isQuestion', 'enabledSelection'],
     components: {
       BaseQuestion,
       AnswerIconCard,
@@ -70,6 +70,8 @@ import { events } from '@/helpers/events'
       },
 
       handleAnswerClick (answer) {
+        if (!this.enabledSelection) return
+          
         this.$emit('isQuestionHandler', false)
         this.dropActiveAnswers()
         this.questionCard.answers.find((a) => a.text === answer.text).selected = true
