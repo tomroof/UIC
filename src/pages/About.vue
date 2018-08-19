@@ -2,6 +2,7 @@
   <NavigationLayout :back="true" :menu="true">
     <div class="image">
       <img src="@/assets/uic-school-front.jpg" alt="">
+      <div class="overlay"></div>
     </div>
 
     <div class="inner">
@@ -43,12 +44,18 @@ export default {
 }
 
 .image {
-  position: fixed;
+  position: absolute;
   top: -20px;
-  left: 0;
-  width: 100%;
-  padding-bottom: 20px;
-
+  left: 0px;
+  .overlay {
+    background-image: linear-gradient(to bottom, black, transparent);
+    opacity: 0.5;
+    position: absolute;
+    left: 0;
+    width: 100%;
+    top: 0;
+    height: 100%;
+  }
   img {
     display: block;
     width: 100%;
@@ -57,25 +64,31 @@ export default {
 
 .inner {
   max-width: 375px;
-  padding: 0 20px;
+  padding: 0 10px;
   margin: 0 auto;
 
   h1 {
-    margin-top: 220px;
-    font-family: 'Lato', sans-serif;
-    font-size: 25px;
+    margin-top: 240px;
+    font-family: 'ZillaSlab-SemiBold', sans-serif;
+    font-size: 26px;
     color: #FFFFFF;
-    letter-spacing: 0;
-    max-width: 80%;
-    font-weight: 300;
+    letter-spacing: 0.1;
   }
   h4 {
-    padding: 10px 0;
+    padding: 20px 0;
     color: #ffffff;
+    font-weight: 300;
+    letter-spacing: 0.5px;
   }
   p {
-    padding: 10px 0;
+    font-weight: 100;
+    font-size: 16px;
+    letter-spacing: 0.5px;
+    line-height: 24px;
+    font-family: 'Zilla Slab', sans-serif;
+    padding: 0px 0;
     color: #ffffff;
+    opacity: 0.7;
   }
   a {
     color: #ffffff;
