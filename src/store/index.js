@@ -17,6 +17,7 @@ export default new Vuex.Store({
     character: '/static/img/character-girl-4.0b3adca.png',
     points: 0,
     topic: 0,
+    question: 0,
     achievements: [
       {
         id: 1,
@@ -171,6 +172,10 @@ export default new Vuex.Store({
 
     setTopic(state, topic) {
       state.topic = topic
+    },
+
+    setQuestion(state, question) {
+      state.question = question
     },
 
     addPoints(state, point) {

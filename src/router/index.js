@@ -14,6 +14,7 @@ import Questions from '@/pages/Questions'
 import Account from '@/pages/Account'
 import  Course from '@/pages/Course'
 import About from '@/pages/About'
+import Brush from '@/pages/Brush'
 import Team from '@/pages/Team'
 import Article from '@/pages/Article'
 import Code from '@/pages/Code'
@@ -83,6 +84,11 @@ export default new Router({
       path: '/account',
       name: 'Account',
       component: Account
+    },
+    {
+      path: '/brush',
+      name: 'Brush',
+      component: Brush
     },
     {
       path: '/course/:url_prefix',

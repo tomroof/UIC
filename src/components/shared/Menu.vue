@@ -7,17 +7,12 @@
         @closeClick="$emit('closeClick')"/>
       <base-card @click="goToRoute('/courses')">
         <img class="card-photo" src="@/assets/curses-img.jpg" />
-        <div class="text">Courses</div>
+        <div class="text">Topics</div>
       </base-card>
 
       <base-card @click="goToRoute('/brush')">
         <img class="card-photo" src="@/assets/brush-timer-img.jpg" />
         <div class="text">Brush Timer</div>
-      </base-card>
-
-      <base-card @click="goToRoute('/article')">
-        <img class="card-photo" src="@/assets/articles-img.jpg" />
-        <div class="text">Articles</div>
       </base-card>
 
       <div class="cards-row">
@@ -26,7 +21,7 @@
             :style="{ backgroundImage: `url(${$store.state.character})` }"
           >
           </div>
-          <div class="text">Account</div>
+          <div class="text">Profile</div>
         </base-card>
 
         <base-card @click="goToRoute('/about')">

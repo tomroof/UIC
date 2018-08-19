@@ -24,8 +24,7 @@
 import NavigationLayout from '@/layouts/NavigationLayout'
 
 export default {
-  name: 'Account',
-
+  name: 'Brush',
   components: {
     NavigationLayout
   }

@@ -118,6 +118,15 @@ export default {
   },
 
   mounted() {
+
+    // Check saved topic and question and move that question.
+    var savedTopic = this.$store.state.topic
+    var savedQuestion = parseInt(this.$store.state.question)
+
+    if (savedTopic !== null && savedTopic === this.curseId && savedQuestion !== null) {
+      this.checkAudioPlay(savedQuestion - 1)
+      this.$refs.wizard.goTo(savedQuestion)
+    }
     this.$store.commit('setTopic', this.curseId)
 
     events.$on('nextSlide', () => {
@@ -175,6 +184,11 @@ export default {
     checkModuleComplete () {
       if (this.$refs.wizard != null) {
         let page = this.$refs.wizard.currentStep
+
+        // Save completed question id in global.
+        this.$store.commit('setQuestion', page + 1)
+
+        // Check last page.
         if (page < this.steps.length - 1 && this.steps[page].type !== null) {
           let currentQuestionType = this.steps[page].type
           let nextQuestionType = this.steps[page + 1].type
@@ -192,12 +206,7 @@ export default {
     checkNextPageAudio () {
       if (this.$refs.wizard !== null) {
         let page = this.$refs.wizard.currentStep
-        let currentQuestionType = this.steps[page].type
-
-        if (currentQuestionType === "calc") {
-          this.enabledSelection = false
-          AudioManager.playAudio('first_question_for_calc', this.$store.state.gender, this.endedIntroAudio)
-        }
+        this.checkAudioPlay(page)
       }      
     },
   
@@ -208,9 +217,10 @@ export default {
         let nextQuestionType = this.steps[nextPage].type
 
         this.enabledSelection = true
-        if (currentQuestionType === nextQuestionType) {
+        if (currentQuestionType === null || currentQuestionType === nextQuestionType) {
           return
         }
+
 
         if (nextQuestionType === "icons") {
           this.enabledSelection = false 
@@ -218,7 +228,10 @@ export default {
         } else if (nextQuestionType === "cards") {
           this.enabledSelection = false
           AudioManager.playAudio('first_question_for_cards', this.$store.state.gender, this.endedIntroAudio)
-        } 
+        } else if (nextQuestionType === "calc") {
+          this.enabledSelection = false
+          AudioManager.playAudio('first_question_for_calc', this.$store.state.gender, this.endedIntroAudio)
+        }
       }
     },
 
