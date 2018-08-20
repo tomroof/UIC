@@ -43,6 +43,7 @@
 <script>
 import NavigationLayout from '@/layouts/NavigationLayout'
 import { mapGetters } from 'vuex'
+import CourseData from '@/data/courseSample'
 
 export default {
   computed: {
@@ -63,7 +64,8 @@ export default {
     },
 
     playCourse () {
-      this.$router.push('/course/' + this.$route.params.url_prefix + "/" + this.course.active_page)
+      let questionTitle = CourseData.questions[this.course.active_page].url_prefix
+      this.$router.push('/course/' + this.$route.params.url_prefix + "/" + questionTitle + "/" + this.course.active_page)
     }
   },
   components: {

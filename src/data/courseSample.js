@@ -5,6 +5,7 @@ export default {
       text: 'What’s inside your mouth?',
       id: '1',
       type: 'video',
+      url_prefix: 'what-is-inside-your-mouth',
       boy_video_link: 'module1-male.mp4',
       boy_video_poster: 'module1-cover.jpg',
       girl_video_link: 'module1-female.mp4',
@@ -14,6 +15,7 @@ export default {
       text: 'How to stop the cavity monsters.',
       id: '2',
       type: 'video',
+      url_prefix: 'how-to-stop-the-cavity-monsters',
       boy_video_link: 'module3-male.mp4',
       boy_video_poster: 'module3-cover.jpg',
       girl_video_link: 'module3-female.mp4',
@@ -23,6 +25,7 @@ export default {
       text: 'Brushing away the cavity monsters!',
       id: '3',
       type: 'video',
+      url_prefix: 'brushing-away-the-cavity-monsters',
       boy_video_link: 'module4-male.mp4',
       boy_video_poster: 'module4-cover.jpg',
       girl_video_link: 'module4-female.mp4',
@@ -32,6 +35,7 @@ export default {
       text: 'Cavity Math instructions.',
       id: '4',
       type: 'video',
+      url_prefix: 'cavity-math-instructions',
       boy_video_link: 'module5-male.mp4',
       boy_video_poster: 'module5-cover.jpg',
       girl_video_link: 'module5-female.mp4',
@@ -42,6 +46,7 @@ export default {
       desc: '',
       id: '5',
       type: 'icons',
+      url_prefix: 'how-do-we-stop-the-cavity-monsters',
       answers: [
         {
           text: 'Never brush my teeth',
@@ -60,6 +65,7 @@ export default {
       desc: '',
       id: '6',
       type: 'icons',
+      url_prefix: 'how-do-we-stop-the-cavity-monsters',
       answers: [
         {
           text: 'Wait until tomorrow',
@@ -78,6 +84,7 @@ export default {
       desc: '',
       id: '7',
       type: 'icons',
+      url_prefix: 'how-do-we-stop-the-cavity-monsters',
       answers: [
         {
           text: 'Brush for 2 minutes',
@@ -96,6 +103,7 @@ export default {
       desc: '',
       id: '8',
       type: 'icons',
+      url_prefix: 'how-do-we-stop-the-cavity-monsters',
       answers: [
         {
           text: 'Brush once a day',
@@ -113,6 +121,7 @@ export default {
       text: 'What snacks do my teeth love?',
       id: '9',
       type: 'video',
+      url_prefix: 'what-snacks-do-my-teeth-love',
       boy_video_link: 'module1-male.mp4',
       boy_video_poster: 'lonely-astronaut-cover.jpg',
       girl_video_link: 'module1-male.mp4',
@@ -123,6 +132,7 @@ export default {
       desc: 'Click to find out.',
       id: '10',
       type: 'cards',
+      url_prefix: 'good-for-me',
       answers: [
         {
           text: 'Apple',
@@ -141,6 +151,7 @@ export default {
       desc: 'Click to find out.',
       id: '11',
       type: 'cards',
+      url_prefix: 'good-for-me',
       answers: [
         {
           text: 'Carrots',
@@ -159,6 +170,7 @@ export default {
       desc: 'Click to find out.',
       id: '12',
       type: 'cards',
+      url_prefix: 'good-for-me',
       answers: [
         {
           text: 'Candy',
@@ -177,6 +189,7 @@ export default {
       desc: 'Click to find out.',
       id: '13',
       type: 'cards',
+      url_prefix: 'good-for-me',
       answers: [
         {
           text: 'Peanuts',
@@ -195,6 +208,7 @@ export default {
       desc: 'Click to find out.',
       id: '14',
       type: 'cards',
+      url_prefix: 'good-for-me',
       answers: [
         {
           text: 'Chips',
@@ -213,6 +227,7 @@ export default {
       desc: 'Click to find out.',
       id: '15',
       type: 'cards',
+      url_prefix: 'good-for-me',
       answers: [
         {
           text: 'Ice Cream',
@@ -231,6 +246,7 @@ export default {
       desc: 'Click to find out.',
       id: '16',
       type: 'cards',
+      url_prefix: 'good-for-me',
       answers: [
         {
           text: 'Milk',
@@ -249,6 +265,7 @@ export default {
       desc: 'Click to find out.',
       id: '17',
       type: 'cards',
+      url_prefix: 'good-for-me',
       answers: [
         {
           text: 'Cheese',
@@ -267,6 +284,7 @@ export default {
       desc: 'Click to find out.',
       id: '18',
       type: 'cards',
+      url_prefix: 'good-for-me',
       answers: [
         {
           text: 'Eggs',
@@ -285,6 +303,7 @@ export default {
       desc: 'Click to find out.',
       id: '19',
       type: 'cards',
+      url_prefix: 'good-for-me',
       answers: [
         {
           text: 'Cookie',
@@ -303,6 +322,7 @@ export default {
       desc: 'Click to find out.',
       id: '20',
       type: 'cards',
+      url_prefix: 'good-for-me',
       answers: [
         {
           text: 'Water',
@@ -321,6 +341,7 @@ export default {
       desc: 'Click to find out.',
       id: '21',
       type: 'cards',
+      url_prefix: 'good-for-me',
       answers: [
         {
           text: 'Soda',
@@ -339,6 +360,7 @@ export default {
       desc: 'Click to find out.',
       id: '22',
       type: 'cards',
+      url_prefix: 'good-for-me',
       answers: [
         {
           text: 'Juice',
@@ -357,6 +379,7 @@ export default {
       desc: 'Click to find out.',
       id: '23',
       type: 'cards',
+      url_prefix: 'good-for-me',
       answers: [
         {
           text: 'Sweetened Drinks',
@@ -375,6 +398,7 @@ export default {
       desc: 'Let\'s learn some cavity math!',
       id: '24',
       type: 'calc',
+      url_prefix: 'cavity-math',
       answers: [
         {
           text: 'Brushing twice a day',
@@ -393,6 +417,7 @@ export default {
       desc: 'Let\'s learn some cavity math!',
       id: '25',
       type: 'calc',
+      url_prefix: 'cavity-math',
       answers: [
         {
           text: 'Sugary snacks',
@@ -411,6 +436,7 @@ export default {
       desc: 'Let\'s learn some cavity math!',
       id: '26',
       type: 'calc',
+      url_prefix: 'cavity-math',
       answers: [
         {
           text: 'Brushing after each meal',
@@ -429,6 +455,7 @@ export default {
       desc: 'Let\'s learn some cavity math!',
       id: '27',
       type: 'calc',
+      url_prefix: 'cavity-math',
       answers: [
         {
           text: 'Healthy snacks',
@@ -447,6 +474,7 @@ export default {
       desc: 'Drag the icons to the mouth to find the answer.',
       id: '28',
       type: 'mouth',
+      url_prefix: 'happy-mouth',
       variants: [
         {
           value: 'soda',
@@ -465,6 +493,7 @@ export default {
       desc: 'Drag the icons to the mouth to find the answer.',
       id: '29',
       type: 'mouth',
+      url_prefix: 'happy-mouth',
       variants: [
         {
           value: 'brush',
@@ -483,6 +512,7 @@ export default {
       desc: 'Drag the icons to the mouth to find the answer.',
       id: '30',
       type: 'mouth',
+      url_prefix: 'happy-mouth',
       variants: [
         {
           value: 'chocolate',
@@ -501,6 +531,7 @@ export default {
       desc: 'Drag the icons to the mouth to find the answer.',
       id: '31',
       type: 'mouth',
+      url_prefix: 'happy-mouth',
       variants: [
         {
           value: 'floss',
@@ -519,6 +550,7 @@ export default {
       desc: 'Drag the icons to the mouth to find the answer.',
       id: '32',
       type: 'mouth',
+      url_prefix: 'happy-mouth',
       variants: [
         {
           value: 'toothpaste',
@@ -537,6 +569,7 @@ export default {
       desc: 'Drag the icons to the mouth to find the answer.',
       id: '33',
       type: 'mouth',
+      url_prefix: 'happy-mouth',
       variants: [
         {
           value: 'candy',
@@ -555,6 +588,7 @@ export default {
       desc: 'Drag the icons to the mouth to find the answer.',
       id: '34',
       type: 'mouth',
+      url_prefix: 'happy-mouth',
       variants: [
         {
           value: 'ice-cream',

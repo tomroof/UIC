@@ -91,7 +91,7 @@ export default new Router({
       component: Brush
     },
     {
-      path: '/course/:url_prefix/:id',
+      path: '/course/:url_prefix/:question_title/:id',
       name: 'Course',
       component: Course
     },

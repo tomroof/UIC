@@ -132,23 +132,10 @@ export default {
   },
 
   mounted() {
-    //Check saved topic and question and move that question.
-    // var savedTopic = this.$store.state.topic
-    // var savedQuestion = parseInt(this.$store.state.question)
-
-    // if (savedTopic !== null && savedTopic === this.curseId && savedQuestion !== null) {
-    //   this.$router.push('/course/' + this.$route.params.url_prefix + "/" + savedTopic)
-    //   return
-    //   // this.checkAudioPlay(savedQuestion - 1)
-    //   // this.$refs.wizard.goTo(savedQuestion)
-    // }
-
     let first_page = parseInt(this.$route.params.id)
     this.$store.commit('setTopic', this.curseId)
     
     if (this.$refs.wizard !== null) {
-      console.log('mounted')
-      console.log(this.$refs.wizard)
       this.$refs.wizard.goTo(first_page)
       if (first_page > 0) {
         this.checkAudioPlay(first_page)
@@ -172,7 +159,8 @@ export default {
           this.topicComplete()
         }
         else {
-          this.$router.push('/course/' + this.$route.params.url_prefix + "/" + (page + 1))
+
+          this.movePage(page + 1)
           this.initPage()  
         }        
       }      
@@ -206,6 +194,7 @@ export default {
         return {
           label: q.text,
           slot: q.id,
+          url_prefix: q.url_prefix,
           type: this.curse.questions[index].type,
           options: {nextDisabled: this.curse.questions[index] ? (this.curse.questions[index].type === 'icons' || this.curse.questions[index].type === 'cards' || this.curse.questions[index].type === 'calc' || this.curse.questions[index].type === 'mouth'): false},
           nextLabel: this.curse.questions[index + 1] ? this.curse.questions[index + 1].text : null,
@@ -223,8 +212,6 @@ export default {
       this.openPopupFalse = false;
       this.openPopupTrue = false;
       if (this.$refs.wizard !== null) {
-        console.log('initPage')
-        console.log(this.$refs.wizard)
         this.$refs.wizard.goTo(parseInt(this.$route.params.id))  
       }
       
@@ -254,7 +241,7 @@ export default {
     },
 
     checkAudioPlay (page) {
-      if (page < this.steps.length - 1) {
+      if (page > 0 && page < this.steps.length - 1) {
         let prevPage = page - 1
         let prevType = this.steps[prevPage].type
         let currentType = this.steps[page].type
@@ -327,7 +314,7 @@ export default {
       if (this.steps.length - 1 === currentPage) {
         this.topicComplete()
       } else {
-        this.$router.push('/course/' + this.$route.params.url_prefix + "/" + (currentPage + 1))
+        this.movePage(currentPage + 1)
         return true //return false if you want to prevent moving to next page
       }
     },
@@ -346,6 +333,11 @@ export default {
       this.$store.commit('updateCoursePage', { id: this.curseId, page: 0})
       this.$store.commit('updateCourseProgress', { id: this.curseId, currentProgress: 100 })
       this.$router.push('/congrats/2')
+    },
+
+    movePage (page) {
+      let questionTitle = this.steps[page].url_prefix
+      this.$router.push('/course/' + this.$route.params.url_prefix + "/" + questionTitle +  "/" + page)
     },
 
     checkAchievement () {
