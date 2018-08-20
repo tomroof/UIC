@@ -146,8 +146,9 @@ export default {
     let first_page = parseInt(this.$route.params.id)
     this.$store.commit('setTopic', this.curseId)
     
-    if (this.$refs.wizard) {
-      console.log("mounted")
+    if (this.$refs.wizard !== null) {
+      console.log('mounted')
+      console.log(this.$refs.wizard)
       this.$refs.wizard.goTo(first_page)
       if (first_page > 0) {
         this.checkAudioPlay(first_page)
@@ -221,8 +222,12 @@ export default {
       this.isAnswerCorrect = null;
       this.openPopupFalse = false;
       this.openPopupTrue = false;
-      console.log('initPage')
-      this.$refs.wizard.goTo(parseInt(this.$route.params.id))
+      if (this.$refs.wizard !== null) {
+        console.log('initPage')
+        console.log(this.$refs.wizard)
+        this.$refs.wizard.goTo(parseInt(this.$route.params.id))  
+      }
+      
     },
 
     checkModuleComplete () {
