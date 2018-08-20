@@ -1,8 +1,8 @@
 {
-  "name": "u1c",
+  "name": "healthystarts",
   "version": "1.0.0",
-  "description": "some project",
-  "author": "Ruslan <chunkey95@gmail.com>",
+  "description": "Healthy Starts Today",
+  "author": "Tom Roof <tcroof@gmail.com>",
   "private": true,
   "scripts": {
     "dev": "webpack-dev-server --inline --progress --config build/webpack.dev.conf.js",
