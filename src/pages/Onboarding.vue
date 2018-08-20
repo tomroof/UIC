@@ -6,8 +6,7 @@
       </div>
 
       <div class="content">
-        <h1>Welcome</h1>
-        <p>University of Illinois at Chicago College of Dentistry presents a game for you to learn better oral hygiene.</p>
+        <p>A fun new way to learn how to take better care of your teeth.</p>
         <div class="button-wrapper">
           <ComponentButton @click="navigateToSelectCharacter">Get Started</ComponentButton>
         </div>
@@ -31,9 +30,20 @@ export default {
   components: {
     ComponentButton
   },
+
+  mounted () {
+    let character = this.$store.state.character    
+    let age = this.$store.state.age
+    let team = this.$store.state.team
+
+    if (character !== null && age !== null && team !== null) {
+      this.$router.push('/courses')  
+    }    
+  },
+
   data () {
     return {
-      showCookieBar: true,
+      showCookieBar: false,
     }
   },
   methods: {
@@ -154,33 +164,8 @@ p {
     }
 }
 
-@media screen and (max-width : 375px) {
-
-  .content {
-    margin-top: 30px;
-  }
-
-  .button-wrapper {
-    margin-top: 10px;
-  }
-}
 
 @media screen and (max-width : 320px) {
-    .cards {
-      padding-top: 15px;
-      img {
-        width: 170px;
-      }
-    }
-
-    h1 {
-      font-size: 24px;
-    }
-
-    p {
-      font-size: 18px;
-      line-height: 23px;
-    }
     .cookie-bar .close-button img {
       top: 15px;        
     }

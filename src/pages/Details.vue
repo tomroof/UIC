@@ -4,7 +4,7 @@
       <div class="course_wrapper">
         <img src='@/assets/course_detail.png' class="background">
         <img src="@/assets/heart.png" class="heart">
-        <h1>{{ courseName }}</h1>
+        <h1>{{ course.name }}</h1>
         <div class="learn-title">Learn how to stop the cavity monsters!</div>
         <div class="progress-bar">
           <div class="progress-background-bar"></div>
@@ -47,13 +47,13 @@ import { mapGetters } from 'vuex'
 export default {
   computed: {
     ...mapGetters(['getCourses']),
-    courseName () {
+    course () {
       for (var i = 0; i < this.getCourses.length; i++) {
         var q = this.getCourses[i];
         if (q.url_prefix === this.$route.params.url_prefix) {
-          return q.name
+          return q
         }
-      }
+      } 
     }
   },
 
@@ -63,7 +63,7 @@ export default {
     },
 
     playCourse () {
-      this.$router.push('/course/' + this.$route.params.url_prefix)
+      this.$router.push('/course/' + this.$route.params.url_prefix + "/" + this.course.active_page)
     }
   },
   components: {

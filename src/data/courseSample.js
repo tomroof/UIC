@@ -38,8 +38,8 @@ export default {
       girl_video_poster: 'module5-cover.jpg'
     },
     {
-      text: 'Stop the cavity monster.',
-      desc: 'How do we stop the cavity monsters?',
+      text: 'How do we stop the cavity monsters?',
+      desc: '',
       id: '5',
       type: 'icons',
       answers: [
@@ -56,8 +56,8 @@ export default {
       ]
     },
     {
-      text: 'Stop the cavity monster.',
-      desc: 'How do we stop the cavity monsters?',
+      text: 'How do we stop the cavity monsters?',
+      desc: '',
       id: '6',
       type: 'icons',
       answers: [
@@ -74,8 +74,8 @@ export default {
       ]
     },
     {
-      text: 'Stop the cavity monster.',
-      desc: 'How do we stop the cavity monsters?',
+      text: 'How do we stop the cavity monsters?',
+      desc: '',
       id: '7',
       type: 'icons',
       answers: [
@@ -92,8 +92,8 @@ export default {
       ]
     },
     {
-      text: 'Stop the cavity monster.',
-      desc: 'How do we stop the cavity monsters?',
+      text: 'How do we stop the cavity monsters?',
+      desc: '',
       id: '8',
       type: 'icons',
       answers: [
@@ -372,7 +372,7 @@ export default {
     },
     {
       text: 'Cavity Math',
-      desc: 'Arrange the icons to find the answer.',
+      desc: 'Let\'s learn some cavity math!',
       id: '24',
       type: 'calc',
       answers: [
@@ -390,7 +390,7 @@ export default {
     },
     {
       text: 'Cavity Math',
-      desc: 'Arrange the icons to find the answer.',
+      desc: 'Let\'s learn some cavity math!',
       id: '25',
       type: 'calc',
       answers: [
@@ -408,7 +408,7 @@ export default {
     },
     {
       text: 'Cavity Math',
-      desc: 'Arrange the icons to find the answer.',
+      desc: 'Let\'s learn some cavity math!',
       id: '26',
       type: 'calc',
       answers: [
@@ -426,7 +426,7 @@ export default {
     },
     {
       text: 'Cavity Math',
-      desc: 'Arrange the icons to find the answer.',
+      desc: 'Let\'s learn some cavity math!',
       id: '27',
       type: 'calc',
       answers: [

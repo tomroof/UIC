@@ -3,8 +3,8 @@
     <h1>My Dental Office</h1>
     <div class="content team">
       <base-card v-for="(item, index) in team" :key="item.title"
-        :class="getButtonClassName(index + 1)"
-        @click="handleButtonClick(index + 1)">
+        :class="getButtonClassName(item.id)"
+        @click="handleButtonClick(item.id)">
         <div :class="'image image-' + (index+1)">
           <img class="card-team-photo" :src="require(`@/assets/${item.img}`)" />
         </div>
@@ -38,7 +38,10 @@ export default {
     },
     continueButtonClick () {
       if (this.selected === null) return
-        this.$router.push('/congrats/1')
+      this.$store.commit('setTeam', this.selected)
+
+      this.$store.commit('completeArchievement', 1)
+      this.$router.push('/congrats/1')
     }
   },
   components: {

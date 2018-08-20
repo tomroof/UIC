@@ -45,6 +45,11 @@ export default {
     },
     continueButtonClick () {
       if (this.selected === null) return
+      var age = 0;
+      if (this.selected === 1) age = 8
+      else age = 9
+        
+      this.$store.commit('setAge', age)
       this.$router.push('/select-team')
     }
   },

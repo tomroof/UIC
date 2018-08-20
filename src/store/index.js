@@ -14,13 +14,23 @@ export default new Vuex.Store({
   plugins: [vuexPersist.plugin],
   state: {
     gender: null,
-    character: '/static/img/character-girl-4.0b3adca.png',
+    character: null,
+    age: null,
+    team: null,
     points: 0,
     topic: 0,
     question: 0,
     achievements: [
       {
         id: 1,
+        name: 'Profile Completed',
+        goal: 'Completing Profile',
+        image: 'achieve_img_1.svg',
+        badge_image: 'achieve_img_1_badge.svg',
+        completed: false
+      },
+      {
+        id: 2,
         name: 'Cavity Monster Hero',
         goal: 'Completing Cavity Prevention',
         image: 'achieve_img_1.svg',
@@ -28,7 +38,7 @@ export default new Vuex.Store({
         completed: false
       },
       {
-        id: 2,
+        id: 3,
         name: 'I Know My Teeth',
         goal: 'Completing Baby Teeth',
         image: 'achieve_img_2.svg',
@@ -36,7 +46,7 @@ export default new Vuex.Store({
         completed: false
       },
       {
-        id: 3,
+        id: 4,
         name: 'Brushing Selfie',
         goal: 'Take a selfie',
         image: 'achieve_img_3.svg',
@@ -44,7 +54,7 @@ export default new Vuex.Store({
         completed: false
       },
       {
-        id: 4,
+        id: 5,
         name: 'The Achiever',
         goal: 'Logged in everyday for a month',
         image: 'achieve_img_4.svg',
@@ -52,7 +62,7 @@ export default new Vuex.Store({
         completed: false
       },
       {
-        id: 5,
+        id: 6,
         name: 'Cavity Math',
         goal: 'Logged in everyday for a month',
         image: 'achieve_img_4.svg',
@@ -60,7 +70,7 @@ export default new Vuex.Store({
         completed: false
       },
       {
-        id: 6,
+        id: 7,
         name: 'Sugar',
         goal: 'Logged in everyday for a month',
         image: 'achieve_img_4.svg',
@@ -68,7 +78,7 @@ export default new Vuex.Store({
         completed: false
       },
       {
-        id: 7,
+        id: 8,
         name: 'Memory',
         goal: 'Logged in everyday for a month',
         image: 'achieve_img_4.svg',
@@ -76,7 +86,7 @@ export default new Vuex.Store({
         completed: false
       },
       {
-        id: 8,
+        id: 9,
         name: 'Matching',
         goal: 'Logged in everyday for a month',
         image: 'achieve_img_4.svg',
@@ -93,7 +103,8 @@ export default new Vuex.Store({
         id: 1,
         url_prefix: 'cavity-prevention',
         active: true,
-        progress: 0
+        progress: 0,
+        active_page: 0
       },
       {
         name: 'Baby Teeth',
@@ -102,7 +113,8 @@ export default new Vuex.Store({
         id: 2,
         url_prefix: 'baby-teeth',
         active: false,
-        progress: 0
+        progress: 0,
+        active_page: 0
       },
       {
         name: 'Proper Brushing',
@@ -111,7 +123,8 @@ export default new Vuex.Store({
         id: 3,
         url_prefix: 'proper-brushing',
         active: false,
-        progress: 0
+        progress: 0,
+        active_page: 0
       },
       {
         name: 'Prenatal Oral Care',
@@ -120,7 +133,8 @@ export default new Vuex.Store({
         id: 4,
         url_prefix: 'prenatal-oral-care',
         active: false,
-        progress: 0
+        progress: 0,
+        active_page: 0
       },
       {
         name: 'Cavity Math',
@@ -129,7 +143,8 @@ export default new Vuex.Store({
         id: 5,
         url_prefix: 'cavity-math',
         active: false,
-        progress: 0
+        progress: 0,
+        active_page: 0
       },
       {
         name: 'Sugar',
@@ -138,7 +153,8 @@ export default new Vuex.Store({
         id: 6,
         url_prefix: 'sugar',
         active: false,
-        progress: 0
+        progress: 0,
+        active_page: 0
       },
       {
         name: 'Memory',
@@ -147,7 +163,8 @@ export default new Vuex.Store({
         id: 7,
         url_prefix: 'memory',
         active: false,
-        progress: 0
+        progress: 0,
+        active_page: 0
       },
       {
         name: 'Matching',
@@ -156,7 +173,8 @@ export default new Vuex.Store({
         id: 8,
         url_prefix: 'matching',
         active: false,
-        progress: 0
+        progress: 0,
+        active_page: 0
       }
     ]
   },
@@ -170,16 +188,26 @@ export default new Vuex.Store({
       state.gender = gender
     },
 
+    setAge(state, age) {
+      state.age = age
+    },
+
+    setTeam(state, team) {
+      state.team = team
+    },
+
     setTopic(state, topic) {
       state.topic = topic
     },
 
-    setQuestion(state, question) {
-      state.question = question
-    },
-
     addPoints(state, point) {
       state.points += point
+    },
+
+    updateCoursePage(state, payload) {
+      const { id, page } = payload
+      console.log("updateCoursePage = ", page)      
+      state.courses.find(item => item.id === +id).active_page = page
     },
 
     updateCourseProgress(state, payload) {

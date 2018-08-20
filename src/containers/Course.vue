@@ -85,14 +85,41 @@ export default {
     clickRewardContinue: Boolean
   },
 
+  data () {
+    return {
+      enabledSelection: false,
+      showRewardCard: false,
+      previousQuestionType: null,
+      isAnswerCorrect: null,
+      openPopupFalse: false,
+      openPopupTrue: false,
+      isQuestion: false,
+      currentProgress: 0,
+      buttonText: 'Continue'
+    }
+  },
+
   watch: {
     clickRewardContinue:{
       handler: function (newVal) {
         if (newVal === true) {
-          this.checkNextPageAudio()
+          let page = parseInt(this.$route.params.id)
+          let currentQuestionType = this.steps[page].type
+          if (currentQuestionType === 'calc') {
+            this.checkAudioPlay(page)
+          }
         }
       },
       immediate: true
+    },
+    '$route' (to, from) {
+      this.initPage()
+      let page = parseInt(this.$route.params.id)
+      this.$store.commit('updateCoursePage', { id: this.curseId, page: page})
+
+      if (!this.showRewardCard) {
+        this.checkAudioPlay(page)  
+      }      
     }
   },
 
@@ -104,30 +131,25 @@ export default {
     MouthQuestion
   },
 
-  data () {
-    return {
-      enabledSelection: false,
-      previousQuestionType: null,
-      isAnswerCorrect: null,
-      openPopupFalse: false,
-      openPopupTrue: false,
-      isQuestion: false,
-      currentProgress: 0,
-      buttonText: 'Continue'
-    }
-  },
-
   mounted() {
+    //Check saved topic and question and move that question.
+    // var savedTopic = this.$store.state.topic
+    // var savedQuestion = parseInt(this.$store.state.question)
 
-    // Check saved topic and question and move that question.
-    var savedTopic = this.$store.state.topic
-    var savedQuestion = parseInt(this.$store.state.question)
+    // if (savedTopic !== null && savedTopic === this.curseId && savedQuestion !== null) {
+    //   this.$router.push('/course/' + this.$route.params.url_prefix + "/" + savedTopic)
+    //   return
+    //   // this.checkAudioPlay(savedQuestion - 1)
+    //   // this.$refs.wizard.goTo(savedQuestion)
+    // }
 
-    if (savedTopic !== null && savedTopic === this.curseId && savedQuestion !== null) {
-      this.checkAudioPlay(savedQuestion - 1)
-      this.$refs.wizard.goTo(savedQuestion)
-    }
+    let first_page = parseInt(this.$route.params.id)
     this.$store.commit('setTopic', this.curseId)
+    this.$refs.wizard.goTo(first_page)
+    if (first_page > 0) {
+      this.checkAudioPlay(first_page)
+      this.calcProgress(first_page)
+    }
 
     events.$on('nextSlide', () => {
       this.checkModuleComplete()
@@ -139,7 +161,15 @@ export default {
       this.checkCompleteCourse()
 
       if (this.$refs.wizard) {
-        this.$refs.wizard.goNext(true);  
+        // this.$refs.wizard.goNext(true);  
+        let page = this.$refs.wizard.currentStep
+        if (this.steps.length - 1 === page) {
+          this.$router.push('/congrats/2')
+        }
+        else {
+          this.$router.push('/course/' + this.$route.params.url_prefix + "/" + (page + 1))
+          this.initPage()  
+        }        
       }      
     })
 
@@ -181,54 +211,57 @@ export default {
   },
 
   methods: {
+    initPage () {
+      this.isQuestion = true;
+      this.previousQuestionType = null;
+      this.isAnswerCorrect = null;
+      this.openPopupFalse = false;
+      this.openPopupTrue = false;
+      this.$refs.wizard.goTo(parseInt(this.$route.params.id))
+    },
+
     checkModuleComplete () {
-      if (this.$refs.wizard != null) {
-        let page = this.$refs.wizard.currentStep
+      let page = parseInt(this.$route.params.id)
+
+      // Check last page.
+      if (page < this.steps.length - 1 && this.steps[page].type !== null) {
+        let currentQuestionType = this.steps[page].type
+        let nextQuestionType = this.steps[page + 1].type
+        if (currentQuestionType != null && nextQuestionType != currentQuestionType) {
+          if (currentQuestionType === "icons" || currentQuestionType === "cards" || currentQuestionType === "calc") { 
+            this.showRewardCard = true
+            this.$emit('moduleCompleted')
+            return
+          }        
+        }
+
+        this.showRewardCard = false
 
         // Save completed question id in global.
-        this.$store.commit('setQuestion', page + 1)
-
-        // Check last page.
-        if (page < this.steps.length - 1 && this.steps[page].type !== null) {
-          let currentQuestionType = this.steps[page].type
-          let nextQuestionType = this.steps[page + 1].type
-          if (currentQuestionType != null && nextQuestionType != currentQuestionType) {
-            if (currentQuestionType === "icons" || currentQuestionType === "cards" || currentQuestionType === "calc") { 
-              this.$emit('moduleCompleted')
-              return
-            }        
-          }
-          this.checkAudioPlay(page)        
-        }        
-      }      
+        this.$store.commit('updateCoursePage', { id: this.curseId, page: (page + 1)})
+        // this.checkAudioPlay(page)        
+      }        
     },
 
-    checkNextPageAudio () {
-      if (this.$refs.wizard !== null) {
-        let page = this.$refs.wizard.currentStep
-        this.checkAudioPlay(page)
-      }      
-    },
-  
     checkAudioPlay (page) {
       if (page < this.steps.length - 1) {
-        let nextPage = page + 1
-        let currentQuestionType = this.steps[page].type
-        let nextQuestionType = this.steps[nextPage].type
+        let prevPage = page - 1
+        let prevType = this.steps[prevPage].type
+        let currentType = this.steps[page].type
 
         this.enabledSelection = true
-        if (currentQuestionType === null || currentQuestionType === nextQuestionType) {
+        if (currentType === null || prevType === currentType) {
           return
         }
 
 
-        if (nextQuestionType === "icons") {
+        if (currentType === "icons") {
           this.enabledSelection = false 
           AudioManager.playAudio('first_question_for_icons', this.$store.state.gender, this.endedIntroAudio)
-        } else if (nextQuestionType === "cards") {
+        } else if (currentType === "cards") {
           this.enabledSelection = false
           AudioManager.playAudio('first_question_for_cards', this.$store.state.gender, this.endedIntroAudio)
-        } else if (nextQuestionType === "calc") {
+        } else if (currentType === "calc") {
           this.enabledSelection = false
           AudioManager.playAudio('first_question_for_calc', this.$store.state.gender, this.endedIntroAudio)
         }
@@ -282,21 +315,20 @@ export default {
       this.checkModuleComplete()
       this.calcProgress(currentPage)
       if (this.steps.length - 1 === currentPage) {
-        this.$router.push('/congrats/1')
+        this.$router.push('/congrats/2')
       } else {
+        this.$router.push('/course/' + this.$route.params.url_prefix + "/" + (currentPage + 1))
         return true //return false if you want to prevent moving to next page
       }
     },
 
     checkCompleteCourse () {
-      if (this.$refs.wizard != null) {
-        let currentPage = this.$refs.wizard.currentStep
-        this.calcProgress(currentPage)
-        
-        if (this.steps.length - 1 === currentPage) {
-          this.checkAchievement()
-          this.$router.push('/congrats/1')
-        }
+      let currentPage = parseInt(this.$route.params.id)
+      this.calcProgress(currentPage)
+      
+      if (this.steps.length - 1 === currentPage) {
+        this.checkAchievement()
+        this.$router.push('/congrats/2')
       }
     },
 
