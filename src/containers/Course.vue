@@ -145,10 +145,14 @@ export default {
 
     let first_page = parseInt(this.$route.params.id)
     this.$store.commit('setTopic', this.curseId)
-    this.$refs.wizard.goTo(first_page)
-    if (first_page > 0) {
-      this.checkAudioPlay(first_page)
-      this.calcProgress(first_page)
+    
+    if (this.$refs.wizard) {
+      console.log("mounted")
+      this.$refs.wizard.goTo(first_page)
+      if (first_page > 0) {
+        this.checkAudioPlay(first_page)
+        this.calcProgress(first_page)
+      }
     }
 
     events.$on('nextSlide', () => {
@@ -217,6 +221,7 @@ export default {
       this.isAnswerCorrect = null;
       this.openPopupFalse = false;
       this.openPopupTrue = false;
+      console.log('initPage')
       this.$refs.wizard.goTo(parseInt(this.$route.params.id))
     },
 
