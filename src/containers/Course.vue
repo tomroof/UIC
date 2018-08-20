@@ -164,7 +164,7 @@ export default {
         // this.$refs.wizard.goNext(true);  
         let page = this.$refs.wizard.currentStep
         if (this.steps.length - 1 === page) {
-          this.$router.push('/congrats/2')
+          this.topicComplete()
         }
         else {
           this.$router.push('/course/' + this.$route.params.url_prefix + "/" + (page + 1))
@@ -315,7 +315,7 @@ export default {
       this.checkModuleComplete()
       this.calcProgress(currentPage)
       if (this.steps.length - 1 === currentPage) {
-        this.$router.push('/congrats/2')
+        this.topicComplete()
       } else {
         this.$router.push('/course/' + this.$route.params.url_prefix + "/" + (currentPage + 1))
         return true //return false if you want to prevent moving to next page
@@ -327,9 +327,15 @@ export default {
       this.calcProgress(currentPage)
       
       if (this.steps.length - 1 === currentPage) {
-        this.checkAchievement()
-        this.$router.push('/congrats/2')
+        this.topicComplete()        
       }
+    },
+
+    topicComplete () {
+      this.checkAchievement()      
+      this.$store.commit('updateCoursePage', { id: this.curseId, page: 0})
+      this.$store.commit('updateCourseProgress', { id: this.curseId, currentProgress: 100 })
+      this.$router.push('/congrats/2')
     },
 
     checkAchievement () {

@@ -206,7 +206,6 @@ export default new Vuex.Store({
 
     updateCoursePage(state, payload) {
       const { id, page } = payload
-      console.log("updateCoursePage = ", page)      
       state.courses.find(item => item.id === +id).active_page = page
     },
 
