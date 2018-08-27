@@ -44,6 +44,7 @@
 import NavigationLayout from '@/layouts/NavigationLayout'
 import { mapGetters } from 'vuex'
 import CourseData from '@/data/courseSample'
+import AudioManager from '@/helpers/audioManager'
 
 export default {
   computed: {

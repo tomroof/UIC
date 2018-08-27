@@ -14,6 +14,7 @@
         <ComponentButton @click="continueButtonClick" :disabled="selected === null">Continue </ComponentButton>
       </div>
     </div>
+    <CongratsDialog v-if="showCongrateDialog" :id="1" isMobile="true" @continue="nextPage"></CongratsDialog>
   </NavigationLayout>
 </template>
 
@@ -22,36 +23,56 @@ import NavigationLayout from '@/layouts/NavigationLayout'
 import ComponentButton from '@/components/Button'
 import BaseCard from '@/components/cards/BaseCard'
 import selectATeam from '@/data/selectATeam'
+import CongratsDialog from '@/components/dialogs/CongratsDialog'
+import DeviceManager from '@/helpers/deviceManager'
+import AudioManager from '@/helpers/audioManager'
 
 export default {
+  components: {
+    BaseCard,
+    NavigationLayout,
+    ComponentButton,
+    CongratsDialog
+  },
+
   data () {
     return {
       selected: null,
+      showCongrateDialog: false
     }
   },
+
+  computed: {
+    team() {
+      return selectATeam
+    }
+  },
+
   methods: {
     getButtonClassName (number) {
       return ['card', number === this.selected ? 'card--selected' : '']
     },
+
     handleButtonClick (number) {
      this.selected = number
     },
+
+    nextPage () {
+      this.$router.push('/courses')
+    },
+
     continueButtonClick () {
       if (this.selected === null) return
       this.$store.commit('setTeam', this.selected)
-
       this.$store.commit('completeArchievement', 1)
-      this.$router.push('/congrats/1')
-    }
-  },
-  components: {
-    BaseCard,
-    NavigationLayout,
-    ComponentButton
-  },
-  computed: {
-    team() {
-      return selectATeam
+      AudioManager.playAudio('unlocked_badge', this.$store.state.gender)
+
+      if (DeviceManager.isMobile()) {
+        this.showCongrateDialog = true
+      }
+      else {
+        this.$router.push('/congrats/1')
+      }
     }
   }
 }
@@ -81,29 +102,29 @@ export default {
     margin: 7.5px;
     cursor: pointer;
     width: 100%;
+    display: flex;
+    align-items: center;
 
     .image {
-      display: flex;
-      flex-flow: row nowrap;
-      align-items: center;
+      width: 100px;
     }
 
     img {
       &.card-team-photo {
         display: block;
-        width: 100px;
-        height: 60px;
+        object-fit: cover;
+        height: auto;
+        max-width: 100px;
+        max-height: 100%;
       }
     }
     .title {
-      display: flex;
-      flex-flow: row nowrap;
-      align-items: center;
-
+      width: calc(100% - 100px);
       font-family: 'Zilla Slab';
-      font-size: 20px;
+      font-weight: 300;
+      font-size: 15px;
       color: #FFFFFF;
-      letter-spacing: 0;
+      letter-spacing: 1px;
       padding: 10px;
     }
   }

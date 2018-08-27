@@ -1,7 +1,7 @@
 <template>
   <div>
     <NavigationLayout :closeCourseButton="true" :menu="true">
-      <CourseContainer :curseId="curseId" :clickRewardContinue="clickRewardContinue" @moduleCompleted="moduleCompleted"></CourseContainer>
+      <CourseContainer :curseId="curseId" :clickRewardContinue="clickRewardContinue" @refreshPage="refreshPage" @moduleCompleted="moduleCompleted"></CourseContainer>
     </NavigationLayout>
     <RewardCard v-if="showRewardCard" @continue="rewardContinue"></RewardCard>
   </div>
@@ -47,6 +47,11 @@ export default {
   },
 
   methods: {
+    refreshPage () {
+      this.showRewardCard = false
+      this.clickRewardContinue = false
+    },
+
     moduleCompleted () {
       this.showRewardCard = true
       this.clickRewardContinue = false

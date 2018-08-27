@@ -60,6 +60,7 @@
         <span v-if="steps[index].nextType != 'cards' && steps[index].nextLabel" class="next-label">Next Up: {{steps[index].nextLabel}}</span>
       </div>
     </vue-good-wizard>
+    <ModuleStartDialog v-if="showModuleStartDialog" :title="moduleStartTitle" :audio="moduleStartAudio" @endedAudio="endedIntroAudio" @hide="hideModuleStartDialog"></ModuleStartDialog>
   </div>
 </template>
 
@@ -69,6 +70,7 @@ import VideoQuestion from '@/components/questions/VideoQuestion'
 import IconsQuestion from '@/components/questions/IconsQuestion'
 import CalcQuestion from '@/components/questions/CalcQuestion'
 import MouthQuestion from '@/components/questions/MouthQuestion'
+import ModuleStartDialog from '@/components/dialogs/ModuleStartDialog'
 
 // data
 import CourseData from '@/data/courseSample'
@@ -76,6 +78,7 @@ import CourseData from '@/data/courseSample'
 // events
 import { events } from '@/helpers/events'
 import AudioManager from '@/helpers/audioManager'
+import DeviceManager from '@/helpers/deviceManager'
 
 export default {
   name: 'CourseContainer',
@@ -95,7 +98,10 @@ export default {
       openPopupTrue: false,
       isQuestion: false,
       currentProgress: 0,
-      buttonText: 'Continue'
+      buttonText: 'Continue',
+      showModuleStartDialog: false,
+      moduleStartTitle: '',
+      moduleStartAudio: null
     }
   },
 
@@ -128,7 +134,8 @@ export default {
     IconsQuestion,
     VideoQuestion,
     CalcQuestion,
-    MouthQuestion
+    MouthQuestion,
+    ModuleStartDialog
   },
 
   mounted() {
@@ -251,18 +258,38 @@ export default {
           return
         }
 
-
-        if (currentType === "icons") {
-          this.enabledSelection = false 
-          AudioManager.playAudio('first_question_for_icons', this.$store.state.gender, this.endedIntroAudio)
-        } else if (currentType === "cards") {
-          this.enabledSelection = false
-          AudioManager.playAudio('first_question_for_cards', this.$store.state.gender, this.endedIntroAudio)
-        } else if (currentType === "calc") {
-          this.enabledSelection = false
-          AudioManager.playAudio('first_question_for_calc', this.$store.state.gender, this.endedIntroAudio)
+        if (DeviceManager.isMobile()) {
+          if (currentType === "icons") {
+            this.showModuleStartDialog = true
+            this.moduleStartTitle = this.steps[page].nextLabel
+            this.moduleStartAudio = "first_question_for_icons"
+          } else if (currentType === "cards") {
+            this.showModuleStartDialog = true
+            this.moduleStartTitle = this.steps[page].nextLabel
+            this.moduleStartAudio = "first_question_for_cards"
+          } else if (currentType === "calc") {
+            this.showModuleStartDialog = true
+            this.moduleStartTitle = this.steps[page].nextLabel
+            this.moduleStartAudio = "first_question_for_calc"
+          }
         }
+        else {
+          if (currentType === "icons") {
+            this.enabledSelection = false
+            AudioManager.playAudio('first_question_for_icons', this.$store.state.gender, this.endedIntroAudio)
+          } else if (currentType === "cards") {
+            this.enabledSelection = false
+            AudioManager.playAudio('first_question_for_cards', this.$store.state.gender, this.endedIntroAudio)
+          } else if (currentType === "calc") {
+            this.enabledSelection = false
+            AudioManager.playAudio('first_question_for_calc', this.$store.state.gender, this.endedIntroAudio)
+          }
+        }        
       }
+    },
+
+    hideModuleStartDialog () {
+      this.showModuleStartDialog = false
     },
 
     endedIntroAudio () {
@@ -332,6 +359,8 @@ export default {
       this.checkAchievement()      
       this.$store.commit('updateCoursePage', { id: this.curseId, page: 0})
       this.$store.commit('updateCourseProgress', { id: this.curseId, currentProgress: 100 })
+      
+      AudioManager.playAudio('unlocked_badge', this.$store.state.gender)
       this.$router.push('/congrats/2')
     },
 

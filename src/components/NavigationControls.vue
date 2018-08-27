@@ -7,8 +7,9 @@
       <div
         class="top"
         v-if="topImage"
-        :style="{ backgroundImage: `url(${topImage}` }"
-      />
+      >
+        <img :src="topImage">
+      </div>
 
       <img v-if="menu && !white" src="@/assets/big_dots.png" alt="" @click="$emit('menuClick')">
       <img class="share-img" v-if="white" src="@/assets/share.png" alt="">
@@ -112,6 +113,12 @@ export default {
   position: absolute;
   left: 50%;
   transform: translate(-50%, -25%);
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
 }
 
   

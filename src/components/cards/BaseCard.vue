@@ -14,7 +14,7 @@ export default {
 <style scoped lang="scss">
   .card {
     border: 2px solid rgba(0, 0, 0, 0);
-    height: 100%;
+    height: auto;
     background: rgba(46, 74, 110, 0.5);
     border-radius: 10px;
     box-shadow: 0 4px 6px 0 rgba(33,73,95,0.06);
