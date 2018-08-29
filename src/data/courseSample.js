@@ -122,10 +122,10 @@ export default {
       id: '9',
       type: 'video',
       url_prefix: 'what-snacks-do-my-teeth-love',
-      boy_video_link: 'module1-male.mp4',
-      boy_video_poster: 'lonely-astronaut-cover.jpg',
-      girl_video_link: 'module1-male.mp4',
-      girl_video_poster: 'lonely-astronaut-cover.jpg'
+      boy_video_link: 'module6-male.mp4',
+      boy_video_poster: 'module6-cover.jpg',
+      girl_video_link: 'module6-female.mp4',
+      girl_video_poster: 'module6-cover.jpg'
     },
     {
       text: 'Good for me or good for cavity monsters?',
