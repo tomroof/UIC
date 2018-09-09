@@ -43,6 +43,7 @@
           :index="index"
           :question="question"
           :enabledSelection="enabledSelection"
+          :openPopupFalse="openPopupFalse"
           :openPopupTrue="openPopupTrue"
           @selectAnswer='handelAnswerSelect' 
           @isQuestionHandler="isQuestionHandler" />
@@ -55,7 +56,8 @@
           :openPopupTrue="openPopupTrue"
           :openSuccessPopup="openSuccessPopup"
           :openFailedPopup="openFailedPopup"
-          @selectAnswer='handelAnswerSelect' />
+          @selectAnswer='handelAnswerSelect'
+          @isQuestionHandler="isQuestionHandler" />
 
         <span v-if="steps[index].nextType != 'cards' && steps[index].nextLabel" class="next-label">Next Up: {{steps[index].nextLabel}}</span>
       </div>
@@ -359,8 +361,6 @@ export default {
       this.checkAchievement()      
       this.$store.commit('updateCoursePage', { id: this.curseId, page: 0})
       this.$store.commit('updateCourseProgress', { id: this.curseId, currentProgress: 100 })
-      
-      AudioManager.playAudio('unlocked_badge', this.$store.state.gender)
       this.$router.push('/congrats/2')
     },
 

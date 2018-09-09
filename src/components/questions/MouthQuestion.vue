@@ -125,6 +125,7 @@
 
     mounted () {
       loadMouthAnimation()
+      this.$emit('isQuestionHandler', true, 'Play Next');
     },
 
     computed: {

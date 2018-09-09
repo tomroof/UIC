@@ -10,7 +10,7 @@
         <div class="sub-title">You unlocked a new badge!</div>
         <div class="archievement-title">{{rewardTitle}}</div>
         <div class="points">+{{rewardPoint}} <span>points</span></div>
-        <ComponentButton type="submit" @click="$emit('continue')">
+        <ComponentButton type="submit" @click="onContinue" :disabled="disableContinue">
           Continue
         </ComponentButton>
       </div>
@@ -28,7 +28,7 @@
         <div class="subheading">
           You unlocked a new badge!
         </div>
-        <ComponentButton type="submit" @click="$router.push('/courses')">
+        <ComponentButton type="submit" @click="moveToCourses" :disabled="disableContinue">
           Continue
         </ComponentButton>
       </div>
@@ -44,12 +44,30 @@
 <script>
 
 import ComponentButton from '@/components/Button'
+import AudioManager from '@/helpers/audioManager'
 
 export default {
   name: 'CongratsDialog',
-  props: ['id', 'isMobile'],
+  props: ['id', 'isMobile', 'audioFinished'],
   components: {
     ComponentButton
+  },
+
+  data () {
+    return {
+      rewardTitle: '',
+      rewardPoint: 0,
+      desktopAudioFinished: false,
+    }
+  },
+
+  computed: {
+    disableContinue () {
+      if (this.isMobile) {
+        return !this.audioFinished
+      }
+      return !this.desktopAudioFinished
+    }
   },
 
   mounted() {
@@ -64,15 +82,29 @@ export default {
         this.rewardPoint = 100
         break;
     }
-
     this.$store.commit('addPoints', this.rewardPoint)
+    if (!this.isMobile) {
+      AudioManager.playAudio('unlocked_badge', this.$store.state.gender, this.finishedCompleteAudio)  
+    }    
   },
-  data () {
-    return {
-      rewardTitle: '',
-      rewardPoint: 0
+
+  methods: {
+    onContinue () {
+      if (!this.disableContinue) {
+        this.$emit('continue')
+      }
+    },
+
+    moveToCourses () {
+      if (!this.disableContinue) {
+        this.$router.push('/courses')        
+      }
+    },
+
+    finishedCompleteAudio () {
+      this.desktopAudioFinished = true
     }
-  }
+  }  
 }
 </script>
 

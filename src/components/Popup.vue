@@ -15,7 +15,7 @@
               Happy Mouth
             </div>
             <component-button :popup="true" @click="toNextSlide">
-              <img src='@/assets/refresh.svg' class="refresh-icon">Play Again
+              <img src='@/assets/refresh.svg' class="refresh-icon">Play Next
             </component-button>
           </div>
         </div>
@@ -36,7 +36,7 @@
           </div>
         </div>
         <component-button :popup="true" @click="toNextSlide">
-          Play Again
+          Play Next
         </component-button>
       </div>
     </div>
@@ -48,10 +48,10 @@
               <img class="avatar-image" :src='avatarImage'>
             </div>
             <div class="title-text-mouth">
-              Cravity Monsters
+              Cavity Monsters
             </div>
             <component-button :popup="true" @click="toNextSlide">
-              <img src='@/assets/refresh.svg' class="refresh-icon">Play Again
+              <img src='@/assets/refresh.svg' class="refresh-icon">Play Next
             </component-button>
           </div>
         </div>

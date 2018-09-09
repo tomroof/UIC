@@ -14,7 +14,7 @@
         <ComponentButton @click="continueButtonClick" :disabled="selected === null">Continue </ComponentButton>
       </div>
     </div>
-    <CongratsDialog v-if="showCongrateDialog" :id="1" isMobile="true" @continue="nextPage"></CongratsDialog>
+    <CongratsDialog v-if="showCongrateDialog" :id="1" isMobile="true" :audioFinished="audioFinished" @continue="nextPage"></CongratsDialog>
   </NavigationLayout>
 </template>
 
@@ -38,7 +38,8 @@ export default {
   data () {
     return {
       selected: null,
-      showCongrateDialog: false
+      showCongrateDialog: false,
+      audioFinished: false
     }
   },
 
@@ -61,13 +62,17 @@ export default {
       this.$router.push('/courses')
     },
 
+    finishedCompleteAudio () {
+      this.audioFinished = true
+    },
+
     continueButtonClick () {
       if (this.selected === null) return
       this.$store.commit('setTeam', this.selected)
       this.$store.commit('completeArchievement', 1)
-      AudioManager.playAudio('unlocked_badge', this.$store.state.gender)
 
       if (DeviceManager.isMobile()) {
+        AudioManager.playAudio('unlocked_badge', this.$store.state.gender, this.finishedCompleteAudio)        
         this.showCongrateDialog = true
       }
       else {

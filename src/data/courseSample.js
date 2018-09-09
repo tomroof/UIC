@@ -399,6 +399,7 @@ export default {
       id: '24',
       type: 'calc',
       url_prefix: 'cavity-math',
+      isCorrect: true,
       answers: [
         {
           text: 'Brushing twice a day',
@@ -418,6 +419,7 @@ export default {
       id: '25',
       type: 'calc',
       url_prefix: 'cavity-math',
+      isCorrect: false,
       answers: [
         {
           text: 'Sugary snacks',
@@ -437,6 +439,7 @@ export default {
       id: '26',
       type: 'calc',
       url_prefix: 'cavity-math',
+      isCorrect: true,
       answers: [
         {
           text: 'Brushing after each meal',
@@ -456,6 +459,7 @@ export default {
       id: '27',
       type: 'calc',
       url_prefix: 'cavity-math',
+      isCorrect: true,
       answers: [
         {
           text: 'Healthy snacks',
@@ -471,7 +475,7 @@ export default {
     },
     {
       text: 'Happy Mouth',
-      desc: 'Drag the icons to the mouth to find the answer.',
+      desc: 'Drag the foods to the mouth to find the answer.',
       id: '28',
       type: 'mouth',
       url_prefix: 'happy-mouth',
@@ -490,7 +494,7 @@ export default {
     },
     {
       text: 'Happy Mouth',
-      desc: 'Drag the icons to the mouth to find the answer.',
+      desc: 'Drag the foods to the mouth to find the answer.',
       id: '29',
       type: 'mouth',
       url_prefix: 'happy-mouth',
@@ -509,7 +513,7 @@ export default {
     },
     {
       text: 'Happy Mouth',
-      desc: 'Drag the icons to the mouth to find the answer.',
+      desc: 'Drag the foods to the mouth to find the answer.',
       id: '30',
       type: 'mouth',
       url_prefix: 'happy-mouth',
@@ -528,7 +532,7 @@ export default {
     },
     {
       text: 'Happy Mouth',
-      desc: 'Drag the icons to the mouth to find the answer.',
+      desc: 'Drag the foods to the mouth to find the answer.',
       id: '31',
       type: 'mouth',
       url_prefix: 'happy-mouth',
@@ -547,7 +551,7 @@ export default {
     },
     {
       text: 'Happy Mouth',
-      desc: 'Drag the icons to the mouth to find the answer.',
+      desc: 'Drag the foods to the mouth to find the answer.',
       id: '32',
       type: 'mouth',
       url_prefix: 'happy-mouth',
@@ -566,7 +570,7 @@ export default {
     },
     {
       text: 'Happy Mouth',
-      desc: 'Drag the icons to the mouth to find the answer.',
+      desc: 'Drag the foods to the mouth to find the answer.',
       id: '33',
       type: 'mouth',
       url_prefix: 'happy-mouth',
@@ -585,7 +589,7 @@ export default {
     },
     {
       text: 'Happy Mouth',
-      desc: 'Drag the icons to the mouth to find the answer.',
+      desc: 'Drag the foods to the mouth to find the answer.',
       id: '34',
       type: 'mouth',
       url_prefix: 'happy-mouth',

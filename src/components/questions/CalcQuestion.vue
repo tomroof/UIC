@@ -60,7 +60,7 @@
         </div> -->
 
       </div>
-      <popup :openPopupTrue="openPopupTrue"/>
+      <popup :openPopupFalse="openPopupFalse" :openPopupTrue="openPopupTrue"/>
     </div>
   </BaseQuestion>
 </template>
@@ -74,7 +74,7 @@
   import draggable from 'vuedraggable'
 
   export default {
-    props: ['question', 'index', 'openPopupTrue', 'enabledSelection'],
+    props: ['question', 'index', 'openPopupFalse', 'openPopupTrue', 'enabledSelection'],
     components: {
       AnswerCalcCard,
       BaseQuestion,
@@ -83,12 +83,12 @@
     },
 
     mounted() {
-      this.$emit('isQuestionHandler', true, 'Play Next');
+      this.$emit('isQuestionHandler', true, 'Check My Math!');
       events.$on('dropAnswer', this.dropActiveAnswers)
     },
 
     updated() {
-      this.$emit('isQuestionHandler', false, 'Play Next');
+      this.$emit('isQuestionHandler', false, 'Check My Math!');
     },
 
     data () {
@@ -124,7 +124,7 @@
         if (this.addedCareNumber >= 2) {
           this.$emit('isQuestionHandler', false)
           this.dropActiveAnswers()
-          this.$emit('selectAnswer', {isCorrect: true, index: this.index})
+          this.$emit('selectAnswer', {isCorrect: this.question.isCorrect, index: this.index})
         }
       },
       dropActiveAnswers () {
