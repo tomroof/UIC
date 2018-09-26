@@ -12,8 +12,65 @@ export default {
       girl_video_poster: 'module1-cover.jpg'
     },
     {
-      text: 'How to stop the cavity monsters.',
+      text: 'Where do cavities come from?',
+      desc: '',
       id: '2',
+      type: 'icons',
+      url_prefix: 'where-do-cavities-come-from',
+      answers: [
+        {
+          text: 'Sugary foods',
+          image: 'cookie.svg',
+          isCorrect: true
+        },
+        {
+          text: 'Going to the zoo',
+          image: 'elephant.svg',
+          isCorrect: false
+        },
+      ]
+    },
+    {
+      text: 'Where do cavities come from?',
+      desc: '',
+      id: '3',
+      type: 'icons',
+      url_prefix: 'where-do-cavities-come-from',
+      answers: [
+        {
+          text: 'Reading a book',
+          image: 'book.svg',
+          isCorrect: false
+        },
+        {
+          text: 'Cavity monsters',
+          image: 'monster.png',
+          isCorrect: true
+        },
+      ]
+    },
+    {
+      text: 'Where do cavities come from?',
+      desc: '',
+      id: '4',
+      type: 'icons',
+      url_prefix: 'where-do-cavities-come-from',
+      answers: [
+        {
+          text: 'Dancing',
+          image: 'dancing.svg',
+          isCorrect: false
+        },
+        {
+          text: 'Sugary drinks',
+          image: 'soda.svg',
+          isCorrect: true
+        },
+      ]
+    },
+    {
+      text: 'How to stop the cavity monsters.',
+      id: '5',
       type: 'video',
       url_prefix: 'how-to-stop-the-cavity-monsters',
       boy_video_link: 'module3-male.mp4',
@@ -23,7 +80,7 @@ export default {
     },
     {
       text: 'Brushing away the cavity monsters!',
-      id: '3',
+      id: '6',
       type: 'video',
       url_prefix: 'brushing-away-the-cavity-monsters',
       boy_video_link: 'module4-male.mp4',
@@ -33,7 +90,7 @@ export default {
     },
     {
       text: 'Cavity Math instructions.',
-      id: '4',
+      id: '7',
       type: 'video',
       url_prefix: 'cavity-math-instructions',
       boy_video_link: 'module5-male.mp4',
@@ -44,7 +101,7 @@ export default {
     {
       text: 'How do we stop the cavity monsters?',
       desc: '',
-      id: '5',
+      id: '8',
       type: 'icons',
       url_prefix: 'how-do-we-stop-the-cavity-monsters',
       answers: [
@@ -63,7 +120,7 @@ export default {
     {
       text: 'How do we stop the cavity monsters?',
       desc: '',
-      id: '6',
+      id: '9',
       type: 'icons',
       url_prefix: 'how-do-we-stop-the-cavity-monsters',
       answers: [
@@ -82,7 +139,7 @@ export default {
     {
       text: 'How do we stop the cavity monsters?',
       desc: '',
-      id: '7',
+      id: '10',
       type: 'icons',
       url_prefix: 'how-do-we-stop-the-cavity-monsters',
       answers: [
@@ -101,7 +158,7 @@ export default {
     {
       text: 'How do we stop the cavity monsters?',
       desc: '',
-      id: '8',
+      id: '11',
       type: 'icons',
       url_prefix: 'how-do-we-stop-the-cavity-monsters',
       answers: [
@@ -119,7 +176,7 @@ export default {
     },
     {
       text: 'What snacks do my teeth love?',
-      id: '9',
+      id: '12',
       type: 'video',
       url_prefix: 'what-snacks-do-my-teeth-love',
       boy_video_link: 'module6-male.mp4',
@@ -130,7 +187,7 @@ export default {
     {
       text: 'Good for me or good for cavity monsters?',
       desc: 'Click to find out.',
-      id: '10',
+      id: '13',
       type: 'cards',
       url_prefix: 'good-for-me',
       answers: [
@@ -149,7 +206,7 @@ export default {
     {
       text: 'Good for me or good for cavity monsters?',
       desc: 'Click to find out.',
-      id: '11',
+      id: '14',
       type: 'cards',
       url_prefix: 'good-for-me',
       answers: [
@@ -168,7 +225,7 @@ export default {
     {
       text: 'Good for me or good for cavity monsters?',
       desc: 'Click to find out.',
-      id: '12',
+      id: '15',
       type: 'cards',
       url_prefix: 'good-for-me',
       answers: [
@@ -187,7 +244,7 @@ export default {
     {
       text: 'Good for me or good for cavity monsters?',
       desc: 'Click to find out.',
-      id: '13',
+      id: '16',
       type: 'cards',
       url_prefix: 'good-for-me',
       answers: [
@@ -206,7 +263,7 @@ export default {
     {
       text: 'Good for me or good for cavity monsters?',
       desc: 'Click to find out.',
-      id: '14',
+      id: '17',
       type: 'cards',
       url_prefix: 'good-for-me',
       answers: [
@@ -225,7 +282,7 @@ export default {
     {
       text: 'Good for me or good for cavity monsters?',
       desc: 'Click to find out.',
-      id: '15',
+      id: '18',
       type: 'cards',
       url_prefix: 'good-for-me',
       answers: [
@@ -244,7 +301,7 @@ export default {
     {
       text: 'Good for me or good for cavity monsters?',
       desc: 'Click to find out.',
-      id: '16',
+      id: '19',
       type: 'cards',
       url_prefix: 'good-for-me',
       answers: [
@@ -263,7 +320,7 @@ export default {
     {
       text: 'Good for me or good for cavity monsters?',
       desc: 'Click to find out.',
-      id: '17',
+      id: '20',
       type: 'cards',
       url_prefix: 'good-for-me',
       answers: [
@@ -282,7 +339,7 @@ export default {
     {
       text: 'Good for me or good for cavity monsters?',
       desc: 'Click to find out.',
-      id: '18',
+      id: '21',
       type: 'cards',
       url_prefix: 'good-for-me',
       answers: [
@@ -301,7 +358,7 @@ export default {
     {
       text: 'Good for me or good for cavity monsters?',
       desc: 'Click to find out.',
-      id: '19',
+      id: '22',
       type: 'cards',
       url_prefix: 'good-for-me',
       answers: [
@@ -320,7 +377,7 @@ export default {
     {
       text: 'Good for me or good for cavity monsters?',
       desc: 'Click to find out.',
-      id: '20',
+      id: '23',
       type: 'cards',
       url_prefix: 'good-for-me',
       answers: [
@@ -339,7 +396,7 @@ export default {
     {
       text: 'Good for me or good for cavity monsters?',
       desc: 'Click to find out.',
-      id: '21',
+      id: '24',
       type: 'cards',
       url_prefix: 'good-for-me',
       answers: [
@@ -358,7 +415,7 @@ export default {
     {
       text: 'Good for me or good for cavity monsters?',
       desc: 'Click to find out.',
-      id: '22',
+      id: '25',
       type: 'cards',
       url_prefix: 'good-for-me',
       answers: [
@@ -377,7 +434,7 @@ export default {
     {
       text: 'Good for me or good for cavity monsters?',
       desc: 'Click to find out.',
-      id: '23',
+      id: '26',
       type: 'cards',
       url_prefix: 'good-for-me',
       answers: [
@@ -396,7 +453,7 @@ export default {
     {
       text: 'Cavity Math',
       desc: 'Let\'s learn some cavity math!',
-      id: '24',
+      id: '27',
       type: 'calc',
       url_prefix: 'cavity-math',
       isCorrect: true,
@@ -416,7 +473,7 @@ export default {
     {
       text: 'Cavity Math',
       desc: 'Let\'s learn some cavity math!',
-      id: '25',
+      id: '28',
       type: 'calc',
       url_prefix: 'cavity-math',
       isCorrect: false,
@@ -436,7 +493,7 @@ export default {
     {
       text: 'Cavity Math',
       desc: 'Let\'s learn some cavity math!',
-      id: '26',
+      id: '29',
       type: 'calc',
       url_prefix: 'cavity-math',
       isCorrect: true,
@@ -456,7 +513,7 @@ export default {
     {
       text: 'Cavity Math',
       desc: 'Let\'s learn some cavity math!',
-      id: '27',
+      id: '30',
       type: 'calc',
       url_prefix: 'cavity-math',
       isCorrect: true,
@@ -476,7 +533,7 @@ export default {
     {
       text: 'Happy Mouth',
       desc: 'Drag the foods to the mouth to find the answer.',
-      id: '28',
+      id: '31',
       type: 'mouth',
       url_prefix: 'happy-mouth',
       variants: [
@@ -495,7 +552,7 @@ export default {
     {
       text: 'Happy Mouth',
       desc: 'Drag the foods to the mouth to find the answer.',
-      id: '29',
+      id: '32',
       type: 'mouth',
       url_prefix: 'happy-mouth',
       variants: [
@@ -514,7 +571,7 @@ export default {
     {
       text: 'Happy Mouth',
       desc: 'Drag the foods to the mouth to find the answer.',
-      id: '30',
+      id: '33',
       type: 'mouth',
       url_prefix: 'happy-mouth',
       variants: [
@@ -533,7 +590,7 @@ export default {
     {
       text: 'Happy Mouth',
       desc: 'Drag the foods to the mouth to find the answer.',
-      id: '31',
+      id: '34',
       type: 'mouth',
       url_prefix: 'happy-mouth',
       variants: [
@@ -552,7 +609,7 @@ export default {
     {
       text: 'Happy Mouth',
       desc: 'Drag the foods to the mouth to find the answer.',
-      id: '32',
+      id: '35',
       type: 'mouth',
       url_prefix: 'happy-mouth',
       variants: [
@@ -571,7 +628,7 @@ export default {
     {
       text: 'Happy Mouth',
       desc: 'Drag the foods to the mouth to find the answer.',
-      id: '33',
+      id: '36',
       type: 'mouth',
       url_prefix: 'happy-mouth',
       variants: [
@@ -590,7 +647,7 @@ export default {
     {
       text: 'Happy Mouth',
       desc: 'Drag the foods to the mouth to find the answer.',
-      id: '34',
+      id: '37',
       type: 'mouth',
       url_prefix: 'happy-mouth',
       variants: [
