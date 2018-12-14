@@ -2,7 +2,7 @@
   <NavigationLayout :back="true" :menu="true">
     <AccountHeader :user="user"></AccountHeader>
     <MenuList
-      v-for="(menu, index) in menus"
+      v-for="(menu, index) in getI18n"
       :key="index"
       :name="menu.name"
       :items="menu.items"
@@ -29,50 +29,13 @@ export default {
       user: {
         avatar: 'account-img.jpg',
         points: this.$store.state.points
-      },
-      menus: [
-        {
-          name: 'General',
-          items: [
-            {
-              name: 'Favorite Courses',
-              icon: 'fav-courses-icon.svg',
-              link: '/courses'
-            },
-            {
-              name: 'My Friends',
-              icon: 'my-friends-icon.svg',
-              link: '/team',
-              count: '50',
-            },
-            {
-              name: 'Achievements',
-              icon: 'achievements-icon.svg',
-              link: '/achievements'
-            }
-          ]
-        },
-        {
-          name: 'Settings',
-          items: [
-            {
-              name: 'Edit Login Details',
-              icon: 'edit-login-details-icon.svg',
-              link: '/select-character'
-            },
-            {
-              name: 'Update Interests',
-              icon: 'update-interests-icon.svg',
-              link: '/code'
-            }, 
-            {
-              name: 'Blocked Users',
-              icon: 'block-users-icon.svg',
-              link: '/code'
-            }                       
-          ]
-        }
-      ]
+      }
+    }
+  },
+
+  computed: {
+    getI18n() {
+      return this.$t("message.restText.profile")
     }
   }
 }

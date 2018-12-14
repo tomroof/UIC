@@ -5,7 +5,7 @@
         <img src='@/assets/course_detail.png' class="background">
         <img src="@/assets/heart.png" class="heart">
         <h1>{{ course.name }}</h1>
-        <div class="learn-title">Learn how to stop the cavity monsters!</div>
+        <div class="learn-title"> {{getI18n.learnHowToStop}} </div>
         <div class="progress-bar">
           <div class="progress-background-bar"></div>
           <div class="progress-active-bar" :style="{ width: `${currentProgress}%` }"></div>
@@ -33,7 +33,7 @@
       <v-touch @swipeup="handleSwipeTop">
         <div class="swipe_up">
           <img class="arrow" src="@/assets/swipe_arrow.png" />
-          <p>Swipe up to see course contents</p>
+          <p>{{ getI18n.SwipeUp }}</p>
         </div>
       </v-touch>
     </div>
@@ -43,7 +43,7 @@
 <script>
 import NavigationLayout from '@/layouts/NavigationLayout'
 import { mapGetters } from 'vuex'
-import CourseData from '@/data/courseSample'
+import CourseData from '@/data/en-config/courseSample'
 import AudioManager from '@/helpers/audioManager'
 
 export default {
@@ -55,7 +55,11 @@ export default {
         if (q.url_prefix === this.$route.params.url_prefix) {
           return q
         }
-      } 
+      }
+    },
+
+    getI18n() {
+      return this.$t("message.restText")
     }
   },
 

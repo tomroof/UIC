@@ -1,6 +1,8 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
 import VuexPersist from 'vuex-persist'
+import { app } from '../main.js'
+import VueI18n from 'vue-i18n';
 
 Vue.use(Vuex)
 
@@ -20,6 +22,7 @@ export default new Vuex.Store({
     points: 0,
     topic: 0,
     question: 0,
+    lang: 'en',
     achievements: [
       {
         id: 1,
@@ -180,12 +183,12 @@ export default new Vuex.Store({
   },
 
   mutations: {
-        isMobile () {
+    isMobile () {
       var mobile = ['iphone', 'ipad', 'android', 'blackberry', 'nokia', 'opera mini', 'windows mobile', 'windows phone', 'iemobile']
       for (var i in mobile) if (navigator.userAgent.toLowerCase().indexOf(mobile[i].toLowerCase()) > 0) return true
       return false
     },
-      
+
     setCharacter(state, char) {
       state.character = char
     },
@@ -206,6 +209,18 @@ export default new Vuex.Store({
       state.topic = topic
     },
 
+    setLang(state, lang) {
+      state.lang = lang
+      state.courses.map((course, index) => {
+        course.name = app.$t('message.restText.courses.names')[index]
+      })
+
+      state.achievements.map((achievement, index) => {
+        achievement.name = app.$t('message.restText.achievements.names')[index]
+        achievement.goal = app.$t('message.restText.achievements.goals')[index]
+      })
+    },
+
     addPoints(state, point) {
       state.points += point
     },
@@ -222,11 +237,12 @@ export default new Vuex.Store({
 
     completeArchievement(state, id) {
       state.achievements.find(item => item.id === +id).completed = true
-    }
+    },
   },
 
   getters: {
     getCourses: (state) => state.courses,
-    getAchievements: (state) => state.achievements
+    getAchievements: (state) => state.achievements,
+    getLang: (state) => state.lang
   }
 })

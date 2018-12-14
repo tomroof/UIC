@@ -17,7 +17,7 @@
           <input type="email"
                 class="blueline-input"
                 :class="{'invalid': checkError('formValue', 'email')}"
-                placeholder="email"
+                :placeholder="getI18n.email"
                 v-model="formValue.email"
                 @blur="markTouched('formValue', 'email')"
           >
@@ -26,12 +26,12 @@
         <AppInput>
           <input class="blueline-input"
                 :class="{'invalid': checkError('formValue', 'password')}"
-                placeholder="password"
+                :placeholder="getI18n.password"
                 type="password"
                 v-model="formValue.password"
                 @blur="markTouched('formValue', 'password')"
           >
-          <a href="#" class="forgot-link " @click='resetPasswordBtnClick'>Forgot</a>
+          <a href="#" class="forgot-link " @click='resetPasswordBtnClick'>{{getI18n.forgot}}</a>
         </AppInput>
       </div>
 
@@ -41,7 +41,7 @@
               @click='submit'
               v-else
               v-bind:class="{ loading: loading }">
-        Enter
+          {{ getI18n.enter }}
       </ComponentButton>
 
     </form>
@@ -97,6 +97,12 @@ export default {
 
     resetPasswordBtnClick () {
       this.$emit('on-forgot-password-btn-click')
+    }
+  },
+
+  computed: {
+    getI18n() {
+      return this.$t("message.restText.login")
     }
   }
 }

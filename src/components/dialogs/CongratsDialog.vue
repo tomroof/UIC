@@ -6,10 +6,10 @@
       </div>
 
       <div class="section">
-        <div class="congratulation-title">Congratulations!</div>
-        <div class="sub-title">You unlocked a new badge!</div>
+        <div class="congratulation-title">{{ getI18n.congrats.title }}</div>
+        <div class="sub-title">{{ getI18n.congrats.unlocked }}</div>
         <div class="archievement-title">{{rewardTitle}}</div>
-        <div class="points">+{{rewardPoint}} <span>points</span></div>
+        <div class="points">+{{rewardPoint}} <span>{{ getI18n.congrats.points }}</span></div>
         <ComponentButton type="submit" @click="onContinue" :disabled="disableContinue">
           Continue
         </ComponentButton>
@@ -20,16 +20,16 @@
       <div class="header">
         <img src="@/assets/congrats-img.svg" alt="">
         <h1>{{rewardTitle}}</h1>
-        <h3>+{{rewardPoint}} <span>points</span></h3>
+        <h3>+{{rewardPoint}} <span>{{ getI18n.congrats.points }}</span></h3>
       </div>
 
       <div class="section">
-        <h1>Congrats!</h1>
+        <h1>{{ getI18n.congrats.title }}</h1>
         <div class="subheading">
-          You unlocked a new badge!
+          {{ getI18n.congrats.unlocked }}
         </div>
         <ComponentButton type="submit" @click="moveToCourses" :disabled="disableContinue">
-          Continue
+         {{getI18n.continue}}
         </ComponentButton>
       </div>
 
@@ -67,25 +67,29 @@ export default {
         return !this.audioFinished
       }
       return !this.desktopAudioFinished
+    },
+
+    getI18n() {
+      return this.$t("message.restText")
     }
   },
 
   mounted() {
     switch (parseInt(this.id)) {
-      case 1: 
-        this.rewardTitle = 'Profile Completed'
+      case 1:
+        this.rewardTitle = this.$t("message.restText.congrats.profileCompleted")
         this.rewardPoint = 100
         break;
 
       case 2:
-        this.rewardTitle = 'Cavity Monster Hero'
+        this.rewardTitle = this.$t("message.restText.congrats.cavityMonsterHero")
         this.rewardPoint = 100
         break;
     }
     this.$store.commit('addPoints', this.rewardPoint)
     if (!this.isMobile) {
-      AudioManager.playAudio('unlocked_badge', this.$store.state.gender, this.finishedCompleteAudio)  
-    }    
+      AudioManager.playAudio('unlocked_badge', this.$store.state.gender, this.finishedCompleteAudio)
+    }
   },
 
   methods: {
@@ -97,14 +101,14 @@ export default {
 
     moveToCourses () {
       if (!this.disableContinue) {
-        this.$router.push('/courses')        
+        this.$router.push('/courses')
       }
     },
 
     finishedCompleteAudio () {
       this.desktopAudioFinished = true
     }
-  }  
+  }
 }
 </script>
 
@@ -126,7 +130,7 @@ export default {
   margin-top: 55px;
   margin-left: 20px;
 
-  .header { 
+  .header {
     padding-top: 30px;
   }
 
@@ -157,7 +161,7 @@ export default {
     font-weight: 300;
     font-size: 20px;
     margin-top: 10px;
-    color: white; 
+    color: white;
   }
 }
 

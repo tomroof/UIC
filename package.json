@@ -15,6 +15,7 @@
     "vue": "^2.5.2",
     "vue-cookie": "^1.1.4",
     "vue-good-wizard": "^1.2.2",
+    "vue-i18n": "^8.4.0",
     "vue-radial-progress": "^0.2.10",
     "vue-router": "^3.0.1",
     "vue-touch": "next",

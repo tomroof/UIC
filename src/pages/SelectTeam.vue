@@ -1,6 +1,6 @@
 <template>
   <NavigationLayout :back="true" :menu="true" :topImage="$store.state.character">
-    <h1>My Dental Office</h1>
+    <h1>{{getI18n.MyDentalOffice}}</h1>
     <div class="content team">
       <base-card v-for="(item, index) in team" :key="item.title"
         :class="getButtonClassName(item.id)"
@@ -11,7 +11,7 @@
         <div class="title">{{ item.title }}</div>
       </base-card>
       <div class="continue-button">
-        <ComponentButton @click="continueButtonClick" :disabled="selected === null">Continue </ComponentButton>
+        <ComponentButton @click="continueButtonClick" :disabled="selected === null">{{getI18n.continue}}</ComponentButton>
       </div>
     </div>
     <CongratsDialog v-if="showCongrateDialog" :id="1" isMobile="true" :audioFinished="audioFinished" @continue="nextPage"></CongratsDialog>
@@ -22,7 +22,7 @@
 import NavigationLayout from '@/layouts/NavigationLayout'
 import ComponentButton from '@/components/Button'
 import BaseCard from '@/components/cards/BaseCard'
-import selectATeam from '@/data/selectATeam'
+import selectATeam from '@/data/en-config/selectATeam'
 import CongratsDialog from '@/components/dialogs/CongratsDialog'
 import DeviceManager from '@/helpers/deviceManager'
 import AudioManager from '@/helpers/audioManager'
@@ -45,7 +45,11 @@ export default {
 
   computed: {
     team() {
-      return selectATeam
+      return this.$t("message.selectATeam")
+    },
+
+    getI18n() {
+      return this.$t("message.restText")
     }
   },
 
@@ -72,7 +76,7 @@ export default {
       this.$store.commit('completeArchievement', 1)
 
       if (DeviceManager.isMobile()) {
-        AudioManager.playAudio('unlocked_badge', this.$store.state.gender, this.finishedCompleteAudio)        
+        AudioManager.playAudio('unlocked_badge', this.$store.state.gender, this.finishedCompleteAudio)
         this.showCongrateDialog = true
       }
       else {

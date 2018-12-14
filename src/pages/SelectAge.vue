@@ -12,16 +12,16 @@
           :class="getButtonClassName(1)"
           @click="handleButtonClick(1)"
         >
-          I am 8 or younger
+          {{getI18n.selectAge.yangerText}}
         </div>
         <div
           :class="getButtonClassName(2)"
           @click="handleButtonClick(2)"
         >
-          I am 9 or older
+          {{getI18n.selectAge.olderText}}
         </div>
       </div>
-      <ComponentButton @click="continueButtonClick" :disabled="selected === null">Continue </ComponentButton>
+      <ComponentButton @click="continueButtonClick" :disabled="selected === null">{{getI18n.continue}} </ComponentButton>
     </div>
   </NavigationLayout>
 </template>
@@ -48,7 +48,7 @@ export default {
       var age = 0;
       if (this.selected === 1) age = 8
       else age = 9
-        
+
       this.$store.commit('setAge', age)
       this.$router.push('/select-team')
     }
@@ -58,7 +58,10 @@ export default {
     ComponentButton
   },
 
-  mounted() {
+  computed: {
+    getI18n() {
+      return this.$t("message.restText")
+    }
   }
 }
 </script>

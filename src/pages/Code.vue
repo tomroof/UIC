@@ -2,8 +2,8 @@
   <NavigationLayout :back="true">
     <div class='container'>
       <div>
-        <h1>Enter Code</h1>
-        <div class="text">Please enter the code provider by your care giver</div>
+        <h1>{{getI18n.title}}</h1>
+        <div class="text">{{getI18n.description}}</div>
         <CodeForm @submitForm="handleLogin" />
       </div>
     </div>
@@ -26,6 +26,12 @@ export default {
   methods: {
     handleLogin (e) {
       this.$router.push('/account')
+    }
+  },
+
+  computed: {
+    getI18n() {
+      return this.$t("message.restText.code")
     }
   }
 }

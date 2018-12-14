@@ -1,7 +1,7 @@
 <template>
   <NavigationLayout :back="true">
-    <h1>Aсhievements</h1>
-    <div :class="{'badge-button': layout === 'badge', 'list-button': layout === 'list'}" @click="selectLayout()">View</div>
+    <h1>{{ getI18n.aсhievements }}</h1>
+    <div :class="{'badge-button': layout === 'badge', 'list-button': layout === 'list'}" @click="selectLayout()">{{ getI18n.view }}</div>
     <div class="badge-layout" v-if="layout === 'badge'">
       <div
         v-for="(row, index) in rows"
@@ -19,8 +19,8 @@
     </div>
 
     <div class="list-layout" v-else>
-      <AchievementsList :achievements="getAchievements" />  
-    </div>    
+      <AchievementsList :achievements="getAchievements" />
+    </div>
   </NavigationLayout>
 </template>
 
@@ -30,7 +30,7 @@ import Switcher from '@/components/CoursesSwitcher'
 import AchievementsList from '@/components/achievements/AchievementsList'
 
 // data
-import achievements from '@/data/achievements'
+import achievements from '@/data/en-config/achievements'
 import { mapGetters } from 'vuex'
 import { chunk } from 'lodash'
 
@@ -53,6 +53,10 @@ export default {
         }
       }
       return chunk(res, 3)
+    },
+
+    getI18n() {
+      return this.$t("message.restText")
     }
   },
 

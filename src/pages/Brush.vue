@@ -1,6 +1,6 @@
 <template>
   <NavigationLayout :back="true" :menu="true">
-    <h4>We're working on it!</h4>
+    <h4>{{ getI18n }}</h4>
   </NavigationLayout>
 </template>
 
@@ -12,6 +12,12 @@ export default {
 
   components: {
     NavigationLayout
+  },
+
+  computed: {
+    getI18n() {
+      return this.$t("message.restText.workingOnIt")
+    }
   }
 }
 </script>
