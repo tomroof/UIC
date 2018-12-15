@@ -1,6 +1,6 @@
 export default {
   onboarding: {
-    description: 'A fun new way to learn how to take better care of your teeth. ss',
+    description: 'A fun new way to learn how to take better care of your teeth.',
     cookie: 'This website uses cookies to improve user experience. By using our website you consent to all cookies in accordance with our <a href="/terms"> Cookie Policy </a>',
     getStarted: 'Get Started'
   },
