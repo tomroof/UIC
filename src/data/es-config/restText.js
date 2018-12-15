@@ -148,6 +148,12 @@ export default {
     enter: 'Enter'
   },
 
+  goodJob: {
+    goodJob: 'Good Job!',
+    complete: 'You completed a module.',
+    points: 'points'
+  },
+
   topics: 'Topics',
   continue: 'Continue',
   MyDentalOffice: 'My Dental Office',

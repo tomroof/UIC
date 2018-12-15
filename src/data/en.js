@@ -4,6 +4,7 @@ import selectATeam from '@/data/en-config/selectATeam'
 import reviews from '@/data/en-config/reviews'
 import restText from '@/data/en-config/restText'
 import about from '@/data/en-config/about'
+import terms from '@/data/en-config/terms'
 
 export default {
   achievements,
@@ -11,5 +12,6 @@ export default {
   selectATeam,
   reviews,
   restText,
-  about
+  about,
+  terms
 }

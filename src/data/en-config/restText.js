@@ -149,6 +149,12 @@ export default {
     enter: 'Enter'
   },
 
+  goodJob: {
+    goodJob: 'Good Job!',
+    complete: 'You completed a module.',
+    points: 'points'
+  },
+
   topics: 'Topics',
   continue: 'Continue',
   MyDentalOffice: 'My Dental Office',
@@ -156,7 +162,6 @@ export default {
   SwipeUp: 'Swipe up to see course contents',
   nextUp: 'Next Up',
   workingOnIt: "We're working on it!",
-
   aсhievements: 'Aсhievements',
-  view: 'View',
+  view: 'View'
 }
