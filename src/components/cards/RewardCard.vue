@@ -10,12 +10,12 @@
       </div>
 
       <div class="content">
-        <h1>Good Job!</h1>
-        <h3 class='description-text'>You completed a module.</h3>
-        <h3 class='point-text'><span>+40 </span>points</h3>
+        <h1>{{getI18n.goodJob.goodJob}}</h1>
+        <h3 class='description-text'>{{getI18n.goodJob.complete}}</h3>
+        <h3 class='point-text'><span>+40 </span>{{getI18n.goodJob.points}}</h3>
       </div>
 
-      <ComponentButton class="continue-button" @click="continueButtonClick">Continue </ComponentButton>
+      <ComponentButton class="continue-button" @click="continueButtonClick">{{getI18n.continue}}</ComponentButton>
     </div>
   </div>
   </div>
@@ -38,6 +38,12 @@ export default {
   methods: {
     continueButtonClick () {
       this.$emit('continue')
+    }
+  },
+
+  computed: {
+    getI18n() {
+      return this.$t("message.restText")
     }
   }
 }

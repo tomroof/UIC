@@ -12,10 +12,10 @@
               </div>
             </div>
             <div class="title-text-mouth">
-              Happy Mouth
+              {{ getI18n.happyMouth }}
             </div>
             <component-button :popup="true" @click="toNextSlide">
-              <img src='@/assets/refresh.svg' class="refresh-icon">Play Next
+              <img src='@/assets/refresh.svg' class="refresh-icon">{{ getI18n.playNext }}
             </component-button>
           </div>
         </div>
@@ -26,17 +26,14 @@
             <div class="img-char" :style="{background: `url(${$store.state.character}) no-repeat center / contain`}">
             </div>
           </div>
-          <div class="title-text">
-            Yeah!<br/>
-            You’re fighting<br/>
-            the cavity monsters!
+          <div class="title-text" v-html="getI18n.yeah">
           </div>
           <div class="points-text">
-            +20 <span>points</span>
+            +20 <span>{{ getI18n.points }}</span>
           </div>
         </div>
         <component-button :popup="true" @click="toNextSlide">
-          Play Next
+          {{ getI18n.playNext }}
         </component-button>
       </div>
     </div>
@@ -48,10 +45,10 @@
               <img class="avatar-image" :src='avatarImage'>
             </div>
             <div class="title-text-mouth">
-              Cavity Monsters
+              {{ getI18n.cavityMonsters }}
             </div>
             <component-button :popup="true" @click="toNextSlide">
-              <img src='@/assets/refresh.svg' class="refresh-icon">Play Next
+              <img src='@/assets/refresh.svg' class="refresh-icon"> {{ getI18n.playNext }}
             </component-button>
           </div>
         </div>
@@ -63,14 +60,11 @@
             <div class="img__false">
             </div>
           </div>
-          <div class="title-text">
-            Uh-oh! <br />
-            The cavity monsters <br />
-            are coming!
+          <div class="title-text" v-html="getI18n.uhoh">
           </div>
         </div>
         <component-button :popup="true" @click="toThisSlide">
-          Try again
+          {{ getI18n.tryAgain }}
         </component-button>
       </div>
     </div>
@@ -81,17 +75,15 @@
             <div class="img-char" :style="{background: `url(${$store.state.character}) no-repeat center / contain`}">
             </div>
           </div>
-          <div class="title-text">
-            Are you sure you <br />
-            want to leave?
+          <div class="title-text" v-html="getI18n.leave">
           </div>
         </div>
         <div class="buttons-wrapper">
           <component-button :popup="true" @click="exitCourse">
-              yes
+              {{ getI18n.yes }}
           </component-button>
           <component-button :popup="true" @click="closePopup">
-              no
+              {{ getI18n.no }}
           </component-button>
         </div>
       </div>
@@ -122,6 +114,7 @@ import { events } from '@/helpers/events'
         }
       }
     },
+
     methods: {
       toNextSlide() {
         events.$emit('nextSlide');
@@ -130,6 +123,12 @@ import { events } from '@/helpers/events'
       toThisSlide() {
         events.$emit('dropAnswer')
         events.$emit('thisSlide');
+      }
+    },
+
+    computed: {
+      getI18n() {
+        return this.$t("message.restText.popups")
       }
     }
   }

@@ -7,8 +7,8 @@
     <vue-good-wizard
       ref="wizard"
       :steps="steps"
-      :finalStepLabel="buttonText"
-      :nextStepLabel="buttonText"
+      :finalStepLabel="getI18n.continue"
+      :nextStepLabel="getI18n.continue"
       :onNext="nextClicked"
     >
 
@@ -18,7 +18,7 @@
           :question="question"
           :index="index"
           :enabledSelection="enabledSelection"
-          @selectAnswer='handelAnswerSelect' 
+          @selectAnswer='handelAnswerSelect'
           @isQuestionHandler="isQuestionHandler" />
 
         <VideoQuestion
@@ -45,7 +45,7 @@
           :enabledSelection="enabledSelection"
           :openPopupFalse="openPopupFalse"
           :openPopupTrue="openPopupTrue"
-          @selectAnswer='handelAnswerSelect' 
+          @selectAnswer='handelAnswerSelect'
           @isQuestionHandler="isQuestionHandler" />
 
         <MouthQuestion
@@ -59,7 +59,7 @@
           @selectAnswer='handelAnswerSelect'
           @isQuestionHandler="isQuestionHandler" />
 
-        <span v-if="steps[index].nextType != 'cards' && steps[index].nextLabel" class="next-label">Next Up: {{steps[index].nextLabel}}</span>
+        <span v-if="steps[index].nextType != 'cards' && steps[index].nextLabel" class="next-label">{{ getI18n.nextUp }}: {{steps[index].nextLabel}}</span>
       </div>
     </vue-good-wizard>
     <ModuleStartDialog v-if="showModuleStartDialog" :title="moduleStartTitle" :audio="moduleStartAudio" @endedAudio="endedIntroAudio" @hide="hideModuleStartDialog"></ModuleStartDialog>
@@ -75,7 +75,7 @@ import MouthQuestion from '@/components/questions/MouthQuestion'
 import ModuleStartDialog from '@/components/dialogs/ModuleStartDialog'
 
 // data
-import CourseData from '@/data/courseSample'
+import CourseData from '@/data/en-config/courseSample'
 
 // events
 import { events } from '@/helpers/events'
@@ -100,7 +100,6 @@ export default {
       openPopupTrue: false,
       isQuestion: false,
       currentProgress: 0,
-      buttonText: 'Continue',
       showModuleStartDialog: false,
       moduleStartTitle: '',
       moduleStartAudio: null
@@ -126,8 +125,8 @@ export default {
       this.$store.commit('updateCoursePage', { id: this.curseId, page: page})
 
       if (!this.showRewardCard) {
-        this.checkAudioPlay(page)  
-      }      
+        this.checkAudioPlay(page)
+      }
     }
   },
 
@@ -143,7 +142,7 @@ export default {
   mounted() {
     let first_page = parseInt(this.$route.params.id)
     this.$store.commit('setTopic', this.curseId)
-    
+
     if (this.$refs.wizard !== null) {
       this.$refs.wizard.goTo(first_page)
       if (first_page > 0) {
@@ -162,7 +161,7 @@ export default {
       this.checkCompleteCourse()
 
       if (this.$refs.wizard) {
-        // this.$refs.wizard.goNext(true);  
+        // this.$refs.wizard.goNext(true);
         let page = this.$refs.wizard.currentStep
         if (this.steps.length - 1 === page) {
           this.topicComplete()
@@ -170,9 +169,9 @@ export default {
         else {
 
           this.movePage(page + 1)
-          this.initPage()  
-        }        
-      }      
+          this.initPage()
+        }
+      }
     })
 
     events.$on('thisSlide', () => {
@@ -195,7 +194,11 @@ export default {
   computed: {
     // TODO get curse by prop Id
     curse () {
-      return CourseData
+      return this.$t("message.courseSample")
+    },
+
+    getI18n() {
+      return this.$t("message.restText")
     },
 
     steps () {
@@ -221,9 +224,9 @@ export default {
       this.openPopupFalse = false;
       this.openPopupTrue = false;
       if (this.$refs.wizard !== null) {
-        this.$refs.wizard.goTo(parseInt(this.$route.params.id))  
+        this.$refs.wizard.goTo(parseInt(this.$route.params.id))
       }
-      
+
     },
 
     checkModuleComplete () {
@@ -234,19 +237,19 @@ export default {
         let currentQuestionType = this.steps[page].type
         let nextQuestionType = this.steps[page + 1].type
         if (currentQuestionType != null && nextQuestionType != currentQuestionType) {
-          if (currentQuestionType === "icons" || currentQuestionType === "cards" || currentQuestionType === "calc") { 
+          if (currentQuestionType === "icons" || currentQuestionType === "cards" || currentQuestionType === "calc") {
             this.showRewardCard = true
             this.$emit('moduleCompleted')
             return
-          }        
+          }
         }
 
         this.showRewardCard = false
 
         // Save completed question id in global.
         this.$store.commit('updateCoursePage', { id: this.curseId, page: (page + 1)})
-        // this.checkAudioPlay(page)        
-      }        
+        // this.checkAudioPlay(page)
+      }
     },
 
     checkAudioPlay (page) {
@@ -286,7 +289,7 @@ export default {
             this.enabledSelection = false
             AudioManager.playAudio('first_question_for_calc', this.$store.state.gender, this.endedIntroAudio)
           }
-        }        
+        }
       }
     },
 
@@ -322,9 +325,9 @@ export default {
             AudioManager.playAudio('calc_question_2', this.$store.state.gender)
           } else if (currentQuestionSlot === '26' || currentQuestionSlot === '27') {
             AudioManager.playAudio('calc_question_3_4', this.$store.state.gender)
-          }  
-        }        
-        
+          }
+        }
+
         if (!this.checkAnswer()) {
           this.openPopupFalse = true
           return false
@@ -351,14 +354,14 @@ export default {
     checkCompleteCourse () {
       let currentPage = parseInt(this.$route.params.id)
       this.calcProgress(currentPage)
-      
+
       if (this.steps.length - 1 === currentPage) {
-        this.topicComplete()        
+        this.topicComplete()
       }
     },
 
     topicComplete () {
-      this.checkAchievement()      
+      this.checkAchievement()
       this.$store.commit('updateCoursePage', { id: this.curseId, page: 0})
       this.$store.commit('updateCourseProgress', { id: this.curseId, currentProgress: 100 })
       this.$router.push('/congrats/2')
@@ -409,7 +412,7 @@ export default {
       var progress = ((currentPage + 1) / this.steps.length) * 100
       if (progress > 100) {
         progress = 100
-      } 
+      }
       this.currentProgress = progress
       this.$store.commit('updateCourseProgress', { id: this.curseId, currentProgress: progress })
     },
@@ -477,8 +480,8 @@ export default {
   top: 0;
   bottom: 0;
   position: absolute;
-  background-color: #217b71;   
-  border-radius: 4px;  
+  background-color: #217b71;
+  border-radius: 4px;
 }
 
 .progress-active-bar {
@@ -486,8 +489,8 @@ export default {
   top: 0;
   bottom: 0;
   position: absolute;
-  background-color: #87daa2; 
-  border-radius: 4px;  
+  background-color: #87daa2;
+  border-radius: 4px;
 }
 
 .curse-container {

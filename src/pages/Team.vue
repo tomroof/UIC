@@ -1,18 +1,17 @@
 <template>
   <NavigationHeaderImageLayout :back="true" :menu="true">
-    <div class="image">
-      <img src="@/assets/uic-school-front.jpg" alt="">
-    </div>
-
     <div class="inner">
-      <h1>University of Illinois School of Dentistry</h1>
+      <div class="image">
+        <img src="@/assets/uic-school-front.jpg" alt="">
+      </div>
+      <h1>{{ getI18n.university }}</h1>
 
       <div class="contacts">
-        <div class="title">CONTACT</div>
+        <div class="title">{{ getI18n.contact }} </div>
         <div class="items">
           <div class="item">
             <div class="icon" :style="{background: `url(${require('@/assets/address.svg')}) no-repeat center / contain`}" />
-            <div class="info">801 S Paulina St, Chicago, IL 60612</div>
+            <div class="info">{{ getI18n.address }}</div>
             <div class="arrow" :style="{background: `url(${require('@/assets/arrow-contacts.svg')}) no-repeat center / contain`}"/>
           </div>
           <div class="item">
@@ -22,7 +21,7 @@
           </div>
           <div class="item">
             <div class="icon" :style="{background: `url(${require('@/assets/website.png')}) no-repeat center / contain`}" />
-            <div class="info">Website</div>
+            <div class="info">{{ getI18n.website }}</div>
             <div class="arrow" :style="{background: `url(${require('@/assets/arrow-contacts.svg')}) no-repeat center / contain`}"/>
           </div>
         </div>
@@ -39,7 +38,13 @@ export default {
 
   components: {
     NavigationHeaderImageLayout
-  }
+  },
+
+  computed: {
+    getI18n() {
+      return this.$t("message.restText.team")
+    },
+  },
 }
 </script>
 
@@ -59,7 +64,7 @@ p {
 
 .image {
   position: absolute;
-  top: -20px;
+  top: -265px;
   left: 0;
   width: 100%;
 
@@ -70,12 +75,13 @@ p {
 }
 
 .inner {
+  position: relative;
   max-width: 375px;
   padding: 0 20px;
   margin: 0 auto;
 
   h1 {
-    margin-top: 220px;
+    margin-top: 282px;
     font-family: 'Lato', sans-serif;
     font-size: 25px;
     color: #FFFFFF;

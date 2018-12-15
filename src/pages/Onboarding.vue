@@ -6,15 +6,15 @@
       </div>
 
       <div class="content">
-        <p>A fun new way to learn how to take better care of your teeth.</p>
+        <p>{{getI18n.description}}</p>
+        <button-language/>
         <div class="button-wrapper">
-          <ComponentButton @click="navigateToSelectCharacter">Get Started</ComponentButton>
+          <ComponentButton @click="navigateToSelectCharacter">{{getI18n.getStarted}}</ComponentButton>
         </div>
       </div>
     </div>
     <div class="cookie-bar" v-if="showCookieBar">
-      <div class="cookie-bar-content">
-        This website uses cookies to improve user experience. By using our website you consent to all cookies in accordance with our <a href="/terms">Cookie Policy</a>
+      <div class="cookie-bar-content" v-html="getI18n.cookie">
       </div>
       <div class="close-button">
         <img src="@/assets/close-white.svg" @click="closeCookieBar">
@@ -26,19 +26,22 @@
 
 <script>
 import ComponentButton from '@/components/Button'
+import ButtonLanguage from '@/components/ButtonLanguage'
+
 export default {
   components: {
-    ComponentButton
+    ComponentButton,
+    ButtonLanguage
   },
 
   mounted () {
-    let character = this.$store.state.character    
+    let character = this.$store.state.character
     let age = this.$store.state.age
     let team = this.$store.state.team
 
     if (character !== null && age !== null && team !== null) {
-      this.$router.push('/courses')  
-    }    
+      this.$router.push('/courses')
+    }
   },
 
   data () {
@@ -46,6 +49,13 @@ export default {
       showCookieBar: false,
     }
   },
+
+  computed: {
+    getI18n() {
+      return this.$t("message.restText.onboarding")
+    }
+  },
+
   methods: {
     navigateToSelectCharacter () {
       this.$router.push('/select-character')
@@ -154,20 +164,20 @@ p {
 
 @media screen and (max-width : 768px) {
     .cookie-bar .close-button img {
-      top: 5px;        
+      top: 5px;
     }
 }
 
 @media screen and (max-width : 480px) {
     .cookie-bar .close-button img {
-      top: 10px;        
+      top: 10px;
     }
 }
 
 
 @media screen and (max-width : 320px) {
     .cookie-bar .close-button img {
-      top: 15px;        
+      top: 15px;
     }
 }
 

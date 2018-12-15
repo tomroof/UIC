@@ -1,6 +1,6 @@
 <template>
   <NavigationLayout :back="true" :menu="true">
-    <h1>Select Coach</h1>
+    <h1>{{getI18n.selectCharacter.title}}</h1>
     <div class="character-box">
       <div
         v-for="(row, index) in rows"
@@ -22,7 +22,7 @@
       </div>
     </div>
     <div class="continue-button">
-      <ComponentButton @click="buttonHandler" :disabled="!selectedCard">Continue</ComponentButton>
+      <ComponentButton @click="buttonHandler" :disabled="!selectedCard">{{getI18n.continue}}</ComponentButton>
     </div>
   </NavigationLayout>
 </template>
@@ -95,6 +95,7 @@ export default {
       }
     }
   },
+
   components: {
     NavigationLayout,
     CharacterCard,
@@ -114,6 +115,10 @@ export default {
         res = this.cards.girls
       }
       return chunk(res, 2)
+    },
+
+    getI18n() {
+      return this.$t("message.restText")
     }
   },
   methods: {
@@ -125,7 +130,7 @@ export default {
       }
     },
     selectCard (value, sex) {
-      this.selectedCard = true      
+      this.selectedCard = true
       this.character = value
       this.selectedGender = sex
 

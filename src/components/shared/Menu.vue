@@ -7,12 +7,12 @@
         @closeClick="$emit('closeClick')"/>
       <base-card @click="goToRoute('/courses')">
         <img class="card-photo" src="@/assets/curses-img.jpg" />
-        <div class="text">Topics</div>
+        <div class="text">{{ getI18n.topics }}</div>
       </base-card>
 
       <base-card @click="goToRoute('/brush')">
         <img class="card-photo" src="@/assets/brush-timer-img.jpg" />
-        <div class="text">Brush Timer</div>
+        <div class="text">{{ getI18n.brushTimer }}</div>
       </base-card>
 
       <div class="cards-row">
@@ -21,12 +21,12 @@
             :style="{ backgroundImage: `url(${$store.state.character})` }"
           >
           </div>
-          <div class="text">Profile</div>
+          <div class="text">{{ getI18n.profile }}</div>
         </base-card>
 
         <base-card @click="goToRoute('/about')">
           <img class="card-photo about-menu" src="@/assets/logo.svg" />
-          <div class="text">About</div>
+          <div class="text"> {{ getI18n.about }}</div>
         </base-card>
       </div>
     </div>
@@ -43,6 +43,12 @@ export default {
   components: {
     BaseCard,
     NavigationControls
+  },
+
+  computed: {
+    getI18n() {
+      return this.$t("message.restText.menu")
+    },
   },
 
   methods: {

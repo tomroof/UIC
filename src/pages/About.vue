@@ -5,7 +5,7 @@
       <div class="overlay"></div>
     </div>
 
-    <div class="inner">
+    <div class="inner about" v-html="getI18n">
       <h1>About</h1>
       <p>Welcome to Healthy Starts, a fun new way to learn how to take excellent care of your teeth!</p>
       <h4>What is Healthy Starts?</h4>
@@ -27,9 +27,47 @@ export default {
   name: 'Brush',
   components: {
     NavigationLayout
+  },
+
+  computed: {
+    getI18n() {
+      return this.$t("message.about")
+    }
   }
 }
 </script>
+
+<style>
+  .about h1 {
+    margin-top: 283px;
+    font-family: 'ZillaSlab-SemiBold', sans-serif;
+    font-size: 26px;
+    color: #FFFFFF;
+  }
+
+  .about h4 {
+    padding: 20px 0;
+    color: #ffffff;
+    font-weight: 300;
+    letter-spacing: 0.5px;
+  }
+
+  .about p {
+    font-weight: 100;
+    font-size: 16px;
+    letter-spacing: 0.5px;
+    line-height: 24px;
+    font-family: 'Zilla Slab', sans-serif;
+    padding: 0px 0;
+    color: #ffffff;
+    opacity: 0.7;
+  }
+
+  .about a {
+    color: #ffffff;
+  }
+
+</style>
 
 <style lang="scss" scoped>
 .header {
@@ -44,7 +82,7 @@ export default {
 
 .image {
   position: absolute;
-  top: -20px;
+  top: 34px;
   left: 0px;
   .overlay {
     background-image: linear-gradient(to bottom, black, transparent);

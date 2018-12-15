@@ -1,6 +1,6 @@
 <template>
   <NavigationLayout :back="true" :menu="true" :topImage="$store.state.character">
-    <h1>Topics</h1>
+    <h1>{{ getI18n.topics }}</h1>
     <div class="courses_wrapper">
       <div v-for="course in getCourses" class="course" :key="course.id" @click="navigateToCourse(course)">
         <radial-progress-bar
@@ -13,7 +13,8 @@
         >
           <div class="course_top" :style="{ background: course.active ? `url(${course.image}) no-repeat center / cover` : `url(${course.disabled_image}) no-repeat center / cover` }" />
         </radial-progress-bar>
-        <div class="course_bottom">{{course.name}}</div>
+        <div class="course_bottom">{{ course.name }}</div>
+        <!-- <div class="course_bottom">{{ getI18n.courses.names[index] }}</div> -->
       </div>
     </div>
   </NavigationLayout>
@@ -37,12 +38,21 @@ import { mapGetters } from 'vuex'
       navigateToCourse(course) {
         if (course.active) {
           this.$router.push('/details/' + course.url_prefix)
-        }        
+        }
       }
     },
     computed: {
-      ...mapGetters(['getCourses'])
+      ...mapGetters(['getCourses']),
+
+      getI18n() {
+        return this.$t("message.restText")
+      }
     },
+
+    mounted() {
+
+    },
+
     components: {
       Switcher,
       NavigationLayout,

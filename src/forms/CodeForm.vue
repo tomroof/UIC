@@ -2,13 +2,12 @@
   <div>
 
     <form class="signup_validator signup-form" @submit.prevent="submit">
-
       <div class="inputs-group">
         <AppInput>
           <input type="email"
                 class="blueline-input"
                 :class="{'invalid': checkError('formValue', 'email')}"
-                placeholder="code"
+                :placeholder="getI18n.placeholder"
                 v-model="formValue.email"
                 @blur="markTouched('formValue', 'email')"
           >
@@ -21,7 +20,7 @@
               @click='submit'
               v-else
               v-bind:class="{ loading: loading }">
-        Enter
+        {{getI18n.enter}}
       </ComponentButton>
 
     </form>
@@ -77,6 +76,12 @@ export default {
 
     resetPasswordBtnClick () {
       this.$emit('on-forgot-password-btn-click')
+    }
+  },
+
+  computed: {
+    getI18n() {
+      return this.$t("message.restText.code")
     }
   }
 }
