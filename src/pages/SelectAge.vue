@@ -1,6 +1,6 @@
 <template>
   <NavigationLayout :back="true" :menu="true">
-    <h1> Age Group </h1>
+    <h1> {{getI18n.selectAge.title}} </h1>
     <div class="content">
       <div
         class="avatar"

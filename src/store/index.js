@@ -2,7 +2,10 @@ import Vue from 'vue'
 import Vuex from 'vuex'
 import VuexPersist from 'vuex-persist'
 import { app } from '../main.js'
-import VueI18n from 'vue-i18n';
+import {
+  postNewUser,
+  postNewAnswer
+} from '@/utils/requests'
 
 Vue.use(Vuex)
 
@@ -17,8 +20,10 @@ export default new Vuex.Store({
   state: {
     gender: null,
     character: null,
+    characterNumber: null,
     age: null,
     team: null,
+    teamName: null,
     points: 0,
     topic: 0,
     question: 0,
@@ -190,7 +195,8 @@ export default new Vuex.Store({
     },
 
     setCharacter(state, char) {
-      state.character = char
+      state.character = char.src
+      state.characterNumber = char.number
     },
 
     setGender(state, gender) {
@@ -202,7 +208,8 @@ export default new Vuex.Store({
     },
 
     setTeam(state, team) {
-      state.team = team
+      state.team = team.id
+      state.teamName = team.name
     },
 
     setTopic(state, topic) {
@@ -238,6 +245,26 @@ export default new Vuex.Store({
     completeArchievement(state, id) {
       state.achievements.find(item => item.id === +id).completed = true
     },
+
+    setUuid(state, id) {
+      state.uuid = id
+    }
+  },
+
+  actions: {
+    postUuid({ commit, state }) {
+      const character = state.gender + '_' + state.characterNumber
+      return postNewUser(character, state.age, state.gender, state.teamName).then((data) => {
+        commit('setUuid', data.uuid)
+      })
+    },
+
+    postAnswer({ commit, state }, payload) {
+      console.log('state', state)
+      return postNewAnswer(state.uuid, payload.curseId, Number(payload.question.id), payload.question.type, state.points).then((data) => {
+        console.log('data', data)
+      })
+    }
   },
 
   getters: {

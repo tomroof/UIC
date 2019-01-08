@@ -73,6 +73,7 @@ import IconsQuestion from '@/components/questions/IconsQuestion'
 import CalcQuestion from '@/components/questions/CalcQuestion'
 import MouthQuestion from '@/components/questions/MouthQuestion'
 import ModuleStartDialog from '@/components/dialogs/ModuleStartDialog'
+import { mapActions } from 'vuex'
 
 // data
 import CourseData from '@/data/en-config/courseSample'
@@ -217,6 +218,10 @@ export default {
   },
 
   methods: {
+    ...mapActions([
+      'postAnswer'
+    ]),
+
     initPage () {
       this.isQuestion = true;
       this.previousQuestionType = null;
@@ -409,6 +414,11 @@ export default {
     },
 
     calcProgress (currentPage) {
+      console.log('this.steps', this.curse)
+      console.log('this.steps[currentPage]', this.curse.questions[currentPage], currentPage)
+      const postAnswerData = {question: this.curse.questions[currentPage], curseId: this.curseId}
+      this.postAnswer(postAnswerData)
+
       var progress = ((currentPage + 1) / this.steps.length) * 100
       if (progress > 100) {
         progress = 100
