@@ -12,7 +12,7 @@
       <div class="content">
         <h1>{{getI18n.goodJob.goodJob}}</h1>
         <h3 class='description-text'>{{getI18n.goodJob.complete}}</h3>
-        <h3 class='point-text'><span>+40 </span>{{getI18n.goodJob.points}}</h3>
+        <h3 class='point-text'><span>+{{points}} </span>{{getI18n.goodJob.points}}</h3>
       </div>
 
       <ComponentButton class="continue-button" @click="continueButtonClick">{{getI18n.continue}}</ComponentButton>
@@ -24,11 +24,15 @@
 <script>
 
 import ComponentButton from '@/components/Button'
+import { mapActions } from 'vuex'
 
 export default {
   name: 'RewardCard',
 
-  props: {
+  data() {
+    return {
+      points: 40
+    }
   },
 
   components: {
@@ -36,9 +40,17 @@ export default {
   },
 
   methods: {
+    ...mapActions([
+      'putPoints'
+    ]),
+
     continueButtonClick () {
       this.$emit('continue')
     }
+  },
+
+  mounted() {
+    this.putPoints(this.points)
   },
 
   computed: {

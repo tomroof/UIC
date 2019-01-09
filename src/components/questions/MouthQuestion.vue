@@ -53,7 +53,7 @@
         path:'/static/mouth-smile.json'
     };
     anim = bodymovin.loadAnimation(animData);
-    anim.setSpeed(1);    
+    anim.setSpeed(1);
     anim.addEventListener('complete', completedSmileAnim);
  }
 
@@ -71,7 +71,7 @@
         path:'/static/mouth-smile.json'
     };
     anim = bodymovin.loadAnimation(animData);
-    anim.setSpeed(1);    
+    anim.setSpeed(1);
     anim.addEventListener('complete', completedSmileAnim);
   }
 
@@ -93,7 +93,7 @@
         path:'/static/mouth-sad.json'
     };
     anim = bodymovin.loadAnimation(animData);
-    anim.setSpeed(1);     
+    anim.setSpeed(1);
     anim.addEventListener('complete', completedSadAnim);
   }
 
@@ -148,7 +148,6 @@
     methods: {
       handleDragChange (e) {
         if (e.added.element.isCorrect) {
-          // this.openSuccessPopup()
           playSmileAnimation()
         }
         else {

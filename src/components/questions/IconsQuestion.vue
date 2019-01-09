@@ -9,7 +9,7 @@
             @click="handleAnswerClick(answer, question)"/>
         </div>
       </div>
-      <popup :openPopupFalse="openPopupFalse" :openPopupTrue="openPopupTrue"/>
+      <popup :type="question.type" :openPopupFalse="openPopupFalse" :openPopupTrue="openPopupTrue"/>
     </div>
   </BaseQuestion>
 </template>
@@ -71,7 +71,7 @@ import { events } from '@/helpers/events'
 
       handleAnswerClick (answer) {
         if (!this.enabledSelection) return
-          
+
         this.$emit('isQuestionHandler', false)
         this.dropActiveAnswers()
         this.questionCard.answers.find((a) => a.text === answer.text).selected = true

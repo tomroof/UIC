@@ -4,7 +4,8 @@ import VuexPersist from 'vuex-persist'
 import { app } from '../main.js'
 import {
   postNewUser,
-  postNewAnswer
+  postNewAnswer,
+  putNewAPoints
 } from '@/utils/requests'
 
 Vue.use(Vuex)
@@ -13,7 +14,6 @@ const vuexPersist = new VuexPersist({
   key: 'topics',
   storage: localStorage
 })
-
 
 export default new Vuex.Store({
   plugins: [vuexPersist.plugin],
@@ -28,6 +28,7 @@ export default new Vuex.Store({
     topic: 0,
     question: 0,
     lang: 'en',
+    uuid: null,
     achievements: [
       {
         id: 1,
@@ -256,14 +257,18 @@ export default new Vuex.Store({
       const character = state.gender + '_' + state.characterNumber
       return postNewUser(character, state.age, state.gender, state.teamName).then((data) => {
         commit('setUuid', data.uuid)
+        return data
       })
     },
 
     postAnswer({ commit, state }, payload) {
-      console.log('state', state)
-      return postNewAnswer(state.uuid, payload.curseId, Number(payload.question.id), payload.question.type, state.points).then((data) => {
-        console.log('data', data)
-      })
+      return postNewAnswer(state.uuid, payload.curseId, Number(payload.question.id), payload.question.type, payload.isCorrect)
+    },
+
+    putPoints({ commit, state }, payload) {
+      console.log('putPoints', payload)
+      commit('addPoints', payload)
+      return putNewAPoints(state.uuid, payload).then(data => console.log(data))
     }
   },
 

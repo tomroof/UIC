@@ -123,8 +123,8 @@ export default {
     '$route' (to, from) {
       this.initPage()
       let page = parseInt(this.$route.params.id)
-      this.$store.commit('updateCoursePage', { id: this.curseId, page: page})
 
+      this.$store.commit('updateCoursePage', { id: this.curseId, page: page})
       if (!this.showRewardCard) {
         this.checkAudioPlay(page)
       }
@@ -141,6 +141,10 @@ export default {
   },
 
   mounted() {
+    if (!this.getUuid) {
+      return this.$router.push({path: '/'})
+    }
+
     let first_page = parseInt(this.$route.params.id)
     this.$store.commit('setTopic', this.curseId)
 
@@ -152,30 +156,37 @@ export default {
       }
     }
 
-    events.$on('nextSlide', () => {
+    events.$on('nextSlide', (isCorrect) => {
+      if (typeof(isCorrect) === 'boolean') this.isAnswerCorrect = isCorrect
+      this.sendAnswer(this.$refs.wizard.currentStep)
+
       this.checkModuleComplete()
       this.enableSelected = false
       this.isQuestion = true;
       this.isAnswerCorrect = null;
       this.openPopupFalse = false;
       this.openPopupTrue = false;
+
       this.checkCompleteCourse()
 
+
       if (this.$refs.wizard) {
-        // this.$refs.wizard.goNext(true);
         let page = this.$refs.wizard.currentStep
         if (this.steps.length - 1 === page) {
           this.topicComplete()
         }
         else {
-
           this.movePage(page + 1)
           this.initPage()
         }
       }
     })
 
-    events.$on('thisSlide', () => {
+    events.$on('thisSlide', (isCorrect) => {
+      if (typeof(isCorrect) === 'boolean') this.isAnswerCorrect = isCorrect
+
+      this.sendAnswer(this.$refs.wizard.currentStep)
+
       this.isQuestion = true;
       this.previousQuestionType = null;
       this.isAnswerCorrect = null;
@@ -200,6 +211,10 @@ export default {
 
     getI18n() {
       return this.$t("message.restText")
+    },
+
+    getUuid() {
+      return this.$store.state.uuid
     },
 
     steps () {
@@ -306,9 +321,17 @@ export default {
       this.enabledSelection = true
     },
 
+    sendAnswer(currentPage) {
+      const postAnswerData = {question: this.curse.questions[currentPage], curseId: this.curseId, isCorrect: this.isAnswerCorrect}
+      this.postAnswer(postAnswerData)
+    },
+
     nextClicked (currentPage) {
       if (this.isQuestion) return false
       if (this.steps[currentPage].options.nextDisabled) return false
+
+      this.sendAnswer(currentPage)
+
       if (this.isAnswerCorrect !== null) {
 
         let page = this.$refs.wizard.currentStep
@@ -345,8 +368,8 @@ export default {
           }
         }
       }
-
       this.checkModuleComplete()
+
       this.calcProgress(currentPage)
       if (this.steps.length - 1 === currentPage) {
         this.topicComplete()
@@ -414,11 +437,6 @@ export default {
     },
 
     calcProgress (currentPage) {
-      console.log('this.steps', this.curse)
-      console.log('this.steps[currentPage]', this.curse.questions[currentPage], currentPage)
-      const postAnswerData = {question: this.curse.questions[currentPage], curseId: this.curseId}
-      this.postAnswer(postAnswerData)
-
       var progress = ((currentPage + 1) / this.steps.length) * 100
       if (progress > 100) {
         progress = 100

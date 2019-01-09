@@ -42,9 +42,9 @@
 </template>
 
 <script>
-
 import ComponentButton from '@/components/Button'
 import AudioManager from '@/helpers/audioManager'
+import { mapActions } from 'vuex'
 
 export default {
   name: 'CongratsDialog',
@@ -86,13 +86,21 @@ export default {
         this.rewardPoint = 100
         break;
     }
-    this.$store.commit('addPoints', this.rewardPoint)
+
+    if (this.$router.history.current.params.id !== "1") {
+      this.putPoints(this.rewardPoint)
+    }
+
     if (!this.isMobile) {
       AudioManager.playAudio('unlocked_badge', this.$store.state.gender, this.finishedCompleteAudio)
     }
   },
 
   methods: {
+    ...mapActions([
+      'putPoints'
+    ]),
+
     onContinue () {
       if (!this.disableContinue) {
         this.$emit('continue')
