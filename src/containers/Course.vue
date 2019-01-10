@@ -73,7 +73,7 @@ import IconsQuestion from '@/components/questions/IconsQuestion'
 import CalcQuestion from '@/components/questions/CalcQuestion'
 import MouthQuestion from '@/components/questions/MouthQuestion'
 import ModuleStartDialog from '@/components/dialogs/ModuleStartDialog'
-import { mapActions } from 'vuex'
+import { mapActions, mapGetters } from 'vuex'
 
 // data
 import CourseData from '@/data/en-config/courseSample'
@@ -145,6 +145,11 @@ export default {
       return this.$router.push({path: '/'})
     }
 
+    if (!this.getCoursCurrentStep) {
+      this.$store.commit('updateCoursCurrentStep', this.$refs.wizard.currentStep)
+    }
+
+
     let first_page = parseInt(this.$route.params.id)
     this.$store.commit('setTopic', this.curseId)
 
@@ -183,7 +188,8 @@ export default {
     })
 
     events.$on('thisSlide', (isCorrect) => {
-      console.log('this.$refs.wizard', this.$refs.wizard.currentStep)
+      this.steps[this.$refs.wizard.currentStep].options.nextDisabled = true
+
       if (typeof(isCorrect) === 'boolean') this.isAnswerCorrect = isCorrect
 
       this.sendAnswer(this.$refs.wizard.currentStep)
@@ -217,6 +223,8 @@ export default {
     getUuid() {
       return this.$store.state.uuid
     },
+
+    ...mapGetters(['getCoursCurrentStep']),
 
     steps () {
       return this.curse.questions.map((q, index) => {
@@ -332,15 +340,16 @@ export default {
     nextClicked (currentPage) {
       if (this.isQuestion) return false
       if (this.steps[currentPage].options.nextDisabled) return false
+      let page = this.$refs.wizard.currentStep
+      let currentQuestionType = this.steps[page].type
+      let currentQuestionSlot = this.steps[page].slot
 
-      this.sendAnswer(currentPage)
+      console.log('currentQuestionType', !((currentQuestionType === 'icons') || (currentQuestionType === 'calc')))
+      if (!((currentQuestionType === 'icons') || (currentQuestionType === 'calc'))) {
+        this.sendAnswer(currentPage)
+      }
 
       if (this.isAnswerCorrect !== null) {
-
-        let page = this.$refs.wizard.currentStep
-        let currentQuestionType = this.steps[page].type
-        let currentQuestionSlot = this.steps[page].slot
-
         // Play correct sound for only icons
         if (currentQuestionType === 'icons') {
           if (this.isAnswerCorrect === true) {

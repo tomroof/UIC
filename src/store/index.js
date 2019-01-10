@@ -22,6 +22,7 @@ export default new Vuex.Store({
     gender: null,
     character: null,
     characterNumber: null,
+    coursCurrentStep: null,
     age: null,
     team: null,
     teamName: null,
@@ -230,6 +231,10 @@ export default new Vuex.Store({
       })
     },
 
+    updateCoursCurrentStep(state, page) {
+      state.coursCurrentStep = page
+    },
+
     addPoints(state, point) {
       state.points = point
     },
@@ -264,27 +269,28 @@ export default new Vuex.Store({
 
     postAnswer({ commit, state }, payload) {
       const isCorrect = payload.isCorrect === null ? true : payload.isCorrect
-      return postNewAnswer(state.uuid, payload.curseId, Number(payload.question.id), payload.question.type, isCorrect)
+      return postNewAnswer(state.uuid, payload.curseId, Number(payload.question.id), payload.question.type, isCorrect).then(() => console.log('postNewAnswer'))
     },
 
     putPoints({ commit, state }, payload) {
       return putNewAPoints(state.uuid, payload).then(data => {
         console.log('putPoints', data)
-        // commit('addPoints', data.points)
+        commit('addPoints', data.points)
       })
     },
 
     putBadge({ commit, state }, payload) {
       console.log('completeArchievement', payload)
       commit('completeArchievement', payload)
-      // const badgeName = state.achievements.find(item => item.id === +payload).name
-      // return putNewBadge(state.uuid, badgeName).then(data => console.log('putBadge', data))
+      const badgeName = state.achievements.find(item => item.id === +payload).name
+      return putNewBadge(state.uuid, badgeName).then(data => console.log('putBadge', data))
     },
   },
 
   getters: {
     getCourses: (state) => state.courses,
     getAchievements: (state) => state.achievements,
-    getLang: (state) => state.lang
+    getLang: (state) => state.lang,
+    getCoursCurrentStep: (state) => state.coursCurrentStep
   }
 })
