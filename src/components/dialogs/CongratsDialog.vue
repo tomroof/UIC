@@ -42,9 +42,9 @@
 </template>
 
 <script>
-
 import ComponentButton from '@/components/Button'
 import AudioManager from '@/helpers/audioManager'
+import { mapActions } from 'vuex'
 
 export default {
   name: 'CongratsDialog',
@@ -75,7 +75,9 @@ export default {
   },
 
   mounted() {
-    switch (parseInt(this.id)) {
+    const id = parseInt(this.id)
+
+    switch (id) {
       case 1:
         this.rewardTitle = this.$t("message.restText.congrats.profileCompleted")
         this.rewardPoint = 100
@@ -86,13 +88,29 @@ export default {
         this.rewardPoint = 100
         break;
     }
-    this.$store.commit('addPoints', this.rewardPoint)
+
+    if (id === 1) {
+      this.$store.commit('completeArchievement', id)
+      this.$store.commit('addPoints', this.rewardPoint)
+    }
+    if ((id !== 1) && (this.$store.state.achievements[this.id - 1].completed !== true)) {
+      this.putPoints(this.rewardPoint)
+      this.addAchievement()
+    }
+
     if (!this.isMobile) {
-      AudioManager.playAudio('unlocked_badge', this.$store.state.gender, this.finishedCompleteAudio)
+      setTimeout(() => {
+        AudioManager.playAudio('unlocked_badge', this.$store.state.gender, this.finishedCompleteAudio)
+      }, 300)
     }
   },
 
   methods: {
+    ...mapActions([
+      'putPoints',
+      'putBadge'
+    ]),
+
     onContinue () {
       if (!this.disableContinue) {
         this.$emit('continue')
@@ -107,7 +125,13 @@ export default {
 
     finishedCompleteAudio () {
       this.desktopAudioFinished = true
-    }
+    },
+
+    addAchievement() {
+      const id = parseInt(this.id)
+
+      this.putBadge(id)
+    },
   }
 }
 </script>
@@ -165,10 +189,7 @@ export default {
   }
 }
 
-
 .header {
-  // background-image: url('../assets/confetti.png');
-
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;

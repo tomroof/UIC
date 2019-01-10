@@ -73,6 +73,7 @@ import IconsQuestion from '@/components/questions/IconsQuestion'
 import CalcQuestion from '@/components/questions/CalcQuestion'
 import MouthQuestion from '@/components/questions/MouthQuestion'
 import ModuleStartDialog from '@/components/dialogs/ModuleStartDialog'
+import { mapActions, mapGetters } from 'vuex'
 
 // data
 import CourseData from '@/data/en-config/courseSample'
@@ -122,8 +123,8 @@ export default {
     '$route' (to, from) {
       this.initPage()
       let page = parseInt(this.$route.params.id)
-      this.$store.commit('updateCoursePage', { id: this.curseId, page: page})
 
+      this.$store.commit('updateCoursePage', { id: this.curseId, page: page})
       if (!this.showRewardCard) {
         this.checkAudioPlay(page)
       }
@@ -140,6 +141,10 @@ export default {
   },
 
   mounted() {
+    if (!this.getUuid) {
+      return this.$router.push({path: '/'})
+    }
+
     let first_page = parseInt(this.$route.params.id)
     this.$store.commit('setTopic', this.curseId)
 
@@ -151,44 +156,10 @@ export default {
       }
     }
 
-    events.$on('nextSlide', () => {
-      this.checkModuleComplete()
-      this.enableSelected = false
-      this.isQuestion = true;
-      this.isAnswerCorrect = null;
-      this.openPopupFalse = false;
-      this.openPopupTrue = false;
-      this.checkCompleteCourse()
-
-      if (this.$refs.wizard) {
-        // this.$refs.wizard.goNext(true);
-        let page = this.$refs.wizard.currentStep
-        if (this.steps.length - 1 === page) {
-          this.topicComplete()
-        }
-        else {
-
-          this.movePage(page + 1)
-          this.initPage()
-        }
-      }
-    })
-
-    events.$on('thisSlide', () => {
-      this.isQuestion = true;
-      this.previousQuestionType = null;
-      this.isAnswerCorrect = null;
-      this.openPopupFalse = false;
-      this.openPopupTrue = false;
-    })
-
-    events.$on('openSuccessPopup', () => {
-      this.openSuccessPopup();
-    })
-
-    events.$on('openFailedPopup', () => {
-      this.openFailedPopup();
-    })
+    events.$on('nextSlide', this.nextSlideHandler)
+    events.$on('thisSlide', this.thisSlideHandler)
+    events.$on('openSuccessPopup', this.openSuccessPopupHandler)
+    events.$on('openFailedPopup', this.openFailedPopupHandler)
   },
 
   computed: {
@@ -200,6 +171,12 @@ export default {
     getI18n() {
       return this.$t("message.restText")
     },
+
+    getUuid() {
+      return this.$store.state.uuid
+    },
+
+    ...mapGetters(['getCoursCurrentStep']),
 
     steps () {
       return this.curse.questions.map((q, index) => {
@@ -216,7 +193,62 @@ export default {
     }
   },
 
+  beforeDestroy() {
+    events.$off('thisSlide', this.thisSlideHandler)
+    events.$off('nextSlide', this.nextSlideHandler)
+    events.$off('openSuccessPopup', this.openSuccessPopupHandler)
+    events.$off('openFailedPopup', this.openFailedPopupHandler)
+  },
+
   methods: {
+    ...mapActions([
+      'postAnswer'
+    ]),
+
+    thisSlideHandler(isCorrect) {
+      this.steps[this.getCoursCurrentStep].options.nextDisabled = true
+      if (typeof(isCorrect) === 'boolean') this.isAnswerCorrect = isCorrect
+
+      this.sendAnswer(this.getCoursCurrentStep)
+
+      this.isQuestion = true;
+      this.previousQuestionType = null;
+      this.isAnswerCorrect = null;
+      this.openPopupFalse = false;
+      this.openPopupTrue = false;
+    },
+
+    openFailedPopupHandler() {
+      this.openFailedPopup();
+    },
+
+    openSuccessPopupHandler() {
+      this.openSuccessPopup();
+    },
+
+    nextSlideHandler(isCorrect) {
+      if (typeof(isCorrect) === 'boolean') this.isAnswerCorrect = isCorrect
+      this.sendAnswer(this.getCoursCurrentStep)
+
+      this.checkModuleComplete()
+      this.enableSelected = false
+      this.isQuestion = true;
+      this.isAnswerCorrect = null;
+      this.openPopupFalse = false;
+      this.openPopupTrue = false;
+
+      if (this.$refs.wizard) {
+        let page = this.$refs.wizard.currentStep
+        if (this.steps.length - 1 === page) {
+          this.topicComplete()
+        }
+        else {
+          this.movePage(page + 1)
+          this.initPage()
+        }
+      }
+    },
+
     initPage () {
       this.isQuestion = true;
       this.previousQuestionType = null;
@@ -226,7 +258,6 @@ export default {
       if (this.$refs.wizard !== null) {
         this.$refs.wizard.goTo(parseInt(this.$route.params.id))
       }
-
     },
 
     checkModuleComplete () {
@@ -253,44 +284,46 @@ export default {
     },
 
     checkAudioPlay (page) {
-      if (page > 0 && page < this.steps.length - 1) {
-        let prevPage = page - 1
-        let prevType = this.steps[prevPage].type
-        let currentType = this.steps[page].type
+      setTimeout(() => {
+        if (page > 0 && page < this.steps.length - 1) {
+          let prevPage = page - 1
+          let prevType = this.steps[prevPage].type
+          let currentType = this.steps[page].type
 
-        this.enabledSelection = true
-        if (currentType === null || prevType === currentType) {
-          return
-        }
+          this.enabledSelection = true
+          if (currentType === null || prevType === currentType) {
+            return
+          }
 
-        if (DeviceManager.isMobile()) {
-          if (currentType === "icons") {
-            this.showModuleStartDialog = true
-            this.moduleStartTitle = this.steps[page].nextLabel
-            this.moduleStartAudio = "first_question_for_icons"
-          } else if (currentType === "cards") {
-            this.showModuleStartDialog = true
-            this.moduleStartTitle = this.steps[page].nextLabel
-            this.moduleStartAudio = "first_question_for_cards"
-          } else if (currentType === "calc") {
-            this.showModuleStartDialog = true
-            this.moduleStartTitle = this.steps[page].nextLabel
-            this.moduleStartAudio = "first_question_for_calc"
+          if (DeviceManager.isMobile()) {
+            if (currentType === "icons") {
+              this.showModuleStartDialog = true
+              this.moduleStartTitle = this.steps[page].nextLabel
+              this.moduleStartAudio = "first_question_for_icons"
+            } else if (currentType === "cards") {
+              this.showModuleStartDialog = true
+              this.moduleStartTitle = this.steps[page].nextLabel
+              this.moduleStartAudio = "first_question_for_cards"
+            } else if (currentType === "calc") {
+              this.showModuleStartDialog = true
+              this.moduleStartTitle = this.steps[page].nextLabel
+              this.moduleStartAudio = "first_question_for_calc"
+            }
+          }
+          else {
+            if (currentType === "icons") {
+              this.enabledSelection = false
+              AudioManager.playAudio('first_question_for_icons', this.$store.state.gender, this.endedIntroAudio)
+            } else if (currentType === "cards") {
+              this.enabledSelection = false
+              AudioManager.playAudio('first_question_for_cards', this.$store.state.gender, this.endedIntroAudio)
+            } else if (currentType === "calc") {
+              this.enabledSelection = false
+              AudioManager.playAudio('first_question_for_calc', this.$store.state.gender, this.endedIntroAudio)
+            }
           }
         }
-        else {
-          if (currentType === "icons") {
-            this.enabledSelection = false
-            AudioManager.playAudio('first_question_for_icons', this.$store.state.gender, this.endedIntroAudio)
-          } else if (currentType === "cards") {
-            this.enabledSelection = false
-            AudioManager.playAudio('first_question_for_cards', this.$store.state.gender, this.endedIntroAudio)
-          } else if (currentType === "calc") {
-            this.enabledSelection = false
-            AudioManager.playAudio('first_question_for_calc', this.$store.state.gender, this.endedIntroAudio)
-          }
-        }
-      }
+      }, 300)
     },
 
     hideModuleStartDialog () {
@@ -301,15 +334,25 @@ export default {
       this.enabledSelection = true
     },
 
+    sendAnswer(currentPage) {
+      const postAnswerData = {question: this.curse.questions[currentPage], curseId: this.curseId, isCorrect: this.isAnswerCorrect}
+      this.postAnswer(postAnswerData)
+    },
+
     nextClicked (currentPage) {
       if (this.isQuestion) return false
       if (this.steps[currentPage].options.nextDisabled) return false
+      let page = this.$refs.wizard.currentStep
+      let currentQuestionType = this.steps[page].type
+      let currentQuestionSlot = this.steps[page].slot
+      this.$store.commit('updateCoursCurrentStep', page)
+
+
+      if (!((currentQuestionType === 'icons') || (currentQuestionType === 'calc'))) {
+        this.sendAnswer(currentPage)
+      }
+
       if (this.isAnswerCorrect !== null) {
-
-        let page = this.$refs.wizard.currentStep
-        let currentQuestionType = this.steps[page].type
-        let currentQuestionSlot = this.steps[page].slot
-
         // Play correct sound for only icons
         if (currentQuestionType === 'icons') {
           if (this.isAnswerCorrect === true) {
@@ -340,8 +383,8 @@ export default {
           }
         }
       }
-
       this.checkModuleComplete()
+
       this.calcProgress(currentPage)
       if (this.steps.length - 1 === currentPage) {
         this.topicComplete()
@@ -361,7 +404,7 @@ export default {
     },
 
     topicComplete () {
-      this.checkAchievement()
+      // this.checkAchievement()
       this.$store.commit('updateCoursePage', { id: this.curseId, page: 0})
       this.$store.commit('updateCourseProgress', { id: this.curseId, currentProgress: 100 })
       this.$router.push('/congrats/2')
@@ -370,42 +413,6 @@ export default {
     movePage (page) {
       let questionTitle = this.steps[page].url_prefix
       this.$router.push('/course/' + this.$route.params.url_prefix + "/" + questionTitle +  "/" + page)
-    },
-
-    checkAchievement () {
-      switch (this.curseId) {
-        case 1:
-          this.$store.commit('completeArchievement', 1)
-          break;
-
-        case 2:
-          this.$store.commit('completeArchievement', 2)
-          break;
-
-        case 3:
-          this.$store.commit('completeArchievement', 3)
-          break;
-
-        case 4:
-          this.$store.commit('completeArchievement', 4)
-          break;
-
-        case 5:
-          this.$store.commit('completeArchievement', 5)
-          break;
-
-        case 6:
-          this.$store.commit('completeArchievement', 6)
-          break;
-
-        case 7:
-          this.$store.commit('completeArchievement', 7)
-          break;
-
-        case 8:
-          this.$store.commit('completeArchievement', 8)
-          break;
-      }
     },
 
     calcProgress (currentPage) {

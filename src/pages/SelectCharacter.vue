@@ -144,7 +144,12 @@ export default {
       if (!this.selectedCard) return
       this.cards.gender.map((element) => {
         if (element.value === this.character) {
-          this.$store.commit('setCharacter', element.src)
+          this.$store.commit('setCharacter',
+            {
+              src: element.src,
+              number: element.value
+            }
+          )
         }
       })
 

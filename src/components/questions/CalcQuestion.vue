@@ -60,7 +60,7 @@
         </div> -->
 
       </div>
-      <popup :openPopupFalse="openPopupFalse" :openPopupTrue="openPopupTrue"/>
+      <popup :type="question.type" :openPopupFalse="openPopupFalse" :openPopupTrue="openPopupTrue"/>
     </div>
   </BaseQuestion>
 </template>

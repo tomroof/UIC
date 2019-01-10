@@ -29,7 +29,7 @@
           <div class="title-text" v-html="getI18n.yeah">
           </div>
           <div class="points-text">
-            +20 <span>{{ getI18n.points }}</span>
+            +{{points}} <span>{{ getI18n.points }}</span>
           </div>
         </div>
         <component-button :popup="true" @click="toNextSlide">
@@ -47,7 +47,7 @@
             <div class="title-text-mouth">
               {{ getI18n.cavityMonsters }}
             </div>
-            <component-button :popup="true" @click="toNextSlide">
+            <component-button :popup="true" @click="toThisSlide">
               <img src='@/assets/refresh.svg' class="refresh-icon"> {{ getI18n.playNext }}
             </component-button>
           </div>
@@ -94,6 +94,7 @@
 <script>
 import ComponentButton from '@/components/Button'
 import { events } from '@/helpers/events'
+import { mapActions } from 'vuex'
 
   export default {
     props: ['type', 'answers', 'openPopupTrue', 'openPopupFalse', 'popupBack', 'closePopup', 'exitCourse'],
@@ -103,26 +104,35 @@ import { events } from '@/helpers/events'
 
     data () {
       return {
-        avatarImage: null
+        avatarImage: null,
+        points: 20
       }
     },
 
     watch: {
       answers:{
         handler: function (newVal) {
-          this.avatarImage = require('@/assets/' + newVal[0].image)
+          const newValLength = newVal.length - 1
+          this.avatarImage = require('@/assets/' + newVal[newValLength].image)
         }
       }
     },
 
     methods: {
+      ...mapActions([
+        'putPoints'
+      ]),
+
       toNextSlide() {
-        events.$emit('nextSlide');
+        if (this.type === 'icons') {
+          this.putPoints(this.points)
+        }
+        events.$emit('nextSlide', true);
       },
 
       toThisSlide() {
-        events.$emit('dropAnswer')
-        events.$emit('thisSlide');
+        events.$emit('dropAnswer');
+        events.$emit('thisSlide', false);
       }
     },
 

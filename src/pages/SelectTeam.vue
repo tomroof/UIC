@@ -26,6 +26,7 @@ import selectATeam from '@/data/en-config/selectATeam'
 import CongratsDialog from '@/components/dialogs/CongratsDialog'
 import DeviceManager from '@/helpers/deviceManager'
 import AudioManager from '@/helpers/audioManager'
+import { mapActions } from 'vuex'
 
 export default {
   components: {
@@ -70,10 +71,16 @@ export default {
       this.audioFinished = true
     },
 
+    ...mapActions([
+      'postUuid'
+    ]),
+
     continueButtonClick () {
       if (this.selected === null) return
-      this.$store.commit('setTeam', this.selected)
-      this.$store.commit('completeArchievement', 1)
+      this.$store.commit('setTeam', {id: this.selected, name: this.team[this.selected - 1].title})
+      // this.$store.commit('completeArchievement', 1)
+
+      this.postUuid()
 
       if (DeviceManager.isMobile()) {
         AudioManager.playAudio('unlocked_badge', this.$store.state.gender, this.finishedCompleteAudio)

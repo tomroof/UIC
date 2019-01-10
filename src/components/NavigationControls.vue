@@ -51,7 +51,6 @@ export default {
 
     exitCourse () {
       this.isPopupVisible = false
-      // this.$router.go(-1)
       this.$router.push('/courses/')
     },
 

@@ -2,7 +2,7 @@
   <div class="mobile-dialog">
     <div class="content">
       <div class="header">
-        <div class="top"> 
+        <div class="top">
           <img :src="$store.state.character">
         </div>
       </div>
@@ -87,7 +87,7 @@ export default {
   border-radius: 10px;
   box-shadow: 10px 10px 10px 0 rgba(0, 0, 0, 0.3);
   background-color: #26606b;
-  .header { 
+  .header {
     padding-top: 30px;
   }
 
@@ -118,7 +118,7 @@ export default {
 
 .play-button {
   pointer: cursor;
-  position: absolute;  
+  position: absolute;
   left: calc(50% - 40px);
   bottom: -30px;
   background-color: #278ab4;

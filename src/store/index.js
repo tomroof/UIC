@@ -2,7 +2,12 @@ import Vue from 'vue'
 import Vuex from 'vuex'
 import VuexPersist from 'vuex-persist'
 import { app } from '../main.js'
-import VueI18n from 'vue-i18n';
+import {
+  postNewUser,
+  postNewAnswer,
+  putNewBadge,
+  putNewAPoints
+} from '@/utils/requests'
 
 Vue.use(Vuex)
 
@@ -11,18 +16,21 @@ const vuexPersist = new VuexPersist({
   storage: localStorage
 })
 
-
 export default new Vuex.Store({
   plugins: [vuexPersist.plugin],
   state: {
     gender: null,
     character: null,
+    characterNumber: null,
+    coursCurrentStep: null,
     age: null,
     team: null,
+    teamName: null,
     points: 0,
     topic: 0,
     question: 0,
     lang: 'en',
+    uuid: null,
     achievements: [
       {
         id: 1,
@@ -190,7 +198,8 @@ export default new Vuex.Store({
     },
 
     setCharacter(state, char) {
-      state.character = char
+      state.character = char.src
+      state.characterNumber = char.number
     },
 
     setGender(state, gender) {
@@ -202,7 +211,8 @@ export default new Vuex.Store({
     },
 
     setTeam(state, team) {
-      state.team = team
+      state.team = team.id
+      state.teamName = team.name
     },
 
     setTopic(state, topic) {
@@ -221,8 +231,12 @@ export default new Vuex.Store({
       })
     },
 
+    updateCoursCurrentStep(state, page) {
+      state.coursCurrentStep = page
+    },
+
     addPoints(state, point) {
-      state.points += point
+      state.points = point
     },
 
     updateCoursePage(state, payload) {
@@ -238,11 +252,44 @@ export default new Vuex.Store({
     completeArchievement(state, id) {
       state.achievements.find(item => item.id === +id).completed = true
     },
+
+    setUuid(state, id) {
+      state.uuid = id
+    }
+  },
+
+  actions: {
+    postUuid({ commit, state }) {
+      const character = state.gender + '_' + state.characterNumber
+      return postNewUser(character, state.age, state.gender, state.teamName).then((data) => {
+        commit('setUuid', data.uuid)
+        return data
+      })
+    },
+
+    postAnswer({ commit, state }, payload) {
+      const isCorrect = payload.isCorrect === null ? true : payload.isCorrect
+      return postNewAnswer(state.uuid, payload.curseId, Number(payload.question.id), payload.question.type, isCorrect).then(() => console.log('Answer'))
+    },
+
+    putPoints({ commit, state }, payload) {
+      return putNewAPoints(state.uuid, payload).then(data => {
+        console.log('Points')
+        commit('addPoints', data.points)
+      })
+    },
+
+    putBadge({ commit, state }, payload) {
+      commit('completeArchievement', payload)
+      const badgeName = state.achievements.find(item => item.id === +payload).name
+      return putNewBadge(state.uuid, badgeName).then(data => console.log('Badge'))
+    },
   },
 
   getters: {
     getCourses: (state) => state.courses,
     getAchievements: (state) => state.achievements,
-    getLang: (state) => state.lang
+    getLang: (state) => state.lang,
+    getCoursCurrentStep: (state) => state.coursCurrentStep
   }
 })
