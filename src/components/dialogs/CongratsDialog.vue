@@ -189,10 +189,7 @@ export default {
   }
 }
 
-
 .header {
-  // background-image: url('../assets/confetti.png');
-
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;

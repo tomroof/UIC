@@ -59,7 +59,6 @@ export default {
     font-family: 'Zilla Slab';
     font-weight: 600;
     letter-spacing: 0.3px;
-    // margin-top: 10px;
 
     &.active {
       color: #FF6D7F;
