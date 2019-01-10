@@ -60,6 +60,7 @@ export const postNewAnswer = (uuid, course_id, question_id, question_type, is_co
 }
 
 export const putNewBadge = (uuid, badge ) => {
+  console.log('putNewBadge')
   const serveData = {
     user: {
       badge
@@ -72,12 +73,13 @@ export const putNewBadge = (uuid, badge ) => {
 }
 
 export const putNewAPoints = (uuid, points) => {
+  console.log('putNewAPoints')
   const serveData = {
     user: {
       points
     }
   }
-  return put(`/api/v1/users/${uuid}/add_badge`, serveData,
+  return put(`/api/v1/users/${uuid}/add_points`, serveData,
   {'Content-Type': 'application/json'})
   .then(response => response.data)
   .catch(error => console.log('putNewAPoints request error', error))

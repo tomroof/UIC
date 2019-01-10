@@ -183,6 +183,7 @@ export default {
     })
 
     events.$on('thisSlide', (isCorrect) => {
+      console.log('this.$refs.wizard', this.$refs.wizard.currentStep)
       if (typeof(isCorrect) === 'boolean') this.isAnswerCorrect = isCorrect
 
       this.sendAnswer(this.$refs.wizard.currentStep)

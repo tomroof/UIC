@@ -89,6 +89,10 @@ export default {
         break;
     }
 
+    if (id === 1) {
+      this.$store.commit('completeArchievement', id)
+      this.$store.commit('addPoints', this.rewardPoint)
+    }
     if ((id !== 1) && (this.$store.state.achievements[this.id - 1].completed !== true)) {
       this.putPoints(this.rewardPoint)
       this.addAchievement()

@@ -25,7 +25,7 @@ export default new Vuex.Store({
     age: null,
     team: null,
     teamName: null,
-    points: 100,
+    points: 0,
     topic: 0,
     question: 0,
     lang: 'en',
@@ -270,14 +270,15 @@ export default new Vuex.Store({
     putPoints({ commit, state }, payload) {
       return putNewAPoints(state.uuid, payload).then(data => {
         console.log('putPoints', data)
-        commit('addPoints', data.points)
+        // commit('addPoints', data.points)
       })
     },
 
     putBadge({ commit, state }, payload) {
+      console.log('completeArchievement', payload)
       commit('completeArchievement', payload)
-      const badgeName = state.achievements.find(item => item.id === +payload).name
-      return putNewBadge(state.uuid, badgeName).then(data => console.log('putBadge', data))
+      // const badgeName = state.achievements.find(item => item.id === +payload).name
+      // return putNewBadge(state.uuid, badgeName).then(data => console.log('putBadge', data))
     },
   },
 
