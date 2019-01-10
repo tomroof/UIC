@@ -140,10 +140,6 @@ import { mapActions } from 'vuex'
       getI18n() {
         return this.$t("message.restText.popups")
       }
-    },
-
-    mounted() {
-      console.log('props', this.type)
     }
   }
 </script>

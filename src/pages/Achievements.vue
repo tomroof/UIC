@@ -47,7 +47,6 @@ export default {
       var res = []
       var index = 0
       for (var i = 0; i < this.getAchievements.length; i++) {
-        console.log('getAchievements', this.getAchievements)
         if (this.getAchievements[i].completed) {
           res[index] = this.getAchievements[i]
           index ++

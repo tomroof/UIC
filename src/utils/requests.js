@@ -25,7 +25,6 @@ const post = (url, data, headers = {}) => {
 }
 
 const put = (url, data, headers = {}) => {
-  // console.log('serverData', data,)
   return simpleRequest(url, "put", data, headers);
 }
 
@@ -56,7 +55,19 @@ export const postNewAnswer = (uuid, course_id, question_id, question_type, is_co
   return post(`/api/v1/users/${uuid}/create_answer`, serveData,
   {'Content-Type': 'application/json'})
   .then(response => response.data)
-  .catch(error => console.log('postNewUser request error', error))
+  .catch(error => console.log('postNewAnswer request error', error))
+}
+
+export const postNewBadge = (uuid, name ) => {
+  const serveData = {
+    user: {
+      name
+    }
+  }
+  return post(`/api/v1/users/${uuid}/create_answer`, serveData,
+  {'Content-Type': 'application/json'})
+  .then(response => response.data)
+  .catch(error => console.log('postNewBadge request error', error))
 }
 
 export const putNewAPoints = (uuid, points) => {
@@ -68,5 +79,5 @@ export const putNewAPoints = (uuid, points) => {
   return put(`/api/v1/users/${uuid}/add_points`, serveData,
   {'Content-Type': 'application/json'})
   .then(response => response.data)
-  .catch(error => console.log('postNewUser request error', error))
+  .catch(error => console.log('putNewAPoints request error', error))
 }

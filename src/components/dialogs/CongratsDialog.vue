@@ -75,7 +75,9 @@ export default {
   },
 
   mounted() {
-    switch (parseInt(this.id)) {
+    const id = parseInt(this.id)
+
+    switch (id) {
       case 1:
         this.rewardTitle = this.$t("message.restText.congrats.profileCompleted")
         this.rewardPoint = 100
@@ -87,9 +89,11 @@ export default {
         break;
     }
 
-    if (this.$router.history.current.params.id !== "1") {
+    if ((id !== 1) && (this.$store.state.achievements[this.id - 1].completed !== true)) {
       this.putPoints(this.rewardPoint)
     }
+
+    this.addAchievement()
 
     if (!this.isMobile) {
       AudioManager.playAudio('unlocked_badge', this.$store.state.gender, this.finishedCompleteAudio)
@@ -98,7 +102,8 @@ export default {
 
   methods: {
     ...mapActions([
-      'putPoints'
+      'putPoints',
+      'postBadge'
     ]),
 
     onContinue () {
@@ -115,7 +120,13 @@ export default {
 
     finishedCompleteAudio () {
       this.desktopAudioFinished = true
-    }
+    },
+
+    addAchievement() {
+      const id = parseInt(this.id)
+
+      this.postBadge(id)
+    },
   }
 }
 </script>

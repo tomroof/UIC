@@ -273,44 +273,46 @@ export default {
     },
 
     checkAudioPlay (page) {
-      if (page > 0 && page < this.steps.length - 1) {
-        let prevPage = page - 1
-        let prevType = this.steps[prevPage].type
-        let currentType = this.steps[page].type
+      setTimeout(() => {
+        if (page > 0 && page < this.steps.length - 1) {
+          let prevPage = page - 1
+          let prevType = this.steps[prevPage].type
+          let currentType = this.steps[page].type
 
-        this.enabledSelection = true
-        if (currentType === null || prevType === currentType) {
-          return
-        }
+          this.enabledSelection = true
+          if (currentType === null || prevType === currentType) {
+            return
+          }
 
-        if (DeviceManager.isMobile()) {
-          if (currentType === "icons") {
-            this.showModuleStartDialog = true
-            this.moduleStartTitle = this.steps[page].nextLabel
-            this.moduleStartAudio = "first_question_for_icons"
-          } else if (currentType === "cards") {
-            this.showModuleStartDialog = true
-            this.moduleStartTitle = this.steps[page].nextLabel
-            this.moduleStartAudio = "first_question_for_cards"
-          } else if (currentType === "calc") {
-            this.showModuleStartDialog = true
-            this.moduleStartTitle = this.steps[page].nextLabel
-            this.moduleStartAudio = "first_question_for_calc"
+          if (DeviceManager.isMobile()) {
+            if (currentType === "icons") {
+              this.showModuleStartDialog = true
+              this.moduleStartTitle = this.steps[page].nextLabel
+              this.moduleStartAudio = "first_question_for_icons"
+            } else if (currentType === "cards") {
+              this.showModuleStartDialog = true
+              this.moduleStartTitle = this.steps[page].nextLabel
+              this.moduleStartAudio = "first_question_for_cards"
+            } else if (currentType === "calc") {
+              this.showModuleStartDialog = true
+              this.moduleStartTitle = this.steps[page].nextLabel
+              this.moduleStartAudio = "first_question_for_calc"
+            }
+          }
+          else {
+            if (currentType === "icons") {
+              this.enabledSelection = false
+              AudioManager.playAudio('first_question_for_icons', this.$store.state.gender, this.endedIntroAudio)
+            } else if (currentType === "cards") {
+              this.enabledSelection = false
+              AudioManager.playAudio('first_question_for_cards', this.$store.state.gender, this.endedIntroAudio)
+            } else if (currentType === "calc") {
+              this.enabledSelection = false
+              AudioManager.playAudio('first_question_for_calc', this.$store.state.gender, this.endedIntroAudio)
+            }
           }
         }
-        else {
-          if (currentType === "icons") {
-            this.enabledSelection = false
-            AudioManager.playAudio('first_question_for_icons', this.$store.state.gender, this.endedIntroAudio)
-          } else if (currentType === "cards") {
-            this.enabledSelection = false
-            AudioManager.playAudio('first_question_for_cards', this.$store.state.gender, this.endedIntroAudio)
-          } else if (currentType === "calc") {
-            this.enabledSelection = false
-            AudioManager.playAudio('first_question_for_calc', this.$store.state.gender, this.endedIntroAudio)
-          }
-        }
-      }
+      }, 300)
     },
 
     hideModuleStartDialog () {
@@ -389,7 +391,7 @@ export default {
     },
 
     topicComplete () {
-      this.checkAchievement()
+      // this.checkAchievement()
       this.$store.commit('updateCoursePage', { id: this.curseId, page: 0})
       this.$store.commit('updateCourseProgress', { id: this.curseId, currentProgress: 100 })
       this.$router.push('/congrats/2')
@@ -398,42 +400,6 @@ export default {
     movePage (page) {
       let questionTitle = this.steps[page].url_prefix
       this.$router.push('/course/' + this.$route.params.url_prefix + "/" + questionTitle +  "/" + page)
-    },
-
-    checkAchievement () {
-      switch (this.curseId) {
-        case 1:
-          this.$store.commit('completeArchievement', 1)
-          break;
-
-        case 2:
-          this.$store.commit('completeArchievement', 2)
-          break;
-
-        case 3:
-          this.$store.commit('completeArchievement', 3)
-          break;
-
-        case 4:
-          this.$store.commit('completeArchievement', 4)
-          break;
-
-        case 5:
-          this.$store.commit('completeArchievement', 5)
-          break;
-
-        case 6:
-          this.$store.commit('completeArchievement', 6)
-          break;
-
-        case 7:
-          this.$store.commit('completeArchievement', 7)
-          break;
-
-        case 8:
-          this.$store.commit('completeArchievement', 8)
-          break;
-      }
     },
 
     calcProgress (currentPage) {
