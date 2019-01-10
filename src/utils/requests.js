@@ -20,12 +20,12 @@ const simpleRequest = (url, method, data, headers) => {
 }
 
 const post = (url, data, headers = {}) => {
-  console.log('serverData', data)
+  // console.log('serverData', data)
   return simpleRequest(url, "post", data, headers);
 }
 
 const put = (url, data, headers = {}) => {
-  console.log('data', data)
+  // console.log('data', data)
   return simpleRequest(url, "put", data, headers);
 }
 

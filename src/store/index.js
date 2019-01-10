@@ -269,21 +269,20 @@ export default new Vuex.Store({
 
     postAnswer({ commit, state }, payload) {
       const isCorrect = payload.isCorrect === null ? true : payload.isCorrect
-      return postNewAnswer(state.uuid, payload.curseId, Number(payload.question.id), payload.question.type, isCorrect).then(() => console.log('postNewAnswer'))
+      return postNewAnswer(state.uuid, payload.curseId, Number(payload.question.id), payload.question.type, isCorrect).then(() => console.log('Answer'))
     },
 
     putPoints({ commit, state }, payload) {
       return putNewAPoints(state.uuid, payload).then(data => {
-        console.log('putPoints', data)
+        console.log('Points')
         commit('addPoints', data.points)
       })
     },
 
     putBadge({ commit, state }, payload) {
-      console.log('completeArchievement', payload)
       commit('completeArchievement', payload)
       const badgeName = state.achievements.find(item => item.id === +payload).name
-      return putNewBadge(state.uuid, badgeName).then(data => console.log('putBadge', data))
+      return putNewBadge(state.uuid, badgeName).then(data => console.log('Badge'))
     },
   },
 

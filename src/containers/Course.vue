@@ -145,11 +145,6 @@ export default {
       return this.$router.push({path: '/'})
     }
 
-    if (!this.getCoursCurrentStep) {
-      this.$store.commit('updateCoursCurrentStep', this.$refs.wizard.currentStep)
-    }
-
-
     let first_page = parseInt(this.$route.params.id)
     this.$store.commit('setTopic', this.curseId)
 
@@ -161,53 +156,10 @@ export default {
       }
     }
 
-    events.$on('nextSlide', (isCorrect) => {
-      if (typeof(isCorrect) === 'boolean') this.isAnswerCorrect = isCorrect
-      this.sendAnswer(this.$refs.wizard.currentStep)
-
-      this.checkModuleComplete()
-      this.enableSelected = false
-      this.isQuestion = true;
-      this.isAnswerCorrect = null;
-      this.openPopupFalse = false;
-      this.openPopupTrue = false;
-
-      this.checkCompleteCourse()
-
-
-      if (this.$refs.wizard) {
-        let page = this.$refs.wizard.currentStep
-        if (this.steps.length - 1 === page) {
-          this.topicComplete()
-        }
-        else {
-          this.movePage(page + 1)
-          this.initPage()
-        }
-      }
-    })
-
-    events.$on('thisSlide', (isCorrect) => {
-      this.steps[this.$refs.wizard.currentStep].options.nextDisabled = true
-
-      if (typeof(isCorrect) === 'boolean') this.isAnswerCorrect = isCorrect
-
-      this.sendAnswer(this.$refs.wizard.currentStep)
-
-      this.isQuestion = true;
-      this.previousQuestionType = null;
-      this.isAnswerCorrect = null;
-      this.openPopupFalse = false;
-      this.openPopupTrue = false;
-    })
-
-    events.$on('openSuccessPopup', () => {
-      this.openSuccessPopup();
-    })
-
-    events.$on('openFailedPopup', () => {
-      this.openFailedPopup();
-    })
+    events.$on('nextSlide', this.nextSlideHandler)
+    events.$on('thisSlide', this.thisSlideHandler)
+    events.$on('openSuccessPopup', this.openSuccessPopupHandler)
+    events.$on('openFailedPopup', this.openFailedPopupHandler)
   },
 
   computed: {
@@ -241,10 +193,61 @@ export default {
     }
   },
 
+  beforeDestroy() {
+    events.$off('thisSlide', this.thisSlideHandler)
+    events.$off('nextSlide', this.nextSlideHandler)
+    events.$off('openSuccessPopup', this.openSuccessPopupHandler)
+    events.$off('openFailedPopup', this.openFailedPopupHandler)
+  },
+
   methods: {
     ...mapActions([
       'postAnswer'
     ]),
+
+    thisSlideHandler(isCorrect) {
+      this.steps[this.getCoursCurrentStep].options.nextDisabled = true
+      if (typeof(isCorrect) === 'boolean') this.isAnswerCorrect = isCorrect
+
+      this.sendAnswer(this.getCoursCurrentStep)
+
+      this.isQuestion = true;
+      this.previousQuestionType = null;
+      this.isAnswerCorrect = null;
+      this.openPopupFalse = false;
+      this.openPopupTrue = false;
+    },
+
+    openFailedPopupHandler() {
+      this.openFailedPopup();
+    },
+
+    openSuccessPopupHandler() {
+      this.openSuccessPopup();
+    },
+
+    nextSlideHandler(isCorrect) {
+      if (typeof(isCorrect) === 'boolean') this.isAnswerCorrect = isCorrect
+      this.sendAnswer(this.getCoursCurrentStep)
+
+      this.checkModuleComplete()
+      this.enableSelected = false
+      this.isQuestion = true;
+      this.isAnswerCorrect = null;
+      this.openPopupFalse = false;
+      this.openPopupTrue = false;
+
+      if (this.$refs.wizard) {
+        let page = this.$refs.wizard.currentStep
+        if (this.steps.length - 1 === page) {
+          this.topicComplete()
+        }
+        else {
+          this.movePage(page + 1)
+          this.initPage()
+        }
+      }
+    },
 
     initPage () {
       this.isQuestion = true;
@@ -255,7 +258,6 @@ export default {
       if (this.$refs.wizard !== null) {
         this.$refs.wizard.goTo(parseInt(this.$route.params.id))
       }
-
     },
 
     checkModuleComplete () {
@@ -343,8 +345,9 @@ export default {
       let page = this.$refs.wizard.currentStep
       let currentQuestionType = this.steps[page].type
       let currentQuestionSlot = this.steps[page].slot
+      this.$store.commit('updateCoursCurrentStep', page)
 
-      console.log('currentQuestionType', !((currentQuestionType === 'icons') || (currentQuestionType === 'calc')))
+
       if (!((currentQuestionType === 'icons') || (currentQuestionType === 'calc'))) {
         this.sendAnswer(currentPage)
       }
