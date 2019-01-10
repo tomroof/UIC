@@ -5,7 +5,7 @@ import { app } from '../main.js'
 import {
   postNewUser,
   postNewAnswer,
-  postNewBadge,
+  putNewBadge,
   putNewAPoints
 } from '@/utils/requests'
 
@@ -267,17 +267,18 @@ export default new Vuex.Store({
       return postNewAnswer(state.uuid, payload.curseId, Number(payload.question.id), payload.question.type, isCorrect)
     },
 
-    postBadge({ commit, state }, payload) {
-      commit('completeArchievement', payload)
-      const badgeName = state.achievements.find(item => item.id === +payload).name
-      // return postNewBadge(state.uuid, badgeName)
-    },
-
     putPoints({ commit, state }, payload) {
       return putNewAPoints(state.uuid, payload).then(data => {
+        console.log('putPoints', data)
         commit('addPoints', data.points)
       })
-    }
+    },
+
+    putBadge({ commit, state }, payload) {
+      commit('completeArchievement', payload)
+      const badgeName = state.achievements.find(item => item.id === +payload).name
+      return putNewBadge(state.uuid, badgeName).then(data => console.log('putBadge', data))
+    },
   },
 
   getters: {

@@ -91,19 +91,20 @@ export default {
 
     if ((id !== 1) && (this.$store.state.achievements[this.id - 1].completed !== true)) {
       this.putPoints(this.rewardPoint)
+      this.addAchievement()
     }
 
-    this.addAchievement()
-
     if (!this.isMobile) {
-      AudioManager.playAudio('unlocked_badge', this.$store.state.gender, this.finishedCompleteAudio)
+      setTimeout(() => {
+        AudioManager.playAudio('unlocked_badge', this.$store.state.gender, this.finishedCompleteAudio)
+      }, 300)
     }
   },
 
   methods: {
     ...mapActions([
       'putPoints',
-      'postBadge'
+      'putBadge'
     ]),
 
     onContinue () {
@@ -125,7 +126,7 @@ export default {
     addAchievement() {
       const id = parseInt(this.id)
 
-      this.postBadge(id)
+      this.putBadge(id)
     },
   }
 }
