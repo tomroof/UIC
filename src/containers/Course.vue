@@ -176,8 +176,6 @@ export default {
       return this.$store.state.uuid
     },
 
-    ...mapGetters(['getCoursCurrentStep']),
-
     steps () {
       return this.curse.questions.map((q, index) => {
         return {
@@ -206,10 +204,11 @@ export default {
     ]),
 
     thisSlideHandler(isCorrect) {
-      this.steps[this.getCoursCurrentStep].options.nextDisabled = true
+      const page = this.$refs.wizard.currentStep
+      this.steps[page].options.nextDisabled = true
       if (typeof(isCorrect) === 'boolean') this.isAnswerCorrect = isCorrect
 
-      this.sendAnswer(this.getCoursCurrentStep)
+      this.sendAnswer(page)
 
       this.isQuestion = true;
       this.previousQuestionType = null;
@@ -218,17 +217,10 @@ export default {
       this.openPopupTrue = false;
     },
 
-    openFailedPopupHandler() {
-      this.openFailedPopup();
-    },
-
-    openSuccessPopupHandler() {
-      this.openSuccessPopup();
-    },
-
     nextSlideHandler(isCorrect) {
+      const page = this.$refs.wizard.currentStep
       if (typeof(isCorrect) === 'boolean') this.isAnswerCorrect = isCorrect
-      this.sendAnswer(this.getCoursCurrentStep)
+      this.sendAnswer(page)
 
       this.checkModuleComplete()
       this.enableSelected = false
@@ -238,7 +230,6 @@ export default {
       this.openPopupTrue = false;
 
       if (this.$refs.wizard) {
-        let page = this.$refs.wizard.currentStep
         if (this.steps.length - 1 === page) {
           this.topicComplete()
         }
@@ -247,6 +238,14 @@ export default {
           this.initPage()
         }
       }
+    },
+
+    openFailedPopupHandler() {
+      this.openFailedPopup();
+    },
+
+    openSuccessPopupHandler() {
+      this.openSuccessPopup();
     },
 
     initPage () {

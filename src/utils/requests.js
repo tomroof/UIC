@@ -20,12 +20,10 @@ const simpleRequest = (url, method, data, headers) => {
 }
 
 const post = (url, data, headers = {}) => {
-  // console.log('serverData', data)
   return simpleRequest(url, "post", data, headers);
 }
 
 const put = (url, data, headers = {}) => {
-  // console.log('data', data)
   return simpleRequest(url, "put", data, headers);
 }
 
@@ -60,7 +58,6 @@ export const postNewAnswer = (uuid, course_id, question_id, question_type, is_co
 }
 
 export const putNewBadge = (uuid, badge ) => {
-  console.log('putNewBadge')
   const serveData = {
     user: {
       badge
@@ -73,7 +70,6 @@ export const putNewBadge = (uuid, badge ) => {
 }
 
 export const putNewAPoints = (uuid, points) => {
-  console.log('putNewAPoints')
   const serveData = {
     user: {
       points
