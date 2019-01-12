@@ -476,7 +476,7 @@ export default {
       id: '28',
       type: 'calc',
       url_prefix: 'cavity-math',
-      isCorrect: false,
+      isCorrect: true,
       answers: [
         {
           text: 'Sugary snacks',
