@@ -10,26 +10,23 @@
 </template>
 
 <script>
+  import { i18n } from '@/lang'
+
   export default {
-    data() {
-      return {
-
-      }
-    },
-
     computed: {
       languageClasses() {
         return [
           'language',
-          this.$i18n.locale === 'en' ? 'en' : 'es'
+          i18n.locale === 'en' ? 'en' : 'es'
         ]
       }
     },
 
     methods: {
       changeLanguige () {
-        this.$i18n.locale = this.$i18n.locale === 'en' ? 'es' : 'en'
-        this.$store.commit('setLang', this.$i18n.locale)
+        i18n.locale = i18n.locale === 'en' ? 'es' : 'en'
+        localStorage.setItem('lang', i18n.locale)
+        this.$store.commit('setLang', i18n.locale)
       }
     }
   }

@@ -35,6 +35,7 @@ import Loader from '@/components/shared/Loader'
 import AppInput from '@/components/shared/AppInput'
 
 import ComponentButton from '@/components/Button'
+import config from '@/data/config'
 
 export default {
   name: 'CodeForm',
@@ -81,7 +82,7 @@ export default {
 
   computed: {
     getI18n() {
-      return this.$t("message.restText.code")
+      return config().restText.code
     }
   }
 }

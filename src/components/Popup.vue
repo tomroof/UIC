@@ -93,6 +93,7 @@
 
 <script>
 import ComponentButton from '@/components/Button'
+import config from '@/data/config'
 import { events } from '@/helpers/events'
 import { mapActions } from 'vuex'
 
@@ -138,7 +139,7 @@ import { mapActions } from 'vuex'
 
     computed: {
       getI18n() {
-        return this.$t("message.restText.popups")
+        return config().restText.popups
       }
     }
   }

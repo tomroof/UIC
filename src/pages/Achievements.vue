@@ -30,9 +30,10 @@ import Switcher from '@/components/CoursesSwitcher'
 import AchievementsList from '@/components/achievements/AchievementsList'
 
 // data
-import achievements from '@/data/en-config/achievements'
 import { mapGetters } from 'vuex'
 import { chunk } from 'lodash'
+import config from '@/data/config'
+
 
 export default {
   components: {
@@ -56,7 +57,7 @@ export default {
     },
 
     getI18n() {
-      return this.$t("message.restText")
+      return config().restText
     }
   },
 

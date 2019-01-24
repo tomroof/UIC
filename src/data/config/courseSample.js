@@ -1,8 +1,11 @@
-export default {
-  name: 'Cavity Prevention',
+import { i18n } from '@/lang'
+
+export default () => {
+ return {
+  name: i18n.t("message.CavityPrevention"),
   questions: [
     {
-      text: 'What’s inside your mouth?',
+      text: i18n.t("message.Whatinsideyourmouth"),
       id: '1',
       type: 'video',
       url_prefix: 'what-is-inside-your-mouth',
@@ -12,64 +15,64 @@ export default {
       girl_video_poster: 'module1-cover.jpg'
     },
     {
-      text: 'Where do cavities come from?',
+      text: i18n.t("message.Wheredocavities"),
       desc: '',
       id: '2',
       type: 'icons',
       url_prefix: 'where-do-cavities-come-from',
       answers: [
         {
-          text: 'Sugary foods',
+          text: i18n.t("message.Sugaryfoods"),
           image: 'cookie.svg',
           isCorrect: true
         },
         {
-          text: 'Going to the zoo',
+          text: i18n.t("message.Goingtothezoo"),
           image: 'elephant.svg',
           isCorrect: false
         },
       ]
     },
     {
-      text: 'Where do cavities come from?',
+      text: i18n.t("message.Wheredocavities"),
       desc: '',
       id: '3',
       type: 'icons',
       url_prefix: 'where-do-cavities-come-from',
       answers: [
         {
-          text: 'Reading a book',
+          text: i18n.t("message.Readingabook"),
           image: 'book.svg',
           isCorrect: false
         },
         {
-          text: 'Cavity monsters',
+          text: i18n.t("message.CavityMonsters"),
           image: 'monster.png',
           isCorrect: true
         },
       ]
     },
     {
-      text: 'Where do cavities come from?',
+      text: i18n.t("message.Wheredocavities"),
       desc: '',
       id: '4',
       type: 'icons',
       url_prefix: 'where-do-cavities-come-from',
       answers: [
         {
-          text: 'Dancing',
+          text: i18n.t("message.Dancing"),
           image: 'dancing.svg',
           isCorrect: false
         },
         {
-          text: 'Sugary drinks',
+          text: i18n.t("message.Sugarydrinks"),
           image: 'soda.svg',
           isCorrect: true
         },
       ]
     },
     {
-      text: 'How to stop the cavity monsters.',
+      text: i18n.t("message.Howtostopthecavitymonsters"),
       id: '5',
       type: 'video',
       url_prefix: 'how-to-stop-the-cavity-monsters',
@@ -79,7 +82,7 @@ export default {
       girl_video_poster: 'module3-cover.jpg'
     },
     {
-      text: 'Brushing away the cavity monsters!',
+      text: i18n.t("message.Brushingawaythecavitymonsters"),
       id: '6',
       type: 'video',
       url_prefix: 'brushing-away-the-cavity-monsters',
@@ -89,7 +92,7 @@ export default {
       girl_video_poster: 'module4-cover.jpg'
     },
     {
-      text: 'Cavity Math instructions.',
+      text: i18n.t("message.CavityMathinstructions"),
       id: '7',
       type: 'video',
       url_prefix: 'cavity-math-instructions',
@@ -99,83 +102,83 @@ export default {
       girl_video_poster: 'module5-cover.jpg'
     },
     {
-      text: 'How do we stop the cavity monsters?',
+      text: i18n.t("message.Howdowestopthecavitymonsters"),
       desc: '',
       id: '8',
       type: 'icons',
       url_prefix: 'how-do-we-stop-the-cavity-monsters',
       answers: [
         {
-          text: 'Never brush my teeth',
+          text: i18n.t("message.Neverbrushmyteeth"),
           image: 'not-brushing.svg',
           isCorrect: false
         },
         {
-          text: 'Brush twice a day',
+          text: i18n.t("message.Brushtwiceaday"),
           image: 'brush-twice.svg',
           isCorrect: true
         },
       ]
     },
     {
-      text: 'How do we stop the cavity monsters?',
+      text: i18n.t("message.Howdowestopthecavitymonsters"),
       desc: '',
       id: '9',
       type: 'icons',
       url_prefix: 'how-do-we-stop-the-cavity-monsters',
       answers: [
         {
-          text: 'Wait until tomorrow',
+          text: i18n.t("message.Waituntiltomorrow"),
           image: 'wait.svg',
           isCorrect: false
         },
         {
-          text: 'Brush after a snack',
+          text: i18n.t("message.Brushafterasnack"),
           image: 'brushing-after-meal.svg',
           isCorrect: true
         },
       ]
     },
     {
-      text: 'How do we stop the cavity monsters?',
+      text: i18n.t("message.Howdowestopthecavitymonsters"),
       desc: '',
       id: '10',
       type: 'icons',
       url_prefix: 'how-do-we-stop-the-cavity-monsters',
       answers: [
         {
-          text: 'Brush for 2 minutes',
+          text: i18n.t("message.Brushfor2minutes"),
           image: 'clock.svg',
           isCorrect: true
         },
         {
-          text: 'Brush for 1 minute',
+          text: i18n.t("message.Brushfor1minute"),
           image: 'clock.svg',
           isCorrect: false
         },
       ]
     },
     {
-      text: 'How do we stop the cavity monsters?',
+      text: i18n.t("message.Howdowestopthecavitymonsters"),
       desc: '',
       id: '11',
       type: 'icons',
       url_prefix: 'how-do-we-stop-the-cavity-monsters',
       answers: [
         {
-          text: 'Brush once a day',
+          text: i18n.t("message.Brushonceaday"),
           image: 'brush.svg',
           isCorrect: false
         },
         {
-          text: 'Brush twice a day',
+          text: i18n.t("message.Brushtwiceaday"),
           image: 'brush-twice.svg',
           isCorrect: true
         },
       ]
     },
     {
-      text: 'What snacks do my teeth love?',
+      text: i18n.t("message.Whatsnacksdomyteethlove"),
       id: '12',
       type: 'video',
       url_prefix: 'what-snacks-do-my-teeth-love',
@@ -185,18 +188,18 @@ export default {
       girl_video_poster: 'module6-cover.jpg'
     },
     {
-      text: 'Good for me or good for cavity monsters?',
-      desc: 'Click to find out.',
+      text: i18n.t("message.Goodformeorgoodforcavity"),
+      desc: i18n.t("message.Clicktofindout"),
       id: '13',
       type: 'cards',
       url_prefix: 'good-for-me',
       answers: [
         {
-          text: 'Apple',
+          text: i18n.t("message.Apple"),
           image: 'apple.svg',
 
           answerData: {
-            text: 'Good for me!',
+            text: i18n.t("message.Goodforme"),
             image: 'apple.svg',
             isCorrect: true
           }
@@ -204,18 +207,18 @@ export default {
       ]
     },
     {
-      text: 'Good for me or good for cavity monsters?',
-      desc: 'Click to find out.',
+      text: i18n.t("message.Goodformeorgoodforcavity"),
+      desc: i18n.t("message.Clicktofindout"),
       id: '14',
       type: 'cards',
       url_prefix: 'good-for-me',
       answers: [
         {
-          text: 'Carrots',
+          text: i18n.t("message.Carrots"),
           image: 'carrot.svg',
 
           answerData: {
-            text: 'Good for me!',
+            text: i18n.t("message.Goodforme"),
             image: 'carrot.svg',
             isCorrect: true
           }
@@ -223,18 +226,18 @@ export default {
       ]
     },
     {
-      text: 'Good for me or good for cavity monsters?',
-      desc: 'Click to find out.',
+      text: i18n.t("message.Goodformeorgoodforcavity"),
+      desc: i18n.t("message.Clicktofindout"),
       id: '15',
       type: 'cards',
       url_prefix: 'good-for-me',
       answers: [
         {
-          text: 'Candy',
+          text: i18n.t("message.Candy"),
           image: 'chocolate.svg',
 
           answerData: {
-            text: 'Cavity Monster!',
+            text: i18n.t("message.CavityMonster"),
             image: 'chocolate.svg',
             isCorrect: false
           }
@@ -242,18 +245,18 @@ export default {
       ]
     },
     {
-      text: 'Good for me or good for cavity monsters?',
-      desc: 'Click to find out.',
+      text: i18n.t("message.Goodformeorgoodforcavity"),
+      desc: i18n.t("message.Clicktofindout"),
       id: '16',
       type: 'cards',
       url_prefix: 'good-for-me',
       answers: [
         {
-          text: 'Peanuts',
+          text: i18n.t("message.Peanuts"),
           image: 'peanut.svg',
 
           answerData: {
-            text: 'Good for me!',
+            text: i18n.t("message.Goodforme"),
             image: 'peanut.svg',
             isCorrect: true
           }
@@ -261,18 +264,18 @@ export default {
       ]
     },
     {
-      text: 'Good for me or good for cavity monsters?',
-      desc: 'Click to find out.',
+      text: i18n.t("message.Goodformeorgoodforcavity"),
+      desc: i18n.t("message.Clicktofindout"),
       id: '17',
       type: 'cards',
       url_prefix: 'good-for-me',
       answers: [
         {
-          text: 'Chips',
+          text: i18n.t("message.Chips"),
           image: 'chips.svg',
 
           answerData: {
-            text: 'Cavity Monster!',
+            text: i18n.t("message.CavityMonster"),
             image: 'chips.svg',
             isCorrect: false
           }
@@ -280,18 +283,18 @@ export default {
       ]
     },
     {
-      text: 'Good for me or good for cavity monsters?',
-      desc: 'Click to find out.',
+      text: i18n.t("message.Goodformeorgoodforcavity"),
+      desc: i18n.t("message.Clicktofindout"),
       id: '18',
       type: 'cards',
       url_prefix: 'good-for-me',
       answers: [
         {
-          text: 'Ice Cream',
+          text: i18n.t("message.IceCream"),
           image: 'ice-cream.svg',
 
           answerData: {
-            text: 'Cavity Monster!',
+            text: i18n.t("message.CavityMonster"),
             image: 'ice-cream.svg',
             isCorrect: false
           }
@@ -299,18 +302,18 @@ export default {
       ]
     },
     {
-      text: 'Good for me or good for cavity monsters?',
-      desc: 'Click to find out.',
+      text: i18n.t("message.Goodformeorgoodforcavity"),
+      desc: i18n.t("message.Clicktofindout"),
       id: '19',
       type: 'cards',
       url_prefix: 'good-for-me',
       answers: [
         {
-          text: 'Milk',
+          text: i18n.t("message.Milk"),
           image: 'milk.svg',
 
           answerData: {
-            text: 'Good for me!',
+            text: i18n.t("message.Goodforme"),
             image: 'milk.svg',
             isCorrect: true
           }
@@ -318,18 +321,18 @@ export default {
       ]
     },
     {
-      text: 'Good for me or good for cavity monsters?',
-      desc: 'Click to find out.',
+      text: i18n.t("message.Goodformeorgoodforcavity"),
+      desc: i18n.t("message.Clicktofindout"),
       id: '20',
       type: 'cards',
       url_prefix: 'good-for-me',
       answers: [
         {
-          text: 'Cheese',
+          text: i18n.t("message.Cheese"),
           image: 'cheese.svg',
 
           answerData: {
-            text: 'Good for me!',
+            text: i18n.t("message.Goodforme"),
             image: 'cheese.svg',
             isCorrect: true
           }
@@ -337,18 +340,18 @@ export default {
       ]
     },
     {
-      text: 'Good for me or good for cavity monsters?',
-      desc: 'Click to find out.',
+      text: i18n.t("message.Goodformeorgoodforcavity"),
+      desc: i18n.t("message.Clicktofindout"),
       id: '21',
       type: 'cards',
       url_prefix: 'good-for-me',
       answers: [
         {
-          text: 'Eggs',
+          text: i18n.t("message.Eggs"),
           image: 'egg.svg',
 
           answerData: {
-            text: 'Good for me!',
+            text: i18n.t("message.Goodforme"),
             image: 'egg.svg',
             isCorrect: true
           }
@@ -356,18 +359,18 @@ export default {
       ]
     },
     {
-      text: 'Good for me or good for cavity monsters?',
-      desc: 'Click to find out.',
+      text: i18n.t("message.Goodformeorgoodforcavity"),
+      desc: i18n.t("message.Clicktofindout"),
       id: '22',
       type: 'cards',
       url_prefix: 'good-for-me',
       answers: [
         {
-          text: 'Cookie',
+          text: i18n.t("message.Cookie"),
           image: 'cookie.svg',
 
           answerData: {
-            text: 'Cavity Monster!',
+            text: i18n.t("message.CavityMonster"),
             image: 'cookie.svg',
             isCorrect: false
           }
@@ -375,18 +378,18 @@ export default {
       ]
     },
     {
-      text: 'Good for me or good for cavity monsters?',
-      desc: 'Click to find out.',
+      text: i18n.t("message.Goodformeorgoodforcavity"),
+      desc: i18n.t("message.Clicktofindout"),
       id: '23',
       type: 'cards',
       url_prefix: 'good-for-me',
       answers: [
         {
-          text: 'Water',
+          text: i18n.t("message.Water"),
           image: 'water.svg',
 
           answerData: {
-            text: 'Good for me!',
+            text: i18n.t("message.Goodforme"),
             image: 'water.svg',
             isCorrect: true
           }
@@ -394,18 +397,18 @@ export default {
       ]
     },
     {
-      text: 'Good for me or good for cavity monsters?',
-      desc: 'Click to find out.',
+      text: i18n.t("message.Goodformeorgoodforcavity"),
+      desc: i18n.t("message.Clicktofindout"),
       id: '24',
       type: 'cards',
       url_prefix: 'good-for-me',
       answers: [
         {
-          text: 'Soda',
+          text: i18n.t("message.Soda"),
           image: 'soda.svg',
 
           answerData: {
-            text: 'Cavity Monster!',
+            text: i18n.t("message.CavityMonster"),
             image: 'soda.svg',
             isCorrect: false
           }
@@ -413,18 +416,18 @@ export default {
       ]
     },
     {
-      text: 'Good for me or good for cavity monsters?',
-      desc: 'Click to find out.',
+      text: i18n.t("message.Goodformeorgoodforcavity"),
+      desc: i18n.t("message.Clicktofindout"),
       id: '25',
       type: 'cards',
       url_prefix: 'good-for-me',
       answers: [
         {
-          text: 'Juice',
+          text: i18n.t("message.Juice"),
           image: 'orange-juice.svg',
 
           answerData: {
-            text: 'Cavity Monster!',
+            text: i18n.t("message.CavityMonster"),
             image: 'orange-juice.svg',
             isCorrect: false
           }
@@ -432,18 +435,18 @@ export default {
       ]
     },
     {
-      text: 'Good for me or good for cavity monsters?',
-      desc: 'Click to find out.',
+      text: i18n.t("message.Goodformeorgoodforcavity"),
+      desc: i18n.t("message.Clicktofindout"),
       id: '26',
       type: 'cards',
       url_prefix: 'good-for-me',
       answers: [
         {
-          text: 'Sweetened Drinks',
+          text: i18n.t("message.SweetenedDrinks"),
           image: 'soda-bottle.svg',
 
           answerData: {
-            text: 'Cavity Monster!',
+            text: i18n.t("message.CavityMonster"),
             image: 'soda-bottle.svg',
             isCorrect: false
           }
@@ -451,88 +454,88 @@ export default {
       ]
     },
     {
-      text: 'Cavity Math',
-      desc: 'Let\'s learn some cavity math!',
+      text: i18n.t("message.CavityMath"),
+      desc: i18n.t("message.Letslearnsomecavitymath"),
       id: '27',
       type: 'calc',
       url_prefix: 'cavity-math',
       isCorrect: true,
       answers: [
         {
-          text: 'Brushing twice a day',
+          text: i18n.t("message.Brushingtwiceaday"),
           value: 'clock',
           image: 'brush-twice.svg'
         },
         {
-          text: 'Healthy snacks',
+          text: i18n.t("message.Healthysnacks"),
           value: 'tooth',
           image: 'broccoli.svg'
         }
       ]
     },
     {
-      text: 'Cavity Math',
-      desc: 'Let\'s learn some cavity math!',
+      text: i18n.t("message.CavityMath"),
+      desc: i18n.t("message.Letslearnsomecavitymath"),
       id: '28',
       type: 'calc',
       url_prefix: 'cavity-math',
       isCorrect: true,
       answers: [
         {
-          text: 'Sugary snacks',
+          text: i18n.t("message.Sugarysnacks"),
           value: 'candy',
           image: 'candy.svg'
         },
         {
-          text: 'Not brushing',
+          text: i18n.t("message.Notbrushing"),
           value: 'not-brushing',
           image: 'not-brushing.svg'
         }
       ]
     },
     {
-      text: 'Cavity Math',
-      desc: 'Let\'s learn some cavity math!',
+      text: i18n.t("message.CavityMath"),
+      desc: i18n.t("message.Letslearnsomecavitymath"),
       id: '29',
       type: 'calc',
       url_prefix: 'cavity-math',
       isCorrect: true,
       answers: [
         {
-          text: 'Brushing after each meal',
+          text: i18n.t("message.Brushingaftereachmeal"),
           value: 'brushing-after-meal',
           image: 'brushing-after-meal.svg'
         },
         {
-          text: 'Sugary snacks',
+          text: i18n.t("message.Sugarysnacks"),
           value: 'candy',
           image: 'candy.svg'
         }
       ]
     },
     {
-      text: 'Cavity Math',
-      desc: 'Let\'s learn some cavity math!',
+      text: i18n.t("message.CavityMath"),
+      desc: i18n.t("message.Letslearnsomecavitymath"),
       id: '30',
       type: 'calc',
       url_prefix: 'cavity-math',
       isCorrect: true,
       answers: [
         {
-          text: 'Healthy snacks',
+          text: i18n.t("message.Healthysnacks"),
           value: 'broccoli',
           image: 'broccoli.svg'
         },
         {
-          text: 'Not brushing',
+          text: i18n.t("message.Notbrushing"),
           value: 'not-brushing',
           image: 'not-brushing.svg'
         }
       ]
     },
     {
-      text: 'Happy Mouth',
-      desc: 'Drag the foods to the mouth to find the answer.',
+      text: i18n.t("message.HappyMouth"),
+      desc: i18n.t("message.Dragthefoodsto"),
       id: '31',
       type: 'mouth',
       url_prefix: 'happy-mouth',
@@ -550,8 +553,8 @@ export default {
       ]
     },
     {
-      text: 'Happy Mouth',
-      desc: 'Drag the foods to the mouth to find the answer.',
+      text: i18n.t("message.HappyMouth"),
+      desc: i18n.t("message.Dragthefoodsto"),
       id: '32',
       type: 'mouth',
       url_prefix: 'happy-mouth',
@@ -569,8 +572,8 @@ export default {
       ]
     },
     {
-      text: 'Happy Mouth',
-      desc: 'Drag the foods to the mouth to find the answer.',
+      text: i18n.t("message.HappyMouth"),
+      desc: i18n.t("message.Dragthefoodsto"),
       id: '33',
       type: 'mouth',
       url_prefix: 'happy-mouth',
@@ -588,8 +591,8 @@ export default {
       ]
     },
     {
-      text: 'Happy Mouth',
-      desc: 'Drag the foods to the mouth to find the answer.',
+      text: i18n.t("message.HappyMouth"),
+      desc: i18n.t("message.Dragthefoodsto"),
       id: '34',
       type: 'mouth',
       url_prefix: 'happy-mouth',
@@ -607,8 +610,8 @@ export default {
       ]
     },
     {
-      text: 'Happy Mouth',
-      desc: 'Drag the foods to the mouth to find the answer.',
+      text: i18n.t("message.HappyMouth"),
+      desc: i18n.t("message.Dragthefoodsto"),
       id: '35',
       type: 'mouth',
       url_prefix: 'happy-mouth',
@@ -626,8 +629,8 @@ export default {
       ]
     },
     {
-      text: 'Happy Mouth',
-      desc: 'Drag the foods to the mouth to find the answer.',
+      text: i18n.t("message.HappyMouth"),
+      desc: i18n.t("message.Dragthefoodsto"),
       id: '36',
       type: 'mouth',
       url_prefix: 'happy-mouth',
@@ -645,8 +648,8 @@ export default {
       ]
     },
     {
-      text: 'Happy Mouth',
-      desc: 'Drag the foods to the mouth to find the answer.',
+      text: i18n.t("message.HappyMouth"),
+      desc: i18n.t("message.Dragthefoodsto"),
       id: '37',
       type: 'mouth',
       url_prefix: 'happy-mouth',
@@ -664,4 +667,5 @@ export default {
       ]
     }
   ]
+}
 }

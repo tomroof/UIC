@@ -22,6 +22,7 @@
 
 <script>
 import NavigationLayout from '@/layouts/NavigationLayout'
+import config from '@/data/config'
 
 export default {
   name: 'Brush',
@@ -31,7 +32,7 @@ export default {
 
   computed: {
     getI18n() {
-      return this.$t("message.about")
+      return config().about
     }
   }
 }

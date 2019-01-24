@@ -6,6 +6,7 @@
 
 <script>
 import './utils/fonts/fonts.css'
+
 export default {
   name: 'App'
 }

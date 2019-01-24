@@ -26,6 +26,7 @@ import selectATeam from '@/data/en-config/selectATeam'
 import CongratsDialog from '@/components/dialogs/CongratsDialog'
 import DeviceManager from '@/helpers/deviceManager'
 import AudioManager from '@/helpers/audioManager'
+import config from '@/data/config'
 import { mapActions } from 'vuex'
 
 export default {
@@ -46,11 +47,11 @@ export default {
 
   computed: {
     team() {
-      return this.$t("message.selectATeam")
+      return config().selectATeam
     },
 
     getI18n() {
-      return this.$t("message.restText")
+      return config().restText
     }
   },
 

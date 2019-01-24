@@ -12,6 +12,7 @@
 
 <script>
 import NavigationLayout from '@/layouts/NavigationLayout'
+import config from '@/data/config'
 
 // forms
 import CodeForm from '@/forms/CodeForm'
@@ -31,7 +32,7 @@ export default {
 
   computed: {
     getI18n() {
-      return this.$t("message.restText.code")
+      return config().restText.code
     }
   }
 }

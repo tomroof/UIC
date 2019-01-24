@@ -14,6 +14,7 @@
 import NavigationLayout from '@/layouts/NavigationLayout'
 import MenuList from '@/components/shared/MenuList'
 import AccountHeader from '@/components/AccountHeader'
+import config from '@/data/config'
 
 export default {
   name: 'Account',
@@ -35,7 +36,7 @@ export default {
 
   computed: {
     getI18n() {
-      return this.$t("message.restText.profile")
+      return config().restText.profile
     }
   }
 }

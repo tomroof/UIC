@@ -1,7 +1,9 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
 import VuexPersist from 'vuex-persist'
-import { app } from '../main.js'
+import config from '@/data/config'
+import { i18n } from '@/lang'
+
 import {
   postNewUser,
   postNewAnswer,
@@ -30,163 +32,9 @@ export default new Vuex.Store({
     question: 0,
     lang: 'en',
     uuid: null,
-    achievements: [
-      {
-        id: 1,
-        name: 'Profile Completed',
-        goal: 'Completing Profile',
-        image: 'achieve_img_1.svg',
-        badge_image: 'achieve_img_1_badge.svg',
-        completed: false
-      },
-      {
-        id: 2,
-        name: 'Cavity Monster Hero',
-        goal: 'Completing Cavity Prevention',
-        image: 'achieve_img_1.svg',
-        badge_image: 'achieve_img_1_badge.svg',
-        completed: false
-      },
-      {
-        id: 3,
-        name: 'I Know My Teeth',
-        goal: 'Completing Baby Teeth',
-        image: 'achieve_img_2.svg',
-        badge_image: 'achieve_img_2_badge.svg',
-        completed: false
-      },
-      {
-        id: 4,
-        name: 'Brushing Selfie',
-        goal: 'Take a selfie',
-        image: 'achieve_img_3.svg',
-        badge_image: 'achieve_img_3_badge.svg',
-        completed: false
-      },
-      {
-        id: 5,
-        name: 'The Achiever',
-        goal: 'Logged in everyday for a month',
-        image: 'achieve_img_4.svg',
-        badge_image: 'achieve_img_4_badge.svg',
-        completed: false
-      },
-      {
-        id: 6,
-        name: 'Cavity Math',
-        goal: 'Logged in everyday for a month',
-        image: 'achieve_img_4.svg',
-        badge_image: 'achieve_img_1_badge.svg',
-        completed: false
-      },
-      {
-        id: 7,
-        name: 'Sugar',
-        goal: 'Logged in everyday for a month',
-        image: 'achieve_img_4.svg',
-        badge_image: 'achieve_img_2_badge.svg',
-        completed: false
-      },
-      {
-        id: 8,
-        name: 'Memory',
-        goal: 'Logged in everyday for a month',
-        image: 'achieve_img_4.svg',
-        badge_image: 'achieve_img_3_badge.svg',
-        completed: false
-      },
-      {
-        id: 9,
-        name: 'Matching',
-        goal: 'Logged in everyday for a month',
-        image: 'achieve_img_4.svg',
-        badge_image: 'achieve_img_4_badge.svg',
-        completed: false
-      }
-    ],
+    achievements: config().achievements,
 
-    courses: [
-      {
-        name: 'Fighting Cavities',
-        image: require('@/assets/cavity-prevention.svg'),
-        disabled_image: require('@/assets/cavity-prevention.svg'),
-        id: 1,
-        url_prefix: 'fighting-cavities',
-        active: true,
-        progress: 0,
-        active_page: 0
-      },
-      {
-        name: 'Brush Selfie',
-        image: require('@/assets/memory.svg'),
-        disabled_image: require('@/assets/memory_disabled.svg'),
-        id: 2,
-        url_prefix: 'brush-selfie',
-        active: false,
-        progress: 0,
-        active_page: 0
-      },
-      {
-        name: 'Brush Timer',
-        image: require('@/assets/matching.svg'),
-        disabled_image: require('@/assets/matching_disabled.svg'),
-        id: 3,
-        url_prefix: 'brush-timer',
-        active: false,
-        progress: 0,
-        active_page: 0
-      },
-      {
-        name: 'Baby Teeth',
-        image: require('@/assets/baby-teeth.svg'),
-        disabled_image: require('@/assets/baby-teeth_disabled.svg'),
-        id: 4,
-        url_prefix: 'baby-teeth',
-        active: false,
-        progress: 0,
-        active_page: 0
-      },
-      {
-        name: 'Brushing and Flossing',
-        image: require('@/assets/proper-brushing.svg'),
-        disabled_image: require('@/assets/proper-brushing_disabled.svg'),
-        id: 5,
-        url_prefix: 'brushing-and-flossing',
-        active: false,
-        progress: 0,
-        active_page: 0
-      },
-      {
-        name: 'Before Baby',
-        image: require('@/assets/prenatal.svg'),
-        disabled_image: require('@/assets/prenatal_disabled.svg'),
-        id: 6,
-        url_prefix: 'before-baby',
-        active: false,
-        progress: 0,
-        active_page: 0
-      },
-      {
-        name: 'Cavity Math',
-        image: require('@/assets/cavity-math.svg'),
-        disabled_image: require('@/assets/cavity-math_disabled.svg'),
-        id: 7,
-        url_prefix: 'cavity-math',
-        active: false,
-        progress: 0,
-        active_page: 0
-      },
-      {
-        name: 'Healthy Foods and Teeth',
-        image: require('@/assets/sugar.svg'),
-        disabled_image: require('@/assets/sugar_disabled.svg'),
-        id: 8,
-        url_prefix: 'healthy-foods-and-teeth',
-        active: false,
-        progress: 0,
-        active_page: 0
-      }
-    ]
+    courses: config().courses
   },
 
   mutations: {
@@ -220,14 +68,16 @@ export default new Vuex.Store({
 
     setLang(state, lang) {
       state.lang = lang
-      state.courses.map((course, index) => {
-        course.name = app.$t('message.restText.courses.names')[index]
-      })
+      state.achievements = config().achievements
+      state.courses = config().courses
+      // state.courses.map((course, index) => {
+      //   course.name = config().restText.courses.names[index]
+      // })
 
-      state.achievements.map((achievement, index) => {
-        achievement.name = app.$t('message.restText.achievements.names')[index]
-        achievement.goal = app.$t('message.restText.achievements.goals')[index]
-      })
+      // state.achievements.map((achievement, index) => {
+      //   achievement.name = config().restText.achievements.names[index]
+      //   achievement.goal = config().restText.achievements.goals[index]
+      // })
     },
 
     updateCoursCurrentStep(state, page) {

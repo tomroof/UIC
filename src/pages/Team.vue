@@ -32,6 +32,7 @@
 
 <script>
 import NavigationHeaderImageLayout from '@/layouts/NavigationHeaderImageLayout'
+import config from '@/data/config'
 
 export default {
   name: 'Account',
@@ -42,7 +43,7 @@ export default {
 
   computed: {
     getI18n() {
-      return this.$t("message.restText.team")
+      return config().restText.team
     },
   },
 }

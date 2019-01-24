@@ -102,7 +102,7 @@ export default {
 
   computed: {
     getI18n() {
-      return this.$t("message.restText.login")
+      return config().restText.login
     }
   }
 }

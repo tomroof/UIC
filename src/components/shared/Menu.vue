@@ -36,6 +36,7 @@
 <script>
 import BaseCard from '@/components/cards/BaseCard'
 import NavigationControls from '@/components/NavigationControls'
+import config from '@/data/config'
 
 export default {
   name: 'Menu',
@@ -47,7 +48,7 @@ export default {
 
   computed: {
     getI18n() {
-      return this.$t("message.restText.menu")
+      return config().restText.menu
     },
   },
 
