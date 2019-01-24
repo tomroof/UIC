@@ -45,6 +45,7 @@ import NavigationLayout from '@/layouts/NavigationLayout'
 import { mapGetters } from 'vuex'
 import CourseData from '@/data/en-config/courseSample'
 import AudioManager from '@/helpers/audioManager'
+import config from '@/data/config'
 
 export default {
   computed: {
@@ -59,7 +60,7 @@ export default {
     },
 
     getI18n() {
-      return this.$t("message.restText")
+      return config().restText
     }
   },
 

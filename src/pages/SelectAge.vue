@@ -29,6 +29,7 @@
 <script>
 import NavigationLayout from '@/layouts/NavigationLayout'
 import ComponentButton from '@/components/Button'
+import config from '@/data/config'
 
 export default {
   data () {
@@ -60,7 +61,7 @@ export default {
 
   computed: {
     getI18n() {
-      return this.$t("message.restText")
+      return config().restText
     }
   }
 }

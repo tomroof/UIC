@@ -44,6 +44,7 @@
 <script>
 import ComponentButton from '@/components/Button'
 import AudioManager from '@/helpers/audioManager'
+import config from '@/data/config'
 import { mapActions } from 'vuex'
 
 export default {
@@ -70,7 +71,7 @@ export default {
     },
 
     getI18n() {
-      return this.$t("message.restText")
+      return config().restText
     }
   },
 
@@ -79,12 +80,12 @@ export default {
 
     switch (id) {
       case 1:
-        this.rewardTitle = this.$t("message.restText.congrats.profileCompleted")
+        this.rewardTitle = config().restText.congrats.profileCompleted
         this.rewardPoint = 100
         break;
 
       case 2:
-        this.rewardTitle = this.$t("message.restText.congrats.cavityMonsterHero")
+        this.rewardTitle = config().restText.congrats.cavityMonsterHero
         this.rewardPoint = 100
         break;
     }

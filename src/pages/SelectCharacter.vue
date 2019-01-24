@@ -33,6 +33,8 @@ import NavigationLayout from '@/layouts/NavigationLayout'
 
 import CharacterCard from '@/components/cards/CharacterCard'
 import ComponentButton from '@/components/Button'
+import config from '@/data/config'
+
 
 export default {
   beforeRouteEnter (to, from, next) {
@@ -118,7 +120,7 @@ export default {
     },
 
     getI18n() {
-      return this.$t("message.restText")
+      return config().restText
     }
   },
   methods: {

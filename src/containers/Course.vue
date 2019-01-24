@@ -76,7 +76,7 @@ import ModuleStartDialog from '@/components/dialogs/ModuleStartDialog'
 import { mapActions, mapGetters } from 'vuex'
 
 // data
-import CourseData from '@/data/en-config/courseSample'
+import config from '@/data/config'
 
 // events
 import { events } from '@/helpers/events'
@@ -165,11 +165,11 @@ export default {
   computed: {
     // TODO get curse by prop Id
     curse () {
-      return this.$t("message.courseSample")
+      return config().courseSample
     },
 
     getI18n() {
-      return this.$t("message.restText")
+      return config().restText
     },
 
     getUuid() {
@@ -220,6 +220,7 @@ export default {
     nextSlideHandler(isCorrect) {
       const page = this.$refs.wizard.currentStep
       if (typeof(isCorrect) === 'boolean') this.isAnswerCorrect = isCorrect
+      this.calcProgress(page)
       this.sendAnswer(page)
 
       this.checkModuleComplete()
@@ -345,7 +346,6 @@ export default {
       let currentQuestionType = this.steps[page].type
       let currentQuestionSlot = this.steps[page].slot
       this.$store.commit('updateCoursCurrentStep', page)
-
 
       if (!((currentQuestionType === 'icons') || (currentQuestionType === 'calc'))) {
         this.sendAnswer(currentPage)

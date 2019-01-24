@@ -6,6 +6,7 @@
 
 <script>
 import NavigationLayout from '@/layouts/NavigationLayout'
+import config from '@/data/config'
 
 export default {
   name: 'Account',
@@ -16,7 +17,7 @@ export default {
 
   computed: {
     getI18n() {
-      return this.$t("message.restText.workingOnIt")
+      return config().restText.workingOnIt
     }
   }
 }

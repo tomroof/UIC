@@ -24,6 +24,7 @@
 <script>
 
 import ComponentButton from '@/components/Button'
+import config from '@/data/config'
 import { mapActions } from 'vuex'
 
 export default {
@@ -55,7 +56,7 @@ export default {
 
   computed: {
     getI18n() {
-      return this.$t("message.restText")
+      return config().restText
     }
   }
 }

@@ -27,6 +27,7 @@
 <script>
 import ComponentButton from '@/components/Button'
 import ButtonLanguage from '@/components/ButtonLanguage'
+import config from '@/data/config'
 
 export default {
   components: {
@@ -52,7 +53,7 @@ export default {
 
   computed: {
     getI18n() {
-      return this.$t("message.restText.onboarding")
+      return config().restText.onboarding
     }
   },
 

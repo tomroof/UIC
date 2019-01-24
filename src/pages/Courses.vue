@@ -24,6 +24,7 @@
 import NavigationLayout from '@/layouts/NavigationLayout'
 import Switcher from '@/components/CoursesSwitcher'
 import RadialProgressBar from 'vue-radial-progress'
+import config from '@/data/config'
 import { mapGetters } from 'vuex'
 
   export default {
@@ -45,12 +46,8 @@ import { mapGetters } from 'vuex'
       ...mapGetters(['getCourses']),
 
       getI18n() {
-        return this.$t("message.restText")
+        return config().restText
       }
-    },
-
-    mounted() {
-
     },
 
     components: {
