@@ -43,7 +43,6 @@
 <script>
 import NavigationLayout from '@/layouts/NavigationLayout'
 import { mapGetters } from 'vuex'
-import CourseData from '@/data/en-config/courseSample'
 import AudioManager from '@/helpers/audioManager'
 import config from '@/data/config'
 
@@ -70,7 +69,7 @@ export default {
     },
 
     playCourse () {
-      let questionTitle = CourseData.questions[this.course.active_page].url_prefix
+      let questionTitle = config().courseSample.questions[this.course.active_page].url_prefix
       this.$router.push('/course/' + this.$route.params.url_prefix + "/" + questionTitle + "/" + this.course.active_page)
     }
   },

@@ -210,6 +210,7 @@ export default {
   <p>Changes To This Privacy Policy</p>
   <p>We may update our Privacy Policy from time to time. We will notify you of any changes by posting the new Privacy Policy on this page. We will let you know via email and/or a prominent notice on our Service, prior to the change becoming effective and update the "effective date" at the top of this Privacy Policy. You are advised to review this Privacy Policy periodically for any changes. Changes to this Privacy Policy are effective when they are posted on this page.</p>
   <p>Contact Us</p>
-  <p>If you have any questions about this Privacy Policy, please contact us by emailing <a href="mailto:hello@healthystarts.today">hello@healthystarts.today</a></p>`
+  <p>If you have any questions about this Privacy Policy, please contact us by emailing <a href="mailto:hello@healthystarts.today">hello@healthystarts.today</a></p>`,
+  video1: 'module1-male.mp4'
 }
 

@@ -9,7 +9,7 @@ export default () => {
       id: '1',
       type: 'video',
       url_prefix: 'what-is-inside-your-mouth',
-      boy_video_link: 'module1-male.mp4',
+      boy_video_link: i18n.t("message.video1"),
       boy_video_poster: 'module1-cover.jpg',
       girl_video_link: 'module1-female.mp4',
       girl_video_poster: 'module1-cover.jpg'
