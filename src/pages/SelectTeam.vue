@@ -22,7 +22,6 @@
 import NavigationLayout from '@/layouts/NavigationLayout'
 import ComponentButton from '@/components/Button'
 import BaseCard from '@/components/cards/BaseCard'
-import selectATeam from '@/data/en-config/selectATeam'
 import CongratsDialog from '@/components/dialogs/CongratsDialog'
 import DeviceManager from '@/helpers/deviceManager'
 import AudioManager from '@/helpers/audioManager'
