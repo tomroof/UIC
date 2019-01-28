@@ -176,6 +176,10 @@ export default {
       return this.$store.state.uuid
     },
 
+    getI18nAudio() {
+      return config().audio
+    },
+
     steps () {
       return this.curse.questions.map((q, index) => {
         return {
@@ -299,27 +303,27 @@ export default {
             if (currentType === "icons") {
               this.showModuleStartDialog = true
               this.moduleStartTitle = this.steps[page].nextLabel
-              this.moduleStartAudio = "first_question_for_icons"
+              this.moduleStartAudio = this.getI18nAudio.audio_first_question_for_icons
             } else if (currentType === "cards") {
               this.showModuleStartDialog = true
               this.moduleStartTitle = this.steps[page].nextLabel
-              this.moduleStartAudio = "first_question_for_cards"
+              this.moduleStartAudio = this.getI18nAudio.audio_first_question_for_cards
             } else if (currentType === "calc") {
               this.showModuleStartDialog = true
               this.moduleStartTitle = this.steps[page].nextLabel
-              this.moduleStartAudio = "first_question_for_calc"
+              this.moduleStartAudio = this.getI18nAudio.audio_first_question_for_calc
             }
           }
           else {
             if (currentType === "icons") {
               this.enabledSelection = false
-              AudioManager.playAudio('first_question_for_icons', this.$store.state.gender, this.endedIntroAudio)
+              AudioManager.playAudio(this.getI18nAudio.audio_first_question_for_icons, this.$store.state.gender, this.endedIntroAudio)
             } else if (currentType === "cards") {
               this.enabledSelection = false
-              AudioManager.playAudio('first_question_for_cards', this.$store.state.gender, this.endedIntroAudio)
+              AudioManager.playAudio(this.getI18nAudio.audio_first_question_for_cards, this.$store.state.gender, this.endedIntroAudio)
             } else if (currentType === "calc") {
               this.enabledSelection = false
-              AudioManager.playAudio('first_question_for_calc', this.$store.state.gender, this.endedIntroAudio)
+              AudioManager.playAudio(this.getI18nAudio.audio_first_question_for_calc, this.$store.state.gender, this.endedIntroAudio)
             }
           }
         }
@@ -355,18 +359,18 @@ export default {
         // Play correct sound for only icons
         if (currentQuestionType === 'icons') {
           if (this.isAnswerCorrect === true) {
-            AudioManager.playAudio('icons_select_correct', this.$store.state.gender)
+            AudioManager.playAudio(this.getI18nAudio.audio_icons_select_correct, this.$store.state.gender)
           } else {
-            AudioManager.playAudio('icons_select_wrong', this.$store.state.gender)
+            AudioManager.playAudio(this.getI18nAudio.audio_icons_select_wrong, this.$store.state.gender)
           }
         }
         else if (currentQuestionType === 'calc') {
           if (currentQuestionSlot === '24') {
-            AudioManager.playAudio('calc_question_1', this.$store.state.gender)
+            AudioManager.playAudio(this.getI18nAudio.audio_calc_question_1, this.$store.state.gender)
           } else if (currentQuestionSlot === '25') {
-            AudioManager.playAudio('calc_question_2', this.$store.state.gender)
+            AudioManager.playAudio(this.getI18nAudio.audio_calc_question_2, this.$store.state.gender)
           } else if (currentQuestionSlot === '26' || currentQuestionSlot === '27') {
-            AudioManager.playAudio('calc_question_3_4', this.$store.state.gender)
+            AudioManager.playAudio(this.getI18nAudio.audio_calc_question_3_4, this.$store.state.gender)
           }
         }
 

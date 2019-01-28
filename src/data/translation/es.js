@@ -211,5 +211,14 @@ export default {
   <p>We may update our Privacy Policy from time to time. We will notify you of any changes by posting the new Privacy Policy on this page. We will let you know via email and/or a prominent notice on our Service, prior to the change becoming effective and update the "effective date" at the top of this Privacy Policy. You are advised to review this Privacy Policy periodically for any changes. Changes to this Privacy Policy are effective when they are posted on this page.</p>
   <p>Contact Us</p>
   <p>If you have any questions about this Privacy Policy, please contact us by emailing <a href="mailto:hello@healthystarts.today">hello@healthystarts.today</a></p> ES`,
+  audio_first_question_for_icons: 'first_question_for_icons_ES',
+  audio_icons_select_wrong: 'icons_select_wrong_ES',
+  audio_first_question_for_cards: 'first_question_for_cards_ES',
+  audio_first_question_for_calc: 'first_question_for_calc_ES',
+  audio_good_job: 'good_job_ES',
+  audio_unlocked_badge: 'unlocked_badge_ES',
+  audio_calc_question_1: 'calc_question_1_ES',
+  audio_calc_question_2: 'calc_question_2_ES',
+  audio_calc_question_3_4: 'calc_question_3_4_ES',
   video1: 'module1-male.mp4'
 }
