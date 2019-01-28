@@ -72,6 +72,10 @@ export default {
 
     getI18n() {
       return config().restText
+    },
+
+    getI18nAudio() {
+      return config().audio
     }
   },
 
@@ -101,7 +105,7 @@ export default {
 
     if (!this.isMobile) {
       setTimeout(() => {
-        AudioManager.playAudio('unlocked_badge', this.$store.state.gender, this.finishedCompleteAudio)
+        AudioManager.playAudio(this.getI18nAudio.audio_unlocked_badge, this.$store.state.gender, this.finishedCompleteAudio)
       }, 300)
     }
   },

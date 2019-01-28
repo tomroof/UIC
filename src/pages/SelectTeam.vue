@@ -51,7 +51,11 @@ export default {
 
     getI18n() {
       return config().restText
-    }
+    },
+
+    getI18nAudio() {
+      return config().audio
+    },
   },
 
   methods: {
@@ -83,7 +87,7 @@ export default {
       this.postUuid()
 
       if (DeviceManager.isMobile()) {
-        AudioManager.playAudio('unlocked_badge', this.$store.state.gender, this.finishedCompleteAudio)
+        AudioManager.playAudio(this.getI18nAudio.audio_unlocked_badge, this.$store.state.gender, this.finishedCompleteAudio)
         this.showCongrateDialog = true
       }
       else {

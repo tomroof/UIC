@@ -6,6 +6,7 @@ import reviews from '@/data/config/reviews'
 import restText from '@/data/config/restText'
 import about from '@/data/config/about'
 import terms from '@/data/config/terms'
+import audio from '@/data/config/audio'
 
 export default () => {
   return {
@@ -16,6 +17,7 @@ export default () => {
     reviews: reviews(),
     restText: restText(),
     about: about(),
-    terms: terms()
+    terms: terms(),
+    audio: audio()
   }
 }

@@ -14,6 +14,8 @@ import RewardCard from '@/components/cards/RewardCard'
 import AudioManager from '@/helpers/audioManager'
 import { mapGetters } from 'vuex'
 
+import config from '@/data/config'
+
 export default {
   name: 'CoursePage',
 
@@ -35,7 +37,7 @@ export default {
     curseId () {
       if (this.$route.params.url_prefix === null || this.$route.params.url_prefix.length === 0) {
         return 0
-      } 
+      }
 
       for (var i = 0; i < this.getCourses.length; i++) {
         var q = this.getCourses[i];
@@ -43,7 +45,11 @@ export default {
           return q.id
         }
       }
-    }
+    },
+
+    getI18nAudio() {
+      return config().audio
+    },
   },
 
   methods: {
@@ -55,7 +61,7 @@ export default {
     moduleCompleted () {
       this.showRewardCard = true
       this.clickRewardContinue = false
-      AudioManager.playAudio('good_job', this.$store.state.gender)
+      AudioManager.playAudio(this.getI18nAudio.audio_good_job, this.$store.state.gender)
     },
     rewardContinue () {
       this.showRewardCard = false
