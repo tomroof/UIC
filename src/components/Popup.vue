@@ -20,6 +20,30 @@
           </div>
         </div>
       </div>
+      <div class="popup" v-else-if="customPopup">
+        <div class="container">
+          <div class="title">
+            <div  v-if="customPopup.messageType==='positive'" class="img-wrapper img-wrapper__true">
+              <div class="img-char" :style="{background: `url(${$store.state.character}) no-repeat center / contain`}">
+              </div>
+            </div>
+            <div v-else class="img-wrapper img-wrapper__false">
+              <div class="img__false">
+              </div>
+            </div>
+            <div class="title-text" v-html="customPopup.message">
+            </div>
+            <div class="points-text">
+              +{{points}} <span>{{ getI18n.points }}</span>
+            </div>
+          </div>
+          <div class="buttons-wrapper">
+            <component-button :popup="true" @click="selectPopupHandler(customPopup.handlerType)">
+              {{ customPopup.buttonText }}
+            </component-button>
+          </div>
+        </div>
+      </div>
       <div class="container" v-else>
         <div class="title">
           <div class="img-wrapper img-wrapper__true">
@@ -112,7 +136,17 @@ import { events } from '@/helpers/events'
 import { mapActions } from 'vuex'
 
   export default {
-    props: ['type', 'answers', 'openPopupTrue', 'openPopupFalse', 'popupBack', 'closePopup', 'exitCourse', 'popupError'],
+    props: [
+      'type',
+      'answers',
+      'openPopupTrue',
+      'openPopupFalse',
+      'popupBack',
+      'closePopup',
+      'exitCourse',
+      'popupError',
+      'customPopup'
+    ],
     components: {
       ComponentButton
     },
@@ -138,6 +172,17 @@ import { mapActions } from 'vuex'
         'putPoints'
       ]),
 
+      selectPopupHandler(type) {
+        switch (true) {
+          case type === 'nextSlide':
+            this.toNextSlide()
+            break;
+
+          default:
+            break;
+        }
+      },
+
       toNextSlide() {
         if (this.type === 'icons') {
           this.putPoints(this.points)
@@ -149,6 +194,11 @@ import { mapActions } from 'vuex'
         events.$emit('dropAnswer');
         events.$emit('thisSlide', false);
       }
+    },
+
+    mounted() {
+      // console.log('customPopup', this.customPopup)
+      // console.log('getI18n', this.getI18n)
     },
 
     computed: {

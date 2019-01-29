@@ -13,6 +13,7 @@ export default {
   cavityMonsterHero: 'Cavity Monster Hero ES',
   FightingCavities: 'Fighting Cavities ES',
   BrushSelfie: 'Brush Selfie ES',
+  becareful: "be careful, cavity monsters may be there! ES",
   BrushTimer: 'Brush Timer ES',
   BabyTeeth: 'Baby Teeth ES',
   BrushingandFlossing: 'Brushing and Flossing ES',
@@ -24,6 +25,14 @@ export default {
   TheAchiever: 'The Achiever ES',
   Sugar: 'Sugar ES',
   Memory: 'Memory ES',
+
+  Whatinsideourmouths: 'What’s inside our mouths? ES',
+  CavityMath: 'Cavity Math ES',
+  Whichsnacksdomyteethlove: 'Which snacks do my teeth love? ES',
+  IKnowMyTeeth: 'I Know My Teeth ES',
+  BrushingSelfie: 'Brushing Selfie ES',
+  CompleteTopic: 'Complete topic ES',
+
   Matching:'Matching ES',
   CompletingProfile: 'Completing Profile ES',
   CompletingCavityPrevention: 'Completing Cavity Prevention ES',

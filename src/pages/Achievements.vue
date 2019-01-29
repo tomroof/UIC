@@ -93,17 +93,17 @@ ul {
 }
 
 .badge-button {
-  color: rgba(255, 255, 255, 0.3);
-  font-size: 20px;
-  cursor: pointer;
-}
-
-.list-button {
+  display: inline-block;
   color: rgba(255, 109, 127, 1.0);
   font-size: 20px;
   cursor: pointer;
   border-bottom: 1px solid rgba(255, 109, 127, 1.0);
-  width: 43px;
+}
+
+.list-button {
+  color: rgba(255, 255, 255, 0.3);
+  font-size: 20px;
+  cursor: pointer;
 }
 
 .badge-layout {

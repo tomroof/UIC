@@ -58,7 +58,6 @@ import { mapGetters } from 'vuex'
     },
 
     mounted() {
-      console.log('uuid', this.$store.state.uuid)
       if (!this.$store.state.uuid) {
         this.errorRequest = true
       }
