@@ -220,5 +220,14 @@ export default {
   audio_calc_question_1: 'calc_question_1_ES',
   audio_calc_question_2: 'calc_question_2_ES',
   audio_calc_question_3_4: 'calc_question_3_4_ES',
-  video1: 'module1-male.mp4'
+  video1: 'module1_spanish.mp4',
+  video2: 'module1_spanish.mp4',
+  video3: 'module3_spanish.mp4',
+  video4: 'module3_spanish.mp4',
+  video5: 'module4_spanish.mp4',
+  video6: 'module4_spanish.mp4',
+  video7: 'module5_spanish.mp4',
+  video8: 'module5_spanish.mp4',
+  video9: 'module6_spanish.mp4',
+  video10: 'module6_spanish.mp4'
 }

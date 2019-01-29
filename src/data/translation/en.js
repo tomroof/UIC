@@ -221,5 +221,13 @@ export default {
   audio_calc_question_2: 'calc_question_2',
   audio_calc_question_3_4: 'calc_question_3_4',
   video1: 'module1-male.mp4',
+  video2: 'module1-female.mp4',
+  video3: 'module3-male.mp4',
+  video4: 'module3-female.mp4',
+  video5: 'module4-male.mp4',
+  video6: 'module4-female.mp4',
+  video7: 'module5-male.mp4',
+  video8: 'module5-female.mp4',
+  video9: 'module6-male.mp4',
+  video10: 'module6-female.mp4'
 }
-

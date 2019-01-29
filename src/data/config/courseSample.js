@@ -11,7 +11,7 @@ export default () => {
       url_prefix: 'what-is-inside-your-mouth',
       boy_video_link: i18n.t("message.video1"),
       boy_video_poster: 'module1-cover.jpg',
-      girl_video_link: 'module1-female.mp4',
+      girl_video_link: i18n.t("message.video2"),
       girl_video_poster: 'module1-cover.jpg'
     },
     {
@@ -76,9 +76,9 @@ export default () => {
       id: '5',
       type: 'video',
       url_prefix: 'how-to-stop-the-cavity-monsters',
-      boy_video_link: 'module3-male.mp4',
+      boy_video_link: i18n.t("message.video3"),
       boy_video_poster: 'module3-cover.jpg',
-      girl_video_link: 'module3-female.mp4',
+      girl_video_link: i18n.t("message.video4"),
       girl_video_poster: 'module3-cover.jpg'
     },
     {
@@ -86,9 +86,9 @@ export default () => {
       id: '6',
       type: 'video',
       url_prefix: 'brushing-away-the-cavity-monsters',
-      boy_video_link: 'module4-male.mp4',
+      boy_video_link: i18n.t("message.video5"),
       boy_video_poster: 'module4-cover.jpg',
-      girl_video_link: 'module4-female.mp4',
+      girl_video_link: i18n.t("message.video6"),
       girl_video_poster: 'module4-cover.jpg'
     },
     {
@@ -96,9 +96,9 @@ export default () => {
       id: '7',
       type: 'video',
       url_prefix: 'cavity-math-instructions',
-      boy_video_link: 'module5-male.mp4',
+      boy_video_link: i18n.t("message.video7"),
       boy_video_poster: 'module5-cover.jpg',
-      girl_video_link: 'module5-female.mp4',
+      girl_video_link: i18n.t("message.video8"),
       girl_video_poster: 'module5-cover.jpg'
     },
     {
@@ -182,9 +182,9 @@ export default () => {
       id: '12',
       type: 'video',
       url_prefix: 'what-snacks-do-my-teeth-love',
-      boy_video_link: 'module6-male.mp4',
+      boy_video_link: i18n.t("message.video9"),
       boy_video_poster: 'module6-cover.jpg',
-      girl_video_link: 'module6-female.mp4',
+      girl_video_link: i18n.t("message.video10"),
       girl_video_poster: 'module6-cover.jpg'
     },
     {
