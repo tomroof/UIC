@@ -88,6 +88,20 @@
         </div>
       </div>
     </div>
+    <div class="popup" v-if="popupError">
+      <div class="container">
+        <div class="title">
+          <div class="title-text">
+            {{ getI18n.ErrorMessage }}
+          </div>
+        </div>
+        <div class="buttons-wrapper">
+          <component-button :popup="true" @click="exitCourse">
+            {{ getI18n.back }}
+          </component-button>
+        </div>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -98,7 +112,7 @@ import { events } from '@/helpers/events'
 import { mapActions } from 'vuex'
 
   export default {
-    props: ['type', 'answers', 'openPopupTrue', 'openPopupFalse', 'popupBack', 'closePopup', 'exitCourse'],
+    props: ['type', 'answers', 'openPopupTrue', 'openPopupFalse', 'popupBack', 'closePopup', 'exitCourse', 'popupError'],
     components: {
       ComponentButton
     },

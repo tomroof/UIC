@@ -36,6 +36,7 @@ export default {
   },
 
   mounted () {
+    console.log('mountedddd', character)
     let character = this.$store.state.character
     let age = this.$store.state.age
     let team = this.$store.state.team

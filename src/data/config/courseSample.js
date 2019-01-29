@@ -15,6 +15,16 @@ export default () => {
       girl_video_poster: 'module1-cover.jpg'
     },
     {
+      text: i18n.t("message.Whatinsideyourmouth"),
+      id: '38',
+      type: 'video',
+      url_prefix: 'what-is-inside-your-mouth',
+      boy_video_link: i18n.t("message.video1"),
+      boy_video_poster: 'module1-cover.jpg',
+      girl_video_link: i18n.t("message.video2"),
+      girl_video_poster: 'module1-cover.jpg'
+    },
+    {
       text: i18n.t("message.Wheredocavities"),
       desc: '',
       id: '2',

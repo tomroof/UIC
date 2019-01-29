@@ -82,7 +82,6 @@ export default {
     continueButtonClick () {
       if (this.selected === null) return
       this.$store.commit('setTeam', {id: this.selected, name: this.team[this.selected - 1].title})
-      // this.$store.commit('completeArchievement', 1)
 
       this.postUuid()
 

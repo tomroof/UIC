@@ -44,11 +44,11 @@ export default {
   yes: 'yes',
   no: 'no',
   General: 'General',
-  FavoriteCourses: 'Favorite Courses',
-  MyFriends: 'My Friends',
+  MyCourses: 'My Courses',
+  MyDentalOffice: 'My Dental Office',
   Achievements: 'Achievements',
   Settings: 'Settings',
-  EditLoginDetails: 'Edit Login Details',
+  EditLoginDetails: 'Edit Profile',
   UpdateInterests: 'Update Interests',
   BlockedUsers: 'Blocked Users',
   UniversitySchoolofDentistry: 'University of Illinois School of Dentistry',
@@ -151,6 +151,8 @@ export default {
   AngelHarveyFamilyHealth: 'Angel Harvey Family Health Center of the Infant Welfare',
   SaludFamilyHealthCenters: 'Salud Family Health Centers',
   RadaClinic: 'Rada Clinic',
+  ErrorMessage: 'Sorry, server connection failed',
+  back: 'Back',
   terms: `<p>Healthy Starts.today Privacy Policy</p>
   <p>Effective date: July 26, 2018</p>
   <p>Healthy Starts.today ("us", "we", or "our") operates the https://healthystarts.today website (the "Service").</p>

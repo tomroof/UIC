@@ -63,7 +63,7 @@ export default {
 
   data () {
     return {
-      layout: 'badge',
+      layout: 'list',
       menuNames: [
         {name: 'Badges', active: true},
         {name: 'Leaderboard'}

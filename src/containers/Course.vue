@@ -141,10 +141,6 @@ export default {
   },
 
   mounted() {
-    if (!this.getUuid) {
-      return this.$router.push({path: '/'})
-    }
-
     let first_page = parseInt(this.$route.params.id)
     this.$store.commit('setTopic', this.curseId)
 

@@ -43,7 +43,9 @@ export default () => {
     tryAgain: i18n.t("message.Tryagain"),
     leave: i18n.t("message.Areyouureyouwantleave"),
     yes: i18n.t("message.yes"),
-    no: i18n.t("message.no")
+    no: i18n.t("message.no"),
+    ErrorMessage: i18n.t("message.ErrorMessage"),
+    back: i18n.t("message.back")
   },
 
   profile: [
@@ -51,20 +53,20 @@ export default () => {
       name: i18n.t("message.General"),
       items: [
         {
-          name: i18n.t("message.FavoriteCourses"),
+          name: i18n.t("message.Achievements"),
+          icon: 'achievements-icon.svg',
+          link: '/achievements'
+        },
+        {
+          name: i18n.t("message.MyCourses"),
           icon: 'fav-courses-icon.svg',
           link: '/courses'
         },
         {
-          name: i18n.t("message.MyFriends"),
+          name: i18n.t("message.MyDentalOffice"),
           icon: 'my-friends-icon.svg',
           link: '/team',
           count: '50',
-        },
-        {
-          name: i18n.t("message.Achievements"),
-          icon: 'achievements-icon.svg',
-          link: '/achievements'
         }
       ]
     },
@@ -76,16 +78,16 @@ export default () => {
           icon: 'edit-login-details-icon.svg',
           link: '/select-character'
         },
-        {
-          name: i18n.t("message.UpdateInterests"),
-          icon: 'update-interests-icon.svg',
-          link: '/code'
-        },
-        {
-          name: i18n.t("message.BlockedUsers"),
-          icon: 'block-users-icon.svg',
-          link: '/code'
-        }
+        // {
+        //   name: i18n.t("message.UpdateInterests"),
+        //   icon: 'update-interests-icon.svg',
+        //   link: '/code'
+        // },
+        // {
+        //   name: i18n.t("message.BlockedUsers"),
+        //   icon: 'block-users-icon.svg',
+        //   link: '/code'
+        // }
       ]
     }
   ],
