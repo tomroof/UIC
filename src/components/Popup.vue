@@ -195,12 +195,6 @@ import { mapActions } from 'vuex'
         events.$emit('thisSlide', false);
       }
     },
-
-    mounted() {
-      // console.log('customPopup', this.customPopup)
-      // console.log('getI18n', this.getI18n)
-    },
-
     computed: {
       getI18n() {
         return config().restText.popups
