@@ -98,8 +98,11 @@ export default new Vuex.Store({
       state.courses.find(item => item.id === +id).progress = currentProgress
     },
 
-    completeArchievement(state, id) {
-      state.achievements.find(item => item.id === +id).completed = true
+    completeArchievement(state, payload) {
+      const {id, date} = payload
+      const achivement = state.achievements.find(item => item.id === +id)
+      achivement.completed = true
+      achivement.date = date
     },
 
     setUuid(state, id) {
@@ -130,8 +133,9 @@ export default new Vuex.Store({
     },
 
     putBadge({ commit, state }, payload) {
+      const { id } = payload
       commit('completeArchievement', payload)
-      const badgeName = state.achievements.find(item => item.id === +payload).name
+      const badgeName = state.achievements.find(item => item.id === +id).name
       return putNewBadge(state.uuid, badgeName)
       .then(data => data)
     },

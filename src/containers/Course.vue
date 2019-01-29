@@ -141,10 +141,6 @@ export default {
   },
 
   mounted() {
-    if (!this.getUuid) {
-      return this.$router.push({path: '/'})
-    }
-
     let first_page = parseInt(this.$route.params.id)
     this.$store.commit('setTopic', this.curseId)
 
@@ -365,11 +361,11 @@ export default {
           }
         }
         else if (currentQuestionType === 'calc') {
-          if (currentQuestionSlot === '24') {
+          if (currentQuestionSlot === '27') {
             AudioManager.playAudio(this.getI18nAudio.audio_calc_question_1, this.$store.state.gender)
-          } else if (currentQuestionSlot === '25') {
+          } else if (currentQuestionSlot === '28') {
             AudioManager.playAudio(this.getI18nAudio.audio_calc_question_2, this.$store.state.gender)
-          } else if (currentQuestionSlot === '26' || currentQuestionSlot === '27') {
+          } else if (currentQuestionSlot === '29' || currentQuestionSlot === '30') {
             AudioManager.playAudio(this.getI18nAudio.audio_calc_question_3_4, this.$store.state.gender)
           }
         }

@@ -13,6 +13,7 @@ export default {
   cavityMonsterHero: 'Cavity Monster Hero ES',
   FightingCavities: 'Fighting Cavities ES',
   BrushSelfie: 'Brush Selfie ES',
+  becareful: "be careful, cavity monsters may be there! ES",
   BrushTimer: 'Brush Timer ES',
   BabyTeeth: 'Baby Teeth ES',
   BrushingandFlossing: 'Brushing and Flossing ES',
@@ -24,6 +25,14 @@ export default {
   TheAchiever: 'The Achiever ES',
   Sugar: 'Sugar ES',
   Memory: 'Memory ES',
+
+  Whatinsideourmouths: 'What’s inside our mouths? ES',
+  CavityMath: 'Cavity Math ES',
+  Whichsnacksdomyteethlove: 'Which snacks do my teeth love? ES',
+  IKnowMyTeeth: 'I Know My Teeth ES',
+  BrushingSelfie: 'Brushing Selfie ES',
+  CompleteTopic: 'Complete topic ES',
+
   Matching:'Matching ES',
   CompletingProfile: 'Completing Profile ES',
   CompletingCavityPrevention: 'Completing Cavity Prevention ES',
@@ -44,11 +53,11 @@ export default {
   yes: 'yes ES',
   no: 'no ES',
   General: 'General ES',
-  FavoriteCourses: 'Favorite Courses ES',
-  MyFriends: 'My Friends ES',
+  MyCourses: 'My Courses ES',
+  MyFriends: 'My Dental Office ES',
   Achievements: 'Achievements ES',
   Settings: 'Settings ES',
-  EditLoginDetails: 'Edit Login Details ES',
+  EditLoginDetails: 'Edit Profile ES',
   UpdateInterests: 'Update Interests ES',
   BlockedUsers: 'Blocked Users ES',
   UniversitySchoolofDentistry: 'University of Illinois School of Dentistry ES',
@@ -151,6 +160,8 @@ export default {
   AngelHarveyFamilyHealth: 'Angel Harvey Family Health Center of the Infant Welfare ES',
   SaludFamilyHealthCenters: 'Salud Family Health Centers ES',
   RadaClinic: 'Rada Clinic ES',
+  ErrorMessage: 'Lo siento, falla la conexión del servidor',
+  back: 'Atras',
   terms: `<p>Healthy Starts.today Privacy Policy</p>
   <p>Effective date: July 26, 2018</p>
   <p>Healthy Starts.today ("us", "we", or "our") operates the https://healthystarts.today website (the "Service").</p>

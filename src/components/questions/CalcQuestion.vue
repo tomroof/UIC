@@ -60,7 +60,8 @@
         </div> -->
 
       </div>
-      <popup :type="question.type" :openPopupFalse="openPopupFalse" :openPopupTrue="openPopupTrue"/>
+      <!-- <popup :type="question.type" :openPopupFalse="openPopupFalse" :openPopupTrue="openPopupTrue"/> -->
+      <popup :customPopup="question.customPopup" :openPopupTrue="openPopupTrue"/>
     </div>
   </BaseQuestion>
 </template>
@@ -127,6 +128,7 @@
           this.$emit('selectAnswer', {isCorrect: this.question.isCorrect, index: this.index})
         }
       },
+
       dropActiveAnswers () {
         this.$set(this, 'questionCard', {
           text: this.question.text,
@@ -141,6 +143,7 @@
           })
         })
       },
+
       handleAnswerClick (answer) {
         this.dropActiveAnswers()
         this.questionCard.answers.find((a) => a.text === answer.text).selected = true

@@ -17,6 +17,7 @@
         <!-- <div class="course_bottom">{{ getI18n.courses.names[index] }}</div> -->
       </div>
     </div>
+    <popup :popupError="errorRequest" :exitCourse="goToSelectTeam"/>
   </NavigationLayout>
 </template>
 
@@ -24,6 +25,7 @@
 import NavigationLayout from '@/layouts/NavigationLayout'
 import Switcher from '@/components/CoursesSwitcher'
 import RadialProgressBar from 'vue-radial-progress'
+import Popup from '@/components/Popup'
 import config from '@/data/config'
 import { mapGetters } from 'vuex'
 
@@ -33,13 +35,18 @@ import { mapGetters } from 'vuex'
         {name: 'All', active: true},
         {name: 'Ongoing'},
         {name: 'Completed'}
-      ]
+      ],
+      errorRequest: false
     }),
     methods: {
       navigateToCourse(course) {
         if (course.active) {
           this.$router.push('/details/' + course.url_prefix)
         }
+      },
+
+      goToSelectTeam() {
+        this.$router.push({path: '/select-team'})
       }
     },
     computed: {
@@ -50,10 +57,17 @@ import { mapGetters } from 'vuex'
       }
     },
 
+    mounted() {
+      if (!this.$store.state.uuid) {
+        this.errorRequest = true
+      }
+    },
+
     components: {
       Switcher,
       NavigationLayout,
-      RadialProgressBar
+      RadialProgressBar,
+      Popup
     }
   }
 </script>

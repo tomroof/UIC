@@ -4,6 +4,7 @@
     <div class="body">
       <div class="name">{{achieve.name}}</div>
       <div class="goal">{{achieve.goal}}</div>
+      <div class="date">{{achieve.date}}</div>
     </div>
   </li>
 </template>
@@ -43,7 +44,7 @@ img {
   font-size: 16px;
   color: #FFFFFF;
   letter-spacing: 0;
-  margin-bottom: 5px;
+  margin-bottom: 1px;
 }
 
 .goal {
@@ -51,6 +52,16 @@ img {
   font-family: 'Lato';
   font-weight: 300;
   font-size: 16px;
+  color: #FFFFFF;
+  letter-spacing: 0;
+  margin-bottom: 5px;
+}
+
+.date {
+  opacity: 0.6;
+  font-family: 'Lato';
+  font-weight: 300;
+  font-size: 14px;
   color: #FFFFFF;
   letter-spacing: 0;
 }

@@ -15,6 +15,16 @@ export default () => {
       girl_video_poster: 'module1-cover.jpg'
     },
     {
+      text: i18n.t("message.Whatinsideyourmouth"),
+      id: '38',
+      type: 'video',
+      url_prefix: 'what-is-inside-your-mouth',
+      boy_video_link: i18n.t("message.video1"),
+      boy_video_poster: 'module1-cover.jpg',
+      girl_video_link: i18n.t("message.video2"),
+      girl_video_poster: 'module1-cover.jpg'
+    },
+    {
       text: i18n.t("message.Wheredocavities"),
       desc: '',
       id: '2',
@@ -460,6 +470,12 @@ export default () => {
       type: 'calc',
       url_prefix: 'cavity-math',
       isCorrect: true,
+      customPopup: {
+        message: i18n.t("message.YeahYourefightingmonsters"),
+        buttonText: i18n.t("message.NextUp"),
+        handlerType: 'nextSlide',
+        messageType: 'positive'
+      },
       answers: [
         {
           text: i18n.t("message.Brushingtwiceaday"),
@@ -480,6 +496,12 @@ export default () => {
       type: 'calc',
       url_prefix: 'cavity-math',
       isCorrect: true,
+      customPopup: {
+        message: i18n.t("message.UhThecavitymonstersArecoming"),
+        buttonText: i18n.t("message.NextUp"),
+        handlerType: 'nextSlide',
+        messageType: 'negative'
+      },
       answers: [
         {
           text: i18n.t("message.Sugarysnacks"),
@@ -498,6 +520,12 @@ export default () => {
       desc: i18n.t("message.Letslearnsomecavitymath"),
       id: '29',
       type: 'calc',
+      customPopup: {
+        message: i18n.t("message.becareful"),
+        buttonText: i18n.t("message.NextUp"),
+        handlerType: 'nextSlide',
+        messageType: 'both'
+      },
       url_prefix: 'cavity-math',
       isCorrect: true,
       answers: [
@@ -518,6 +546,12 @@ export default () => {
       desc: i18n.t("message.Letslearnsomecavitymath"),
       id: '30',
       type: 'calc',
+      customPopup: {
+        message: i18n.t("message.becareful"),
+        buttonText: i18n.t("message.NextUp"),
+        handlerType: 'nextSlide',
+        messageType: 'both'
+      },
       url_prefix: 'cavity-math',
       isCorrect: true,
       answers: [
