@@ -15,6 +15,25 @@ export default () => {
       girl_video_poster: 'module1-cover.jpg'
     },
     {
+      text: i18n.t("message.Wheredocavities"),
+      desc: '',
+      id: '3',
+      type: 'icons',
+      url_prefix: 'where-do-cavities-come-from',
+      answers: [
+        {
+          text: i18n.t("message.Readingabook"),
+          image: 'book.svg',
+          isCorrect: false
+        },
+        {
+          text: i18n.t("message.CavityMonsters"),
+          image: 'monster.png',
+          isCorrect: true
+        },
+      ]
+    },
+    {
       text: i18n.t("message.Whatinsideyourmouth"),
       id: '38',
       type: 'video',
@@ -40,25 +59,6 @@ export default () => {
           text: i18n.t("message.Goingtothezoo"),
           image: 'elephant.svg',
           isCorrect: false
-        },
-      ]
-    },
-    {
-      text: i18n.t("message.Wheredocavities"),
-      desc: '',
-      id: '3',
-      type: 'icons',
-      url_prefix: 'where-do-cavities-come-from',
-      answers: [
-        {
-          text: i18n.t("message.Readingabook"),
-          image: 'book.svg',
-          isCorrect: false
-        },
-        {
-          text: i18n.t("message.CavityMonsters"),
-          image: 'monster.png',
-          isCorrect: true
         },
       ]
     },

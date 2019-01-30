@@ -264,7 +264,8 @@ export default {
       let page = parseInt(this.$route.params.id)
 
       // Check last page.
-      if (page < this.steps.length - 1 && this.steps[page].type !== null) {
+      // PAGE !=== needs refactoring
+      if (page < this.steps.length - 1 && this.steps[page].type !== null && page !== 1) {
         let currentQuestionType = this.steps[page].type
         let nextQuestionType = this.steps[page + 1].type
         if (currentQuestionType != null && nextQuestionType != currentQuestionType) {
@@ -274,7 +275,6 @@ export default {
             return
           }
         }
-
         this.showRewardCard = false
 
         // Save completed question id in global.
