@@ -254,7 +254,7 @@ export default {
     font-weight: normal;
     color: #FFFFFF;
     text-align: center;
-    line-height: 20px;
+    line-height: 40px;
     margin: 1rem 0;
   }
 

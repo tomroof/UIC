@@ -103,7 +103,7 @@ export default () => {
     },
     {
       id: 12,
-      name: i18n.t("message.Goodformeorgoodforcavity"),
+      name: i18n.t("message.BrushingSelfie"),
       goal: i18n.t("message.CompleteTopic"),
       image: 'achieve_img_4.svg',
       badge_image: 'achieve_img_4_badge.svg',
