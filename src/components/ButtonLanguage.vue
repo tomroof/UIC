@@ -1,11 +1,15 @@
 <template>
-  <div  :class="languageClasses">
-    <div class="language-en" />
-      <div class="toggle" @click="changeLanguige">
+  <div  :class="languageClasses" @click="changeLanguige">
+    <div class="language-text">
+      English
+    </div>
+      <div class="toggle">
         <div class="circle">
         </div>
       </div>
-     <div class="language-es" />
+    <div class="language-text">
+      Española
+    </div>
   </div>
 </template>
 
@@ -36,26 +40,18 @@
 .language {
   display: flex;
   flex-flow: row nowrap;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
 
   margin: 30px auto 0;
-  max-width: 158px;
   width: 100%;
+
+  cursor: pointer;
 }
 
-.language-en {
-  width: 50px;
-  height: 50px;
-
-  background: url('../assets/icon-en.svg') no-repeat center/contain;
-}
-
-.language-es {
-  width: 50px;
-  height: 50px;
-
-  background: url('../assets/icon-es.svg') no-repeat center/contain;
+.language-text {
+  color: #ffffff;
+  font-size: 26px;
 }
 
 .toggle {
@@ -63,6 +59,8 @@
 
   width: 32px;
   height: 10px;
+  margin-left: 14px;
+  margin-right: 14px;
   background: #447565;
 
   border-radius: 4px;

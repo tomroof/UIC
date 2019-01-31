@@ -7,6 +7,7 @@
       :name="menu.name"
       :items="menu.items"
     ></MenuList>
+    <ButtonLanguage />
   </NavigationLayout>
 </template>
 
@@ -14,7 +15,10 @@
 import NavigationLayout from '@/layouts/NavigationLayout'
 import MenuList from '@/components/shared/MenuList'
 import AccountHeader from '@/components/AccountHeader'
+import ButtonLanguage from '@/components/ButtonLanguage'
 import config from '@/data/config'
+
+import { i18n } from '@/lang'
 
 export default {
   name: 'Account',
@@ -22,14 +26,16 @@ export default {
   components: {
     NavigationLayout,
     MenuList,
-    AccountHeader
+    AccountHeader,
+    ButtonLanguage
   },
 
   data () {
     return {
       user: {
         avatar: 'account-img.jpg',
-        points: this.$store.state.points
+        points: this.$store.state.points,
+        id: this.$store.state.uuid
       }
     }
   },
