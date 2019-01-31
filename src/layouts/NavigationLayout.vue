@@ -60,7 +60,7 @@ export default {
 
 .container {
   position: relative;
-
+  padding-bottom: 30px;
   .top {
     position: absolute;
     top: 0;

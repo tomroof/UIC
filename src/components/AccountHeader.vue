@@ -8,8 +8,15 @@
     </div>
 
     <div class="info">
-      <div class="name">{{user.name}}</div>
-      <div class="points">{{user.points}} Points</div>
+      <div class="id-wrapper">
+        <span class="id-text">
+          id:
+        </span>
+        <span class="id">
+          {{user.id}}
+        </span>
+      </div>
+      <div class="points">{{user.points}} {{getI18n.points}}</div>
       <div class="badges">
         <span class="badge"
           v-for="(badge, index) in badges"
@@ -23,6 +30,7 @@
 
 <script>
 import { mapGetters } from 'vuex'
+import config from '@/data/config'
 
 export default {
   name: 'AccountHeader',
@@ -41,6 +49,9 @@ export default {
         }
       }
       return results
+    },
+    getI18n() {
+      return config().restText.congrats
     }
   },
 
@@ -83,11 +94,18 @@ export default {
   padding: 15px 0 0 25px;
 }
 
-.name {
+.id {
   font-family: 'Lato';
-  font-size: 25px;
+  font-size: 20px;
   color: #FFFFFF;
   letter-spacing: 0;
+}
+
+.id-text {
+  font-family: 'Lato';
+  font-weight: 300;
+  color: #ffffff;
+  opacity: 0.5;
 }
 
 .points {
@@ -102,7 +120,9 @@ export default {
 
 .badges {
   display: flex;
+  flex-flow: row wrap;
   padding-top: 8px;
+  max-width: 210px;
 }
 
 .badge {
