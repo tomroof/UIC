@@ -1,14 +1,14 @@
 <template>
-  <div  :class="languageClasses" @click="changeLanguige">
+  <div  :class="languageClasses">
     <div class="language-text">
       English
     </div>
-      <div class="toggle">
+      <div class="toggle" @click="changeLanguige">
         <div class="circle">
         </div>
       </div>
     <div class="language-text">
-      Española
+      Español
     </div>
   </div>
 </template>
@@ -45,25 +45,24 @@
 
   margin: 30px auto 0;
   width: 100%;
-
-  cursor: pointer;
 }
 
 .language-text {
-  color: #ffffff;
-  font-size: 26px;
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 20px;
+  letter-spacing: 0.2px;
 }
 
 .toggle {
   position: relative;
 
-  width: 32px;
-  height: 10px;
-  margin-left: 14px;
-  margin-right: 14px;
+  width: 76px;
+  height: 30px;
+  margin-left: 20px;
+  margin-right: 20px;
   background: #447565;
 
-  border-radius: 4px;
+  border-radius: 16px;
 
   cursor: pointer;
 }
@@ -74,17 +73,18 @@
   top: 50%;
   transform: translateY(-50%);
 
-  width: 16px;
-  height: 16px;
+  width: 40px;
+  height: 40px;
 
   background: #ffffff;
   border-radius: 50%;
+  box-shadow: 0px 1px 5px 1px rgba(0,0,0,0.3);
 
   transition: left 0.1s linear;
 }
 
 .es .circle {
-  left: 16px;
+  left: 35px;
 }
 
 </style>

@@ -15,41 +15,16 @@
       :points="points"
       :avatarImage="avatarImage"
     />
+    <PopupBack
+      v-if="popupBack"
+      :exitCourse="exitCourse"
+      :closePopup="closePopup"
+    />
 
-    <div class="popup popup-back" v-if="popupBack">
-      <div class="container">
-        <div class="title">
-          <div class="img-wrapper img-back">
-            <div class="img-char" :style="{background: `url(${$store.state.character}) no-repeat center / contain`}">
-            </div>
-          </div>
-          <div class="title-text" v-html="getI18n.leave">
-          </div>
-        </div>
-        <div class="buttons-wrapper">
-          <component-button :popup="true" @click="exitCourse">
-              {{ getI18n.yes }}
-          </component-button>
-          <component-button :popup="true" @click="closePopup">
-              {{ getI18n.no }}
-          </component-button>
-        </div>
-      </div>
-    </div>
-    <div class="popup" v-if="popupError">
-      <div class="container">
-        <div class="title">
-          <div class="title-text">
-            {{ getI18n.ErrorMessage }}
-          </div>
-        </div>
-        <div class="buttons-wrapper">
-          <component-button :popup="true" @click="exitCourse">
-            {{ getI18n.back }}
-          </component-button>
-        </div>
-      </div>
-    </div>
+    <PopupError
+      v-if="popupError"
+      :exitCourse="exitCourse"
+    />
   </div>
 </template>
 
@@ -57,6 +32,9 @@
 import ComponentButton from '@/components/Button'
 import PopupTrue from '@/components/popups/PopupTrue'
 import PopupFalse from '@/components/popups/PopupFalse'
+import PopupBack from '@/components/popups/PopupBack'
+import PopupError from '@/components/popups/PopupError'
+
 import config from '@/data/config'
 import { events } from '@/helpers/events'
 import { mapActions } from 'vuex'
@@ -76,7 +54,9 @@ import { mapActions } from 'vuex'
     components: {
       ComponentButton,
       PopupTrue,
-      PopupFalse
+      PopupFalse,
+      PopupBack,
+      PopupError
     },
 
     data () {
@@ -293,7 +273,7 @@ import { mapActions } from 'vuex'
   font-size: 18px;
 }
 
-.popup-back .button:first-child {
+/deep/ .popup-back .button:first-child {
   margin-right: 10px;
 }
 </style>
