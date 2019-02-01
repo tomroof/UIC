@@ -119,7 +119,9 @@ export default {
           }
         };
 
-        audio.play();
+        setTimeout(() => {
+          audio.play()
+        }, 0)
         return
       }
     })

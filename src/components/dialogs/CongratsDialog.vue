@@ -108,9 +108,7 @@ export default {
     }
 
     if (!this.isMobile) {
-      setTimeout(() => {
-        AudioManager.playAudio(this.getI18nAudio.audio_unlocked_badge, this.$store.state.gender, this.finishedCompleteAudio)
-      }, 300)
+      AudioManager.playAudio(this.getI18nAudio.audio_unlocked_badge, this.$store.state.gender, this.finishedCompleteAudio)
     }
   },
 

@@ -284,46 +284,44 @@ export default {
     },
 
     checkAudioPlay (page) {
-      setTimeout(() => {
-        if (page > 0 && page < this.steps.length - 1) {
-          let prevPage = page - 1
-          let prevType = this.steps[prevPage].type
-          let currentType = this.steps[page].type
+      if (page > 0 && page < this.steps.length - 1) {
+        let prevPage = page - 1
+        let prevType = this.steps[prevPage].type
+        let currentType = this.steps[page].type
 
-          this.enabledSelection = true
-          if (currentType === null || prevType === currentType) {
-            return
-          }
+        this.enabledSelection = true
+        if (currentType === null || prevType === currentType) {
+          return
+        }
 
-          if (DeviceManager.isMobile()) {
-            if (currentType === "icons") {
-              this.showModuleStartDialog = true
-              this.moduleStartTitle = this.steps[page].nextLabel
-              this.moduleStartAudio = this.getI18nAudio.audio_first_question_for_icons
-            } else if (currentType === "cards") {
-              this.showModuleStartDialog = true
-              this.moduleStartTitle = this.steps[page].nextLabel
-              this.moduleStartAudio = this.getI18nAudio.audio_first_question_for_cards
-            } else if (currentType === "calc") {
-              this.showModuleStartDialog = true
-              this.moduleStartTitle = this.steps[page].nextLabel
-              this.moduleStartAudio = this.getI18nAudio.audio_first_question_for_calc
-            }
-          }
-          else {
-            if (currentType === "icons") {
-              this.enabledSelection = false
-              AudioManager.playAudio(this.getI18nAudio.audio_first_question_for_icons, this.$store.state.gender, this.endedIntroAudio)
-            } else if (currentType === "cards") {
-              this.enabledSelection = false
-              AudioManager.playAudio(this.getI18nAudio.audio_first_question_for_cards, this.$store.state.gender, this.endedIntroAudio)
-            } else if (currentType === "calc") {
-              this.enabledSelection = false
-              AudioManager.playAudio(this.getI18nAudio.audio_first_question_for_calc, this.$store.state.gender, this.endedIntroAudio)
-            }
+        if (DeviceManager.isMobile()) {
+          if (currentType === "icons") {
+            this.showModuleStartDialog = true
+            this.moduleStartTitle = this.steps[page].nextLabel
+            this.moduleStartAudio = this.getI18nAudio.audio_first_question_for_icons
+          } else if (currentType === "cards") {
+            this.showModuleStartDialog = true
+            this.moduleStartTitle = this.steps[page].nextLabel
+            this.moduleStartAudio = this.getI18nAudio.audio_first_question_for_cards
+          } else if (currentType === "calc") {
+            this.showModuleStartDialog = true
+            this.moduleStartTitle = this.steps[page].nextLabel
+            this.moduleStartAudio = this.getI18nAudio.audio_first_question_for_calc
           }
         }
-      }, 300)
+        else {
+          if (currentType === "icons") {
+            this.enabledSelection = false
+            AudioManager.playAudio(this.getI18nAudio.audio_first_question_for_icons, this.$store.state.gender, this.endedIntroAudio)
+          } else if (currentType === "cards") {
+            this.enabledSelection = false
+            AudioManager.playAudio(this.getI18nAudio.audio_first_question_for_cards, this.$store.state.gender, this.endedIntroAudio)
+          } else if (currentType === "calc") {
+            this.enabledSelection = false
+            AudioManager.playAudio(this.getI18nAudio.audio_first_question_for_calc, this.$store.state.gender, this.endedIntroAudio)
+          }
+        }
+      }
     },
 
     hideModuleStartDialog () {
