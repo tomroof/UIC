@@ -22,6 +22,7 @@
 import AnswerCard from '@/components/cards/AnswerCard'
 import BaseQuestion from '@/components/questions/BaseQuestion'
 import ComponentButton from '@/components/Button'
+import config from '@/data/config'
 
 export default {
   props: ['question'],
@@ -35,6 +36,7 @@ export default {
     window.addEventListener('resize', this.handleResize)
     this.handleResize();
   },
+
   destroyed() {
     window.removeEventListener('resize', this.handleResize)
   },
@@ -46,11 +48,14 @@ export default {
               : require('../../assets/play.png')
     },
 
+    getI18n() {
+      return config().restText.popups
+    },
+
     buttonTitle () {
       return this.finishedVideoPlaying === true
-              ? 'Watch Again'
-              : 'Watch Me'
-      
+              ? config().restText.watchAgain
+              : config().restText.watchMe
     }
   },
 

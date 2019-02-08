@@ -127,6 +127,8 @@ export default () => {
   nextUp: i18n.t("message.NextUp"),
   workingOnIt: i18n.t("message.Wereworkingonit"),
   aсhievements: i18n.t("message.Aсhievements"),
-  view: i18n.t("message.View")
+  view: i18n.t("message.View"),
+  watchAgain: i18n.t('message.watchAgain'),
+  watchMe: i18n.t('message.watchMe')
 }
 }
