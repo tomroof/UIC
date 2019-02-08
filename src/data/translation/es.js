@@ -102,124 +102,122 @@ export default {
   Sugarydrinks: 'Bebidas azucaradas',
   Howtostopthecavitymonsters: '¿Cómo detener a los monstruos de la caries?',
   Brushingawaythecavitymonsters: '¡Acabando con los monstruos de la cavidad!',
-  CavityMathinstructions: 'Cavity Math instructions. ES',
-  Howdowestopthecavitymonsters: 'How do we stop the cavity monsters? ES',
-  Neverbrushmyteeth: 'Never brush my teeth ES',
-  Brushtwiceaday: 'Brush twice a day ES',
-  Waituntiltomorrow: 'Wait until tomorrow ES',
-  Brushafterasnack: 'Brush after a snack ES',
-  Brushfor2minutes: 'Brush for 2 minutes ES',
-  Brushfor1minute: 'Brush for 1 minute ES',
-  Brushonceaday: 'Brush once a day ES',
-  Whatsnacksdomyteethlove: 'What snacks do my teeth love? ES',
-  Goodformeorgoodforcavity: '¿Bueno para mí o bueno para los monstruos de la cavidad?',
-  Clicktofindout: 'Click to find out. ES',
-  Apple: 'Apple ES',
-  Goodforme: 'Good for me! ES',
-  Carrots: 'Carrots ES',
-  Candy: 'Candy ES',
-  CavityMonster: 'Cavity Monster! ES',
-  Peanuts: 'Peanuts ES',
-  Chips: 'Chips ES',
-  IceCream: 'Ice Cream ES',
-  Milk: 'Milk ES',
-  Cheese: 'Cheese ES',
-  Eggs: 'Eggs ES',
-  Cookie: 'Cookie ES',
-  Water: 'Water ES',
-  Soda: 'Soda ES',
-  Juice: 'Juice ES',
-  SweetenedDrinks: 'Sweetened Drinks ES',
-  Letslearnsomecavitymath: 'Let\'s learn some cavity math! ES',
-  Brushingtwiceaday: 'Brushing twice a day ES',
-  Healthysnacks: 'Healthy snacks ES',
-  Sugarysnacks: 'Sugary snacks ES',
-  Notbrushing: 'Not brushing ES',
-  Brushingaftereachmeal: 'Brushing after each meal ES',
-  Dragthefoodsto: 'Drag the foods to the mouth to find the answer. ES',
-  brush: 'brush ES',
-  donut: 'donut ES',
-  chocolate: 'chocolate ES',
-  water :'water ES',
-  floss: 'floss ES',
-  cookie: 'cookie ES',
-  toothpaste: 'toothpaste ES',
-  chips: 'chips ES',
-  candy: 'candy ES',
-  grapes: 'grapes ES',
-  icecream: 'ice-cream ES',
-  Trulyamazingcourse: 'Truly amazing course! I learned a lot of things about medicine in the shortestamount of time :) ES',
-  HannaMarin: 'Hanna Marin ES',
-  Student: 'Student ES',
-  JakeWinston: 'Jake Winston ES',
-  UICCollegeofDentistry: 'UIC College of Dentistry ES',
-  UIHealthMileSquare: 'UI Health Mile Square ES',
-  LawndaleChristianHealthCenter: 'Lawndale Christian Health Center ES',
-  AngelHarveyFamilyHealth: 'Angel Harvey Family Health Center of the Infant Welfare ES',
-  SaludFamilyHealthCenters: 'Salud Family Health Centers ES',
-  RadaClinic: 'Rada Clinic ES',
-  ErrorMessage: 'Lo siento, falla la conexión del servidor',
-  back: 'Atras',
-  terms: `<p>Healthy Starts.today Privacy Policy</p>
-  <p>Effective date: July 26, 2018</p>
-  <p>Healthy Starts.today ("us", "we", or "our") operates the https://healthystarts.today website (the "Service").</p>
-  <p>This page informs you of our policies regarding the collection, use, and disclosure of personal data when you use our Service and the choices you have associated with that data.</p>
-  <p>We use your data to provide and improve the Service. By using the Service, you agree to the collection and use of information in accordance with this policy. Unless otherwise defined in this Privacy Policy, terms used in this Privacy Policy have the same meanings as in our Terms and Conditions, accessible from https://healthystarts.today</p>
-  <p>Information Collection And Use</p>
-  <p>We collect several different types of information for various purposes to provide and improve our Service to you.</p>
-  <p>Types of Data Collected</p>
-  <p>Personal Data</p>
-  <p>While using our Service, we may ask you to provide us with certain personally identifiable information that can be used to contact or identify you ("Personal Data"). Personally identifiable information may include, but is not limited to:</p>
-  <p>Email address</p>
-  <p>First name and last name</p>
-  <p>Phone number</p>
-  <p>Address, State, Province, ZIP/Postal code, City</p>
-  <p>Children's Privacy</p>
-  <p>We do not knowingly collect personally identifiable information from anyone under the age of 18. If you are a parent or guardian and you are aware that your Children has provided us with Personal Data, please contact us. If we become aware that we have collected Personal Data from children without verification of parental consent, we take steps to remove that information from our servers.</p>
-  <p>Cookies and Usage Data</p>
-  <p>We may also collect information how the Service is accessed and used ("Usage Data"). This Usage Data may include information such as your computer's Internet Protocol address (e.g. IP address), browser type, browser version, the pages of our Service that you visit, the time and date of your visit, the time spent on those pages, unique device identifiers and other diagnostic data.</p>
-  <p>Tracking &amp; Cookies Data</p>
-  <p>We use cookies and similar tracking technologies to track the activity on our Service and hold certain information. Cookies are files with small amount of data which may include an anonymous unique identifier. Cookies are sent to your browser from a website and stored on your device. Tracking technologies also used are beacons, tags, and scripts to collect and track information and to improve and analyze our Service.</p>
-  <p>You can instruct your browser to refuse all cookies or to indicate when a cookie is being sent. However, if you do not accept cookies, you may not be able to use some portions of our Service.</p>
-  <p>Examples of Cookies we use:</p>
-  <p>Session Cookies. We use Session Cookies to operate our Service.</p>
-  <p>Preference Cookies. We use Preference Cookies to remember your preferences and various settings.</p>
-  <p>Security Cookies. We use Security Cookies for security purposes.</p>
-  <p>Use of Data</p>
-  <p>Healthy Starts.today uses the collected data for various purposes:</p>
-  <p> To provide and maintain the Service</p>
-  <p> To notify you about changes to our Service</p>
-  <p> To allow you to participate in interactive features of our Service when you choose to do so</p>
-  <p> To provide customer care and support</p>
-  <p> To provide analysis or valuable information so that we can improve the Service</p>
-  <p> To monitor the usage of the Service</p>
-  <p> To detect, prevent and address technical issues</p>
-  <p>Transfer Of Data</p>
-  <p>Your information, including Personal Data, may be transferred to &mdash; and maintained on &mdash; computers located outside of your state, province, country or other governmental jurisdiction where the data protection laws may differ than those from your jurisdiction.</p>
-  <p>If you are located outside United States and choose to provide information to us, please note that we transfer the data, including Personal Data, to United States and process it there.</p>
-  <p>Your consent to this Privacy Policy followed by your submission of such information represents your agreement to that transfer.</p>
-  <p>Healthy Starts.today will take all steps reasonably necessary to ensure that your data is treated securely and in accordance with this Privacy Policy and no transfer of your Personal Data will take place to an organization or a country unless there are adequate controls in place including the security of your data and other personal information.</p>
-  <p>Disclosure Of Data</p>
-  <p>Legal Requirements</p>
-  <p>Healthy Starts.today may disclose your Personal Data in the good faith belief that such action is necessary to:</p>
-  <p> To comply with a legal obligation</p>
-  <p> To protect and defend the rights or property of Healthy Starts.today</p>
-  <p> To prevent or investigate possible wrongdoing in connection with the Service</p>
-  <p> To protect the personal safety of users of the Service or the public</p>
-  <p> To protect against legal liability</p>
-  <p>Security Of Data</p>
-  <p>The security of your data is important to us, but remember that no method of transmission over the Internet, or method of electronic storage is 100% secure. While we strive to use commercially acceptable means to protect your Personal Data, we cannot guarantee its absolute security.</p>
-  <p>Service Providers</p>
-  <p>We may employ third party companies and individuals to facilitate our Service ("Service Providers"), to provide the Service on our behalf, to perform Service-related services or to assist us in analyzing how our Service is used. These third parties have access to your Personal Data only to perform these tasks on our behalf and are obligated not to disclose or use it for any other purpose.</p>
-  <p>Analytics</p>
-  <p>We use Google Analytics to monitor and analyze the use of our Service. Google Analytics is a web analytics service offered by Google that tracks and reports website traffic. Google uses the data collected to track and monitor the use of our Service. This data is shared with other Google services. Google may use the collected data to contextualize and personalize the ads of its own advertising network.</p>
-  <p>You can opt-out of having made your activity on the Service available to Google Analytics by installing the Google Analytics opt-out browser add-on. The add-on prevents the Google Analytics JavaScript (ga.js, analytics.js, and dc.js) from sharing information with Google Analytics about visits activity. For more information on the privacy practices of Google, please visit the Google Privacy &amp; Terms web page: &lt;a href="https://policies.google.com/privacy?hl=en"&gt;https://policies.google.com/privacy?hl=en&lt;/a&gt;</p>
-  <p>Links To Other Sites</p>
-  <p>Our Service may contain links to other sites that are not operated by us. If you click on a third party link, you will be directed to that third party's site. We strongly advise you to review the Privacy Policy of every site you visit. We have no control over and assume no responsibility for the content, privacy policies or practices of any third party sites or services.</p>
-  <p>Changes To This Privacy Policy</p>
-  <p>We may update our Privacy Policy from time to time. We will notify you of any changes by posting the new Privacy Policy on this page. We will let you know via email and/or a prominent notice on our Service, prior to the change becoming effective and update the "effective date" at the top of this Privacy Policy. You are advised to review this Privacy Policy periodically for any changes. Changes to this Privacy Policy are effective when they are posted on this page.</p>
-  <p>Contact Us</p>
-  <p>If you have any questions about this Privacy Policy, please contact us by emailing <a href="mailto:hello@healthystarts.today">hello@healthystarts.today</a></p> ES`,
+  CavityMathinstructions: 'Instrucciones de Matemáticas de la caries',
+  Howdowestopthecavitymonsters: '¿Cómo detenemos a los montruos de la caries?',
+  Neverbrushmyteeth: 'Nunca me cepillo los dientes',
+  Brushtwiceaday: 'Cepillarse dos veces al día',
+  Waituntiltomorrow: 'Espera hasta mañana',
+  Brushafterasnack: 'Cepillarse despues de un bocadillo',
+  Brushfor2minutes: 'Cepillarse durante 2 minutos',
+  Brushfor1minute: 'Cepillarse durante 1 minuto',
+  Brushonceaday: 'Cepillarse una vez al día',
+  Whatsnacksdomyteethlove: '¿Qúe bocadillos aman mis dientes?',
+  Goodformeorgoodforcavity: '¿Bueno para mi o bueno para los monstruos de la caries?',
+  Clicktofindout: 'Click para averiguarlo.',
+  Apple: 'Manzana',
+  Goodforme: '¡Bueno para mi!',
+  Carrots: 'Zanahorias',
+  Candy: 'Dulce',
+  CavityMonster: '¡Monstruos de la caries!',
+  Peanuts: 'Nueces',
+  Chips: 'Papas fritas',
+  IceCream: 'Helado',
+  Milk: 'Leche',
+  Cheese: 'Queso',
+  Eggs: 'Huevos',
+  Cookie: 'Galleta',
+  Water: 'Agua',
+  Soda: 'Soda',
+  Juice: 'Jugo',
+  SweetenedDrinks: 'Bebidas azucaradas',
+  Letslearnsomecavitymath: '¡Vamos a aprender algunas matemáticas de la caries!',
+  Brushingtwiceaday: 'Cepillándome dos veces al día',
+  Healthysnacks: 'Bocadillos sanos',
+  Sugarysnacks: 'Bocadillos azucarados',
+  Notbrushing: 'No Cepillado',
+  Brushingaftereachmeal: 'Cepillarse despues de cada comida',
+  Dragthefoodsto: 'Arrastra los alimentos a la boca para saber la respuesta.',
+  brush: 'cepillar',
+  donut: 'dona',
+  chocolate: 'chocolate',
+  water :'agua',
+  floss: 'hilo dental',
+  cookie: 'galleta',
+  toothpaste: 'pasta dental',
+  chips: 'papas fritas',
+  candy: 'dulce',
+  grapes: 'uvas',
+  icecream: 'helado',
+  Trulyamazingcourse: '¡Un curso realmente increíble! Aprendí muchas cosas sobre medicina en el menor tiempo posible :)',
+  HannaMarin: 'Hanna Marin',
+  Student: 'Studiante',
+  JakeWinston: 'Jake Winston',
+  UICCollegeofDentistry: 'UIC College of Dentistry',
+  UIHealthMileSquare: 'UI Health Mile Square',
+  LawndaleChristianHealthCenter: 'Lawndale Christian Health Center',
+  AngelHarveyFamilyHealth: 'Angel Harvey Family Health Center of the Infant Welfare',
+  SaludFamilyHealthCenters: 'Salud Family Health Centers ',
+  RadaClinic: 'Rada Clinic',
+  terms: `<p>Healthy Starts.today Política de privacidad</p>
+  <p>Fecha efectiva: Julio 26, 2018</p>
+  <p>Healthy Starts.today ("nosotros", o "nuestro") opera el sitio web https://healthystarts.today (el "Servicio").</p>
+  <p>Esta página le informa sobre nuestras políticas con respecto a la recopilación, el uso y la divulgación de datos personales cuando utiliza nuestro Servicio y las opciones que tiene asociadas con esos datos.</p>
+  <p>Utilizamos sus datos para proporcionar y mejorar el Servicio. Al utilizar el Servicio, usted acepta la recopilación y el uso de la información de acuerdo con esta política. A menos que se defina lo contrario en esta Política de privacidad, los términos utilizados en esta Política de privacidad tienen los mismos significados que en nuestros Términos y condiciones, a los que se puede acceder desde https://healthystarts.today</p>
+  <p>Recopilación y uso de información</p>
+  <p>Recopilamos diferentes tipos de información con diversos fines para brindarle y mejorar el Servicio para usted.</p>
+  <p>Tipos de Datos Recopilados</p>
+  <p>Dtas Perosnales</p>
+  <p>Mientras usamos nuestro Servicio, es posible que le solicitemos que nos brinde cierta información de identificación personal que pueda usarse para contactarlo o identificarlo ("Datos personales"). La información de identificación personal puede incluir, pero no se limita a:</p>
+  <p>Correo electrónico</p>
+  <p>Nombre y Apellido</p>
+  <p>Número telefónico</p>
+  <p>Dirección, Estado, Provincia, ZIP/Código postal, Ciudad</p>
+  <p>Privacidad de los niños</p>
+  <p>No recopilamos a sabiendas información de identificación personal de ninguna persona menor de 18 años. Si usted es padre o tutor y sabe que sus hijos nos han proporcionado datos personales, comuníquese con nosotros. Si nos damos cuenta de que hemos recopilado Datos personales de niños sin la verificación del consentimiento de los padres, tomamos medidas para eliminar esa información de nuestros servidores.</p>
+  <p>Cookies and Datos de Uso</p>
+  <p>También podemos recopilar información sobre cómo se accede y se utiliza el Servicio ("Datos de uso"). Estos Datos de uso pueden incluir información como la dirección del Protocolo de Internet de su computadora (por ejemplo, la dirección IP), el tipo de navegador, la versión del navegador, las páginas de nuestro Servicio que visite, la fecha y hora de su visita, el tiempo dedicado a esas páginas, información exclusiva. Identificadores de dispositivos y otros datos de diagnóstico.</p>
+  <p>Seguimiento &amp; Datos de Cookies</p>
+  <p>Utilizamos cookies y tecnologías de seguimiento similares para rastrear la actividad en nuestro Servicio y retener cierta información. Las cookies son archivos con una pequeña cantidad de datos que pueden incluir un identificador único anónimo. Las cookies se envían a su navegador desde un sitio web y se almacenan en su dispositivo. Las tecnologías de seguimiento también se utilizan como beacons, etiquetas y secuencias de comandos para recopilar y realizar un seguimiento de la información y para mejorar y analizar nuestro Servicio.</p>
+  <p>Puede indicar a su navegador que rechace todas las cookies o que indique cuándo se está enviando una cookie. Sin embargo, si no acepta las cookies, es posible que no pueda utilizar algunas partes de nuestro Servicio.</p>
+  <p>Ejemplos de Cookies que utilizamos:</p>
+  <p>Cookies de sesión. Utilizamos cookies de sesión para operar nuestro servicio.</p>
+  <p>Cookies de preferencia. Utilizamos cookies de preferencia para recordar sus preferencias y varias configuraciones.</p>
+  <p>Cookies de seguridad. Utilizamos Cookies de Seguridad con fines de seguridad.</p>
+  <p>Uso de Datos</p>
+  <p> Healthy Starts.today utiliza los datos recopilados para varios propósitos: </p>
+  <p> Para proporcionar y mantener el Servicio </p>
+  <p> Para notificarle sobre cambios en nuestro Servicio </p>
+  <p> Para permitirle participar en las funciones interactivas de nuestro Servicio cuando elija hacerlo </p>
+  <p> Para proporcionar atención y soporte al cliente </p>
+  <p> Para proporcionar análisis o información valiosa para que podamos mejorar el Servicio </p>
+  <p> Para controlar el uso del servicio </p>
+  <p> Para detectar, prevenir y solucionar problemas técnicos </p>
+  <p> Transferencia de datos </p>
+  <p> Su información, incluidos los Datos personales, puede transferirse a & mdash; y mantenido en & mdash; computadoras ubicadas fuera de su estado, provincia, país u otra jurisdicción gubernamental donde las leyes de protección de datos pueden diferir de las de su jurisdicción. </p>
+  <p> Si se encuentra fuera de Estados Unidos y decide proporcionarnos información, tenga en cuenta que transferimos los datos, incluidos los Datos personales, a Estados Unidos y los procesamos allí. </p>
+  <p> Su consentimiento a esta Política de privacidad seguido por el envío de dicha información representa su aceptación de esa transferencia. </p>
+  <p> Healthy Starts.today tomará todas las medidas razonablemente necesarias para garantizar que sus datos se traten de manera segura y de acuerdo con esta Política de privacidad y no se transferirán sus datos personales a una organización o país a menos que haya controles adecuados en Lugar que incluye la seguridad de sus datos y otra información personal. </p>
+  <p> Divulgación de datos </p>
+  <p> Requisitos legales </p>
+  <p> Healthy Starts.today puede revelar sus datos personales en la creencia de buena fe de que tal acción es necesaria para: </p>
+  <p> Para cumplir con una obligación legal </p>
+  <p> Para proteger y defender los derechos o propiedad de Healthy Starts.today </p>
+  <p> Para evitar o investigar posibles irregularidades en relación con el Servicio </p>
+  <p> Para proteger la seguridad personal de los usuarios del Servicio o del público </p>
+  <p> Para proteger contra la responsabilidad legal </p>
+  <p> Seguridad de los datos </p>
+  <p> La seguridad de sus datos es importante para nosotros, pero recuerde que ningún método de transmisión a través de Internet o de almacenamiento electrónico es 100% seguro. Si bien nos esforzamos por utilizar medios comercialmente aceptables para proteger sus datos personales, no podemos garantizar su absoluta seguridad. </p>
+  <p> Proveedores de servicios </p>
+  <p> Es posible que contratemos a terceros e individuos para facilitar nuestro Servicio ("Proveedores de Servicios"), para proporcionar el Servicio en nuestro nombre, para realizar servicios relacionados con el Servicio o para ayudarnos a analizar cómo se utiliza nuestro Servicio. Estos terceros tienen acceso a sus Datos personales solo para realizar estas tareas en nuestro nombre y están obligados a no divulgarlos ni utilizarlos para ningún otro propósito. </p>
+  <p> Analytics </p>
+  <p> Utilizamos Google Analytics para monitorear y analizar el uso de nuestro Servicio. Google Analytics es un servicio de análisis web ofrecido por Google que rastrea e informa el tráfico del sitio web. Google utiliza los datos recopilados para rastrear y monitorear el uso de nuestro Servicio. Estos datos se comparten con otros servicios de Google. Google puede utilizar los datos recopilados para contextualizar y personalizar los anuncios de su propia red de publicidad. </p>
+  <p> Puede optar por dejar de hacer que su actividad en el Servicio esté disponible para Google Analytics mediante la instalación del complemento de exclusión de Google Analytics. El complemento evita que el JavaScript de Google Analytics (ga.js, analytics.js y dc.js) comparta información con Google Analytics sobre la actividad de las visitas. Para obtener más información sobre las prácticas de privacidad de Google, visite Google Privacy & amp; Términos de la página web: & lt; a href = "https://policies.google.com/privacy?hl=en" & gt; https: //policies.google.com/privacy? Hl = es & lt; / a & gt; </ p >
+  <p> Enlaces a otros sitios </p>
+  <p> Nuestro Servicio puede contener enlaces a otros sitios que no son operados por nosotros. Si hace clic en el enlace de un tercero, será dirigido al sitio de ese tercero. Le recomendamos encarecidamente que revise la Política de privacidad de cada sitio que visite. No tenemos control ni asumimos responsabilidad alguna por el contenido, las políticas de privacidad o las prácticas de los sitios o servicios de terceros. </p>
+  <p> Cambios en esta política de privacidad </p>
+  <p> Podemos actualizar nuestra Política de Privacidad de vez en cuando. Le notificaremos cualquier cambio mediante la publicación de la nueva Política de privacidad en esta página. Le haremos saber por correo electrónico y / o un aviso destacado en nuestro Servicio, antes de que el cambio entre en vigencia y actualizaremos la "fecha de vigencia" en la parte superior de esta Política de privacidad. Se recomienda revisar esta Política de privacidad periódicamente para detectar cualquier cambio. Los cambios a esta Política de privacidad son efectivos cuando se publican en esta página. </p>
+  <p> Contáctanos </p>
+  <p> Si tiene alguna pregunta sobre esta Política de privacidad, contáctenos por correo electrónico a <a href="mailto:hello@healthystarts.today"> hello@healthystarts.today </a> </p> `,
   audio_first_question_for_icons: 'first_question_for_icons_ES',
   audio_icons_select_wrong: 'icons_select_wrong_ES',
   audio_icons_select_correct: 'icons_select_correct_ES',
