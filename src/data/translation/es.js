@@ -158,6 +158,8 @@ export default {
   AngelHarveyFamilyHealth: 'Angel Harvey Family Health Center of the Infant Welfare',
   SaludFamilyHealthCenters: 'Salud Family Health Centers ',
   RadaClinic: 'Rada Clinic',
+  watchAgain: 'Mira de nuevo',
+  watchMe: 'Mírame',
   terms: `<p>Healthy Starts.today Política de privacidad</p>
   <p>Fecha efectiva: Julio 26, 2018</p>
   <p>Healthy Starts.today ("nosotros", o "nuestro") opera el sitio web https://healthystarts.today (el "Servicio").</p>

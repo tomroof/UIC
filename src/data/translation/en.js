@@ -159,6 +159,8 @@ export default {
   RadaClinic: 'Rada Clinic',
   ErrorMessage: 'Sorry, server connection failed',
   back: 'Back',
+  watchAgain: 'Watch Again',
+  watchMe: 'Watch Me',
   terms: `<p>Healthy Starts.today Privacy Policy</p>
   <p>Effective date: July 26, 2018</p>
   <p>Healthy Starts.today ("us", "we", or "our") operates the https://healthystarts.today website (the "Service").</p>
