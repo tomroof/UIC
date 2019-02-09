@@ -107,9 +107,9 @@ export default () => {
       type: 'video',
       url_prefix: 'cavity-math-instructions',
       boy_video_link: i18n.t("message.video7"),
-      boy_video_poster: 'module5-cover.jpg',
+      boy_video_poster: i18n.t("message.video7Poster"),
       girl_video_link: i18n.t("message.video8"),
-      girl_video_poster: 'module5-cover.jpg'
+      girl_video_poster: i18n.t("message.video7Poster")
     },
     {
       text: i18n.t("message.Howdowestopthecavitymonsters"),

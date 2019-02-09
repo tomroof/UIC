@@ -239,6 +239,7 @@ export default {
   video5: 'module4_spanish.mp4',
   video6: 'module4_spanish.mp4',
   video7: 'module5_spanish.mp4',
+  video7Poster: 'module5-cover.jpg',
   video8: 'module5_spanish.mp4',
   video9: 'module6_spanish.mp4',
   video10: 'module6_spanish.mp4'
