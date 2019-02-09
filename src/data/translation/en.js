@@ -240,6 +240,7 @@ export default {
   video5: 'module4-male.mp4',
   video6: 'module4-female.mp4',
   video7: 'module5-male.mp4',
+  video7Poster: 'module5-cover.jpg',
   video8: 'module5-female.mp4',
   video9: 'module6-male.mp4',
   video10: 'module6-female.mp4'
