@@ -68,16 +68,6 @@ export default new Vuex.Store({
 
     setLang(state, lang) {
       state.lang = lang
-      state.achievements = config().achievements
-      state.courses = config().courses
-      // state.courses.map((course, index) => {
-      //   course.name = config().restText.courses.names[index]
-      // })
-
-      // state.achievements.map((achievement, index) => {
-      //   achievement.name = config().restText.achievements.names[index]
-      //   achievement.goal = config().restText.achievements.goals[index]
-      // })
     },
 
     updateCoursCurrentStep(state, page) {

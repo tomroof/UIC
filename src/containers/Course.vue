@@ -264,10 +264,11 @@ export default {
       let page = parseInt(this.$route.params.id)
 
       // Check last page.
-      // PAGE !=== needs refactoring
       if (page < this.steps.length - 1 && this.steps[page].type !== null) {
         let currentQuestionType = this.steps[page].type
         let nextQuestionType = this.steps[page + 1].type
+
+        // PAGE !=== needs refactoring
         if (currentQuestionType != null && nextQuestionType != currentQuestionType && page !== 1) {
           if (currentQuestionType === "icons" || currentQuestionType === "cards" || currentQuestionType === "calc") {
             this.showRewardCard = true

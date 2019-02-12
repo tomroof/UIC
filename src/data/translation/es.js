@@ -31,7 +31,7 @@ export default {
   Whichsnacksdomyteethlove: '¿Qué bocadillos aman mis dientes?',
   IKnowMyTeeth: 'Yo se mis dientes',
   CompleteTopic: 'Complete topic',
-  MyCourses: 'My Courses',
+  MyCourses: 'Mis cursos',
   CompletingProfile: 'Completando Perfil',
   CompletingCavityPrevention: 'Completando Prevención de caries',
   CompletingBabyTeeth: 'Completando Dientes de bebé',
@@ -158,6 +158,8 @@ export default {
   AngelHarveyFamilyHealth: 'Angel Harvey Family Health Center of the Infant Welfare',
   SaludFamilyHealthCenters: 'Salud Family Health Centers ',
   RadaClinic: 'Rada Clinic',
+  ErrorMessage: 'Lo sentimos, la conexión del servidor falló',
+  back: 'Espalda',
   watchAgain: 'Mira de nuevo',
   watchMe: 'Mírame',
   terms: `<p>Healthy Starts.today Política de privacidad</p>
