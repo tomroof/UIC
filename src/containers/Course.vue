@@ -264,11 +264,12 @@ export default {
       let page = parseInt(this.$route.params.id)
 
       // Check last page.
-      // PAGE !=== needs refactoring
-      if (page < this.steps.length - 1 && this.steps[page].type !== null && page !== 1) {
+      if (page < this.steps.length - 1 && this.steps[page].type !== null) {
         let currentQuestionType = this.steps[page].type
         let nextQuestionType = this.steps[page + 1].type
-        if (currentQuestionType != null && nextQuestionType != currentQuestionType) {
+
+        // PAGE !=== needs refactoring
+        if (currentQuestionType != null && nextQuestionType != currentQuestionType && page !== 1) {
           if (currentQuestionType === "icons" || currentQuestionType === "cards" || currentQuestionType === "calc") {
             this.showRewardCard = true
             this.$emit('moduleCompleted')
@@ -401,7 +402,6 @@ export default {
     },
 
     topicComplete () {
-      // this.checkAchievement()
       this.$store.commit('updateCoursePage', { id: this.curseId, page: 0})
       this.$store.commit('updateCourseProgress', { id: this.curseId, currentProgress: 100 })
       this.$router.push('/congrats/2')
