@@ -158,6 +158,7 @@ export default {
   AngelHarveyFamilyHealth: 'Angel Harvey Family Health Center of the Infant Welfare',
   SaludFamilyHealthCenters: 'Salud Family Health Centers ',
   RadaClinic: 'Rada Clinic',
+  InfantWelfareSociety: 'Infant Welfare Society',
   ErrorMessage: 'Lo sentimos, la conexión del servidor falló',
   back: 'Espalda',
   watchAgain: 'Mira de nuevo',

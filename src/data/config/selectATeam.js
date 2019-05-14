@@ -37,6 +37,12 @@ return [
       title: i18n.t("message.RadaClinic"),
       img: 'team-5.jpg',
       background: '#32BEA6'
+    },
+    {
+      id: 7,
+      title: i18n.t("message.InfantWelfareSociety"),
+      img: 'team-5.jpg',
+      background: '#32BEA6'
     }
   ]
 }
