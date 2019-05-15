@@ -9,6 +9,7 @@ import Vuelidate from 'vuelidate'
 import VueGoodWizard from 'vue-good-wizard'
 import VueYouTubeEmbed from 'vue-youtube-embed'
 import VueVideoPlayer from 'vue-video-player'
+import VueAnalytics from 'vue-analytics'
 import 'video.js/dist/video-js.css'
 import 'vue-video-player/src/custom-theme.css'
 import VueI18n from 'vue-i18n'
@@ -19,6 +20,9 @@ Vue.use(VueYouTubeEmbed)
 
 Vue.config.productionTip = false
 
+Vue.use(VueAnalytics, {
+  id: 'UA-139547318-1'
+})
 Vue.use(VueGoodWizard);
 Vue.use(Vuelidate)
 Vue.use(VueI18n)
