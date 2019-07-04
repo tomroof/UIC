@@ -76,7 +76,7 @@ import ModuleStartDialog from '@/components/dialogs/ModuleStartDialog'
 import { mapActions, mapGetters } from 'vuex'
 
 // data
-import config from '@/data/config'
+import config from '@/data/config/index'
 
 // events
 import { events } from '@/helpers/events'
@@ -159,9 +159,13 @@ export default {
   },
 
   computed: {
-    // TODO get curse by prop Id
+    // maybe lookup would be better
     curse () {
-      return config().courseSample
+      let course = config().courses[this.curseId-1];
+      if(this.curseId && course && course.courseContent)
+        return course.courseContent;
+      else
+        return config().courseSample;
     },
 
     getI18n() {
