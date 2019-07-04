@@ -44,7 +44,7 @@ export default () => {
       active: false,
       progress: 0,
       active_page: 0,
-      content: BabyTeethCourse()
+      // content: BabyTeethCourse()
     },
     {
       name: i18n.t("message.BrushingandFlossing"),
