@@ -2,7 +2,7 @@ import { i18n } from '@/lang'
 
 export default () => {
  return {
-  name: i18n.t("message.babyTeeth"),
+  name: i18n.t("message.BabyTeeth"),
   questions: [
     {
       text: "test",
