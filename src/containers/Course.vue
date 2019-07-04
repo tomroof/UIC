@@ -59,6 +59,17 @@
           @selectAnswer='handelAnswerSelect'
           @isQuestionHandler="isQuestionHandler" />
 
+        <SelectQuestion
+          v-if="question.type === 'select'"
+          :question="question"
+          :openPopupFalse="openPopupFalse"
+          :openPopupTrue="openPopupTrue"
+          :openSuccessPopup="openSuccessPopup"
+          :openFailedPopup="openFailedPopup"
+          @selectAnswer='handelAnswerSelect'
+          @isQuestionHandler="isQuestionHandler"
+        />
+
         <span v-if="steps[index].nextType != 'cards' && steps[index].nextLabel" class="next-label">{{ getI18n.nextUp }}: {{steps[index].nextLabel}}</span>
       </div>
     </vue-good-wizard>
@@ -72,6 +83,7 @@ import VideoQuestion from '@/components/questions/VideoQuestion'
 import IconsQuestion from '@/components/questions/IconsQuestion'
 import CalcQuestion from '@/components/questions/CalcQuestion'
 import MouthQuestion from '@/components/questions/MouthQuestion'
+import SelectQuestion from '@/components/questions/SelectQuestion'
 import ModuleStartDialog from '@/components/dialogs/ModuleStartDialog'
 import { mapActions, mapGetters } from 'vuex'
 
@@ -137,6 +149,7 @@ export default {
     VideoQuestion,
     CalcQuestion,
     MouthQuestion,
+    SelectQuestion,
     ModuleStartDialog
   },
 
