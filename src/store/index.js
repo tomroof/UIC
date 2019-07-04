@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
 import VuexPersist from 'vuex-persist'
-import config from '@/data/config'
+import config from '@/data/config/index'
 import { i18n } from '@/lang'
 
 import {
