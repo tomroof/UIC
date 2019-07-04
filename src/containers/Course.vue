@@ -160,6 +160,7 @@ export default {
 
   computed: {
     // TODO get curse by prop Id
+    // TODO learn how to spell C-O-U-R-S-E
     curse () {
       return config().courseSample
     },
