@@ -6,7 +6,7 @@
         :close='true'
         @closeClick="$emit('closeClick')"/>
       <base-card @click="goToRoute('/courses')">
-        <img class="card-photo" src="@/assets/curses-img.jpg" />
+        <img class="card-photo" src="@/assets/courses-img.jpg" />
         <div class="text">{{ getI18n.topics }}</div>
       </base-card>
 

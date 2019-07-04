@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
 import VuexPersist from 'vuex-persist'
-import config from '@/data/config'
+import config from '@/data/config/index'
 import { i18n } from '@/lang'
 
 import {
@@ -111,7 +111,7 @@ export default new Vuex.Store({
 
     postAnswer({ commit, state }, payload) {
       const isCorrect = payload.isCorrect === null ? true : payload.isCorrect
-      return postNewAnswer(state.uuid, payload.curseId, Number(payload.question.id), payload.question.type, isCorrect)
+      return postNewAnswer(state.uuid, payload.courseId, Number(payload.question.id), payload.question.type, isCorrect)
       .then((data) => data)
     },
 

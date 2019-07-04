@@ -129,9 +129,9 @@
     },
 
     computed: {
-      // TODO get curse by prop Id
+      // TODO get course by prop Id
       // TODO learn how to spell course
-      curse () {
+      course () {
         return animationData
       },
     },
