@@ -2,10 +2,10 @@ import { i18n } from '@/lang'
 
 export default () => {
  return {
-  name: i18n.t("message.CavityPrevention"),
+  name: i18n.t("message.babyTeeth"),
   questions: [
     {
-      text: i18n.t("message.Whatinsideyourmouth"),
+      text: "test",
       id: '1',
       type: 'video',
       url_prefix: 'what-is-inside-your-mouth',

@@ -164,8 +164,8 @@ export default {
     // TODO learn how to spell C-O-U-R-S-E
     curse () {
       let course = config().courses[this.curseId-1];
-      if(this.curseId && course && course.courseContent)
-        return course.courseContent;
+      if(this.curseId && course && course.content)
+        return course.content;
       else
         return config().courseSample;
     },
