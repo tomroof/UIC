@@ -159,12 +159,9 @@ export default {
   },
 
   computed: {
-<<<<<<< HEAD
+
     // maybe lookup would be better
-=======
-    // TODO get curse by prop Id
     // TODO learn how to spell C-O-U-R-S-E
->>>>>>> bc840a8d4809fb231845b1ac035edd83cc47e64d
     curse () {
       let course = config().courses[this.curseId-1];
       if(this.curseId && course && course.courseContent)
