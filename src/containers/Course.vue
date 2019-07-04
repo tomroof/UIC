@@ -1,5 +1,5 @@
 <template>
-  <div class="curse-container">
+  <div class="course-container">
     <div class="progress-bar">
       <div class="progress-background-bar"></div>
       <div class="progress-active-bar" :style="{ width: `${currentProgress}%` }"></div>
@@ -12,7 +12,7 @@
       :onNext="nextClicked"
     >
 
-      <div :slot="question.id" :key="question.id" v-for="(question, index) in curse.questions">
+      <div :slot="question.id" :key="question.id" v-for="(question, index) in course.questions">
         <CardsQuestion
           v-if="question.type === 'cards'"
           :question="question"
@@ -87,7 +87,7 @@ export default {
   name: 'CourseContainer',
 
   props: {
-    curseId: Number,
+    courseId: Number,
     clickRewardContinue: Boolean
   },
 
@@ -124,7 +124,7 @@ export default {
       this.initPage()
       let page = parseInt(this.$route.params.id)
 
-      this.$store.commit('updateCoursePage', { id: this.curseId, page: page})
+      this.$store.commit('updateCoursePage', { id: this.courseId, page: page})
       if (!this.showRewardCard) {
         this.checkAudioPlay(page)
       }
@@ -142,7 +142,7 @@ export default {
 
   mounted() {
     let first_page = parseInt(this.$route.params.id)
-    this.$store.commit('setTopic', this.curseId)
+    this.$store.commit('setTopic', this.courseId)
 
     if (this.$refs.wizard !== null) {
       this.$refs.wizard.goTo(first_page)
@@ -162,9 +162,9 @@ export default {
 
     // maybe lookup would be better
     // TODO learn how to spell C-O-U-R-S-E
-    curse () {
-      let course = config().courses[this.curseId-1];
-      if(this.curseId && course && course.content)
+    course () {
+      let course = config().courses[this.courseId-1];
+      if(this.courseId && course && course.content)
         return course.content;
       else
         return config().courseSample;
@@ -183,15 +183,15 @@ export default {
     },
 
     steps () {
-      return this.curse.questions.map((q, index) => {
+      return this.course.questions.map((q, index) => {
         return {
           label: q.text,
           slot: q.id,
           url_prefix: q.url_prefix,
-          type: this.curse.questions[index].type,
-          options: {nextDisabled: this.curse.questions[index] ? (this.curse.questions[index].type === 'icons' || this.curse.questions[index].type === 'cards' || this.curse.questions[index].type === 'calc' || this.curse.questions[index].type === 'mouth'): false},
-          nextLabel: this.curse.questions[index + 1] ? this.curse.questions[index + 1].text : null,
-          nextType: this.curse.questions[index + 1] ? this.curse.questions[index + 1].type : null,
+          type: this.course.questions[index].type,
+          options: {nextDisabled: this.course.questions[index] ? (this.course.questions[index].type === 'icons' || this.course.questions[index].type === 'cards' || this.course.questions[index].type === 'calc' || this.course.questions[index].type === 'mouth'): false},
+          nextLabel: this.course.questions[index + 1] ? this.course.questions[index + 1].text : null,
+          nextType: this.course.questions[index + 1] ? this.course.questions[index + 1].type : null,
         }
       })
     }
@@ -285,7 +285,7 @@ export default {
         this.showRewardCard = false
 
         // Save completed question id in global.
-        this.$store.commit('updateCoursePage', { id: this.curseId, page: (page + 1)})
+        this.$store.commit('updateCoursePage', { id: this.courseId, page: (page + 1)})
         // this.checkAudioPlay(page)
       }
     },
@@ -340,7 +340,7 @@ export default {
     },
 
     sendAnswer(currentPage) {
-      const postAnswerData = {question: this.curse.questions[currentPage], curseId: this.curseId, isCorrect: this.isAnswerCorrect}
+      const postAnswerData = {question: this.course.questions[currentPage], courseId: this.courseId, isCorrect: this.isAnswerCorrect}
       this.postAnswer(postAnswerData)
     },
 
@@ -408,8 +408,8 @@ export default {
     },
 
     topicComplete () {
-      this.$store.commit('updateCoursePage', { id: this.curseId, page: 0})
-      this.$store.commit('updateCourseProgress', { id: this.curseId, currentProgress: 100 })
+      this.$store.commit('updateCoursePage', { id: this.courseId, page: 0})
+      this.$store.commit('updateCourseProgress', { id: this.courseId, currentProgress: 100 })
       this.$router.push('/congrats/2')
     },
 
@@ -424,7 +424,7 @@ export default {
         progress = 100
       }
       this.currentProgress = progress
-      this.$store.commit('updateCourseProgress', { id: this.curseId, currentProgress: progress })
+      this.$store.commit('updateCourseProgress', { id: this.courseId, currentProgress: progress })
     },
 
     openSuccessPopup () {
@@ -503,7 +503,7 @@ export default {
   border-radius: 4px;
 }
 
-.curse-container {
+.course-container {
   /deep/ .wizard__steps {
     height: auto;
     display: none;
