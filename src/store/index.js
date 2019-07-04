@@ -111,7 +111,7 @@ export default new Vuex.Store({
 
     postAnswer({ commit, state }, payload) {
       const isCorrect = payload.isCorrect === null ? true : payload.isCorrect
-      return postNewAnswer(state.uuid, payload.curseId, Number(payload.question.id), payload.question.type, isCorrect)
+      return postNewAnswer(state.uuid, payload.courseId, Number(payload.question.id), payload.question.type, isCorrect)
       .then((data) => data)
     },
 
