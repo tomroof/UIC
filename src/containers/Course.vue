@@ -25,7 +25,9 @@
           v-if="question.type === 'video'"
           :question="question"
           @selectAnswer='handelAnswerSelect'
-          @isQuestionHandler="isQuestionHandler" />
+          @isQuestionHandler="isQuestionHandler"
+          @videoIsWatched="videoIsWatchedHandler"
+         />
 
         <IconsQuestion
           v-if="question.type === 'icons'"
@@ -469,7 +471,16 @@ export default {
     isQuestionHandler(bool, buttonText) {
       this.isQuestion = bool
       this.buttonText = buttonText
+    },
+
+    videoIsWatchedHandler(bool){
+      console.log(bool);
+      if(this.$refs && this.$refs.wizard){
+        const page = this.$refs.wizard.currentStep;
+        this.steps[page].options.nextDisabled = !bool;
+      }
     }
+
   }
 }
 </script>

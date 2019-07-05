@@ -100,7 +100,8 @@ export default new Vuex.Store({
     },
 
     markWatched(state,url){
-      state.finishedVideos[url] = true;
+      // Vue can't detect added properties to objects - Vue.set is a manual way
+      Vue.set(state.finishedVideos, url, true);
     }
   },
 
@@ -138,6 +139,9 @@ export default new Vuex.Store({
   getters: {
     getCourses: (state) => state.courses,
     getAchievements: (state) => state.achievements,
-    getLang: (state) => state.lang
+    getLang: (state) => state.lang,
+    getIsWatched: state => url => {
+       return state.finishedVideos[url] ? true : false;
+    }
   }
 })
