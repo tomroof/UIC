@@ -1,7 +1,7 @@
 <template>
   <div>
     <NavigationLayout :closeCourseButton="true" :menu="true">
-      <CourseContainer :courseId="courseId" :clickRewardContinue="clickRewardContinue" @refreshPage="refreshPage" @moduleCompleted="moduleCompleted"></CourseContainer>
+      <CourseContainer :curseId="curseId" :clickRewardContinue="clickRewardContinue" @refreshPage="refreshPage" @moduleCompleted="moduleCompleted"></CourseContainer>
     </NavigationLayout>
     <RewardCard v-if="showRewardCard" @continue="rewardContinue"></RewardCard>
   </div>
@@ -34,7 +34,7 @@ export default {
 
   computed: {
     ...mapGetters(['getCourses']),
-    courseId () {
+    curseId () {
       if (this.$route.params.url_prefix === null || this.$route.params.url_prefix.length === 0) {
         return 0
       }

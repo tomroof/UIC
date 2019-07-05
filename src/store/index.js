@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
 import VuexPersist from 'vuex-persist'
-import config from '@/data/config/index'
+import config from '@/data/config'
 import { i18n } from '@/lang'
 
 import {
@@ -33,7 +33,7 @@ export default new Vuex.Store({
     lang: 'en',
     uuid: null,
     achievements: config().achievements,
-    finishedVideos: {},
+
     courses: config().courses
   },
 
@@ -97,11 +97,6 @@ export default new Vuex.Store({
 
     setUuid(state, id) {
       state.uuid = id
-    },
-
-    markWatched(state,url){
-      // Vue can't detect added properties to objects - Vue.set is a manual way
-      Vue.set(state.finishedVideos, url, true);
     }
   },
 
@@ -116,7 +111,7 @@ export default new Vuex.Store({
 
     postAnswer({ commit, state }, payload) {
       const isCorrect = payload.isCorrect === null ? true : payload.isCorrect
-      return postNewAnswer(state.uuid, payload.courseId, Number(payload.question.id), payload.question.type, isCorrect)
+      return postNewAnswer(state.uuid, payload.curseId, Number(payload.question.id), payload.question.type, isCorrect)
       .then((data) => data)
     },
 
@@ -139,9 +134,6 @@ export default new Vuex.Store({
   getters: {
     getCourses: (state) => state.courses,
     getAchievements: (state) => state.achievements,
-    getLang: (state) => state.lang,
-    getIsWatched: state => url => {
-       return state.finishedVideos[url] ? true : false;
-    }
+    getLang: (state) => state.lang
   }
 })
