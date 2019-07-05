@@ -18,11 +18,48 @@ export default () => {
       text: "Which of these things do you need teeth for?",
       id: '2',
       type: 'select',
-      url_prefix: 'which-of-these-things',
-      boy_video_link: i18n.t("message.video1"),
-      boy_video_poster: 'module1-cover.jpg',
-      girl_video_link: i18n.t("message.video2"),
-      girl_video_poster: 'module1-cover.jpg'
+      options: [
+        {
+          value: 'ice-cream1',
+          image: 'ice-cream.svg',
+          isCorrect: false
+        },
+        {
+          value: 'ice-cream2',
+          image: 'ice-cream.svg',
+          isCorrect: false
+        },
+        {
+          value: 'ice-cream3',
+          image: 'ice-cream.svg',
+          isCorrect: false
+        },
+        {
+          value: 'ice-cream4',
+          image: 'ice-cream.svg',
+          isCorrect: false
+        },
+        {
+          value: 'ice-cream5',
+          image: 'ice-cream.svg',
+          isCorrect: false
+        },
+        {
+          value: 'ice-cream6',
+          image: 'ice-cream.svg',
+          isCorrect: false
+        },
+        {
+          value: 'ice-cream7',
+          image: 'ice-cream.svg',
+          isCorrect: false
+        },
+        {
+          value: 'ice-cream8',
+          image: 'ice-cream.svg',
+          isCorrect: false
+        }
+      ]
     },
     {
       text: i18n.t("message.Wheredocavities"),
