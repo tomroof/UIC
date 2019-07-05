@@ -33,7 +33,7 @@ export default new Vuex.Store({
     lang: 'en',
     uuid: null,
     achievements: config().achievements,
-
+    finishedVideos: {},
     courses: config().courses
   },
 
@@ -97,6 +97,11 @@ export default new Vuex.Store({
 
     setUuid(state, id) {
       state.uuid = id
+    },
+
+    markWatched(state,url){
+      // Vue can't detect added properties to objects - Vue.set is a manual way
+      Vue.set(state.finishedVideos, url, true);
     }
   },
 
@@ -134,6 +139,9 @@ export default new Vuex.Store({
   getters: {
     getCourses: (state) => state.courses,
     getAchievements: (state) => state.achievements,
-    getLang: (state) => state.lang
+    getLang: (state) => state.lang,
+    getIsWatched: state => url => {
+       return state.finishedVideos[url] ? true : false;
+    }
   }
 })
