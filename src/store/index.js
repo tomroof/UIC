@@ -33,7 +33,7 @@ export default new Vuex.Store({
     lang: 'en',
     uuid: null,
     achievements: config().achievements,
-
+    finishedVideos: {},
     courses: config().courses
   },
 
@@ -97,6 +97,10 @@ export default new Vuex.Store({
 
     setUuid(state, id) {
       state.uuid = id
+    },
+
+    markWatched(state,url){
+      state.finishedVideos[url] = true;
     }
   },
 

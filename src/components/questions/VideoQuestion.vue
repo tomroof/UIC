@@ -115,6 +115,9 @@ export default {
       player.currentTime(0);
       player.controlBar.hide();
       player.bigPlayButton.show();
+      window.console.log(this.playerOptions.sources[0].src);
+      this.$store.commit('markWatched',this.playerOptions.sources[0].src);
+
     },
 
     handleResize () {
