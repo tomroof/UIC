@@ -1,6 +1,6 @@
 import { i18n } from '@/lang'
-import BabyTeethCourse from '@/data/config/coursesContent/BabyTeeth'
-
+import BabyTeethCourse from '@/data/config/coursesContent/babyTeeth'
+import CavityPrevention from '@/data/config/coursesContent/cavityPrevention'
 
 export default () => {
   return [
@@ -12,7 +12,8 @@ export default () => {
       url_prefix: 'fighting-cavities',
       active: true,
       progress: 0,
-      active_page: 0
+      active_page: 0,
+      content: CavityPrevention()
     },
     {
       name: i18n.t("message.BrushSelfie"),
@@ -40,7 +41,7 @@ export default () => {
       disabled_image: require('@/assets/baby-teeth_disabled.svg'),
       id: 4,
       url_prefix: 'baby-teeth',
-      active: true,
+      active: false,
       progress: 0,
       active_page: 0,
       content: BabyTeethCourse()
