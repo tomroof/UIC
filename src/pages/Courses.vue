@@ -1,8 +1,8 @@
 <template>
   <NavigationLayout :back="true" :menu="true" :topImage="$store.state.character">
-    <h1>{{ getI18n.topics }}</h1>
+    <h1>{{ getI18n.rest.topics }}</h1>
     <div class="courses_wrapper">
-      <div v-for="course in getCourses" class="course" :key="course.id" @click="navigateToCourse(course)">
+      <div v-for="(course, index) in getCourses" class="course" :key="course.id" @click="navigateToCourse(course)">
         <radial-progress-bar
           :diameter="145"
           :totalSteps="100"
@@ -13,8 +13,7 @@
         >
           <div class="course_top" :style="{ background: course.active ? `url(${course.image}) no-repeat center / cover` : `url(${course.disabled_image}) no-repeat center / cover` }" />
         </radial-progress-bar>
-        <div class="course_bottom">{{ course.name }}</div>
-        <!-- <div class="course_bottom">{{ getI18n.courses.names[index] }}</div> -->
+        <div class="course_bottom">{{ getI18n.courses[index].name }}</div>
       </div>
     </div>
     <popup :popupError="errorRequest" :exitCourse="goToSelectTeam"/>
@@ -53,7 +52,10 @@ import { mapGetters } from 'vuex'
       ...mapGetters(['getCourses']),
 
       getI18n() {
-        return config().restText
+        return {
+          rest: config().restText,
+          courses: config().courses
+        }
       }
     },
 
