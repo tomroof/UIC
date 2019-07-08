@@ -28,13 +28,11 @@ export default {
   methods: {
     selectCard(cardIndex) {
       if (this.selected.includes(cardIndex)) {
-        this.selected.splice(1, this.selected.indexOf(cardIndex))
-        console.log('this.selected', this.selected)
+        this.selected.splice(this.selected.indexOf(cardIndex), 1)
         return
       }
 
-        this.selected.push(cardIndex)
-        console.log('aaaaaa', this.selected)
+      this.selected.push(cardIndex)
     }
   }
 }

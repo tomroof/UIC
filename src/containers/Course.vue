@@ -202,7 +202,12 @@ export default {
           slot: q.id,
           url_prefix: q.url_prefix,
           type: this.course.questions[index].type,
-          options: {nextDisabled: this.course.questions[index] ? (this.course.questions[index].type === 'icons' || this.course.questions[index].type === 'cards' || this.course.questions[index].type === 'calc' || this.course.questions[index].type === 'mouth'): false},
+          options: {nextDisabled: this.course.questions[index] ?
+            (this.course.questions[index].type === 'icons' ||
+              this.course.questions[index].type === 'cards' ||
+              this.course.questions[index].type === 'calc' ||
+              this.course.questions[index].type === 'mouth'):
+                false},
           nextLabel: this.course.questions[index + 1] ? this.course.questions[index + 1].text : null,
           nextType: this.course.questions[index + 1] ? this.course.questions[index + 1].type : null,
         }
@@ -360,6 +365,8 @@ export default {
     nextClicked (currentPage) {
       if (this.isQuestion) return false
       if (this.steps[currentPage].options.nextDisabled) return false
+      console.log('currentPage', currentPage)
+      console.log('this.steps[currentPage].options', this.steps[currentPage])
       let page = this.$refs.wizard.currentStep
       let currentQuestionType = this.steps[page].type
       let currentQuestionSlot = this.steps[page].slot

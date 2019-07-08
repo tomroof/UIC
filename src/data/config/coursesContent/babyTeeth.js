@@ -27,12 +27,12 @@ export default () => {
         {
           value: 'ice-cream2',
           image: 'ice-cream.svg',
-          isCorrect: false
+          isCorrect: true
         },
         {
           value: 'ice-cream3',
           image: 'ice-cream.svg',
-          isCorrect: false
+          isCorrect: true
         },
         {
           value: 'ice-cream4',
@@ -52,7 +52,7 @@ export default () => {
         {
           value: 'ice-cream7',
           image: 'ice-cream.svg',
-          isCorrect: false
+          isCorrect: true
         },
         {
           value: 'ice-cream8',
