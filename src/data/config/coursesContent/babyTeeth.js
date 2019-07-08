@@ -56,7 +56,7 @@ export default () => {
         },
         {
           value: 'ice-cream8',
-          image: 'ice-cream.svg',
+          image: 'bacteria.svg',
           isCorrect: false
         }
       ]

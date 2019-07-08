@@ -1,9 +1,7 @@
 <template>
   <BaseQuestion :questionCard="questionCard">
     <div class="question-content" slot="questionContent">
-      <div class="answer" v-for="(option, index) in question.options" :index="index" :key="option.value">
-        <AnswerSelectCard />
-      </div>
+      <AnswerSelectCard  v-for="(option, index) in question.options" :option="option" :index="index" :selectCard="selectCard" :key="option.value"/>
     </div>
   </BaseQuestion>
 </template>
@@ -23,15 +21,28 @@ export default {
   data () {
     return {
       questionCard: this.question || {},
+      selected: []
     }
   },
 
-  mounted() {
-    console.log('aaaaaa', this.question)
+  methods: {
+    selectCard(cardIndex) {
+      if (this.selected.includes(cardIndex)) {
+        this.selected.splice(1, this.selected.indexOf(cardIndex))
+        console.log('this.selected', this.selected)
+        return
+      }
+
+        this.selected.push(cardIndex)
+        console.log('aaaaaa', this.selected)
+    }
   }
 }
 </script>
 
 <style lang="scss" scoped>
-
+  .question-content {
+    display: flex;
+    flex-flow: row wrap;
+  }
 </style>
