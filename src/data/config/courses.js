@@ -41,7 +41,7 @@ export default () => {
       disabled_image: require('@/assets/baby-teeth_disabled.svg'),
       id: 4,
       url_prefix: 'baby-teeth',
-      active: false,
+      active: true,
       progress: 0,
       active_page: 0,
       content: BabyTeethCourse()
