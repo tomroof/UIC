@@ -23,6 +23,7 @@ import AnswerCard from '@/components/cards/AnswerCard'
 import BaseQuestion from '@/components/questions/BaseQuestion'
 import ComponentButton from '@/components/Button'
 import config from '@/data/config'
+import { mapGetters } from 'vuex'
 
 export default {
   props: ['question'],
@@ -41,7 +42,9 @@ export default {
     window.removeEventListener('resize', this.handleResize)
   },
 
+
   computed: {
+
     image () {
       return this.finishedVideoPlaying === true
               ? require('../../assets/refresh.svg')
@@ -56,7 +59,19 @@ export default {
       return this.finishedVideoPlaying === true
               ? config().restText.watchAgain
               : config().restText.watchMe
+    },
+
+    videoId(){
+      return this.playerOptions.sources[0].src;
+    },
+
+    isWatched(){
+      let val = this.$store.getters.getIsWatched(this.videoId);
+      this.$emit('videoIsWatched',val);
+      return val;
     }
+
+
   },
 
   data () {
@@ -85,6 +100,11 @@ export default {
         this.questionCard = newVal
       },
       immediate: true
+    },
+    isWatched (new_val,old_val) {
+      console.log(new_val);
+      if(new_val)
+        this.$emit('videoIsWatched',new_val)
     }
   },
 
@@ -112,9 +132,15 @@ export default {
       this.finishedVideoPlaying = true
       this.showPlayButton = true
 
+      if(!this.isWatched)
+        this.$store.commit('markWatched',this.videoId);
+
       player.currentTime(0);
       player.controlBar.hide();
       player.bigPlayButton.show();
+
+
+
     },
 
     handleResize () {
@@ -146,7 +172,8 @@ export default {
   },
 
   mounted() {
-    this.$emit('isQuestionHandler', false, 'Continue')
+    this.$emit('isQuestionHandler', false, 'Continue');
+
   }
 }
 </script>
