@@ -63,6 +63,7 @@
 
         <SelectQuestion
           v-if="question.type === 'select'"
+          :index="index"
           :question="question"
           :openPopupFalse="openPopupFalse"
           :openPopupTrue="openPopupTrue"
@@ -174,9 +175,8 @@ export default {
   },
 
   computed: {
-
     // maybe lookup would be better
-    // TODO learn how to spell C-O-U-R-S-E
+
     course () {
       let course = config().courses[this.courseId-1];
       if(this.courseId && course && course.content)
@@ -208,7 +208,8 @@ export default {
             (this.course.questions[index].type === 'icons' ||
               this.course.questions[index].type === 'cards' ||
               this.course.questions[index].type === 'calc' ||
-              this.course.questions[index].type === 'mouth'):
+              this.course.questions[index].type === 'mouth' ||
+              this.course.questions[index].type === 'select'):
                 false},
           nextLabel: this.course.questions[index + 1] ? this.course.questions[index + 1].text : null,
           nextType: this.course.questions[index + 1] ? this.course.questions[index + 1].type : null,
@@ -367,8 +368,7 @@ export default {
     nextClicked (currentPage) {
       if (this.isQuestion) return false
       if (this.steps[currentPage].options.nextDisabled) return false
-      console.log('currentPage', currentPage)
-      console.log('this.steps[currentPage].options', this.steps[currentPage])
+
       let page = this.$refs.wizard.currentStep
       let currentQuestionType = this.steps[page].type
       let currentQuestionSlot = this.steps[page].slot
@@ -493,14 +493,13 @@ export default {
       this.buttonText = buttonText
     },
 
-    videoIsWatchedHandler(bool){
+    videoIsWatchedHandler(bool) {
       console.log(bool);
       if(this.$refs && this.$refs.wizard){
         const page = this.$refs.wizard.currentStep;
         this.steps[page].options.nextDisabled = !bool;
       }
     }
-
   }
 }
 </script>

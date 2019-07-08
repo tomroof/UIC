@@ -11,7 +11,7 @@ import BaseQuestion from '@/components/questions/BaseQuestion'
 import AnswerSelectCard from '@/components/cards/AnswerSelectCard'
 
 export default {
-  props: ['question', 'index', 'openPopupFalse', 'openPopupTrue', 'isQuestion', 'enabledSelection'],
+  props: ['question', 'index', 'openPopupFalse', 'openPopupTrue', 'openFailedPopup', 'openSuccessPopup', 'selectAnswer'],
 
   components: {
     BaseQuestion,
@@ -21,18 +21,38 @@ export default {
   data () {
     return {
       questionCard: this.question || {},
-      selected: []
+      selected: [],
+      correctOptions: this.question.options.filter(option => {
+        option.selected = false
+        return option.isCorrect === true
+      }) || [],
+      incorrectOptions: this.question.options.filter(option => {
+        option.selected = false
+        return option.isCorrect === false
+      }) || []
     }
   },
 
   methods: {
+    updateSelectedValue(options, cardIndex) {
+      const indexOption = options.findIndex((option) => {
+        return option.value === this.question.options[cardIndex].value
+      })
+      options[indexOption].selected = options[indexOption].selected === false
+    },
+
     selectCard(cardIndex) {
-      if (this.selected.includes(cardIndex)) {
-        this.selected.splice(this.selected.indexOf(cardIndex), 1)
-        return
+      if (this.question.options[cardIndex].isCorrect) {
+        this.updateSelectedValue(this.correctOptions, cardIndex)
+      } else {
+        this.updateSelectedValue(this.incorrectOptions, cardIndex)
       }
 
-      this.selected.push(cardIndex)
+      const isCorrect = this.correctOptions.every(option => option.selected === true) &&
+        this.incorrectOptions.every(option => option.selected === false)
+
+      console.log('isCorrect', isCorrect)
+      this.$emit('selectAnswer', {isCorrect: this.isCorrect, index: this.index})
     }
   }
 }
