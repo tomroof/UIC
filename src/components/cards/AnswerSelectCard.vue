@@ -20,7 +20,7 @@ export default {
   methods: {
     handleCard() {
       this.isActive = !this.isActive
-      this.selectCard(this.index)
+      this.selectCard(this.index, this.isActive)
     }
   }
 }

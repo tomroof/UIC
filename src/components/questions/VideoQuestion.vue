@@ -102,8 +102,7 @@ export default {
       immediate: true
     },
     isWatched (new_val,old_val) {
-      console.log(new_val);
-      if(new_val)
+      if (new_val)
         this.$emit('videoIsWatched',new_val)
     }
   },
