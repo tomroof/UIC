@@ -1,6 +1,6 @@
 <template>
   <ul>
-    <AchievementsListItem v-for="(achieve, index) in achievements" :key="index" :achieve="achieve" />
+    <AchievementsListItem v-for="(achieve, index) in achievements" :key="index" :achieve="achieve" :index="index" />
   </ul>
 </template>
 

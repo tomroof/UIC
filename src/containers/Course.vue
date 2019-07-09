@@ -61,6 +61,18 @@
           @selectAnswer='handelAnswerSelect'
           @isQuestionHandler="isQuestionHandler" />
 
+        <SelectQuestion
+          v-if="question.type === 'select'"
+          :index="index"
+          :question="question"
+          :openPopupFalse="openPopupFalse"
+          :openPopupTrue="openPopupTrue"
+          :openSuccessPopup="openSuccessPopup"
+          :openFailedPopup="openFailedPopup"
+          @selectAnswer='handelAnswerSelect'
+          @isQuestionHandler="isQuestionHandler"
+        />
+
         <span v-if="steps[index].nextType != 'cards' && steps[index].nextLabel" class="next-label">{{ getI18n.nextUp }}: {{steps[index].nextLabel}}</span>
       </div>
     </vue-good-wizard>
@@ -74,6 +86,7 @@ import VideoQuestion from '@/components/questions/VideoQuestion'
 import IconsQuestion from '@/components/questions/IconsQuestion'
 import CalcQuestion from '@/components/questions/CalcQuestion'
 import MouthQuestion from '@/components/questions/MouthQuestion'
+import SelectQuestion from '@/components/questions/SelectQuestion'
 import ModuleStartDialog from '@/components/dialogs/ModuleStartDialog'
 import { mapActions, mapGetters } from 'vuex'
 
@@ -139,6 +152,7 @@ export default {
     VideoQuestion,
     CalcQuestion,
     MouthQuestion,
+    SelectQuestion,
     ModuleStartDialog
   },
 
@@ -161,9 +175,8 @@ export default {
   },
 
   computed: {
-
     // maybe lookup would be better
-    // TODO learn how to spell C-O-U-R-S-E
+
     course () {
       let course = config().courses[this.courseId-1];
       if(this.courseId && course && course.content)
@@ -191,7 +204,13 @@ export default {
           slot: q.id,
           url_prefix: q.url_prefix,
           type: this.course.questions[index].type,
-          options: {nextDisabled: this.course.questions[index] ? (this.course.questions[index].type === 'icons' || this.course.questions[index].type === 'cards' || this.course.questions[index].type === 'calc' || this.course.questions[index].type === 'mouth'): false},
+          options: {nextDisabled: this.course.questions[index] ?
+            (this.course.questions[index].type === 'icons' ||
+              this.course.questions[index].type === 'cards' ||
+              this.course.questions[index].type === 'calc' ||
+              this.course.questions[index].type === 'mouth' ||
+              this.course.questions[index].type === 'select'):
+                false},
           nextLabel: this.course.questions[index + 1] ? this.course.questions[index + 1].text : null,
           nextType: this.course.questions[index + 1] ? this.course.questions[index + 1].type : null,
         }
@@ -349,6 +368,7 @@ export default {
     nextClicked (currentPage) {
       if (this.isQuestion) return false
       if (this.steps[currentPage].options.nextDisabled) return false
+
       let page = this.$refs.wizard.currentStep
       let currentQuestionType = this.steps[page].type
       let currentQuestionSlot = this.steps[page].slot
@@ -473,14 +493,13 @@ export default {
       this.buttonText = buttonText
     },
 
-    videoIsWatchedHandler(bool){
+    videoIsWatchedHandler(bool) {
       console.log(bool);
       if(this.$refs && this.$refs.wizard){
         const page = this.$refs.wizard.currentStep;
         this.steps[page].options.nextDisabled = !bool;
       }
     }
-
   }
 }
 </script>

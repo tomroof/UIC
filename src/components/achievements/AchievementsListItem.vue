@@ -2,8 +2,8 @@
   <li>
     <img :src="image" alt="">
     <div class="body">
-      <div class="name">{{achieve.name}}</div>
-      <div class="goal">{{achieve.goal}}</div>
+      <div class="name">{{getI18n[index].name}}</div>
+      <div class="goal">{{getI18n[index].goal}}</div>
       <div class="date">{{achieve.date}}</div>
     </div>
   </li>
@@ -11,12 +11,17 @@
 
 <script>
 import AchievementsListItem from './AchievementsListItem'
+import config from '@/data/config/index'
 
 export default {
   name: 'AchivementsListItem',
-  props: ['achieve'],
+  props: ['achieve', 'index'],
 
   computed: {
+    getI18n() {
+      return config().achievements
+    },
+
     image () {
       return typeof this.achieve.image === 'undefined' || this.achieve.image.length === 0 || this.achieve.completed === false
               ? require('../../assets/achieve_lock_img.png')
