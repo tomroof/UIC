@@ -19,7 +19,7 @@ import Team from '@/pages/Team'
 import Article from '@/pages/Article'
 import Code from '@/pages/Code'
 import Terms from '@/pages/Terms'
-
+import Contents from '@/pages/Contents'
 Vue.use(Router)
 
 export default new Router({
@@ -119,6 +119,11 @@ export default new Router({
       path: '/terms',
       name: 'Terms',
       component: Terms
+    },
+    {
+      path: '/contents/:url_prefix',
+      name: 'Contents',
+      component: Contents
     }
   ]
 })
