@@ -494,7 +494,6 @@ export default {
     },
 
     videoIsWatchedHandler(bool) {
-      console.log(bool);
       if(this.$refs && this.$refs.wizard){
         const page = this.$refs.wizard.currentStep;
         this.steps[page].options.nextDisabled = !bool;

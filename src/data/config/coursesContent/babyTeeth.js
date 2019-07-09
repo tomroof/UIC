@@ -18,6 +18,7 @@ export default () => {
       text: "Which of these things do you need teeth for?",
       id: '2',
       type: 'select',
+      url_prefix: 'which-of-these-need-teeth-for',
       options: [
         {
           value: 'ice-cream1',

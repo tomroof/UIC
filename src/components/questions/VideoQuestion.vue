@@ -101,10 +101,7 @@ export default {
       },
       immediate: true
     },
-    isWatched (new_val,old_val) {
-      if(new_val)
-        this.$emit('videoIsWatched',new_val)
-    }
+
   },
 
   methods: {
@@ -172,7 +169,7 @@ export default {
 
   mounted() {
     this.$emit('isQuestionHandler', false, 'Continue');
-
+    this.$emit('videoIsWatched',this.$store.getters.getIsWatched(this.videoId));
   }
 }
 </script>

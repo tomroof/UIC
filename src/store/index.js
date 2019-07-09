@@ -20,7 +20,7 @@ const vuexPersist = new VuexPersist({
 
 export default new Vuex.Store({
   plugins: [vuexPersist.plugin],
-  state: {
+  state: {  
     gender: null,
     character: null,
     characterNumber: null,
