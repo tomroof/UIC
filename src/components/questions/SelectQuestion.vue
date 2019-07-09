@@ -33,6 +33,10 @@ export default {
     }
   },
 
+  mounted(){
+    this.$emit('isQuestionHandler', false, 'Next');
+  },
+
   methods: {
     updateSelectedValue(options, cardIndex) {
       const indexOption = options.findIndex((option) => {
@@ -51,8 +55,7 @@ export default {
       const isCorrect = this.correctOptions.every(option => option.selected === true) &&
         this.incorrectOptions.every(option => option.selected === false)
 
-      console.log('isCorrect', isCorrect)
-      this.$emit('selectAnswer', {isCorrect: this.isCorrect, index: this.index})
+      this.$emit('selectAnswer', {isCorrect: isCorrect, index: this.index})
     }
   }
 }

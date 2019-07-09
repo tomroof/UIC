@@ -66,9 +66,7 @@ export default {
     },
 
     isWatched(){
-      let val = this.$store.getters.getIsWatched(this.videoId);
-      this.$emit('videoIsWatched',val);
-      return val;
+      return this.$store.getters.getIsWatched(this.videoId);
     }
 
 
@@ -101,6 +99,12 @@ export default {
       },
       immediate: true
     },
+    isWatched: {
+      handler: function(newVal){
+        this.$emit('videoIsWatched',newVal);
+      },
+      immediate: true
+    }
 
   },
 
