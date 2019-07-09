@@ -247,6 +247,7 @@ export default {
     nextSlideHandler(isCorrect) {
       const page = this.$refs.wizard.currentStep
       if (typeof(isCorrect) === 'boolean') this.isAnswerCorrect = isCorrect
+
       this.calcProgress(page)
       this.sendAnswer(page)
 
@@ -402,7 +403,9 @@ export default {
           return false
         }
         else {
-          if (currentQuestionType === 'icons' || currentQuestionType === 'calc') {
+          if (currentQuestionType === 'icons' ||
+              currentQuestionType === 'calc' ||
+              currentQuestionType === 'select') {
             this.openPopupTrue = true
             this.calcProgress(currentPage)
             return false
@@ -494,7 +497,6 @@ export default {
     },
 
     videoIsWatchedHandler(bool) {
-      console.log(bool);
       if(this.$refs && this.$refs.wizard){
         const page = this.$refs.wizard.currentStep;
         this.steps[page].options.nextDisabled = !bool;
