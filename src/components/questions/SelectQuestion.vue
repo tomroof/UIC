@@ -2,6 +2,7 @@
   <BaseQuestion :questionCard="questionCard">
     <div class="question-content" slot="questionContent">
       <AnswerSelectCard  v-for="(option, index) in question.options" :option="option" :index="index" :selectCard="selectCard" :key="option.value"/>
+      <popup :type="question.type" :openPopupFalse="openPopupFalse" :openPopupTrue="openPopupTrue"/>
     </div>
   </BaseQuestion>
 </template>
@@ -9,13 +10,15 @@
 <script>
 import BaseQuestion from '@/components/questions/BaseQuestion'
 import AnswerSelectCard from '@/components/cards/AnswerSelectCard'
+import Popup from '@/components/Popup'
 
 export default {
   props: ['question', 'index', 'openPopupFalse', 'openPopupTrue', 'openFailedPopup', 'openSuccessPopup', 'selectAnswer'],
 
   components: {
     BaseQuestion,
-    AnswerSelectCard
+    AnswerSelectCard,
+    Popup
   },
 
   data () {

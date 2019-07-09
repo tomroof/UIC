@@ -402,7 +402,7 @@ export default {
           return false
         }
         else {
-          if (currentQuestionType === 'icons' || currentQuestionType === 'calc') {
+          if (currentQuestionType === 'icons' || currentQuestionType === 'calc' || currentQuestionType === 'select') {
             this.openPopupTrue = true
             this.calcProgress(currentPage)
             return false
