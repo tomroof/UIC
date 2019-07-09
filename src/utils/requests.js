@@ -51,6 +51,7 @@ export const postNewAnswer = (uuid, course_id, question_id, question_type, is_co
       is_correct
     }
   }
+
   return post(`/api/v1/users/${uuid}/create_answer`, serveData,
   {'Content-Type': 'application/json'})
   .then(response => response.data)
