@@ -1,4 +1,5 @@
 <template>
+  <div>
   <BaseQuestion :questionCard="questionCard">
     <div class="question-content" slot="questionContent">
       <div class="answers">
@@ -9,53 +10,38 @@
             @click="handleAnswerClick(answer, question)"/>
         </div>
       </div>
-      <popup :type="question.type" :openPopupFalse="openPopupFalse" :openPopupTrue="openPopupTrue"/>
     </div>
   </BaseQuestion>
+  <Button class="continue-button" :disabled="!continueEnabled"  @click="continueClicked" >
+    Continue
+  </Button>
+  <popup :type="question.type" :openPopupFalse="openPopupFalse" :openPopupTrue="openPopupTrue" @closePopup="onClosePopup" @nextQuestion="onNextPage" />
+  </div>
 </template>
 
 <script>
 import AnswerIconCard from '@/components/cards/AnswerIconCard'
 import BaseQuestion from '@/components/questions/BaseQuestion'
 import Popup from '@/components/Popup'
+import Button from '@/components/Button'
 
 import { events } from '@/helpers/events'
 
   export default {
-    props: ['question', 'index', 'openPopupFalse', 'openPopupTrue', 'isQuestion', 'enabledSelection'],
+    props: ['question'],
     components: {
       BaseQuestion,
       AnswerIconCard,
-      Popup
+      Popup,
+      Button
     },
 
     data () {
       return {
-        questionCard: this.question || {},
-      }
-    },
-
-    watch: {
-      question:{
-        handler: function (newVal) {
-          this.questionCard = newVal
-        },
-        immediate: true
-      }
-    },
-
-    mounted() {
-      this.$emit('isQuestionHandler', true, 'Check');
-      events.$on('dropAnswer', this.dropActiveAnswers)
-    },
-
-    updated() {
-      this.$emit('isQuestionHandler', false, 'Check');
-    },
-
-    methods: {
-      dropActiveAnswers () {
-        this.$set(this, 'questionCard', {
+        openPopupFalse: false,
+        openPopupTrue: false,
+        continueEnabled: false,
+        questionCard: {
           text: this.question.text,
           desc: this.question.desc,
           answers: this.question.answers.map((a) => {
@@ -66,16 +52,43 @@ import { events } from '@/helpers/events'
               selected: false
             }
           })
-        })
+        } || {},
+      }
+    },
+
+    watch: {
+    },
+
+    mounted() {
+
+    },
+
+    updated() {
+    },
+
+    methods: {
+      handleAnswerClick (answer) {
+        this.continueEnabled = true;
+        this.questionCard.answers.forEach( (a) => a.selected = false);
+        this.questionCard.answers.find((a) => a.text === answer.text).selected = true;
+
       },
 
-      handleAnswerClick (answer) {
-        if (!this.enabledSelection) return
+      continueClicked(){
+        const isCorrect = Boolean(this.questionCard.answers.find( (a) => a.selected && a.isCorrect));
+        if(isCorrect)
+          this.openPopupTrue = true;
+        else
+          this.openPopupFalse = true;
+      },
 
-        this.$emit('isQuestionHandler', false)
-        this.dropActiveAnswers()
-        this.questionCard.answers.find((a) => a.text === answer.text).selected = true
-        this.$emit('selectAnswer', {isCorrect: answer.isCorrect, index: this.index})
+      onClosePopup(){
+        this.openPopupFalse = false;
+        this.openPopupTrue = false;
+      },
+
+      onNextPage(){
+        this.$emit("nextQuestion");
       }
     }
   }
@@ -86,6 +99,19 @@ import { events } from '@/helpers/events'
   .card {
     border: none;
   }
+}
+
+.continue-button{
+  position: fixed;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  max-width: 370px;
+  font-family: 'Zilla Slab';
+  font-size: 15px;
+  color: #FFFFFF;
+  letter-spacing: 0.5px;
+  text-align: center;
 }
 
 .answer {

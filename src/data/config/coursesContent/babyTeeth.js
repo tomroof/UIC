@@ -5,14 +5,23 @@ export default () => {
   name: i18n.t("message.BabyTeeth"),
   questions: [
     {
-      text: "test",
-      id: '1',
-      type: 'video',
-      url_prefix: 'what-is-inside-your-mouth',
-      boy_video_link: i18n.t("message.video1"),
-      boy_video_poster: 'module1-cover.jpg',
-      girl_video_link: i18n.t("message.video2"),
-      girl_video_poster: 'module1-cover.jpg'
+      text: i18n.t("message.HappyMouth"),
+      desc: i18n.t("message.Dragthefoodsto"),
+      id: '31',
+      type: 'mouth',
+      url_prefix: 'happy-mouth',
+      variants: [
+        {
+          value: 'soda',
+          image: 'soda.svg',
+          isCorrect: false
+        },
+        {
+          value: 'apple',
+          image: 'apple.svg',
+          isCorrect: true
+        },
+      ]
     },
     {
       text: "Which of these things do you need teeth for?",
@@ -81,25 +90,7 @@ export default () => {
         },
       ]
     },
-    {
-      text: i18n.t("message.HappyMouth"),
-      desc: i18n.t("message.Dragthefoodsto"),
-      id: '37',
-      type: 'mouth',
-      url_prefix: 'happy-mouth',
-      variants: [
-        {
-          value: 'ice-cream',
-          image: 'ice-cream.svg',
-          isCorrect: false
-        },
-        {
-          value: 'brush-twice',
-          image: 'brush-twice.svg',
-          isCorrect: true
-        },
-      ]
-    }
+
   ]
 }
 }

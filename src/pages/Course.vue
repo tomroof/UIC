@@ -1,7 +1,7 @@
 <template>
   <div>
     <NavigationLayout :closeCourseButton="true" :menu="true">
-      <CourseContainer :courseId="courseId" :clickRewardContinue="clickRewardContinue" @refreshPage="refreshPage" @moduleCompleted="moduleCompleted"></CourseContainer>
+      <NewCourseContainer :courseId="courseId" :clickRewardContinue="clickRewardContinue" @refreshPage="refreshPage" @moduleCompleted="moduleCompleted"></NewCourseContainer>
     </NavigationLayout>
     <RewardCard v-if="showRewardCard" @continue="rewardContinue"></RewardCard>
   </div>
@@ -12,6 +12,7 @@ import NavigationLayout from '@/layouts/NavigationLayout'
 import CourseContainer from '@/containers/Course'
 import RewardCard from '@/components/cards/RewardCard'
 import AudioManager from '@/helpers/audioManager'
+import NewCourseContainer from '@/containers/CourseContainer'
 import { mapGetters } from 'vuex'
 
 import config from '@/data/config'
@@ -29,7 +30,8 @@ export default {
   components: {
     NavigationLayout,
     CourseContainer,
-    RewardCard
+    RewardCard,
+    NewCourseContainer
   },
 
   computed: {

@@ -1,4 +1,5 @@
 <template>
+  <div>
   <BaseQuestion :questionCard="questionCard">
     <div class="question-content" slot="questionContent">
       <div class="variants">
@@ -26,9 +27,13 @@
           </draggable>
         </div>
       </div>
-      <popup :answers="fields[2]" :type="question.type" :openPopupFalse="openPopupFalse" :openPopupTrue="openPopupTrue" />
-    </div>
+          </div>
   </BaseQuestion>
+  <popup :answers="fields[2]" :type="question.type" :openPopupFalse="openPopupFalse" :openPopupTrue="openPopupTrue"  @closePopup="onClosePopup" @nextQuestion="onNextPage"/>
+  <Button class="continue-button" :disabled="!continueEnabled"  >
+    Continue
+  </Button>
+</div>
 </template>
 
 
@@ -39,81 +44,40 @@
   import BaseQuestion from '@/components/questions/BaseQuestion'
   import Popup from '@/components/Popup'
   import draggable from 'vuedraggable'
+  import Button from '@/components/Button'
 
-  function loadMouthAnimation() {
-    var anim;
-    var animData = {
-        container: document.getElementById('bodymovin'),
-        renderer: 'svg',
-        loop: false,
-        autoplay: false,
-        rendererSettings: {
-            progressiveLoad:false
-        },
-        path:'/static/mouth-smile.json'
-    };
-    anim = bodymovin.loadAnimation(animData);
-    anim.setSpeed(1);
-    anim.addEventListener('complete', completedSmileAnim);
- }
-
-  function playSmileAnimation() {
-    bodymovin.destroy();
-    var anim;
-    var animData = {
-        container: document.getElementById('bodymovin'),
-        renderer: 'svg',
-        loop: false,
-        autoplay: true,
-        rendererSettings: {
-            progressiveLoad:false
-        },
-        path:'/static/mouth-smile.json'
-    };
-    anim = bodymovin.loadAnimation(animData);
-    anim.setSpeed(1);
-    anim.addEventListener('complete', completedSmileAnim);
-  }
-
-  function completedSmileAnim() {
-    events.$emit('openSuccessPopup');
-  }
-
-  function playSadAnimation() {
-    bodymovin.destroy();
-    var anim;
-    var animData = {
-        container: document.getElementById('bodymovin'),
-        renderer: 'svg',
-        loop: false,
-        autoplay: true,
-        rendererSettings: {
-            progressiveLoad:false
-        },
-        path:'/static/mouth-sad.json'
-    };
-    anim = bodymovin.loadAnimation(animData);
-    anim.setSpeed(1);
-    anim.addEventListener('complete', completedSadAnim);
-  }
-
-  function completedSadAnim() {
-    events.$emit('openFailedPopup');
-  }
 
   export default {
-    props: ['question', 'openPopupTrue', 'openPopupFalse', 'openSuccessPopup', 'openFailedPopup'],
+    props: ['question'],
     components: {
       AnswerMouthCard,
       BaseQuestion,
       draggable,
-      Popup
+      Popup,
+      Button
     },
 
     data () {
       return {
-        questionCard: this.question || {},
-        variants: [],
+        openPopupFalse: false,
+        openPopupTrue: false,
+        continueEnabled: false,
+        questionCard: {
+          text: this.question.text,
+          desc: this.question.desc,
+          variants: this.question.variants.map((a) => {
+            return {
+              ...a,
+              selected: false
+            }
+          })
+        },
+        variants: this.question.variants.map((a) => {
+          return {
+            ...a,
+            selected: false
+          }
+        }),
         fields: {
           0: [],
           1: [],
@@ -124,60 +88,119 @@
     },
 
     mounted () {
-      loadMouthAnimation()
-      this.$emit('isQuestionHandler', true, 'Play Next');
+      this.loadMouthAnimation()
     },
 
     computed: {
-      // TODO get course by prop Id
-      // TODO learn how to spell course
-      course () {
-        return animationData
-      },
     },
 
     watch: {
-      question:{
-        handler: function (newVal) {
-          this.questionCard = newVal
-          this.variants = newVal.variants
-        },
-        immediate: true
-      }
     },
 
     methods: {
       handleDragChange (e) {
         if (e.added.element.isCorrect) {
-          playSmileAnimation()
+          this.playSmileAnimation()
         }
         else {
-          playSadAnimation()
+          this.playSadAnimation()
           this.question.variants = [...this.question.variants, e.added.element]
         }
       },
-      dropActiveAnswers () {
-        this.$set(this, 'questionCard', {
-          text: this.question.text,
-          desc: this.question.desc,
-          answers: this.question.answers.map((a) => {
-            return {
-              ...a,
-              selected: false
-            }
-          })
-        })
-      },
       handleAnswerClick (answer) {
-        this.dropActiveAnswers()
+        this.questionCard.answers.forEach( (a) => a.selected = false);
         this.questionCard.answers.find((a) => a.text === answer.text).selected = true
-        this.$emit('selectAnswer')
+      },
+
+       loadMouthAnimation() {
+        var anim;
+        var animData = {
+            container: document.getElementById('bodymovin'),
+            renderer: 'svg',
+            loop: false,
+            autoplay: false,
+            rendererSettings: {
+                progressiveLoad:false
+            },
+            path:'/static/mouth-smile.json'
+        };
+        anim = bodymovin.loadAnimation(animData);
+        anim.setSpeed(1);
+        anim.addEventListener('complete', this.completedSmileAnim);
+     },
+
+     playSmileAnimation() {
+        bodymovin.destroy();
+        var anim;
+        var animData = {
+            container: document.getElementById('bodymovin'),
+            renderer: 'svg',
+            loop: false,
+            autoplay: true,
+            rendererSettings: {
+                progressiveLoad:false
+            },
+            path:'/static/mouth-smile.json'
+        };
+        anim = bodymovin.loadAnimation(animData);
+        anim.setSpeed(1);
+        anim.addEventListener('complete', this.completedSmileAnim);
+      },
+
+       completedSmileAnim() {
+        this.openPopupTrue = true;
+      },
+
+       playSadAnimation() {
+        bodymovin.destroy();
+        var anim;
+        var animData = {
+            container: document.getElementById('bodymovin'),
+            renderer: 'svg',
+            loop: false,
+            autoplay: true,
+            rendererSettings: {
+                progressiveLoad:false
+            },
+            path:'/static/mouth-sad.json'
+        };
+        anim = bodymovin.loadAnimation(animData);
+        anim.setSpeed(1);
+        anim.addEventListener('complete', this.completedSadAnim);
+      },
+
+       completedSadAnim() {
+         this.openPopupFalse = true;
+      },
+      onClosePopup(){
+        this.openPopupFalse = false;
+        this.openPopupTrue = false;
+      },
+
+      onNextPage(){
+        this.$emit("nextQuestion");
       }
+
+
+
     }
   }
 </script>
 
 <style lang="scss" scoped>
+.continue-button{
+  position: fixed;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  max-width: 370px;
+  font-family: 'Zilla Slab';
+  font-size: 15px;
+  color: #FFFFFF;
+  letter-spacing: 0.5px;
+  text-align: center;
+}
+
   .fade-enter-active, .fade-leave-active {
     transition: opacity .5s;
   }
