@@ -18,6 +18,7 @@ export default () => {
       text: "Which of these things do you need teeth for?",
       id: '2',
       type: 'select',
+      url_prefix: 'Which-of-these-things',
       options: [
         {
           value: 'ice-cream1',
@@ -79,6 +80,23 @@ export default () => {
           isCorrect: true
         },
       ]
+    },
+    {
+      text: 'THIRTY-THREE THIRSTY THIEVES!',
+      desc: '',
+      id: 4,
+      type: 'go',
+      url_prefix: 'where-do-cavities-come-from',
+      answer: ['THIRTY', 'THREE', 'THIRSTY', 'THIEVES']
+    },
+    {
+      text: 'Ready to time your brushing?',
+      desc: '',
+      id: 5,
+      type: 'brush',
+      image: 'brush-twice.svg',
+      url_prefix: 'where-do-cavities-come-from',
+      time: 2
     },
     {
       text: i18n.t("message.HappyMouth"),
