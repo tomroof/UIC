@@ -13,7 +13,7 @@ import AnswerSelectCard from '@/components/cards/AnswerSelectCard'
 import Popup from '@/components/Popup'
 
 export default {
-  props: ['question', 'index', 'openPopupFalse', 'openPopupTrue', 'openFailedPopup', 'openSuccessPopup', 'selectAnswer', 'isQuestionHandler'],
+  props: ['question', 'index', 'openPopupFalse', 'openPopupTrue', 'selectAnswer', 'isQuestionHandler'],
 
   components: {
     BaseQuestion,
@@ -31,12 +31,12 @@ export default {
     }
   },
 
-  updated() {
+  mounted() {
     this.$emit('isQuestionHandler', false, 'Check');
   },
 
-  mounted() {
-
+  updated() {
+    this.$emit('isQuestionHandler', false, 'Check');
   },
 
   methods: {
