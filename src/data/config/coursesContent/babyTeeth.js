@@ -5,18 +5,8 @@ export default () => {
   name: i18n.t("message.BabyTeeth"),
   questions: [
     {
-      text: "test",
-      id: '1',
-      type: 'video',
-      url_prefix: 'what-is-inside-your-mouth',
-      boy_video_link: i18n.t("message.video1"),
-      boy_video_poster: 'module1-cover.jpg',
-      girl_video_link: i18n.t("message.video2"),
-      girl_video_poster: 'module1-cover.jpg'
-    },
-    {
       text: "Which of these things do you need teeth for?",
-      id: '2',
+      id: '1',
       type: 'select',
       url_prefix: 'Which-of-these-things',
       options: [
@@ -63,9 +53,66 @@ export default () => {
       ]
     },
     {
-      text: i18n.t("message.Wheredocavities"),
+      text: i18n.t("message.Whatinsideyourmouth"),
+      id: '2',
+      type: 'video',
+      url_prefix: 'what-is-inside-your-mouth',
+      boy_video_link: i18n.t("message.video1"),
+      boy_video_poster: 'module1-cover.jpg',
+      girl_video_link: i18n.t("message.video2"),
+      girl_video_poster: 'module1-cover.jpg'
+    },
+    {
+      text: 'THIRTY-THREE THIRSTY THIEVES!',
       desc: '',
       id: '3',
+      type: 'go',
+      url_prefix: 'where-do-cavities-come-from',
+      answer: ['THIRTY', 'THREE', 'THIRSTY', 'THIEVES']
+    },
+    {
+      text: "test",
+      id: '4',
+      type: 'video',
+      url_prefix: 'what-is-inside-your-mouth',
+      boy_video_link: i18n.t("message.video1"),
+      boy_video_poster: 'module1-cover.jpg',
+      girl_video_link: i18n.t("message.video2"),
+      girl_video_poster: 'module1-cover.jpg'
+    },
+    {
+      text: "test",
+      id: '5',
+      type: 'video',
+      url_prefix: 'what-is-inside-your-mouth',
+      boy_video_link: i18n.t("message.video1"),
+      boy_video_poster: 'module1-cover.jpg',
+      girl_video_link: i18n.t("message.video2"),
+      girl_video_poster: 'module1-cover.jpg'
+    },
+    {
+      text: "test",
+      id: '6',
+      type: 'video',
+      url_prefix: 'what-is-inside-your-mouth',
+      boy_video_link: i18n.t("message.video1"),
+      boy_video_poster: 'module1-cover.jpg',
+      girl_video_link: i18n.t("message.video2"),
+      girl_video_poster: 'module1-cover.jpg'
+    },
+    {
+      text: 'Ready to time your brushing?',
+      desc: '',
+      id: '7',
+      type: 'brush',
+      image: 'brush-twice.svg',
+      url_prefix: 'where-do-cavities-come-from',
+      time: 2
+    },
+    {
+      text: i18n.t("message.Wheredocavities"),
+      desc: '',
+      id: '8',
       type: 'icons',
       url_prefix: 'where-do-cavities-come-from',
       answers: [
@@ -82,40 +129,24 @@ export default () => {
       ]
     },
     {
-      text: 'THIRTY-THREE THIRSTY THIEVES!',
-      desc: '',
-      id: 4,
-      type: 'go',
-      url_prefix: 'where-do-cavities-come-from',
-      answer: ['THIRTY', 'THREE', 'THIRSTY', 'THIEVES']
+      text: "test",
+      id: '9',
+      type: 'video',
+      url_prefix: 'what-is-inside-your-mouth',
+      boy_video_link: i18n.t("message.video1"),
+      boy_video_poster: 'module1-cover.jpg',
+      girl_video_link: i18n.t("message.video2"),
+      girl_video_poster: 'module1-cover.jpg'
     },
     {
-      text: 'Ready to time your brushing?',
-      desc: '',
-      id: 5,
-      type: 'brush',
-      image: 'brush-twice.svg',
-      url_prefix: 'where-do-cavities-come-from',
-      time: 2
-    },
-    {
-      text: i18n.t("message.HappyMouth"),
-      desc: i18n.t("message.Dragthefoodsto"),
-      id: '37',
-      type: 'mouth',
-      url_prefix: 'happy-mouth',
-      variants: [
-        {
-          value: 'ice-cream',
-          image: 'ice-cream.svg',
-          isCorrect: false
-        },
-        {
-          value: 'brush-twice',
-          image: 'brush-twice.svg',
-          isCorrect: true
-        },
-      ]
+      text: "test",
+      id: '10',
+      type: 'video',
+      url_prefix: 'what-is-inside-your-mouth',
+      boy_video_link: i18n.t("message.video1"),
+      boy_video_poster: 'module1-cover.jpg',
+      girl_video_link: i18n.t("message.video2"),
+      girl_video_poster: 'module1-cover.jpg'
     }
   ]
 }
