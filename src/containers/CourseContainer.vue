@@ -7,6 +7,12 @@
     <div class="question-container">
       <div>
 
+        <CardsQuestion
+          v-if="currentQuestion.type === 'cards'"
+          :question="currentQuestion"
+          @nextQuestion="nextPage"
+          />
+
         <SelectQuestion
           v-if="currentQuestion.type === 'select'"
           :question="currentQuestion"
@@ -19,17 +25,23 @@
           @nextQuestion="nextPage"
            />
 
-           <CalcQuestion
+        <CalcQuestion
              v-if="currentQuestion.type === 'calc'"
              :question="currentQuestion"
              @nextQuestion="nextPage"
              />
 
-           <MouthQuestion
+        <MouthQuestion
              v-if="currentQuestion.type === 'mouth'"
              :question="currentQuestion"
              @nextQuestion="nextPage"
              />
+
+        <VideoQuestion
+               v-if="currentQuestion.type === 'video'"
+               :question="currentQuestion"
+               @nextQuestion="nextPage"
+              />
 
 
         <span v-if="currentQuestion.nextType != 'cards' && currentQuestion.nextLabel" class="next-label">{{ getI18n.nextUp }}: {{steps[index].nextLabel}}</span>

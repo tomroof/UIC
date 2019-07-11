@@ -5,6 +5,61 @@ export default () => {
   name: i18n.t("message.BabyTeeth"),
   questions: [
     {
+      text: i18n.t("message.Whatinsideyourmouth"),
+      id: '1',
+      type: 'video',
+      url_prefix: 'what-is-inside-your-mouth',
+      boy_video_link: i18n.t("message.video1"),
+      boy_video_poster: 'module1-cover.jpg',
+      girl_video_link: i18n.t("message.video2"),
+      girl_video_poster: 'module1-cover.jpg'
+    },
+    {
+      text: i18n.t("message.Goodformeorgoodforcavity"),
+      desc: i18n.t("message.Clicktofindout"),
+      id: '13',
+      type: 'cards',
+      url_prefix: 'good-for-me',
+      answers: [
+        {
+          text: i18n.t("message.Apple"),
+          image: 'apple.svg',
+
+          answerData: {
+            text: i18n.t("message.Goodforme"),
+            image: 'apple.svg',
+            isCorrect: true
+          }
+        }
+      ]
+    },
+    {
+      text: i18n.t("message.CavityMath"),
+      desc: i18n.t("message.Letslearnsomecavitymath"),
+      id: '27',
+      type: 'calc',
+      url_prefix: 'cavity-math',
+      isCorrect: true,
+      customPopup: {
+        message: i18n.t("message.YeahYourefightingmonsters"),
+        buttonText: i18n.t("message.NextUp"),
+        handlerType: 'nextSlide',
+        messageType: 'positive'
+      },
+      answers: [
+        {
+          text: i18n.t("message.Brushingtwiceaday"),
+          value: 'clock',
+          image: 'brush-twice.svg'
+        },
+        {
+          text: i18n.t("message.Healthysnacks"),
+          value: 'tooth',
+          image: 'broccoli.svg'
+        }
+      ]
+    },
+    {
       text: i18n.t("message.HappyMouth"),
       desc: i18n.t("message.Dragthefoodsto"),
       id: '31',

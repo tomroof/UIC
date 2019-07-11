@@ -1,4 +1,5 @@
 <template>
+  <div>
   <BaseQuestion :questionCard="questionCard">
     <div class="question-content" slot="questionContent">
       <div class="answers">
@@ -13,45 +14,29 @@
       </div>
     </div>
   </BaseQuestion>
+  <Button class="continue-button" :disabled="!continueEnabled" @click="continueClicked">
+    Continue
+  </Button>
+</div>
 </template>
 
 <script>
 import AnswerCard from '@/components/cards/AnswerCard'
 import BaseQuestion from '@/components/questions/BaseQuestion'
+import Button from '@/components/Button'
 
   export default {
-    props: ['question', 'index', 'enabledSelection'],
+    props: ['question'],
     components: {
       BaseQuestion,
-      AnswerCard
+      AnswerCard,
+      Button
     },
 
     data () {
       return {
-        questionCard: this.question || {}
-      }
-    },
-
-    mounted() {
-      this.$emit('isQuestionHandler', true, 'Play Next');
-    },
-
-    updated() {
-      this.$emit('isQuestionHandler', false, 'Play Next');
-    },
-
-    watch: {
-      question:{
-        handler: function (newVal) {
-          this.questionCard = newVal
-        },
-        immediate: true
-      }
-    },
-
-    methods: {
-      dropActiveAnswers () {
-        this.$set(this, 'questionCard', {
+        continueEnabled: false,
+        questionCard: {
           text: this.question.text,
           desc: this.question.desc,
           answers: this.question.answers.map((a) => {
@@ -60,16 +45,27 @@ import BaseQuestion from '@/components/questions/BaseQuestion'
               selected: false
             }
           })
-        })
-      },
+        } || {}
+    }
+  },
+
+    mounted() {
+    },
+
+
+    methods: {
+
       handleAnswerClick (answer) {
-        if (!this.enabledSelection) return
-        this.dropActiveAnswers()
+        this.questionCard.answers.forEach((a) => a.selected = false)
         this.questionCard.answers.find((a) => a.text === answer.text).selected = true
       },
       handleAnswerCompleted (answer) {
-         this.$emit('selectAnswer', {isCorrect: true, index: this.index})
-      }
+         this.continueEnabled = true;
+      },
+
+     continueClicked(){
+       this.$emit("nextQuestion");
+     }
   },
 }
 </script>

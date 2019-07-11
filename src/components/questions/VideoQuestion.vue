@@ -1,4 +1,5 @@
 <template>
+  <div>
   <BaseQuestion :questionCard="questionCard">
     <div class="question-content" slot="questionContent">
       <div class="answers">
@@ -11,26 +12,30 @@
            @ended="onPlayerEnded($event)"
            >
           </video-player>
-          <ComponentButton v-if="showPlayButton" class="watch-button" @click="playVideo"><img :src="image">{{buttonTitle}}</ComponentButton>
+          <Button v-if="showPlayButton" class="watch-button" @click="playVideo"><img :src="image">{{buttonTitle}}</Button>
         </div>
       </div>
     </div>
   </BaseQuestion>
+  <Button class="continue-button" :disabled="!continueEnabled" @click="continueClicked">
+    Continue
+  </Button>
+</div>
 </template>
 
 <script>
 import AnswerCard from '@/components/cards/AnswerCard'
 import BaseQuestion from '@/components/questions/BaseQuestion'
-import ComponentButton from '@/components/Button'
 import config from '@/data/config'
 import { mapGetters } from 'vuex'
+import Button from '@/components/Button'
 
 export default {
   props: ['question'],
   components: {
     BaseQuestion,
     AnswerCard,
-    ComponentButton
+    Button
   },
 
   created() {
@@ -78,7 +83,10 @@ export default {
         width: 0,
         height: 0
       },
-      questionCard: this.question || {},
+      continueEnabled: false,
+      questionCard: {
+        text: this.question.text,
+      },
       showPlayButton: true,
       finishedVideoPlaying: false,
       playerOptions: {
@@ -93,19 +101,17 @@ export default {
   },
 
   watch: {
-    question:{
-      handler: function (newVal) {
-        this.questionCard = newVal
-      },
-      immediate: true
-    },
     isWatched: {
       handler: function(newVal){
-        this.$emit('videoIsWatched',newVal);
+        this.continueEnabled = newVal;
       },
       immediate: true
     }
 
+  },
+
+  mounted() {
+    this.continueEnabled = this.isWatched;
   },
 
   methods: {
@@ -152,29 +158,18 @@ export default {
       }
     },
 
-    dropActiveAnswers () {
-      this.$set(this, 'questionCard', {
-        text: this.question.text,
-        answers: this.question.answers.map((a) => {
-          return {
-            image: a.image,
-            text: a.text,
-            selected: false
-          }
-        })
-      })
-    },
-    handleAnswerClick (answer) {
-      this.dropActiveAnswers()
-      this.questionCard.answers.find((a) => a.text === answer.text).selected = true
-      this.$emit('selectAnswer')
+    continueClicked(){
+      this.$emit("nextQuestion");
     }
+
+
   },
 
-  mounted() {
-    this.$emit('isQuestionHandler', false, 'Continue');
-    this.$emit('videoIsWatched',this.$store.getters.getIsWatched(this.videoId));
-  }
+
+
+
+
+
 }
 </script>
 
@@ -194,6 +189,21 @@ export default {
 </style>
 
 <style lang="scss" scoped>
+
+.continue-button{
+  position: fixed;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  max-width: 370px;
+  font-family: 'Zilla Slab';
+  font-size: 15px;
+  color: #FFFFFF;
+  letter-spacing: 0.5px;
+  text-align: center;
+}
+
+
 .watch-button {
   width: 200px !important;
   img {
@@ -223,7 +233,7 @@ export default {
   min-height: 200px;
 }
 
-.button {
+.watch-button {
   cursor: pointer;
   font-family: 'Zilla Slab';
   font-weight: 500;
