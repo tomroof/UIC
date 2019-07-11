@@ -43,6 +43,18 @@
                @nextQuestion="nextPage"
               />
 
+              <GoQuestion
+                v-if="currentQuestion.type === 'go'"
+                :question="currentQuestion"
+                @nextQuestion="nextPage"
+              />
+
+              <BrushQuestion
+                v-if="currentQuestion.type === 'brush'"
+                :question="currentQuestion"
+                @nextQuestion="nextPage"
+              />
+
 
         <span v-if="currentQuestion.nextType != 'cards' && currentQuestion.nextLabel" class="next-label">{{ getI18n.nextUp }}: {{steps[index].nextLabel}}</span>
       </div>
@@ -60,7 +72,8 @@ import CalcQuestion from '@/components/questions/CalcQuestion'
 import MouthQuestion from '@/components/questions/MouthQuestion'
 import SelectQuestion from '@/components/questions/SelectQuestionNew'
 import ModuleStartDialog from '@/components/dialogs/ModuleStartDialog'
-
+import GoQuestion from '@/components/questions/GoQuestion'
+import BrushQuestion from '@/components/questions/BrushQuestion'
 import { mapActions, mapGetters } from 'vuex'
 
 
@@ -114,7 +127,9 @@ export default {
     CalcQuestion,
     MouthQuestion,
     SelectQuestion,
-    ModuleStartDialog
+    ModuleStartDialog,
+    GoQuestion,
+    BrushQuestion
   },
 
   mounted() {

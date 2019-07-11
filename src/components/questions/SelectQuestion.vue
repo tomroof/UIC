@@ -31,7 +31,6 @@ export default {
     }
   },
 
-<<<<<<< HEAD
   mounted(){
     this.$emit('isQuestionHandler', false, 'Next');
   },
@@ -43,17 +42,10 @@ export default {
       })
       options[indexOption].selected = options[indexOption].selected === false
     },
-=======
-  mounted() {
-    this.$emit('isQuestionHandler', false, 'Check');
-  },
->>>>>>> 6b7259705710a834afd3cf9c11545471fb05efc1
 
   updated() {
     this.$emit('isQuestionHandler', false, 'Check');
   },
-
-  methods: {
     selectCard(cardIndex, status) {
       this.options[cardIndex].selected = status
 

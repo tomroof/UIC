@@ -1,9 +1,10 @@
 <template>
+  <div>
   <BaseQuestion :questionCard="questionCard">
     <div class="question-content" slot="questionContent">
       <div class="content" v-if="!isStartTimer">
         <img class="image" :src="require(`../../assets/${questionCard.image}`)" alt="brush">
-        <button class="button" @click="startTimer">Start Brush Timer</button>
+        <button class="go-button" @click="startTimer">Start Brush Timer</button>
       </div>
       <div class="timer" v-else>
         <span class="minutes">
@@ -15,30 +16,36 @@
       </div>
     </div>
   </BaseQuestion>
+  <VueButton class="continue-button" :disabled="!сontinueEnabled"  @click="continueClicked" >
+    Continue
+  </VueButton>
+</div>
 </template>
 <script>
-  import BaseQuestion from '@/components/questions/BaseQuestion'
+import BaseQuestion from '@/components/questions/BaseQuestion'
+import VueButton from '@/components/Button'
 
 export default {
-  props: ['question', 'index', 'selectAnswer', 'isQuestionHandler'],
+  props: ['question'],
 
   components: {
-    BaseQuestion
+    BaseQuestion,
+    VueButton
   },
 
   data() {
     return {
-      questionCard: this.question || {},
+      сontinueEnabled:false,
+      questionCard: {...this.question},
       timer: null,
       isStartTimer: false,
-      time: this.question.time * 60,
+      time: this.question.time,
       minutes: '',
       seconds: ''
     }
   },
 
   mounted() {
-    this.$emit('isQuestionHandler', false, 'Check')
     this.getCountdown()
   },
 
@@ -47,6 +54,7 @@ export default {
       this.isStartTimer = true
       this.timer = setInterval(() => {
         this.getCountdown()
+
       }, 1000);
     },
 
@@ -55,21 +63,40 @@ export default {
       this.seconds = this.pad( parseInt(this.time % 60) );
 
       if (this.time <= 0) {
-        this.$emit('selectAnswer', {isCorrect: true, index: this.index})
-        clearInterval(this.timer)
+        clearInterval(this.timer);
+        this.сontinueEnabled = true;
       }
       --this.time
     },
 
     pad(n) {
       return (n < 10 ? '0' : '') + n;
+    },
+
+    continueClicked(){
+      if(this.сontinueEnabled)
+        this.$emit("nextQuestion");
     }
+
   }
 }
 </script>
 
 <style lang="scss" scoped>
-.button {
+.continue-button{
+  position: fixed;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  max-width: 370px;
+  font-family: 'Zilla Slab';
+  font-size: 15px;
+  color: #FFFFFF;
+  letter-spacing: 0.5px;
+  text-align: center;
+}
+
+.go-button {
   z-index: 20;
   height: 50px;
   width: 100%;
