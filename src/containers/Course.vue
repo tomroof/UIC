@@ -73,6 +73,22 @@
           @isQuestionHandler="isQuestionHandler"
         />
 
+        <GoQuestion
+          v-if="question.type === 'go'"
+          :index="index"
+          :question="question"
+          @selectAnswer='handelAnswerSelect'
+          @isQuestionHandler="isQuestionHandler"
+        />
+
+        <BrushQuestion
+          v-if="question.type === 'brush'"
+          :index="index"
+          :question="question"
+          @selectAnswer='handelAnswerSelect'
+          @isQuestionHandler="isQuestionHandler"
+        />
+
         <span v-if="steps[index].nextType != 'cards' && steps[index].nextLabel" class="next-label">{{ getI18n.nextUp }}: {{steps[index].nextLabel}}</span>
       </div>
     </vue-good-wizard>
@@ -87,6 +103,9 @@ import IconsQuestion from '@/components/questions/IconsQuestion'
 import CalcQuestion from '@/components/questions/CalcQuestion'
 import MouthQuestion from '@/components/questions/MouthQuestion'
 import SelectQuestion from '@/components/questions/SelectQuestion'
+import GoQuestion from '@/components/questions/GoQuestion'
+import BrushQuestion from '@/components/questions/BrushQuestion'
+
 import ModuleStartDialog from '@/components/dialogs/ModuleStartDialog'
 import { mapActions, mapGetters } from 'vuex'
 
@@ -153,7 +172,9 @@ export default {
     CalcQuestion,
     MouthQuestion,
     SelectQuestion,
-    ModuleStartDialog
+    ModuleStartDialog,
+    GoQuestion,
+    BrushQuestion
   },
 
   mounted() {
@@ -209,7 +230,10 @@ export default {
               this.course.questions[index].type === 'cards' ||
               this.course.questions[index].type === 'calc' ||
               this.course.questions[index].type === 'mouth' ||
-              this.course.questions[index].type === 'select'):
+              this.course.questions[index].type === 'select' ||
+              this.course.questions[index].type === 'go' ||
+              this.course.questions[index].type === 'brush'
+              ):
                 false},
           nextLabel: this.course.questions[index + 1] ? this.course.questions[index + 1].text : null,
           nextType: this.course.questions[index + 1] ? this.course.questions[index + 1].type : null,
@@ -247,6 +271,7 @@ export default {
     nextSlideHandler(isCorrect) {
       const page = this.$refs.wizard.currentStep
       if (typeof(isCorrect) === 'boolean') this.isAnswerCorrect = isCorrect
+
       this.calcProgress(page)
       this.sendAnswer(page)
 
@@ -366,6 +391,7 @@ export default {
     },
 
     nextClicked (currentPage) {
+      console.log('this.isQuestion', this.isQuestion, 'this.steps[currentPage].options.nextDisabled', this.steps[currentPage].options.nextDisabled)
       if (this.isQuestion) return false
       if (this.steps[currentPage].options.nextDisabled) return false
 
@@ -402,7 +428,9 @@ export default {
           return false
         }
         else {
-          if (currentQuestionType === 'icons' || currentQuestionType === 'calc' || currentQuestionType === 'select') {
+          if (currentQuestionType === 'icons' ||
+              currentQuestionType === 'calc' ||
+              currentQuestionType === 'select') {
             this.openPopupTrue = true
             this.calcProgress(currentPage)
             return false

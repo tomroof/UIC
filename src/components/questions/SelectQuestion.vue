@@ -13,7 +13,7 @@ import AnswerSelectCard from '@/components/cards/AnswerSelectCard'
 import Popup from '@/components/Popup'
 
 export default {
-  props: ['question', 'index', 'openPopupFalse', 'openPopupTrue', 'openFailedPopup', 'openSuccessPopup', 'selectAnswer'],
+  props: ['question', 'index', 'openPopupFalse', 'openPopupTrue', 'selectAnswer', 'isQuestionHandler'],
 
   components: {
     BaseQuestion,
@@ -25,17 +25,13 @@ export default {
     return {
       questionCard: this.question || {},
       selected: [],
-      correctOptions: this.question.options.filter(option => {
-        option.selected = false
-        return option.isCorrect === true
-      }) || [],
-      incorrectOptions: this.question.options.filter(option => {
-        option.selected = false
-        return option.isCorrect === false
-      }) || []
+      options: this.question.options.map(option => {
+        return {...option, selected: false}
+      })
     }
   },
 
+<<<<<<< HEAD
   mounted(){
     this.$emit('isQuestionHandler', false, 'Next');
   },
@@ -47,16 +43,24 @@ export default {
       })
       options[indexOption].selected = options[indexOption].selected === false
     },
+=======
+  mounted() {
+    this.$emit('isQuestionHandler', false, 'Check');
+  },
+>>>>>>> 6b7259705710a834afd3cf9c11545471fb05efc1
 
-    selectCard(cardIndex) {
-      if (this.question.options[cardIndex].isCorrect) {
-        this.updateSelectedValue(this.correctOptions, cardIndex)
-      } else {
-        this.updateSelectedValue(this.incorrectOptions, cardIndex)
-      }
+  updated() {
+    this.$emit('isQuestionHandler', false, 'Check');
+  },
 
-      const isCorrect = this.correctOptions.every(option => option.selected === true) &&
-        this.incorrectOptions.every(option => option.selected === false)
+  methods: {
+    selectCard(cardIndex, status) {
+      this.options[cardIndex].selected = status
+
+      const isCorrect = this.options.filter(option => option.isCorrect)
+      .every(option => option.selected === true) &&
+        this.options.filter(option => !option.isCorrect)
+      .every(option => option.selected === false)
 
       this.$emit('selectAnswer', {isCorrect: isCorrect, index: this.index})
     }

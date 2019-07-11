@@ -145,7 +145,42 @@ export default () => {
         },
       ]
     },
-
+    {
+      text: 'THIRTY-THREE THIRSTY THIEVES!',
+      desc: '',
+      id: 4,
+      type: 'go',
+      url_prefix: 'where-do-cavities-come-from',
+      answer: ['THIRTY', 'THREE', 'THIRSTY', 'THIEVES']
+    },
+    {
+      text: 'Ready to time your brushing?',
+      desc: '',
+      id: 5,
+      type: 'brush',
+      image: 'brush-twice.svg',
+      url_prefix: 'where-do-cavities-come-from',
+      time: 2
+    },
+    {
+      text: i18n.t("message.HappyMouth"),
+      desc: i18n.t("message.Dragthefoodsto"),
+      id: '37',
+      type: 'mouth',
+      url_prefix: 'happy-mouth',
+      variants: [
+        {
+          value: 'ice-cream',
+          image: 'ice-cream.svg',
+          isCorrect: false
+        },
+        {
+          value: 'brush-twice',
+          image: 'brush-twice.svg',
+          isCorrect: true
+        },
+      ]
+    }
   ]
 }
 }
