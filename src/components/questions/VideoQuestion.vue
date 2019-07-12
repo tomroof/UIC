@@ -159,6 +159,8 @@ export default {
     },
 
     continueClicked(){
+      if(!this.continueEnabled)
+        return;
       this.$emit("nextQuestion");
     }
 

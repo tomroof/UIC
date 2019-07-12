@@ -11,18 +11,21 @@
           v-if="currentQuestion.type === 'cards'"
           :question="currentQuestion"
           @nextQuestion="nextPage"
+          :key = "currentPage"
           />
 
         <SelectQuestion
           v-if="currentQuestion.type === 'select'"
           :question="currentQuestion"
           @nextQuestion="nextPage"
+                  :key = "currentPage"
         />
 
         <IconsQuestion
           v-if="currentQuestion.type === 'icons'"
           :question="currentQuestion"
           @nextQuestion="nextPage"
+                  :key = "currentPage"
            />
 
         <CalcQuestion
@@ -35,24 +38,28 @@
              v-if="currentQuestion.type === 'mouth'"
              :question="currentQuestion"
              @nextQuestion="nextPage"
+                     :key = "currentPage"
              />
 
         <VideoQuestion
                v-if="currentQuestion.type === 'video'"
                :question="currentQuestion"
                @nextQuestion="nextPage"
+                       :key = "currentPage"
               />
 
               <GoQuestion
                 v-if="currentQuestion.type === 'go'"
                 :question="currentQuestion"
                 @nextQuestion="nextPage"
+                        :key = "currentPage"
               />
 
               <BrushQuestion
                 v-if="currentQuestion.type === 'brush'"
                 :question="currentQuestion"
                 @nextQuestion="nextPage"
+                :key = "currentPage"
               />
 
 

@@ -45,11 +45,27 @@ import Button from '@/components/Button'
               selected: false
             }
           })
-        } || {}
+        }
     }
   },
 
     mounted() {
+    },
+
+    watch:{
+      question (newVal){
+        this.continueEnabled = false;
+        this.questionCard =  {
+          text: newVal.text,
+          desc: newVal.desc,
+          answers: newVal.answers.map((a) => {
+            return {
+              ...a,
+              selected: false
+            }
+          })
+        }
+      }
     },
 
 
@@ -64,6 +80,9 @@ import Button from '@/components/Button'
       },
 
      continueClicked(){
+       if(!this.continueEnabled)
+        return;
+       this.continueEnabled=false;
        this.$emit("nextQuestion");
      }
   },

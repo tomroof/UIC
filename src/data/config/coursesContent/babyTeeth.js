@@ -7,21 +7,99 @@ export default () => {
 
 
     {
-      text: 'THIRTY-THREE THIRSTY THIEVES!',
-      desc: '',
-      id: 4,
-      type: 'go',
-      url_prefix: 'where-do-cavities-come-from',
-      answers: ['THIRTY', 'THREE', 'THIRSTY', 'THIEVES']
+      text: i18n.t("message.Goodformeorgoodforcavity"),
+      desc: i18n.t("message.Clicktofindout"),
+      id: '13',
+      type: 'cards',
+      url_prefix: 'good-for-me',
+      answers: [
+        {
+          text: i18n.t("message.Apple"),
+          image: 'apple.svg',
+
+          answerData: {
+            text: i18n.t("message.Goodforme"),
+            image: 'apple.svg',
+            isCorrect: true
+          }
+        }
+      ]
     },
     {
-      text: 'Ready to time your brushing?',
-      desc: '',
-      id: 5,
-      type: 'brush',
-      image: 'brush-twice.svg',
-      url_prefix: 'where-do-cavities-come-from',
-      time: 15
+      text: i18n.t("message.Goodformeorgoodforcavity"),
+      desc: i18n.t("message.Clicktofindout"),
+      id: '14',
+      type: 'cards',
+      url_prefix: 'good-for-me',
+      answers: [
+        {
+          text: i18n.t("message.Carrots"),
+          image: 'carrot.svg',
+
+          answerData: {
+            text: i18n.t("message.Goodforme"),
+            image: 'carrot.svg',
+            isCorrect: true
+          }
+        }
+      ]
+    },
+    {
+      text: i18n.t("message.Goodformeorgoodforcavity"),
+      desc: i18n.t("message.Clicktofindout"),
+      id: '15',
+      type: 'cards',
+      url_prefix: 'good-for-me',
+      answers: [
+        {
+          text: i18n.t("message.Candy"),
+          image: 'chocolate.svg',
+
+          answerData: {
+            text: i18n.t("message.CavityMonster"),
+            image: 'chocolate.svg',
+            isCorrect: false
+          }
+        }
+      ]
+    },
+    {
+      text: i18n.t("message.Goodformeorgoodforcavity"),
+      desc: i18n.t("message.Clicktofindout"),
+      id: '16',
+      type: 'cards',
+      url_prefix: 'good-for-me',
+      answers: [
+        {
+          text: i18n.t("message.Peanuts"),
+          image: 'peanut.svg',
+
+          answerData: {
+            text: i18n.t("message.Goodforme"),
+            image: 'peanut.svg',
+            isCorrect: true
+          }
+        }
+      ]
+    },
+    {
+      text: i18n.t("message.Goodformeorgoodforcavity"),
+      desc: i18n.t("message.Clicktofindout"),
+      id: '17',
+      type: 'cards',
+      url_prefix: 'good-for-me',
+      answers: [
+        {
+          text: i18n.t("message.Chips"),
+          image: 'chips.svg',
+
+          answerData: {
+            text: i18n.t("message.CavityMonster"),
+            image: 'chips.svg',
+            isCorrect: false
+          }
+        }
+      ]
     },
 
   ]
