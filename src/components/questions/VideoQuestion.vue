@@ -160,7 +160,8 @@ export default {
 
     continueClicked(){
       if(!this.continueEnabled)
-        return;
+       return;
+      this.continueEnabled=false;
       this.$emit("nextQuestion");
     }
 

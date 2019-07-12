@@ -16,7 +16,7 @@
       </div>
     </div>
   </BaseQuestion>
-  <VueButton class="continue-button" :disabled="!сontinueEnabled"  @click="continueClicked" >
+  <VueButton class="continue-button" :disabled="!continueEnabled"  @click="continueClicked" >
     Continue
   </VueButton>
 </div>
@@ -35,7 +35,7 @@ export default {
 
   data() {
     return {
-      сontinueEnabled:false,
+      continueEnabled:false,
       questionCard: {...this.question},
       timer: null,
       isStartTimer: false,
@@ -64,7 +64,7 @@ export default {
 
       if (this.time <= 0) {
         clearInterval(this.timer);
-        this.сontinueEnabled = true;
+        this.continueEnabled = true;
       }
       --this.time
     },
@@ -74,8 +74,10 @@ export default {
     },
 
     continueClicked(){
-      if(this.сontinueEnabled)
-        this.$emit("nextQuestion");
+      if(!this.continueEnabled)
+       return;
+      this.continueEnabled=false;
+      this.$emit("nextQuestion");
     }
 
   }

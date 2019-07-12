@@ -32,6 +32,7 @@
              v-if="currentQuestion.type === 'calc'"
              :question="currentQuestion"
              @nextQuestion="nextPage"
+             :key = "currentPage"
              />
 
         <MouthQuestion
@@ -66,7 +67,6 @@
         <span v-if="currentQuestion.nextType != 'cards' && currentQuestion.nextLabel" class="next-label">{{ getI18n.nextUp }}: {{steps[index].nextLabel}}</span>
       </div>
     </div>
-
     <ModuleStartDialog v-if="showModuleStartDialog" :title="moduleStartTitle" :audio="moduleStartAudio" @endedAudio="endedIntroAudio" @hide="hideModuleStartDialog"></ModuleStartDialog>
   </div>
 </template>

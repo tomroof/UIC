@@ -84,8 +84,10 @@ export default {
       AudioManager.playAudio(this.getI18nAudio.audio_first_question_for_icons, this.$store.state.gender, this.endedAudio)
     },
     continueClicked(){
-      if(this.contineEnabled)
-        this.$emit("nextQuestion");
+      if(!this.continueEnabled)
+       return;
+      this.continueEnabled=false;
+      this.$emit("nextQuestion");
     }
   }
 }
