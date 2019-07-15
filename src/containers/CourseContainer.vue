@@ -216,7 +216,6 @@ export default {
       if(this.currentPage<this.steps.length-1)
         this.movePage(this.currentPage+1);
       else{
-        // complete course
         this.$store.commit('updateCoursePage', { id: this.courseId, page: 0})
         this.$store.commit('updateCourseProgress', { id: this.courseId, currentProgress: 100 })
         this.$router.push('/congrats/2')
@@ -233,62 +232,7 @@ export default {
       this.postAnswer(postAnswerData)
     },
 
-    nextClicked (currentPage) {
-      if (this.isQuestion) return false
-      if (this.steps[currentPage].options.nextDisabled) return false
-
-      let page = this.$refs.wizard.currentStep
-      let currentQuestionType = this.steps[page].type
-      let currentQuestionSlot = this.steps[page].slot
-      this.$store.commit('updateCoursCurrentStep', page)
-
-      if (!((currentQuestionType === 'icons') || (currentQuestionType === 'calc'))) {
-        this.sendAnswer(currentPage)
-      }
-
-      if (this.isAnswerCorrect !== null) {
-        // Play correct sound for only icons
-        if (currentQuestionType === 'icons') {
-          if (this.isAnswerCorrect === true) {
-            AudioManager.playAudio(this.getI18nAudio.audio_icons_select_correct, this.$store.state.gender)
-          } else {
-            AudioManager.playAudio(this.getI18nAudio.audio_icons_select_wrong, this.$store.state.gender)
-          }
-        }
-        else if (currentQuestionType === 'calc') {
-          if (currentQuestionSlot === '27') {
-            AudioManager.playAudio(this.getI18nAudio.audio_calc_question_1, this.$store.state.gender)
-          } else if (currentQuestionSlot === '28') {
-            AudioManager.playAudio(this.getI18nAudio.audio_calc_question_2, this.$store.state.gender)
-          } else if (currentQuestionSlot === '29' || currentQuestionSlot === '30') {
-            AudioManager.playAudio(this.getI18nAudio.audio_calc_question_3_4, this.$store.state.gender)
-          }
-        }
-
-        if (!this.checkAnswer()) {
-          this.openPopupFalse = true
-          return false
-        }
-        else {
-          if (currentQuestionType === 'icons' || currentQuestionType === 'calc' || currentQuestionType === 'select') {
-            this.openPopupTrue = true
-            this.calcProgress(currentPage)
-            return false
-          }
-        }
-      }
-      this.checkModuleComplete()
-
-      this.calcProgress(currentPage)
-      if (this.steps.length - 1 === currentPage) {
-        this.topicComplete()
-      } else {
-        this.movePage(currentPage + 1)
-        return true //return false if you want to prevent moving to next page
-      }
-    },
-
-    movePage (page) {
+      movePage (page) {
       let questionTitle = this.steps[page].url_prefix
       this.$router.push('/course/' + this.$route.params.url_prefix + "/" + questionTitle +  "/" + page)
     },
