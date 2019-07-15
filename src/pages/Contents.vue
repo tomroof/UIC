@@ -1,9 +1,11 @@
 <template>
   <div>
     <NavigationLayout :closeCourseButton="true" :menu="true">
-      <VueButton v-for="(question,index) in questions"  :key="index" @click="onclick(index)" >
+      <template v-for="(question,index) in questions"  >
+      <VueButton :key="index" :disabled="index>max_page" @click="onclick(index)"  >
         {{question.text}}
       </VueButton>
+    </template>
       </NavigationLayout>
 
   </div>
@@ -52,6 +54,10 @@ export default {
         return course.content;
     },
 
+    max_page(){
+      return this.getCourses[this.courseId -1].max_page;
+    },
+
     steps () {
       return this.course.questions.map((q, index) => {
         return {
@@ -84,6 +90,8 @@ export default {
   methods: {
 
     onclick(page){
+        if(page>this.max_page)
+          return;
         let questionTitle = this.steps[page].url_prefix
         this.$router.push('/course/' + this.$route.params.url_prefix + "/" + questionTitle +  "/" + page)
     }
