@@ -18,7 +18,7 @@
     </div>
   </BaseQuestion>
   <Button class="continue-button" :disabled="!continueEnabled" @click="continueClicked">
-    Continue
+    {{getI18n.continue}}
   </Button>
 </div>
 </template>
@@ -29,7 +29,6 @@ import BaseQuestion from '@/components/questions/BaseQuestion'
 import config from '@/data/config'
 import { mapGetters } from 'vuex'
 import Button from '@/components/Button'
-
 export default {
   props: ['question'],
   components: {
@@ -57,8 +56,18 @@ export default {
     },
 
     getI18n() {
-      return config().restText.popups
+      return config().restText
     },
+
+      getI18n() {
+        return config().restText
+      },
+
+      getI18nAudio() {
+        return config().audio
+      },
+
+
 
     buttonTitle () {
       return this.finishedVideoPlaying === true

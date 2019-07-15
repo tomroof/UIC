@@ -13,7 +13,7 @@
     </div>
   </BaseQuestion>
   <Button class="continue-button" :disabled="!continueEnabled"  @click="continueClicked" >
-    Continue
+    {{getI18n.continue}}
   </Button>
   <popup :type="question.type" :openPopupFalse="openPopupFalse" :openPopupTrue="openPopupTrue" @closePopup="onClosePopup" @nextQuestion="onNextPage" />
   </div>
@@ -24,7 +24,7 @@ import AnswerIconCard from '@/components/cards/AnswerIconCard'
 import BaseQuestion from '@/components/questions/BaseQuestion'
 import Popup from '@/components/Popup'
 import Button from '@/components/Button'
-
+import config from '@/data/config'
 import { events } from '@/helpers/events'
 
   export default {
@@ -64,6 +64,16 @@ import { events } from '@/helpers/events'
     },
 
     updated() {
+    },
+
+    computed:{
+      getI18n() {
+        return config().restText
+      },
+
+      getI18nAudio() {
+        return config().audio
+      },
     },
 
     methods: {

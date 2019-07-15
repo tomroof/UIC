@@ -50,7 +50,7 @@
   </BaseQuestion>
   <popup :customPopup="question.customPopup" :openPopupTrue="openPopupTrue" @closePopup="onClosePopup" @nextQuestion="onNextPage"/>
   <Button class="continue-button" :disabled="!continueEnabled" @click="continueClicked">
-    Continue
+  {{getI18n.continue}}
   </Button>
 </div>
 </template>
@@ -61,7 +61,7 @@
   import Popup from '@/components/Popup'
   import { events } from '@/helpers/events'
   import Button from '@/components/Button'
-
+  import config from '@/data/config'
   import draggable from 'vuedraggable'
 
   export default {
@@ -79,6 +79,16 @@
     },
 
     updated() {
+    },
+
+    computed:{
+      getI18n() {
+        return config().restText
+      },
+
+      getI18nAudio() {
+        return config().audio
+      },
     },
 
     data () {

@@ -15,7 +15,7 @@
     </div>
   </BaseQuestion>
   <Button class="continue-button" :disabled="!continueEnabled" @click="continueClicked">
-    Continue
+    {{getI18n.continue}}
   </Button>
 </div>
 </template>
@@ -24,6 +24,7 @@
 import AnswerCard from '@/components/cards/AnswerCard'
 import BaseQuestion from '@/components/questions/BaseQuestion'
 import Button from '@/components/Button'
+import config from '@/data/config'
 
   export default {
     props: ['question'],
@@ -67,7 +68,15 @@ import Button from '@/components/Button'
         }
       }
     },
+    computed:{
+      getI18n() {
+        return config().restText
+      },
 
+      getI18nAudio() {
+        return config().audio
+      },
+    },
 
     methods: {
 

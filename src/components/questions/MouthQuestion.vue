@@ -31,7 +31,7 @@
   </BaseQuestion>
   <popup :answers="fields[2]" :type="question.type" :openPopupFalse="openPopupFalse" :openPopupTrue="openPopupTrue"  @closePopup="onClosePopup" @nextQuestion="onNextPage"/>
   <Button class="continue-button" :disabled="!continueEnabled"  >
-    Continue
+    {{getI18n.continue}}
   </Button>
 </div>
 </template>
@@ -45,7 +45,7 @@
   import Popup from '@/components/Popup'
   import draggable from 'vuedraggable'
   import Button from '@/components/Button'
-
+  import config from '@/data/config'
 
   export default {
     props: ['question'],
@@ -91,7 +91,14 @@
       this.loadMouthAnimation()
     },
 
-    computed: {
+    computed:{
+      getI18n() {
+        return config().restText
+      },
+
+      getI18nAudio() {
+        return config().audio
+      },
     },
 
     watch: {

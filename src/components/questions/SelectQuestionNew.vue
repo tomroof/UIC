@@ -7,7 +7,7 @@
 
   </BaseQuestion>
   <Button class="continue-button" :disabled="!continueEnabled"  @click="continueClicked" >
-    Continue
+    {{getI18n.continue}}
   </Button>
   <popup :type="question.type" :openPopupFalse="openPopupFalse" :openPopupTrue="openPopupTrue" @closePopup="onClosePopup" @nextQuestion="onNextPage" />
 </div>
@@ -19,7 +19,7 @@ import AnswerSelectCard from '@/components/cards/AnswerSelectCard'
 import Popup from '@/components/Popup'
 import { events } from '@/helpers/events'
 import Button from '@/components/Button'
-
+import config from '@/data/config'
 export default {
   props: ['question'],
 
@@ -50,6 +50,16 @@ export default {
   },
 
   mounted(){
+  },
+
+  computed:{
+    getI18n() {
+      return config().restText
+    },
+
+    getI18nAudio() {
+      return config().audio
+    },
   },
 
   beforeDestroy(){

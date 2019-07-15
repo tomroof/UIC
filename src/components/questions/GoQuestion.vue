@@ -9,7 +9,7 @@
     </div>
   </BaseQuestion>
   <VueButton class="continue-button" :disabled="!continueEnabled"  @click="continueClicked" >
-    Continue
+    {{getI18n.continue}}
   </VueButton>
 
 </div>
@@ -51,7 +51,16 @@ export default {
 
     text() {
       return this.questionCard.answers[this.textIndex]
-    }
+    },
+
+      getI18n() {
+        return config().restText
+      },
+
+      getI18nAudio() {
+        return config().audio
+      },
+
   },
 
   mounted() {

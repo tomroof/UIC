@@ -17,13 +17,14 @@
     </div>
   </BaseQuestion>
   <VueButton class="continue-button" :disabled="!continueEnabled"  @click="continueClicked" >
-    Continue
+    {{getI18n.continue}}
   </VueButton>
 </div>
 </template>
 <script>
 import BaseQuestion from '@/components/questions/BaseQuestion'
 import VueButton from '@/components/Button'
+import config from '@/data/config'
 
 export default {
   props: ['question'],
@@ -47,6 +48,16 @@ export default {
 
   mounted() {
     this.getCountdown()
+  },
+
+  computed:{
+    getI18n() {
+      return config().restText
+    },
+
+    getI18nAudio() {
+      return config().audio
+    },
   },
 
   methods: {
