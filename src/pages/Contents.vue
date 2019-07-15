@@ -1,7 +1,7 @@
 <template>
   <div>
     <NavigationLayout :closeCourseButton="true" :menu="true">
-      <VueButton v-for="(question,index) in questions"  :key="index">
+      <VueButton v-for="(question,index) in questions"  :key="index" @click="onclick(index)" >
         {{question.text}}
       </VueButton>
       </NavigationLayout>
@@ -46,8 +46,34 @@ export default {
       }
     },
 
+    course () {
+      let course = config().courses[this.courseId-1];
+      if(this.courseId && course && course.content)
+        return course.content;
+    },
+
+    steps () {
+      return this.course.questions.map((q, index) => {
+        return {
+          label: q.text,
+          slot: q.id,
+          url_prefix: q.url_prefix,
+          type: this.course.questions[index].type,
+          options: {nextDisabled: this.course.questions[index] ?
+            (this.course.questions[index].type === 'icons' ||
+              this.course.questions[index].type === 'cards' ||
+              this.course.questions[index].type === 'calc' ||
+              this.course.questions[index].type === 'mouth' ||
+              this.course.questions[index].type === 'select'):
+                false},
+          nextLabel: this.course.questions[index + 1] ? this.course.questions[index + 1].text : null,
+          nextType: this.course.questions[index + 1] ? this.course.questions[index + 1].type : null,
+        }
+      })
+    },
+
     questions (){
-      return this.getCourses[this.courseId-1].content.questions;
+      return this.course.questions;
     },
 
     getI18nAudio() {
@@ -56,6 +82,11 @@ export default {
   },
 
   methods: {
+
+    onclick(page){
+        let questionTitle = this.steps[page].url_prefix
+        this.$router.push('/course/' + this.$route.params.url_prefix + "/" + questionTitle +  "/" + page)
+    }
   }
 }
 </script>

@@ -167,16 +167,12 @@
 
 
   .continue-button{
-    position: fixed;
-    bottom: 20px;
-    left: 50%;
-    transform: translateX(-50%);
-    max-width: 370px;
-    font-family: 'Zilla Slab';
-    font-size: 15px;
-    color: #FFFFFF;
-    letter-spacing: 0.5px;
-    text-align: center;
+   position: fixed;
+   bottom: 20px;
+   left: 50%;
+   transform: translateX(-50%);
+   max-width: 370px;
+   text-align: center;
   }
 
 .dragArea {

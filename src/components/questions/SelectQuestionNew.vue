@@ -109,18 +109,14 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-  .continue-button{
-    position: fixed;
-    bottom: 20px;
-    left: 50%;
-    transform: translateX(-50%);
-    max-width: 370px;
-    font-family: 'Zilla Slab';
-    font-size: 15px;
-    color: #FFFFFF;
-    letter-spacing: 0.5px;
-    text-align: center;
-  }
+.continue-button{
+ position: fixed;
+ bottom: 20px;
+ left: 50%;
+ transform: translateX(-50%);
+ max-width: 370px;
+ text-align: center;
+}
   .question-content {
     display: flex;
     flex-flow: row wrap;

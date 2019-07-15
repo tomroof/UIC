@@ -99,6 +99,15 @@ import config from '@/data/config'
 </script>
 
 <style lang="scss" scoped>
+.continue-button{
+ position: fixed;
+ bottom: 20px;
+ left: 50%;
+ transform: translateX(-50%);
+ max-width: 370px;
+ text-align: center;
+}
+
 .answers {
   display: flex;
   flex-wrap: wrap;
