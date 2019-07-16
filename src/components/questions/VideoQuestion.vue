@@ -233,13 +233,7 @@ export default {
   }
 }
 
-.video {
-  position: absolute;
-  top: 40%;
-  left: -20px;
-  width: calc(100% + 40px);
-  min-height: 200px;
-}
+
 
 .watch-button {
   cursor: pointer;
@@ -259,12 +253,9 @@ export default {
   margin: 30px auto;
   color: #FFFFFF;
   box-shadow: 0px 30px 29px -22px rgba(0, 0, 0, 0.39);
-  position: absolute;
   z-index: 10;
-  top: 35%;
-  left: 50%;
-  transform: translate(-50%, -50%);
 
+  transform: translateY(-305%);
   display: flex;
   flex-flow: row nowrap;
   align-items: center;
@@ -277,13 +268,10 @@ export default {
 }
 
 .player {
-  position: absolute;
-  left: -20px;
   width: calc(100% + 40px);
-  top: 50%;
-  transform: translateY(-30%);
   height: 200px;
-
+  margin-left: -20px;
+  margin-right: -20px;
   div {
     height: 100%;
   }

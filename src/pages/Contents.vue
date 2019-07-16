@@ -1,11 +1,13 @@
 <template>
   <div>
     <NavigationLayout :closeCourseButton="true" :menu="true">
+      <div class="questions-container">
       <template v-for="(question,index) in questions"  >
-      <VueButton :key="index" :disabled="index>max_page" @click="onclick(index)"  >
-        {{question.text}}
-      </VueButton>
-    </template>
+        <VueButton :key="index" :disabled="index>max_page" @click="onclick(index)"  >
+          {{question.text}}
+        </VueButton>
+      </template>
+    </div>
       </NavigationLayout>
 
   </div>
@@ -100,18 +102,11 @@ export default {
 </script>
 
 <style scoped lang="scss">
-  .next-btn {
-    background: #278AB5;
-    box-shadow: 0 -1px 22px 0 rgba(52,84,122,0.08);
-    color: #fff;
-    text-align: center;
-    height: 50px;
-    line-height: 50px;
-    width: 100%;
-    position: fixed;
-    left: 0;
-    bottom: 0;
-    cursor: pointer;
-    z-index: 20;
+
+  .questions-container{
+     overflow-y: scroll;
+     height: 83vh;
+     margin-top: 15px;
   }
+
 </style>
