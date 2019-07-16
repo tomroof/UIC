@@ -51,6 +51,7 @@ import config from '@/data/config'
   },
 
     mounted() {
+      playAudio("questionLoaded");
     },
 
     watch:{
@@ -76,6 +77,7 @@ import config from '@/data/config'
       getI18nAudio() {
         return config().audio
       },
+
     },
 
     methods: {
@@ -93,7 +95,23 @@ import config from '@/data/config'
         return;
        this.continueEnabled=false;
        this.$emit("nextQuestion");
+     },
+
+     playAudio(HookName){
+       let audioHooks=this.question.audioHooks;
+       if(!audioHooks)
+        return;
+       let to_play = audioHooks[HookName];
+       if(!to_play)
+        return;
+       let contEnabler = this.continueEnabled;
+       contEnabler = false;
+       AudioManager.playAudio(to_play, this.$store.state.gender,
+       function(){
+         contEnabler = true;
+       })
      }
+
   },
 }
 </script>

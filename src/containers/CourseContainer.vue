@@ -64,7 +64,7 @@
               />
 
 
-        <span v-if="currentQuestion.nextType != 'cards' && currentQuestion.nextLabel" class="next-label">{{ getI18n.nextUp }}: {{steps[index].nextLabel}}</span>
+        <span v-if="currentStep.nextType != 'cards' && currentStep.nextLabel" class="next-label">{{ getI18n.nextUp }}: {{currentStep.nextLabel}}</span>
       </div>
     </div>
     <ModuleStartDialog v-if="showModuleStartDialog" :title="moduleStartTitle" :audio="moduleStartAudio" @endedAudio="endedIntroAudio" @hide="hideModuleStartDialog"></ModuleStartDialog>
@@ -180,6 +180,10 @@ export default {
 
     getI18nAudio() {
       return config().audio
+    },
+
+    currentStep(){
+      return this.steps[this.currentPage];
     },
 
     steps () {
