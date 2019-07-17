@@ -25,6 +25,7 @@ import AnswerCard from '@/components/cards/AnswerCard'
 import BaseQuestion from '@/components/questions/BaseQuestion'
 import Button from '@/components/Button'
 import config from '@/data/config'
+import AudioManager from '@/helpers/audioManager'
 
   export default {
     props: ['question'],
@@ -51,7 +52,7 @@ import config from '@/data/config'
   },
 
     mounted() {
-      playAudio("questionLoaded");
+      this.playAudio("questionLoaded");
     },
 
     watch:{

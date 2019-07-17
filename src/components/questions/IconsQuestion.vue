@@ -26,6 +26,7 @@ import Popup from '@/components/Popup'
 import Button from '@/components/Button'
 import config from '@/data/config'
 import { events } from '@/helpers/events'
+import AudioManager from '@/helpers/audioManager'
 
   export default {
     props: ['question'],
@@ -60,7 +61,7 @@ import { events } from '@/helpers/events'
     },
 
     mounted() {
-
+      this.playAudio("questionLoaded");
     },
 
     updated() {
@@ -86,10 +87,14 @@ import { events } from '@/helpers/events'
 
       continueClicked(){
         const isCorrect = Boolean(this.questionCard.answers.find( (a) => a.selected && a.isCorrect));
-        if(isCorrect)
+        if(isCorrect){
           this.openPopupTrue = true;
-        else
+          this.playAudio("questionRight");
+        }
+        else{
           this.openPopupFalse = true;
+          this.playAudio("questionWrong");
+        }
       },
 
       onClosePopup(){
@@ -99,7 +104,23 @@ import { events } from '@/helpers/events'
 
       onNextPage(){
         this.$emit("nextQuestion");
+      },
+
+      playAudio(HookName){
+        let audioHooks=this.question.audioHooks;
+        if(!audioHooks)
+         return;
+        let to_play = audioHooks[HookName];
+        if(!to_play)
+         return;
+        let contEnabler = this.continueEnabled;
+        contEnabler = false;
+        AudioManager.playAudio(to_play, this.$store.state.gender,
+        function(){
+          contEnabler = true;
+        })
       }
+
     }
   }
 </script>
