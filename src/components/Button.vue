@@ -1,5 +1,5 @@
 <template>
-  <div @click="$emit('click')" :class="{'button': true, 'button-popup': popup, 'disabled': disabled}">
+  <div @click="click" :class="{'button': true, 'button-popup': popup, 'disabled': disabled}">
     <slot></slot>
   </div>
 </template>
@@ -9,7 +9,15 @@
     props: {
       popup: Boolean,
       disabled: Boolean
+    },
+
+  methods:{
+    click(){
+      if(!this.disabled)
+       this.$emit('click')
     }
+  }
+
   }
 </script>
 
@@ -33,7 +41,7 @@
   box-shadow: 0px 30px 29px -22px rgba(0, 0, 0, 0.39)
 }
 
-.disabled { 
+.disabled {
   background-color: #3d919c;
   color: #9ac5bc;
 }
