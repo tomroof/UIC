@@ -25,6 +25,7 @@
 import BaseQuestion from '@/components/questions/BaseQuestion'
 import VueButton from '@/components/Button'
 import config from '@/data/config'
+import AudioMixin from '@/mixins/audioMixin'
 
 export default {
   props: ['question'],
@@ -47,6 +48,7 @@ export default {
   },
 
   mounted() {
+    this.playAudio('questionLoaded')
     this.getCountdown()
   },
 
@@ -61,6 +63,8 @@ export default {
   },
 
   methods: {
+    ...AudioMixin,
+
      startTimer() {
       this.isStartTimer = true
       this.timer = setInterval(() => {
@@ -89,7 +93,8 @@ export default {
        return;
       this.continueEnabled=false;
       this.$emit("nextQuestion");
-    }
+    },
+
 
   }
 }

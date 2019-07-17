@@ -2,7 +2,7 @@
   <div>
   <BaseQuestion :questionCard="questionCard">
     <div class="question-content" slot="questionContent">
-      <button v-if="!isAudioEnd" class="go-button" @click="playAudio">GO</button>
+      <button v-if="!isAudioEnd" class="go-button" @click="playAudio('goClicked',this.endedAudio)">GO</button>
       <div v-else class="text">
         {{ `"${text}"` }}
       </div>
@@ -20,6 +20,7 @@ import BaseQuestion from '@/components/questions/BaseQuestion'
 import AudioManager from '@/helpers/audioManager'
 import VueButton from '@/components/Button'
 import config from '@/data/config/index'
+import AudioMixin from '@/mixins/audioMixin'
 
 export default {
   name: 'GoQuestion',
@@ -64,9 +65,12 @@ export default {
   },
 
   mounted() {
+    this.playAudio('questionLoaded')
   },
 
   methods: {
+    ...AudioMixin,
+
     endedAudio() {
       this.isAudioEnd = true
       this.questionCard.text = ''
@@ -89,15 +93,15 @@ export default {
 
     },
 
-    playAudio() {
-      AudioManager.playAudio(this.getI18nAudio.audio_first_question_for_icons, this.$store.state.gender, this.endedAudio)
-    },
+
     continueClicked(){
       if(!this.continueEnabled)
        return;
       this.continueEnabled=false;
       this.$emit("nextQuestion");
-    }
+    },
+
+
   }
 }
 </script>

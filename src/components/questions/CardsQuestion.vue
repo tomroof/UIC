@@ -25,7 +25,7 @@ import AnswerCard from '@/components/cards/AnswerCard'
 import BaseQuestion from '@/components/questions/BaseQuestion'
 import Button from '@/components/Button'
 import config from '@/data/config'
-import AudioManager from '@/helpers/audioManager'
+import AudioMixin from '@/mixins/audioMixin'
 
   export default {
     props: ['question'],
@@ -83,6 +83,8 @@ import AudioManager from '@/helpers/audioManager'
 
     methods: {
 
+      ...AudioMixin,
+
       handleAnswerClick (answer) {
         this.questionCard.answers.forEach((a) => a.selected = false)
         this.questionCard.answers.find((a) => a.text === answer.text).selected = true
@@ -98,20 +100,7 @@ import AudioManager from '@/helpers/audioManager'
        this.$emit("nextQuestion");
      },
 
-     playAudio(HookName){
-       let audioHooks=this.question.audioHooks;
-       if(!audioHooks)
-        return;
-       let to_play = audioHooks[HookName];
-       if(!to_play)
-        return;
-       let contEnabler = this.continueEnabled;
-       contEnabler = false;
-       AudioManager.playAudio(to_play, this.$store.state.gender,
-       function(){
-         contEnabler = true;
-       })
-     }
+
 
   },
 }

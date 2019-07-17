@@ -46,6 +46,7 @@
   import draggable from 'vuedraggable'
   import Button from '@/components/Button'
   import config from '@/data/config'
+ import AudioMixin from '@/mixins/audioMixin'
 
   export default {
     props: ['question'],
@@ -89,6 +90,7 @@
 
     mounted () {
       this.loadMouthAnimation()
+      this.playAudio('questionLoaded')
     },
 
     computed:{
@@ -105,6 +107,8 @@
     },
 
     methods: {
+      ...AudioMixin,
+
       handleDragChange (e) {
         if (e.added.element.isCorrect) {
           this.playSmileAnimation()
@@ -186,7 +190,10 @@
 
       onNextPage(){
         this.$emit("nextQuestion");
-      }
+      },
+
+
+
 
 
 

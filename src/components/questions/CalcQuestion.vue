@@ -63,6 +63,8 @@
   import Button from '@/components/Button'
   import config from '@/data/config'
   import draggable from 'vuedraggable'
+  import AudioMixin from '@/mixins/audioMixin'
+
 
   export default {
     props: ['question'],
@@ -75,7 +77,7 @@
     },
 
     mounted() {
-
+        this.playAudio('questionLoaded')
     },
 
     updated() {
@@ -126,6 +128,8 @@
     },
 
     methods: {
+      ...AudioMixin,
+
       handleDragChange (e) {
         this.isCorrect = this.fields[0].length == 1 && this.fields[1].length == 1;
         this.continueEnabled = this.fields[0].length == 1 && this.fields[1].length == 1;
@@ -141,6 +145,7 @@
       },
 
       continueClicked(){
+          this.playAudio('questionRight')
           this.openPopupTrue = true;
       },
 
@@ -152,7 +157,8 @@
 
       onNextPage(){
         this.$emit("nextQuestion");
-      }
+      },
+
     }
   }
 </script>

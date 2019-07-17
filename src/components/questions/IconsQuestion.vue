@@ -27,6 +27,7 @@ import Button from '@/components/Button'
 import config from '@/data/config'
 import { events } from '@/helpers/events'
 import AudioManager from '@/helpers/audioManager'
+import AudioMixin from '@/mixins/audioMixin'
 
   export default {
     props: ['question'],
@@ -106,20 +107,8 @@ import AudioManager from '@/helpers/audioManager'
         this.$emit("nextQuestion");
       },
 
-      playAudio(HookName){
-        let audioHooks=this.question.audioHooks;
-        if(!audioHooks)
-         return;
-        let to_play = audioHooks[HookName];
-        if(!to_play)
-         return;
-        let contEnabler = this.continueEnabled;
-        contEnabler = false;
-        AudioManager.playAudio(to_play, this.$store.state.gender,
-        function(){
-          contEnabler = true;
-        })
-      }
+      ...AudioMixin
+
 
     }
   }
