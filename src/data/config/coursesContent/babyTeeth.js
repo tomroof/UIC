@@ -8,6 +8,26 @@ export default () => {
   name: i18n.t("message.BabyTeeth"),
   questions: [
     {
+      text: i18n.t("message.Wheredocavities"),
+      desc: '',
+      id: '4',
+      type: 'icons',
+      endOfModule: true,
+      url_prefix: 'where-do-cavities-come-from',
+      answers: [
+        {
+          text: i18n.t("message.Dancing"),
+          image: 'dancing.svg',
+          isCorrect: false
+        },
+        {
+          text: i18n.t("message.Sugarydrinks"),
+          image: 'soda.svg',
+          isCorrect: true
+        },
+      ]
+    },
+    {
       text: i18n.t("message.Goodformeorgoodforcavity"),
       desc: i18n.t("message.Clicktofindout"),
       id: '13',

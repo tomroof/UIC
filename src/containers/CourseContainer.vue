@@ -67,20 +67,25 @@
         <span v-if="currentStep.nextType != 'cards' && currentStep.nextLabel" class="next-label">{{ getI18n.nextUp }}: {{currentStep.nextLabel}}</span>
       </div>
     </div>
+    <RewardCard v-if="showRewardCard" @continue="nextPage"></RewardCard>
     <ModuleStartDialog v-if="showModuleStartDialog" :title="moduleStartTitle" :audio="moduleStartAudio" @endedAudio="endedIntroAudio" @hide="hideModuleStartDialog"></ModuleStartDialog>
   </div>
 </template>
 
 <script>
+// questions
 import CardsQuestion from '@/components/questions/CardsQuestion'
 import VideoQuestion from '@/components/questions/VideoQuestion'
 import IconsQuestion from '@/components/questions/IconsQuestion'
 import CalcQuestion from '@/components/questions/CalcQuestion'
 import MouthQuestion from '@/components/questions/MouthQuestion'
 import SelectQuestion from '@/components/questions/SelectQuestion'
-import ModuleStartDialog from '@/components/dialogs/ModuleStartDialog'
 import GoQuestion from '@/components/questions/GoQuestion'
 import BrushQuestion from '@/components/questions/BrushQuestion'
+
+// popups
+import RewardCard from '@/components/cards/RewardCard'
+import ModuleStartDialog from '@/components/dialogs/ModuleStartDialog'
 import { mapActions, mapGetters } from 'vuex'
 
 
@@ -103,24 +108,13 @@ export default {
   data () {
     return {
       showModuleStartDialog: false,
+      showRewardCard: false,
       moduleStartTitle: '',
       moduleStartAudio: null
     }
   },
 
   watch: {
-    clickRewardContinue:{
-      handler: function (newVal) {
-        if (newVal === true) {
-          let page = parseInt(this.$route.params.id)
-          let currentQuestionType = this.steps[page].type
-          if (currentQuestionType === 'calc') {
-            this.checkAudioPlay(page)
-          }
-        }
-      },
-      immediate: true
-    },
     '$route' (to, from) {
       let page = parseInt(this.$route.params.id)
       this.$store.commit('updateCoursePage', { id: this.courseId, page: page})
@@ -136,7 +130,8 @@ export default {
     SelectQuestion,
     ModuleStartDialog,
     GoQuestion,
-    BrushQuestion
+    BrushQuestion,
+    RewardCard
   },
 
   mounted() {
@@ -217,14 +212,30 @@ export default {
 
 
     nextPage(){
+      // end of module case --- show reward card and wait for it to call agian
+      if(this.currentQuestion.endOfModule){
+        if(this.showRewardCard){
+          this.showRewardCard = false;
+        }
+        else{
+          this.showRewardCard = true;
+          return;
+        }
+
+      }
+
+      // next page case
       if(this.currentPage<this.steps.length-1)
         this.movePage(this.currentPage+1);
+      /// end of course case
       else{
         this.$store.commit('updateCoursePage', { id: this.courseId, page: 0})
         this.$store.commit('updateCourseProgress', { id: this.courseId, currentProgress: 100 })
         this.$router.push('/congrats/2')
       }
     },
+
+
 
 
     hideModuleStartDialog () {
@@ -274,94 +285,6 @@ export default {
   border-radius: 4px;
 }
 
-.course-container {
-  /deep/ .wizard__steps {
-    height: auto;
-    display: none;
-    justify-content: center;
-    max-width: calc(100% - 40px);
-  }
-
-  /deep/ .wizard__step {
-    height: auto;
-    width: auto !important;
-    min-width: 25px;
-    margin-left: 5px;
-    margin-right: 5px;
-
-    &.active {
-      .wizard__step__indicator {
-        background-color: #87DBA2;
-        opacity: 1;
-      }
-    }
-
-    .wizard__step__indicator {
-      border: none;
-      margin-left: auto;
-      width: 25px;
-      height: 6px;
-      border-radius: 5px;
-      background-color: #87DBA2;
-      opacity: 0.2;
-    }
-
-    .wizard__step__line,
-    .wizard__step__label {
-      display: none;
-    }
-  }
-
-  /deep/ .wizard__arrow {
-    display: none;
-  }
-
-  /deep/ .wizard__body {
-    margin: 0;
-    background-color: transparent;
-    border: none;
-
-    .wizard__body__step {
-      padding: 0;
-    }
-
-    .wizard__body__actions {
-      background-color: transparent;
-      border: none;
-      display: flex;
-      justify-content: center;
-
-      .wizard__next,
-      .final-step {
-        position: fixed;
-        bottom: 30px;
-        left: 50%;
-        transform: translateX(-50%);
-        font-family: 'Zilla Slab';
-        font-weight: 300;
-        font-size: 19px;
-        height: 50px;
-        text-align: center;
-        letter-spacing: 0.94px;
-
-        background-color: #278ab5;
-        border-radius: 100px;
-        margin: 30px auto;
-        color: #FFFFFF;
-        box-shadow: 0px 30px 29px -22px rgba(0, 0, 0, 0.39);
-        width: 300px;
-      }
-
-      .pull-left {
-        display: none;
-      }
-
-      .wizard__next .vgw-icon {
-        display: none;
-      }
-    }
-  }
-}
 
 .next-label {
   position: fixed;

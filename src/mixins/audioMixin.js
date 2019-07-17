@@ -9,12 +9,12 @@ export default {
     let to_play = audioHooks[HookName];
     if(!to_play)
      return;
-    let contEnabler = this.continueEnabled;
-    let beforeState = contEnabler;
-    contEnabler = false;
+    let contEnabler = this;
+    let beforeState = this.continueEnabled;
+    contEnabler.continueEnabled = false;
     AudioManager.playAudio(to_play, this.$store.state.gender,
     function(){
-      contEnabler = beforeState;
+      contEnabler.continueEnabled  = beforeState;
       if(callback)
         callback();
     })
