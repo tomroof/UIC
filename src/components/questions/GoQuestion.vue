@@ -2,7 +2,7 @@
   <div>
   <BaseQuestion :questionCard="questionCard">
     <div class="question-content" slot="questionContent">
-      <button v-if="!isAudioEnd" class="go-button" @click="playAudio('goClicked',this.endedAudio)">GO</button>
+      <button v-if="!isAudioEnd" class="go-button" @click="playAudio('goClicked',endedAudio)">GO</button>
       <div v-else class="text">
         {{ `"${text}"` }}
       </div>
