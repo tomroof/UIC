@@ -7,63 +7,12 @@
     <div class="question-container">
       <div>
 
-        <CardsQuestion
-          v-if="currentQuestion.type === 'cards'"
-          :question="currentQuestion"
-          @nextQuestion="nextPage"
-          :key = "currentPage"
-          />
-
-        <SelectQuestion
-          v-if="currentQuestion.type === 'select'"
-          :question="currentQuestion"
-          @nextQuestion="nextPage"
-                  :key = "currentPage"
-        />
-
-        <IconsQuestion
-          v-if="currentQuestion.type === 'icons'"
-          :question="currentQuestion"
-          @nextQuestion="nextPage"
-                  :key = "currentPage"
-           />
-
-        <CalcQuestion
-             v-if="currentQuestion.type === 'calc'"
-             :question="currentQuestion"
-             @nextQuestion="nextPage"
-             :key = "currentPage"
-             />
-
-        <MouthQuestion
-             v-if="currentQuestion.type === 'mouth'"
-             :question="currentQuestion"
-             @nextQuestion="nextPage"
-                     :key = "currentPage"
-             />
-
-        <VideoQuestion
-               v-if="currentQuestion.type === 'video'"
-               :question="currentQuestion"
-               @nextQuestion="nextPage"
-                       :key = "currentPage"
-              />
-
-              <GoQuestion
-                v-if="currentQuestion.type === 'go'"
-                :question="currentQuestion"
-                @nextQuestion="nextPage"
-                        :key = "currentPage"
-              />
-
-              <BrushQuestion
-                v-if="currentQuestion.type === 'brush'"
-                :question="currentQuestion"
-                @nextQuestion="nextPage"
-                :key = "currentPage"
-              />
-
-
+        <component v-bind:is="currentQuestionComponent"
+        :question="currentQuestion"
+        @nextQuestion="nextPage"
+        :key = "currentPage"
+        ></component>
+        
         <span v-if="currentStep.nextType != 'cards' && currentStep.nextLabel" class="next-label">{{ getI18n.nextUp }}: {{currentStep.nextLabel}}</span>
       </div>
     </div>
@@ -145,6 +94,26 @@ export default {
       return  parseInt(this.$route.params.id)
     },
 
+    currentQuestionComponent(){
+      switch(this.currentQuestion.type){
+        case "cards":
+          return "CardsQuestion";
+        case "select":
+          return "SelectQuestion";
+        case "icons":
+            return "IconsQuestion";
+        case "calc":
+              return "CalcQuestion";
+        case "mouth":
+              return "MouthQuestion";
+        case "video":
+              return "VideoQuestion";
+        case "go":
+              return "GoQuestion";
+        case "brush":
+              return "BrushQuestion";
+      }
+    },
 
     currentQuestion(){
        return this.course.questions[this.currentPage];
