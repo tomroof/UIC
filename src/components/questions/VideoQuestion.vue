@@ -1,4 +1,5 @@
 <template>
+  <div>
   <BaseQuestion :questionCard="questionCard">
     <div class="question-content" slot="questionContent">
       <div class="answers">
@@ -11,26 +12,29 @@
            @ended="onPlayerEnded($event)"
            >
           </video-player>
-          <ComponentButton v-if="showPlayButton" class="watch-button" @click="playVideo"><img :src="image">{{buttonTitle}}</ComponentButton>
+          <Button v-if="showPlayButton" class="watch-button" @click="playVideo"><img :src="image">{{buttonTitle}}</Button>
         </div>
       </div>
     </div>
   </BaseQuestion>
+  <Button class="continue-button" :disabled="!continueEnabled" @click="continueClicked">
+    {{getI18n.continue}}
+  </Button>
+</div>
 </template>
 
 <script>
 import AnswerCard from '@/components/cards/AnswerCard'
 import BaseQuestion from '@/components/questions/BaseQuestion'
-import ComponentButton from '@/components/Button'
 import config from '@/data/config'
 import { mapGetters } from 'vuex'
-
+import Button from '@/components/Button'
 export default {
   props: ['question'],
   components: {
     BaseQuestion,
     AnswerCard,
-    ComponentButton
+    Button
   },
 
   created() {
@@ -52,8 +56,18 @@ export default {
     },
 
     getI18n() {
-      return config().restText.popups
+      return config().restText
     },
+
+      getI18n() {
+        return config().restText
+      },
+
+      getI18nAudio() {
+        return config().audio
+      },
+
+
 
     buttonTitle () {
       return this.finishedVideoPlaying === true
@@ -66,9 +80,7 @@ export default {
     },
 
     isWatched(){
-      let val = this.$store.getters.getIsWatched(this.videoId);
-      this.$emit('videoIsWatched',val);
-      return val;
+      return this.$store.getters.getIsWatched(this.videoId);
     }
 
 
@@ -80,7 +92,10 @@ export default {
         width: 0,
         height: 0
       },
-      questionCard: this.question || {},
+      continueEnabled: false,
+      questionCard: {
+        text: this.question.text,
+      },
       showPlayButton: true,
       finishedVideoPlaying: false,
       playerOptions: {
@@ -95,16 +110,17 @@ export default {
   },
 
   watch: {
-    question:{
-      handler: function (newVal) {
-        this.questionCard = newVal
+    isWatched: {
+      handler: function(newVal){
+        this.continueEnabled = newVal;
       },
       immediate: true
-    },
-    isWatched (new_val,old_val) {
-      if (new_val)
-        this.$emit('videoIsWatched',new_val)
     }
+
+  },
+
+  mounted() {
+    this.continueEnabled = this.isWatched;
   },
 
   methods: {
@@ -151,29 +167,21 @@ export default {
       }
     },
 
-    dropActiveAnswers () {
-      this.$set(this, 'questionCard', {
-        text: this.question.text,
-        answers: this.question.answers.map((a) => {
-          return {
-            image: a.image,
-            text: a.text,
-            selected: false
-          }
-        })
-      })
-    },
-    handleAnswerClick (answer) {
-      this.dropActiveAnswers()
-      this.questionCard.answers.find((a) => a.text === answer.text).selected = true
-      this.$emit('selectAnswer')
+    continueClicked(){
+      if(!this.continueEnabled)
+       return;
+      this.continueEnabled=false;
+      this.$emit("nextQuestion");
     }
+
+
   },
 
-  mounted() {
-    this.$emit('isQuestionHandler', false, 'Continue');
 
-  }
+
+
+
+
 }
 </script>
 
@@ -193,6 +201,17 @@ export default {
 </style>
 
 <style lang="scss" scoped>
+
+.continue-button{
+ position: fixed;
+ bottom: 20px;
+ left: 50%;
+ transform: translateX(-50%);
+ max-width: 370px;
+ text-align: center;
+}
+
+
 .watch-button {
   width: 200px !important;
   img {
@@ -214,15 +233,9 @@ export default {
   }
 }
 
-.video {
-  position: absolute;
-  top: 40%;
-  left: -20px;
-  width: calc(100% + 40px);
-  min-height: 200px;
-}
 
-.button {
+
+.watch-button {
   cursor: pointer;
   font-family: 'Zilla Slab';
   font-weight: 500;
@@ -240,12 +253,9 @@ export default {
   margin: 30px auto;
   color: #FFFFFF;
   box-shadow: 0px 30px 29px -22px rgba(0, 0, 0, 0.39);
-  position: absolute;
   z-index: 10;
-  top: 35%;
-  left: 50%;
-  transform: translate(-50%, -50%);
 
+  transform: translateY(-305%);
   display: flex;
   flex-flow: row nowrap;
   align-items: center;
@@ -258,13 +268,10 @@ export default {
 }
 
 .player {
-  position: absolute;
-  left: -20px;
   width: calc(100% + 40px);
-  top: 50%;
-  transform: translateY(-30%);
   height: 200px;
-
+  margin-left: -20px;
+  margin-right: -20px;
   div {
     height: 100%;
   }

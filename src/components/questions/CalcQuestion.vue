@@ -1,11 +1,12 @@
 <template>
+  <div>
   <BaseQuestion :questionCard="questionCard">
     <div class="question-content" slot="questionContent">
       <div class="answers">
         <draggable
           v-model="answers"
           class="dragArea"
-          :options="{group:'answers', disabled: !enabledSelection}">
+          :options="{group:'answers'}">
           <AnswerCalcCard
             v-for="(variant, index) in answers"
             :answer="variant"
@@ -18,7 +19,7 @@
 
       <div class="answers">
         <div class="field">
-          <draggable v-model="fields[0]" :options="{group:'answers', disabled: !enabledSelection}" class="dragArea" @change="handleDragChange">
+          <draggable v-model="fields[0]" :options="{group:'answers'}" class="dragArea" @change="handleDragChange">
             <AnswerCalcCard
               v-for="(variant, i) in fields[0]"
               :answer="variant"
@@ -34,7 +35,7 @@
         </div>
 
         <div class="field">
-          <draggable v-model="fields[1]" :options="{group:'answers', disabled: !enabledSelection}" class="dragArea" @change="handleDragChange">
+          <draggable v-model="fields[1]" :options="{group:'answers'}" class="dragArea" @change="handleDragChange">
             <AnswerCalcCard
               v-for="(variant, i) in fields[1]"
               :answer="variant"
@@ -44,26 +45,14 @@
               @click="handleAnswerClick(answer, question)"/>
           </draggable>
         </div>
-        <!-- <div class="row-gap">
-          <img src="@/assets/eq-icon.png" alt="">
-        </div>
-
-        <div class="field">
-          <draggable v-model="fields[2]" :options="{group:'answers'}" class="dragArea" @change="handleDragChange">
-            <AnswerCalcCard
-              v-for="(variant, i) in fields[2]"
-              :answer="variant"
-              :key="i"
-              :selected="variant.selected"
-              @click="handleAnswerClick(answer, question)"/>
-          </draggable>
-        </div> -->
-
       </div>
-      <!-- <popup :type="question.type" :openPopupFalse="openPopupFalse" :openPopupTrue="openPopupTrue"/> -->
-      <popup :customPopup="question.customPopup" :openPopupTrue="openPopupTrue"/>
     </div>
   </BaseQuestion>
+  <popup :customPopup="question.customPopup" :openPopupTrue="openPopupTrue" @closePopup="onClosePopup" @nextQuestion="onNextPage"/>
+  <Button class="continue-button" :disabled="!continueEnabled" @click="continueClicked">
+  {{getI18n.continue}}
+  </Button>
+</div>
 </template>
 
 <script>
@@ -71,32 +60,62 @@
   import BaseQuestion from '@/components/questions/BaseQuestion'
   import Popup from '@/components/Popup'
   import { events } from '@/helpers/events'
-
+  import Button from '@/components/Button'
+  import config from '@/data/config'
   import draggable from 'vuedraggable'
+  import AudioMixin from '@/mixins/audioMixin'
+
 
   export default {
-    props: ['question', 'index', 'openPopupFalse', 'openPopupTrue', 'enabledSelection'],
+    props: ['question'],
     components: {
       AnswerCalcCard,
       BaseQuestion,
       Popup,
-      draggable
+      draggable,
+      Button
     },
 
     mounted() {
-      this.$emit('isQuestionHandler', true, 'Check My Math!');
-      events.$on('dropAnswer', this.dropActiveAnswers)
+        this.playAudio('questionLoaded')
     },
 
     updated() {
-      this.$emit('isQuestionHandler', false, 'Check My Math!');
+    },
+
+    computed:{
+      getI18n() {
+        return config().restText
+      },
+
+      getI18nAudio() {
+        return config().audio
+      },
     },
 
     data () {
       return {
+        openPopupFalse: false,
+        openPopupTrue: false,
+        continueEnabled: false,
         addedCareNumber: 0,
-        questionCard: this.question || {},
-        answers: [],
+        isCorrect: false,
+        questionCard: {
+          text: this.question.text,
+          desc: this.question.desc,
+          answers: this.question.answers.map((a) => {
+            return {
+              ...a,
+              selected: false
+            }
+          })
+        } || {},
+        answers: this.question.answers.map((a) => {
+          return {
+            ...a,
+            selected: false
+          }
+        }),
         fields: {
           0: [],
           1: [],
@@ -106,49 +125,40 @@
     },
 
     watch: {
-      question:{
-        handler: function (newVal) {
-          this.questionCard = newVal
-          this.answers = newVal.answers
-        },
-        immediate: true
-      }
     },
 
     methods: {
+      ...AudioMixin,
+
       handleDragChange (e) {
-        if (e.added != null) {
-          this.addedCareNumber ++
-        } else {
-          this.addedCareNumber --
-        }
-        if (this.addedCareNumber >= 2) {
-          this.$emit('isQuestionHandler', false)
-          this.dropActiveAnswers()
-          this.$emit('selectAnswer', {isCorrect: this.question.isCorrect, index: this.index})
-        }
+        this.isCorrect = this.fields[0].length == 1 && this.fields[1].length == 1;
+        this.continueEnabled = this.fields[0].length == 1 && this.fields[1].length == 1;
       },
 
       dropActiveAnswers () {
-        this.$set(this, 'questionCard', {
-          text: this.question.text,
-          desc: this.question.desc,
-          answers: this.question.answers.map((a) => {
-            return {
-              image: a.image,
-              text: a.text,
-              value: a.value,
-              selected: false
-            }
-          })
-        })
+        this.questionCard.answers.forEach((a) => a.selected = false)
       },
 
       handleAnswerClick (answer) {
         this.dropActiveAnswers()
-        this.questionCard.answers.find((a) => a.text === answer.text).selected = true
-        this.$emit('selectAnswer')
-      }
+        this.questionCard.answers.find((a) => a.text === answer.text).selected = true;
+      },
+
+      continueClicked(){
+          this.playAudio('questionRight')
+          this.openPopupTrue = true;
+      },
+
+
+      onClosePopup(){
+        this.openPopupFalse = false;
+        this.openPopupTrue = false;
+      },
+
+      onNextPage(){
+        this.$emit("nextQuestion");
+      },
+
     }
   }
 </script>
@@ -159,6 +169,16 @@
   }
   .fade-enter, .fade-leave-to /* .fade-leave-active below version 2.1.8 */ {
     opacity: 0;
+  }
+
+
+  .continue-button{
+   position: fixed;
+   bottom: 20px;
+   left: 50%;
+   transform: translateX(-50%);
+   max-width: 370px;
+   text-align: center;
   }
 
 .dragArea {

@@ -1,32 +1,44 @@
 <template>
+  <div>
   <BaseQuestion :questionCard="questionCard">
     <div class="question-content" slot="questionContent">
-      <button v-if="!isAudioEnd" class="button" @click="playAudio">GO</button>
+      <button v-if="!isAudioEnd" class="go-button" @click="playAudio('goClicked',endedAudio)">GO</button>
       <div v-else class="text">
         {{ `"${text}"` }}
       </div>
     </div>
   </BaseQuestion>
+  <VueButton class="continue-button" :disabled="!continueEnabled"  @click="continueClicked" >
+    {{getI18n.continue}}
+  </VueButton>
+
+</div>
 </template>
 
 <script>
 import BaseQuestion from '@/components/questions/BaseQuestion'
 import AudioManager from '@/helpers/audioManager'
-
+import VueButton from '@/components/Button'
 import config from '@/data/config/index'
+import AudioMixin from '@/mixins/audioMixin'
 
 export default {
   name: 'GoQuestion',
 
-  props: ['question', 'index', 'selectAnswer', 'isQuestionHandler'],
+  props: ['question'],
 
   components: {
-    BaseQuestion
+    BaseQuestion,
+    VueButton
   },
 
   data() {
     return {
-      questionCard: this.question || {},
+      continueEnabled: false,
+      questionCard:  {
+        ...this.question,
+        answers: [...this.question.answers]
+      },
       textIndex: 0,
       isAudioEnd: false,
       timeInterval: 200
@@ -39,19 +51,30 @@ export default {
     },
 
     text() {
-      return this.questionCard.answer[this.textIndex]
-    }
+      return this.questionCard.answers[this.textIndex]
+    },
+
+      getI18n() {
+        return config().restText
+      },
+
+      getI18nAudio() {
+        return config().audio
+      },
+
   },
 
   mounted() {
-    this.$emit('isQuestionHandler', false, 'Check');
+    this.playAudio('questionLoaded')
   },
 
   methods: {
+    ...AudioMixin,
+
     endedAudio() {
       this.isAudioEnd = true
       this.questionCard.text = ''
-      const answerLength = this.questionCard.answer.length
+      const answerLength = this.questionCard.answers.length
 
       const indexInterval = setInterval(() => {
         if (this.textIndex < answerLength-1) {
@@ -65,20 +88,36 @@ export default {
 
       setTimeout(() => {
         clearInterval(indexInterval)
-        this.$emit('selectAnswer', {isCorrect: true, index: this.index})
+        this.continueEnabled = true;
       }, playTime)
 
     },
 
-    playAudio() {
-      AudioManager.playAudio(this.getI18nAudio.audio_first_question_for_icons, this.$store.state.gender, this.endedAudio)
-    }
+
+    continueClicked(){
+      if(!this.continueEnabled)
+       return;
+      this.continueEnabled=false;
+      this.$emit("nextQuestion");
+    },
+
+
   }
 }
 </script>
 
 <style lang="scss" scoped>
-  .button {
+
+.continue-button{
+ position: fixed;
+ bottom: 20px;
+ left: 50%;
+ transform: translateX(-50%);
+ max-width: 370px;
+ text-align: center;
+}
+
+  .go-button {
     width: 150px;
     height: 150px;
     margin: 0 auto;

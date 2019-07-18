@@ -1,4 +1,7 @@
 import { i18n } from '@/lang'
+import audio from '@/data/config/audio'
+
+let getAudio = audio();
 
 export default () => {
  return {
@@ -87,7 +90,10 @@ export default () => {
       id: 4,
       type: 'go',
       url_prefix: 'where-do-cavities-come-from',
-      answer: ['THIRTY', 'THREE', 'THIRSTY', 'THIEVES']
+      audioHooks:{
+        "goClicked":getAudio.audio_first_question_for_icons,
+      },
+      answers: ['THIRTY', 'THREE', 'THIRSTY', 'THIEVES']
     },
     {
       text: 'Ready to time your brushing?',
@@ -117,6 +123,8 @@ export default () => {
         },
       ]
     }
+
+
   ]
 }
 }

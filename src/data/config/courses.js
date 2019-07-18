@@ -13,7 +13,8 @@ export default () => {
       active: true,
       progress: 0,
       active_page: 0,
-      content: CavityPrevention()
+      content: CavityPrevention(),
+      max_page: 0
     },
     {
       name: i18n.t("message.BrushSelfie"),
@@ -44,7 +45,8 @@ export default () => {
       active: true,
       progress: 0,
       active_page: 0,
-      content: BabyTeethCourse()
+      content: BabyTeethCourse(),
+      max_page: 0
     },
     {
       name: i18n.t("message.BrushingandFlossing"),
