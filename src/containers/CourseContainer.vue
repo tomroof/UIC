@@ -8,11 +8,11 @@
       <div>
 
         <component v-bind:is="currentQuestionComponent"
-        :question="currentQuestion"
-        @nextQuestion="nextPage"
-        :key = "currentPage"
-        ></component>
-        
+                  :question="currentQuestion"
+                  @nextQuestion="nextPage"
+                  :key = "currentPage"
+        />
+
         <span v-if="currentStep.nextType != 'cards' && currentStep.nextLabel" class="next-label">{{ getI18n.nextUp }}: {{currentStep.nextLabel}}</span>
       </div>
     </div>
@@ -36,7 +36,6 @@ import BrushQuestion from '@/components/questions/BrushQuestion'
 import RewardCard from '@/components/cards/RewardCard'
 import ModuleStartDialog from '@/components/dialogs/ModuleStartDialog'
 import { mapActions, mapGetters } from 'vuex'
-
 
 // data
 import config from '@/data/config/index'
@@ -190,9 +189,7 @@ export default {
           this.showRewardCard = true;
           return;
         }
-
       }
-
       // next page case
       if(this.currentPage<this.steps.length-1)
         this.movePage(this.currentPage+1);
@@ -203,8 +200,6 @@ export default {
         this.$router.push('/congrats/2')
       }
     },
-
-
 
 
     hideModuleStartDialog () {

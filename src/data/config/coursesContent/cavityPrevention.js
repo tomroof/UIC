@@ -1,5 +1,7 @@
 import { i18n } from '@/lang'
+import audio from '@/data/config/audio'
 
+let getAudio = audio();
 export default () => {
  return {
   name: i18n.t("message.CavityPrevention"),
@@ -20,6 +22,11 @@ export default () => {
       id: '3',
       type: 'icons',
       url_prefix: 'where-do-cavities-come-from',
+      audioHooks:{
+        "questionLoaded": getAudio.audio_first_question_for_icons,
+        "questionRight":getAudio.audio_icons_select_correct,
+        "questionWrong":getAudio.audio_icons_select_wrong,
+      },
       answers: [
         {
           text: i18n.t("message.Readingabook"),
@@ -48,6 +55,10 @@ export default () => {
       desc: '',
       id: '2',
       type: 'icons',
+      audioHooks:{
+        "questionRight":getAudio.audio_icons_select_correct,
+        "questionWrong":getAudio.audio_icons_select_wrong,
+      },
       url_prefix: 'where-do-cavities-come-from',
       answers: [
         {
@@ -68,6 +79,10 @@ export default () => {
       id: '4',
       type: 'icons',
       url_prefix: 'where-do-cavities-come-from',
+      audioHooks:{
+        "questionRight":getAudio.audio_icons_select_correct,
+        "questionWrong":getAudio.audio_icons_select_wrong,
+      },
       answers: [
         {
           text: i18n.t("message.Dancing"),
@@ -116,6 +131,10 @@ export default () => {
       desc: '',
       id: '8',
       type: 'icons',
+      audioHooks:{
+        "questionRight":getAudio.audio_icons_select_correct,
+        "questionWrong":getAudio.audio_icons_select_wrong,
+      },
       url_prefix: 'how-do-we-stop-the-cavity-monsters',
       answers: [
         {
@@ -136,6 +155,10 @@ export default () => {
       id: '9',
       type: 'icons',
       url_prefix: 'how-do-we-stop-the-cavity-monsters',
+      audioHooks:{
+        "questionRight":getAudio.audio_icons_select_correct,
+        "questionWrong":getAudio.audio_icons_select_wrong,
+      },
       answers: [
         {
           text: i18n.t("message.Waituntiltomorrow"),
@@ -154,6 +177,10 @@ export default () => {
       desc: '',
       id: '10',
       type: 'icons',
+      audioHooks:{
+        "questionRight":getAudio.audio_icons_select_correct,
+        "questionWrong":getAudio.audio_icons_select_wrong,
+      },
       url_prefix: 'how-do-we-stop-the-cavity-monsters',
       answers: [
         {
@@ -174,6 +201,11 @@ export default () => {
       id: '11',
       type: 'icons',
       url_prefix: 'how-do-we-stop-the-cavity-monsters',
+      audioHooks:{
+        "questionRight":getAudio.audio_icons_select_correct,
+        "questionWrong":getAudio.audio_icons_select_wrong,
+      },
+      endOfModule:true,
       answers: [
         {
           text: i18n.t("message.Brushonceaday"),
@@ -203,6 +235,9 @@ export default () => {
       id: '13',
       type: 'cards',
       url_prefix: 'good-for-me',
+      audioHooks:{
+        "questionLoaded": getAudio.audio_first_question_for_cards
+      },
       answers: [
         {
           text: i18n.t("message.Apple"),
@@ -450,6 +485,7 @@ export default () => {
       id: '26',
       type: 'cards',
       url_prefix: 'good-for-me',
+      endOfModule: true,
       answers: [
         {
           text: i18n.t("message.SweetenedDrinks"),
@@ -470,6 +506,10 @@ export default () => {
       type: 'calc',
       url_prefix: 'cavity-math',
       isCorrect: true,
+      audioHooks:{
+        "questionLoaded": getAudio.audio_first_question_for_calc,
+        "questionRight":getAudio.audio_calc_question_1,
+      },
       customPopup: {
         message: i18n.t("message.YeahYourefightingmonsters"),
         buttonText: i18n.t("message.NextUp"),
@@ -496,6 +536,9 @@ export default () => {
       type: 'calc',
       url_prefix: 'cavity-math',
       isCorrect: true,
+      audioHooks:{
+        "questionRight":getAudio.audio_calc_question_2,
+      },
       customPopup: {
         message: i18n.t("message.UhThecavitymonstersArecoming"),
         buttonText: i18n.t("message.NextUp"),
@@ -528,6 +571,9 @@ export default () => {
       },
       url_prefix: 'cavity-math',
       isCorrect: true,
+      audioHooks:{
+        "questionRight":getAudio.audio_calc_question_3_4,
+      },
       answers: [
         {
           text: i18n.t("message.Brushingaftereachmeal"),
@@ -552,6 +598,10 @@ export default () => {
         handlerType: 'nextSlide',
         messageType: 'both'
       },
+      audioHooks:{
+        "questionRight":getAudio.audio_calc_question_3_4,
+      },
+      endOfModule:true,
       url_prefix: 'cavity-math',
       isCorrect: true,
       answers: [
