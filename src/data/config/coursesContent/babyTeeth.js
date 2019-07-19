@@ -93,6 +93,7 @@ export default () => {
       audioHooks:{
         "goClicked":getAudio.audio_first_question_for_icons,
       },
+      timeInterval: 2000,
       answers: ['THIRTY', 'THREE', 'THIRSTY', 'THIEVES']
     },
     {

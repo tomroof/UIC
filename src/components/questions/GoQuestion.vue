@@ -41,7 +41,6 @@ export default {
       },
       textIndex: 0,
       isAudioEnd: false,
-      timeInterval: 200
     }
   },
 
@@ -61,6 +60,10 @@ export default {
       getI18nAudio() {
         return config().audio
       },
+
+      timeInterval(){
+        return this.questionCard.timeInterval
+      }
 
   },
 
