@@ -37,7 +37,7 @@ export default {
 
   data() {
     return {
-      continueEnabled:false,
+      continueEnabled:true,
       questionCard: {...this.question},
       timer: null,
       isStartTimer: false,
@@ -79,7 +79,6 @@ export default {
 
       if (this.time <= 0) {
         clearInterval(this.timer);
-        this.continueEnabled = true;
       }
       --this.time
     },
@@ -89,8 +88,6 @@ export default {
     },
 
     continueClicked(){
-      if(!this.continueEnabled)
-       return;
       this.continueEnabled=false;
       this.$emit("nextQuestion");
     },
