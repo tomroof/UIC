@@ -17,6 +17,18 @@ export default () => {
       max_page: 0
     },
     {
+      name: i18n.t("message.BabyTeeth"),
+      image: require('@/assets/baby-teeth.svg'),
+      disabled_image: require('@/assets/baby-teeth_disabled.svg'),
+      id: 4,
+      url_prefix: 'baby-teeth',
+      active: true,
+      progress: 0,
+      active_page: 0,
+      content: BabyTeethCourse(),
+      max_page: 0
+    },
+    {
       name: i18n.t("message.BrushSelfie"),
       image: require('@/assets/memory.svg'),
       disabled_image: require('@/assets/memory_disabled.svg'),
@@ -35,18 +47,6 @@ export default () => {
       active: false,
       progress: 0,
       active_page: 0
-    },
-    {
-      name: i18n.t("message.BabyTeeth"),
-      image: require('@/assets/baby-teeth.svg'),
-      disabled_image: require('@/assets/baby-teeth_disabled.svg'),
-      id: 4,
-      url_prefix: 'baby-teeth',
-      active: true,
-      progress: 0,
-      active_page: 0,
-      content: BabyTeethCourse(),
-      max_page: 0
     },
     {
       name: i18n.t("message.BrushingandFlossing"),

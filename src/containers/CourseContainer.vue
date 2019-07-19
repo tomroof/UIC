@@ -46,7 +46,7 @@ import AudioManager from '@/helpers/audioManager'
 import DeviceManager from '@/helpers/deviceManager'
 
 export default {
-  name: 'CourseContainerNew',
+  name: 'CourseContainer',
 
   props: {
     courseId: Number,
@@ -128,7 +128,7 @@ export default {
     },
 
     course () {
-      let course = config().courses[this.courseId-1];
+      let course = config().courses.find( (c)=> c.id===this.courseId);
       if(this.courseId && course && course.content)
         return course.content;
     },
