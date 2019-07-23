@@ -31,7 +31,7 @@ import MouthQuestion from '@/components/questions/MouthQuestion'
 import SelectQuestion from '@/components/questions/SelectQuestion'
 import GoQuestion from '@/components/questions/GoQuestion'
 import BrushQuestion from '@/components/questions/BrushQuestion'
-
+import TeethQuestion from '@/components/questions/TeethQuestion'
 // popups
 import RewardCard from '@/components/cards/RewardCard'
 import ModuleStartDialog from '@/components/dialogs/ModuleStartDialog'
@@ -79,7 +79,8 @@ export default {
     ModuleStartDialog,
     GoQuestion,
     BrushQuestion,
-    RewardCard
+    RewardCard,
+    TeethQuestion
   },
 
   mounted() {
@@ -111,6 +112,8 @@ export default {
               return "GoQuestion";
         case "brush":
               return "BrushQuestion";
+        case "teeth":
+              return "TeethQuestion";
       }
     },
 
