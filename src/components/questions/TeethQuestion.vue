@@ -131,7 +131,7 @@ input[type="number"] {
     width: 100px;
     height: 100px;
     margin: 0 auto;
-    display: block;
+
 
     color: #ffffff;
     font-size: 50px;
