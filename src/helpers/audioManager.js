@@ -101,6 +101,11 @@ export default {
       src_girl: 'cavity-math_remember-es.mp3',
       id: 'calc_question_3_4_ES'
     },
+    {
+      src_boy: 'babyteeth_module3-audio.mp3',
+      src_girl: 'babyteeth_module3-audio.mp3',
+      id: 'babyteeth_module3-audio'
+    },
   ],
 
   playAudio (id, gender, callback) {

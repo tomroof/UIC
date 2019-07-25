@@ -72,7 +72,7 @@ export default () => {
       type: 'go',
       url_prefix: 'thirty-three-thirsty-thieves',
       audioHooks:{
-        "goClicked":getAudio.audio_first_question_for_icons,
+        "goClicked":getAudio.audio_babyteeth_module3_audio,
       },
       timeInterval: 2000,
       answers: ['THIRTY', 'THREE', 'THIRSTY', 'THIEVES']

@@ -232,6 +232,7 @@ export default {
   audio_calc_question_1: 'calc_question_1',
   audio_calc_question_2: 'calc_question_2',
   audio_calc_question_3_4: 'calc_question_3_4',
+  audio_babyteeth_module3_audio : 'babyteeth_module3_audio',
   video1: 'module1-male.mp4',
   video1b: 'module1b-male.mp4',
   video2: 'module1-female.mp4',
