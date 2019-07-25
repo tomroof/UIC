@@ -244,5 +244,12 @@ export default {
   video7Poster: 'module5-cover.jpg',
   video8: 'module5-female.mp4',
   video9: 'module6-male.mp4',
-  video10: 'module6-female.mp4'
+  video10: 'module6-female.mp4',
+  babyteethvideo1: 'baby-teeth_module1.mp4',
+  babyteethvideo2: 'baby-teeth_module2.mp4',
+  babyteethvideo3: 'baby-teeth_module3.mp4',
+  babyteethvideo4: 'baby-teeth_module4.mp4',
+  babyteethvideo5: 'baby-teeth_module5.mp4',
+  babyteethvideo6: 'baby-teeth_module6.mp4',
+  HowMuchToothPaste: 'How much toothpaste for baby teeth?',
 }
