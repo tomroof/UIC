@@ -17,7 +17,6 @@
 import BaseQuestion from '@/components/questions/BaseQuestion'
 import AnswerSelectCard from '@/components/cards/AnswerSelectCard'
 import Popup from '@/components/Popup'
-import { events } from '@/helpers/events'
 import Button from '@/components/Button'
 import config from '@/data/config'
 import AudioMixin from '@/mixins/audioMixin'
