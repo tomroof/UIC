@@ -124,6 +124,7 @@ export default {
           }
         };
 
+        console.log('callback', audio)
         setTimeout(() => {
           audio.play()
         }, 0)

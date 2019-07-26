@@ -233,6 +233,7 @@ export default {
   audio_calc_question_1: 'calc_question_1_ES',
   audio_calc_question_2: 'calc_question_2_ES',
   audio_calc_question_3_4: 'calc_question_3_4_ES',
+  audio_babyteeth_module3_audio: 'babyteeth_module3_audio_ES',
   video1: 'module1_spanish.mp4',
   video1b: 'module1b_spanish.mp4',
   video2: 'module1_spanish.mp4',

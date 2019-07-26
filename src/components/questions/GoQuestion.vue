@@ -2,7 +2,7 @@
   <div>
   <BaseQuestion :questionCard="questionCard">
     <div class="question-content" slot="questionContent">
-      <button v-show="!isAudioEnd" class="go-button" @click="playAudio('goClicked',endedAudio)">GO</button>
+      <button v-show="!isAudioEnd" class="go-button" @click="playAudio('goClicked', endedAudio)">GO</button>
         <div v-show="isAudioEnd" :class="{'text-wrapper': true, 'appear': isAudioEnd}">
           <transition name="fade" mode="out-in">
             <div class="text" :key="textIndex">
@@ -57,17 +57,17 @@ export default {
       return this.questionCard.answers[this.textIndex]
     },
 
-      getI18n() {
-        return config().restText
-      },
+    getI18n() {
+      return config().restText
+    },
 
-      getI18nAudio() {
-        return config().audio
-      },
+    getI18nAudio() {
+      return config().audio
+    },
 
-      timeInterval(){
-        return this.questionCard.timeInterval
-      }
+    timeInterval(){
+      return this.questionCard.timeInterval
+    }
 
   },
 
@@ -79,6 +79,7 @@ export default {
     ...AudioMixin,
 
     endedAudio() {
+      console.log('endedAudio')
       this.isAudioEnd = true
       this.questionCard.text = ''
       const answerLength = this.questionCard.answers.length
@@ -100,15 +101,10 @@ export default {
 
     },
 
-
-    continueClicked(){
-      if(!this.continueEnabled)
-       return;
-      this.continueEnabled=false;
+    continueClicked() {
+      this.continueEnabled = false;
       this.$emit("nextQuestion");
     },
-
-
   }
 }
 </script>
