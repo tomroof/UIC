@@ -11,6 +11,6 @@ export default () => {
     audio_unlocked_badge: i18n.t('message.audio_unlocked_badge'),
     audio_calc_question_1: i18n.t('message.audio_calc_question_1'),
     audio_calc_question_2: i18n.t('message.audio_calc_question_2'),
-    audio_calc_question_3_4: i18n.t('message.audio_calc_question_3_4'),
+    audio_calc_question_3_4: i18n.t('message.audio_calc_question_3_4')
   }
 }

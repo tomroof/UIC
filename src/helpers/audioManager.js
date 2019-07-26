@@ -104,7 +104,7 @@ export default {
     {
       src_boy: 'babyteeth_module3-audio.mp3',
       src_girl: 'babyteeth_module3-audio.mp3',
-      id: 'babyteeth_module3-audio'
+      id: 'babyteeth_module3_audio'
     },
   ],
 
@@ -118,7 +118,7 @@ export default {
           audio = new Audio(require('@/assets/audio/' + sound.src_girl));
         }
 
-        audio.onended = function() {
+        audio.ended = function() {
           if (callback) {
             callback()
           }
