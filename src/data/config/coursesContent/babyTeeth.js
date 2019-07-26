@@ -7,7 +7,7 @@ export default () => {
  return {
   name: i18n.t("message.BabyTeeth"),
   questions: [
-    {  
+    {
         text: 'How many teeth do you have?',
         desc: 'Count your teeth and enter the number below',
         id: '3',
@@ -78,8 +78,8 @@ export default () => {
       id: 3,
       type: 'go',
       url_prefix: 'thirty-three-thirsty-thieves',
-      audioHooks:{
-        "goClicked":getAudio.audio_babyteeth_module3_audio,
+      audioHooks: {
+        "goClicked": getAudio.audio_babyteeth_module3_audio,
       },
       timeInterval: 2000,
       answers: ['THIRTY', 'THREE', 'THIRSTY', 'THIEVES']

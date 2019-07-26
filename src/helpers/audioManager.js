@@ -104,7 +104,7 @@ export default {
     {
       src_boy: 'babyteeth_module3-audio.mp3',
       src_girl: 'babyteeth_module3-audio.mp3',
-      id: 'babyteeth_module3-audio'
+      id: 'babyteeth_module3_audio'
     },
   ],
 
@@ -124,6 +124,7 @@ export default {
           }
         };
 
+        console.log('callback', audio)
         setTimeout(() => {
           audio.play()
         }, 0)
