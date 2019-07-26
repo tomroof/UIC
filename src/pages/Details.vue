@@ -60,7 +60,10 @@ export default {
 
     getI18n() {
       return config().restText
-    }
+    },
+    currentProgress() {
+      return course.progress;
+    },
   },
 
   methods: {
@@ -78,7 +81,7 @@ export default {
   },
   data () {
     return {
-      currentProgress: 30,
+
     }
   },
 }
