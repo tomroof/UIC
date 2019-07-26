@@ -6,7 +6,15 @@
         <img class="image" :src="require(`../../assets/${questionCard.image}`)" alt="brush">
         <button class="go-button" @click="startTimer">Start Brush Timer</button>
       </div>
-      <div class="timer" v-else>
+      <RadialProgressBar v-else
+                     class="radial-timer"
+                     :diameter="200"
+                     :completed-steps="timePassed"
+                     :total-steps="this.questionCard.time"
+                     :startColor="'#87DBA2'"
+                     :stopColor="'#87DBA2'"
+                     :innerStrokeColor="'#2E5C69'">
+      <div class="timer" >
         <span class="minutes">
           {{ minutes }} :
         </span>
@@ -14,6 +22,7 @@
           {{ seconds }}
         </span>
       </div>
+      </RadialProgressBar>
     </div>
   </BaseQuestion>
   <VueButton class="continue-button" :disabled="!continueEnabled"  @click="continueClicked" >
@@ -26,13 +35,15 @@ import BaseQuestion from '@/components/questions/BaseQuestion'
 import VueButton from '@/components/Button'
 import config from '@/data/config'
 import AudioMixin from '@/mixins/audioMixin'
+import RadialProgressBar from 'vue-radial-progress'
 
 export default {
   props: ['question'],
 
   components: {
     BaseQuestion,
-    VueButton
+    VueButton,
+    RadialProgressBar
   },
 
   data() {
@@ -60,6 +71,10 @@ export default {
     getI18nAudio() {
       return config().audio
     },
+
+    timePassed(){
+      return this.questionCard.time-this.time
+    }
   },
 
   methods: {
@@ -105,6 +120,10 @@ export default {
  transform: translateX(-50%);
  max-width: 370px;
  text-align: center;
+}
+
+.radial-timer{
+  margin: auto;
 }
 
 .go-button {
