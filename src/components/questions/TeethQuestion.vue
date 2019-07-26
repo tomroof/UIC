@@ -8,12 +8,8 @@
         <input v-model="teethNumber" min="0" max="25" class="number-input" type="number"/>
         <span class="teeth-label">teeth</span>
     </div>
-    <button  class="go-button" @click="">GO</button>
+    <button  class="go-button" :disabled="!continueEnabled"  @click="continueClicked">GO</button>
   </div>
-  <VueButton class="continue-button" :disabled="!continueEnabled"  @click="" >
-    {{getI18n.continue}}
-  </VueButton>
-
 </div>
 </template>
 
@@ -60,17 +56,32 @@ export default {
         return config().audio
       },
 
-
-
+  },
+  watch:{
+    teethNumber(newVal){
+      if(newVal && this.isAudioEnd)
+        this.continueEnabled = true;
+    }
   },
 
   mounted() {
-    this.playAudio('questionLoaded')
+    this.playAudio('questionLoaded',this.audio1finished)
   },
 
   methods: {
     ...AudioMixin,
 
+    continueClicked(){
+      this.playAudio('goClicked',this.audio2Finished);
+    },
+
+    audio1finished(){
+      this.isAudioEnd=true;
+    },
+
+    audio2Finished(){
+      this.$emit('nextQuestion');
+    }
 
 
   }
@@ -89,6 +100,10 @@ export default {
   flex-direction: column;
   align-items: center;
       margin-top: -20px;
+}
+
+.input-container{
+  margin: 10px;
 }
 
 .teeth-label{
@@ -128,11 +143,9 @@ input[type="number"] {
 }
 
   .go-button {
-    width: 100px;
-    height: 100px;
-    margin: 0 auto;
-
-
+    width: 150px;
+    height: 150px;
+    margin: 10px auto;
     color: #ffffff;
     font-size: 50px;
 
@@ -143,7 +156,13 @@ input[type="number"] {
     outline: none;
 
     cursor: pointer;
+
+    &:disabled{
+      opacity: 0.6;
+    }
   }
+
+
 
 
 </style>
