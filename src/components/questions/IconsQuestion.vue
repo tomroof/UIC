@@ -83,33 +83,29 @@ import AudioMixin from '@/mixins/audioMixin'
         this.continueEnabled = true;
         this.questionCard.answers.forEach( (a) => a.selected = false);
         this.questionCard.answers.find((a) => a.text === answer.text).selected = true;
-
       },
 
       continueClicked(){
         const isCorrect = Boolean(this.questionCard.answers.find( (a) => a.selected && a.isCorrect));
-        if(isCorrect){
+        if (isCorrect) {
           this.openPopupTrue = true;
           this.playAudio("questionRight");
-        }
-        else{
+        } else {
           this.openPopupFalse = true;
           this.playAudio("questionWrong");
         }
       },
 
-      onClosePopup(){
+      onClosePopup() {
         this.openPopupFalse = false;
         this.openPopupTrue = false;
       },
 
-      onNextPage(){
+      onNextPage() {
         this.$emit("nextQuestion");
       },
 
       ...AudioMixin
-
-
     }
   }
 </script>

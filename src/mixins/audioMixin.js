@@ -19,9 +19,9 @@ export default {
     let beforeState = this.continueEnabled;
     contEnabler.continueEnabled = false;
     AudioManager.playAudio(to_play, this.$store.state.gender,
-    function(){
+    function () {
       contEnabler.continueEnabled  = beforeState;
-      if(callback)
+      if (callback)
         callback();
     })
   }

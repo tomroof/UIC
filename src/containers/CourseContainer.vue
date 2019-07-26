@@ -182,22 +182,22 @@ export default {
     ]),
 
 
-    nextPage(){
+    nextPage() {
+      console.log('this.currentQuestion', this.currentQuestion)
       // end of module case --- show reward card and wait for it to call agian
-      if(this.currentQuestion.endOfModule){
-        if(this.showRewardCard){
+      if (this.currentQuestion.endOfModule) {
+        if (this.showRewardCard) {
           this.showRewardCard = false;
-        }
-        else{
+        } else {
           this.showRewardCard = true;
           return;
         }
       }
       // next page case
-      if(this.currentPage<this.steps.length-1)
-        this.movePage(this.currentPage+1);
-      /// end of course case
-      else{
+      if (this.currentPage < this.steps.length-1) {
+        this.movePage(this.currentPage + 1);
+        /// end of course case
+      } else {
         this.$store.commit('updateCoursePage', { id: this.courseId, page: 0})
         this.$store.commit('updateCourseProgress', { id: this.courseId, currentProgress: 100 })
         this.$router.push('/congrats/2')
