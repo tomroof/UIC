@@ -2,7 +2,7 @@
   <div :class="{card: true, 'is-active': isActive}" @click="handleCard">
     <img class="image" :src="require(`../../assets/${option.image}`)" alt="">
     <div class="letter">
-      {{ index + 1 }}
+      {{ option.value }}
     </div>
   </div>
 </template>
@@ -34,7 +34,7 @@ export default {
   width: calc(25% - 10px);
   margin-right: 10px;
   margin-bottom: 10px;
-  padding: 10px;
+  padding: 7px;
 
   background: rgba(46,74,110,.6);
   border-radius: 10px;
@@ -53,8 +53,9 @@ export default {
 }
 
 .letter {
-  margin-top: auto;
+  margin-top: 10px;
 
+  font-size: 13px;
   color: #ffffff;
 }
 

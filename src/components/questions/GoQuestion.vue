@@ -2,10 +2,14 @@
   <div>
   <BaseQuestion :questionCard="questionCard">
     <div class="question-content" slot="questionContent">
-      <button v-if="!isAudioEnd" class="go-button" @click="playAudio('goClicked',endedAudio)">GO</button>
-      <div v-else class="text">
-        {{ `"${text}"` }}
-      </div>
+      <button v-show="!isAudioEnd" class="go-button" @click="playAudio('goClicked',endedAudio)">GO</button>
+        <div v-show="isAudioEnd" :class="{'text-wrapper': true, 'appear': isAudioEnd}">
+          <transition name="fade" mode="out-in">
+            <div class="text" :key="textIndex">
+              {{ text }}
+            </div>
+          </transition>
+        </div>
     </div>
   </BaseQuestion>
   <VueButton class="continue-button" :disabled="!continueEnabled"  @click="continueClicked" >
@@ -80,7 +84,7 @@ export default {
       const answerLength = this.questionCard.answers.length
 
       const indexInterval = setInterval(() => {
-        if (this.textIndex < answerLength-1) {
+        if (this.textIndex < answerLength - 1) {
           this.textIndex = this.textIndex + 1
         } else {
           this.textIndex = 0
@@ -144,5 +148,27 @@ export default {
     font-size: 50px;
     color: #ffffff;
     text-align: center;
+  }
+
+  .text-wrapper {
+    transform: scale(0);
+    transition: transform .5s;
+  }
+
+  .text-wrapper.appear {
+    transform: scale(1);
+  }
+
+  .fade-enter-active, .fade-leave-active {
+    transform: scale(1);
+    transition: opacity .5s, transform .5s;
+  }
+  .fade-enter {
+    transform: scale(0);
+    opacity: 0;
+  }
+
+  .fade-leave-to {
+    opacity: 0;
   }
 </style>
