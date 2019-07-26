@@ -2,12 +2,19 @@
 import AudioManager from '@/helpers/audioManager'
 
 export default {
-  playAudio(HookName, callback) {
-    let audioHooks = this.question.audioHooks;
-    if (!audioHooks) return;
+  playAudio(HookName,callback){
+    let audioHooks=this.question.audioHooks;
+    if(!audioHooks){
+      if(callback)
+        return callback();
+      else return;
+    }
     let to_play = audioHooks[HookName];
-    if (!to_play) return;
-
+    if(!to_play){
+      if(callback)
+        return callback();
+      else return;
+    }
     let contEnabler = this;
     let beforeState = this.continueEnabled;
     contEnabler.continueEnabled = false;
