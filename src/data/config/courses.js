@@ -34,7 +34,7 @@ export default () => {
       disabled_image: require('@/assets/memory_disabled.svg'),
       id: 2,
       url_prefix: 'brush-selfie',
-      active: true,
+      active: false,
       progress: 0,
       active_page: 0,
       content: BrushSelfieCourse(),
