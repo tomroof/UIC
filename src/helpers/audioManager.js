@@ -121,8 +121,5 @@ export default {
           console.log("Now playing: ", id, "from ", path);
           audio.play();
         },0);
-
-
-
   }
 }
