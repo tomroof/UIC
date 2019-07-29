@@ -12,5 +12,6 @@ export default () => {
     audio_calc_question_1: i18n.t('message.audio_calc_question_1'),
     audio_calc_question_2: i18n.t('message.audio_calc_question_2'),
     audio_calc_question_3_4: i18n.t('message.audio_calc_question_3_4'),
+    audio_babyteeth_module3_audio: i18n.t('message.audio_babyteeth_module3_audio')
   }
 }

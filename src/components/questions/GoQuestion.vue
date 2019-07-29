@@ -1,35 +1,50 @@
 <template>
+  <div>
   <BaseQuestion :questionCard="questionCard">
     <div class="question-content" slot="questionContent">
-      <button v-if="!isAudioEnd" class="button" @click="playAudio">GO</button>
-      <div v-else class="text">
-        {{ `"${text}"` }}
-      </div>
+      <button v-show="!isAudioEnd" class="go-button" @click="clickGo">GO</button>
+        <div v-show="isAudioEnd" :class="{'text-wrapper': true, 'appear': isAudioEnd}">
+          <transition name="fade" mode="out-in">
+            <div class="text" :key="textIndex">
+              {{ text }}
+            </div>
+          </transition>
+        </div>
     </div>
   </BaseQuestion>
+  <VueButton class="continue-button" :disabled="!continueEnabled"  @click="continueClicked" >
+    {{getI18n.continue}}
+  </VueButton>
+
+</div>
 </template>
 
 <script>
 import BaseQuestion from '@/components/questions/BaseQuestion'
 import AudioManager from '@/helpers/audioManager'
-
+import VueButton from '@/components/Button'
 import config from '@/data/config/index'
+import AudioMixin from '@/mixins/audioMixin'
 
 export default {
   name: 'GoQuestion',
 
-  props: ['question', 'index', 'selectAnswer', 'isQuestionHandler'],
+  props: ['question'],
 
   components: {
-    BaseQuestion
+    BaseQuestion,
+    VueButton
   },
 
   data() {
     return {
-      questionCard: this.question || {},
+      continueEnabled: false,
+      questionCard:  {
+        ...this.question,
+        answers: [...this.question.answers]
+      },
       textIndex: 0,
       isAudioEnd: false,
-      timeInterval: 200
     }
   },
 
@@ -39,22 +54,40 @@ export default {
     },
 
     text() {
-      return this.questionCard.answer[this.textIndex]
+      return this.questionCard.answers[this.textIndex]
+    },
+
+    getI18n() {
+      return config().restText
+    },
+
+
+    timeInterval(){
+      return this.questionCard.timeInterval
     }
+
   },
 
   mounted() {
-    this.$emit('isQuestionHandler', false, 'Check');
+    this.playAudio('questionLoaded')
   },
 
   methods: {
+    ...AudioMixin,
+
+    clickGo(){
+      console.log("goLciked")
+      this.playAudio('goClicked', this.endedAudio);
+    },
+
     endedAudio() {
+      console.log('endedAudio')
       this.isAudioEnd = true
       this.questionCard.text = ''
-      const answerLength = this.questionCard.answer.length
+      const answerLength = this.questionCard.answers.length
 
       const indexInterval = setInterval(() => {
-        if (this.textIndex < answerLength-1) {
+        if (this.textIndex < answerLength - 1) {
           this.textIndex = this.textIndex + 1
         } else {
           this.textIndex = 0
@@ -65,20 +98,31 @@ export default {
 
       setTimeout(() => {
         clearInterval(indexInterval)
-        this.$emit('selectAnswer', {isCorrect: true, index: this.index})
+        this.continueEnabled = true;
       }, playTime)
 
     },
 
-    playAudio() {
-      AudioManager.playAudio(this.getI18nAudio.audio_first_question_for_icons, this.$store.state.gender, this.endedAudio)
-    }
+    continueClicked() {
+      this.continueEnabled = false;
+      this.$emit("nextQuestion");
+    },
   }
 }
 </script>
 
 <style lang="scss" scoped>
-  .button {
+
+.continue-button{
+ position: fixed;
+ bottom: 20px;
+ left: 50%;
+ transform: translateX(-50%);
+ max-width: 370px;
+ text-align: center;
+}
+
+  .go-button {
     width: 150px;
     height: 150px;
     margin: 0 auto;
@@ -102,5 +146,27 @@ export default {
     font-size: 50px;
     color: #ffffff;
     text-align: center;
+  }
+
+  .text-wrapper {
+    transform: scale(0);
+    transition: transform .5s;
+  }
+
+  .text-wrapper.appear {
+    transform: scale(1);
+  }
+
+  .fade-enter-active, .fade-leave-active {
+    transform: scale(1);
+    transition: opacity .5s, transform .5s;
+  }
+  .fade-enter {
+    transform: scale(0);
+    opacity: 0;
+  }
+
+  .fade-leave-to {
+    opacity: 0;
   }
 </style>

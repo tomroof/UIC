@@ -30,12 +30,12 @@
         </div> -->
         <img @click="playCourse" class="download" src="@/assets/download_btn.png" alt="btn">
       </div>
-      <v-touch @swipeup="handleSwipeTop">
+      <!-- <v-touch @swipeup="handleSwipeTop">
         <div class="swipe_up">
           <img class="arrow" src="@/assets/swipe_arrow.png" />
           <p>{{ getI18n.SwipeUp }}</p>
         </div>
-      </v-touch>
+      </v-touch> -->
     </div>
   </NavigationLayout>
 </template>
@@ -60,7 +60,10 @@ export default {
 
     getI18n() {
       return config().restText
-    }
+    },
+    currentProgress() {
+      return this.course.progress;
+    },
   },
 
   methods: {
@@ -78,7 +81,7 @@ export default {
   },
   data () {
     return {
-      currentProgress: 30,
+
     }
   },
 }

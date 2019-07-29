@@ -1,4 +1,5 @@
 <template>
+  <div>
   <BaseQuestion :questionCard="questionCard">
     <div class="question-content" slot="questionContent">
       <div class="answers">
@@ -13,45 +14,31 @@
       </div>
     </div>
   </BaseQuestion>
+  <Button class="continue-button" :disabled="!continueEnabled" @click="continueClicked">
+    {{getI18n.continue}}
+  </Button>
+</div>
 </template>
 
 <script>
 import AnswerCard from '@/components/cards/AnswerCard'
 import BaseQuestion from '@/components/questions/BaseQuestion'
+import Button from '@/components/Button'
+import config from '@/data/config'
+import AudioMixin from '@/mixins/audioMixin'
 
   export default {
-    props: ['question', 'index', 'enabledSelection'],
+    props: ['question'],
     components: {
       BaseQuestion,
-      AnswerCard
+      AnswerCard,
+      Button
     },
 
     data () {
       return {
-        questionCard: this.question || {}
-      }
-    },
-
-    mounted() {
-      this.$emit('isQuestionHandler', true, 'Play Next');
-    },
-
-    updated() {
-      this.$emit('isQuestionHandler', false, 'Play Next');
-    },
-
-    watch: {
-      question:{
-        handler: function (newVal) {
-          this.questionCard = newVal
-        },
-        immediate: true
-      }
-    },
-
-    methods: {
-      dropActiveAnswers () {
-        this.$set(this, 'questionCard', {
+        continueEnabled: false,
+        questionCard: {
           text: this.question.text,
           desc: this.question.desc,
           answers: this.question.answers.map((a) => {
@@ -60,21 +47,75 @@ import BaseQuestion from '@/components/questions/BaseQuestion'
               selected: false
             }
           })
-        })
+        }
+    }
+  },
+
+    mounted() {
+      this.playAudio("questionLoaded");
+    },
+
+    watch:{
+      question (newVal){
+        this.continueEnabled = false;
+        this.questionCard =  {
+          text: newVal.text,
+          desc: newVal.desc,
+          answers: newVal.answers.map((a) => {
+            return {
+              ...a,
+              selected: false
+            }
+          })
+        }
+      }
+    },
+    computed:{
+      getI18n() {
+        return config().restText
       },
+
+      getI18nAudio() {
+        return config().audio
+      },
+
+    },
+
+    methods: {
+
+      ...AudioMixin,
+
       handleAnswerClick (answer) {
-        if (!this.enabledSelection) return
-        this.dropActiveAnswers()
+        this.questionCard.answers.forEach((a) => a.selected = false)
         this.questionCard.answers.find((a) => a.text === answer.text).selected = true
       },
       handleAnswerCompleted (answer) {
-         this.$emit('selectAnswer', {isCorrect: true, index: this.index})
-      }
+         this.continueEnabled = true;
+      },
+
+     continueClicked(){
+       if(!this.continueEnabled)
+        return;
+       this.continueEnabled=false;
+       this.$emit("nextQuestion");
+     },
+
+
+
   },
 }
 </script>
 
 <style lang="scss" scoped>
+.continue-button{
+ position: fixed;
+ bottom: 20px;
+ left: 50%;
+ transform: translateX(-50%);
+ max-width: 370px;
+ text-align: center;
+}
+
 .answers {
   display: flex;
   flex-wrap: wrap;

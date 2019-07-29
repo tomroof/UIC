@@ -80,13 +80,18 @@ export default new Vuex.Store({
 
     updateCoursePage(state, payload) {
       const { id, page } = payload
-      state.courses.find(item => item.id === +id).active_page = page
+      let course = state.courses.find(item => item.id === +id);
+      course.active_page = page
+      course.max_page = Math.max(course.max_page,page);
     },
 
     updateCourseProgress(state, payload) {
       const { id, currentProgress } = payload
       state.courses.find(item => item.id === +id).progress = currentProgress
     },
+
+
+
 
     completeArchievement(state, payload) {
       const {id, date} = payload

@@ -101,29 +101,25 @@ export default {
       src_girl: 'cavity-math_remember-es.mp3',
       id: 'calc_question_3_4_ES'
     },
+    {
+      src_boy: 'babyteeth_module3-audio.mp3',
+      src_girl: 'babyteeth_module3-audio.mp3',
+      id: 'babyteeth_module3_audio'
+    },
   ],
 
   playAudio (id, gender, callback) {
-    this.sounds.map((sound) => {
-      if (sound.id === id) {
-        var audio;
-        if (gender === 'boy') {
-          audio = new Audio(require('@/assets/audio/' + sound.src_boy));
-        } else {
-          audio = new Audio(require('@/assets/audio/' + sound.src_girl));
-        }
-
-        audio.onended = function() {
+    let sound = this.sounds.find((s)=>s.id === id)
+    let path = gender === 'boy' ? '@/assets/audio/' + sound.src_boy : '@/assets/audio/' + sound.src_girl;
+    var audio = new Audio(require(path));
+    audio.onended = function() {
           if (callback) {
-            callback()
+            callback();
           }
         };
-
-        setTimeout(() => {
-          audio.play()
-        }, 0)
-        return
-      }
-    })
+        setTimeout(function(){
+          console.log("Now playing: ", id, "from ", path);
+          audio.play();
+        },0);
   }
 }

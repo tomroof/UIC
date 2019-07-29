@@ -101,12 +101,14 @@ import { mapActions } from 'vuex'
         if (this.type === 'icons') {
           this.putPoints(this.points)
         }
-        events.$emit('nextSlide', true);
+
+        this.$emit('nextQuestion');
+        this.$emit('closePopup');
+
       },
 
       toThisSlide() {
-        events.$emit('dropAnswer');
-        events.$emit('thisSlide', false);
+        this.$emit('closePopup');
       }
     }
   }

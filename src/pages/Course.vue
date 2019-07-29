@@ -9,9 +9,9 @@
 
 <script>
 import NavigationLayout from '@/layouts/NavigationLayout'
-import CourseContainer from '@/containers/Course'
 import RewardCard from '@/components/cards/RewardCard'
 import AudioManager from '@/helpers/audioManager'
+import CourseContainer from '@/containers/CourseContainer'
 import { mapGetters } from 'vuex'
 
 import config from '@/data/config'
@@ -28,8 +28,8 @@ export default {
 
   components: {
     NavigationLayout,
-    CourseContainer,
-    RewardCard
+    RewardCard,
+    CourseContainer
   },
 
   computed: {

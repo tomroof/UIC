@@ -1,11 +1,20 @@
 <template>
+  <div>
   <BaseQuestion :questionCard="questionCard">
     <div class="question-content" slot="questionContent">
       <div class="content" v-if="!isStartTimer">
         <img class="image" :src="require(`../../assets/${questionCard.image}`)" alt="brush">
-        <button class="button" @click="startTimer">Start Brush Timer</button>
+        <button class="go-button" @click="startTimer">Start Brush Timer</button>
       </div>
-      <div class="timer" v-else>
+      <RadialProgressBar v-else
+                     class="radial-timer"
+                     :diameter="200"
+                     :completed-steps="timePassed"
+                     :total-steps="this.questionCard.time"
+                     :startColor="'#87DBA2'"
+                     :stopColor="'#87DBA2'"
+                     :innerStrokeColor="'#2E5C69'">
+      <div class="timer" >
         <span class="minutes">
           {{ minutes }} :
         </span>
@@ -13,40 +22,69 @@
           {{ seconds }}
         </span>
       </div>
+      </RadialProgressBar>
     </div>
   </BaseQuestion>
+  <VueButton class="continue-button" :disabled="!continueEnabled"  @click="continueClicked" >
+    {{getI18n.continue}}
+  </VueButton>
+</div>
 </template>
 <script>
-  import BaseQuestion from '@/components/questions/BaseQuestion'
+import BaseQuestion from '@/components/questions/BaseQuestion'
+import VueButton from '@/components/Button'
+import config from '@/data/config'
+import AudioMixin from '@/mixins/audioMixin'
+import RadialProgressBar from 'vue-radial-progress'
 
 export default {
-  props: ['question', 'index', 'selectAnswer', 'isQuestionHandler'],
+  props: ['question'],
 
   components: {
-    BaseQuestion
+    BaseQuestion,
+    VueButton,
+    RadialProgressBar
   },
 
   data() {
     return {
-      questionCard: this.question || {},
+      continueEnabled:true,
+      questionCard: {...this.question},
       timer: null,
       isStartTimer: false,
-      time: this.question.time * 60,
+      time: this.question.time,
       minutes: '',
       seconds: ''
     }
   },
 
   mounted() {
-    this.$emit('isQuestionHandler', false, 'Check')
+    this.playAudio('questionLoaded')
     this.getCountdown()
   },
 
+  computed:{
+    getI18n() {
+      return config().restText
+    },
+
+    getI18nAudio() {
+      return config().audio
+    },
+
+    timePassed(){
+      return this.questionCard.time-this.time
+    }
+  },
+
   methods: {
+    ...AudioMixin,
+
      startTimer() {
       this.isStartTimer = true
       this.timer = setInterval(() => {
         this.getCountdown()
+
       }, 1000);
     },
 
@@ -55,21 +93,40 @@ export default {
       this.seconds = this.pad( parseInt(this.time % 60) );
 
       if (this.time <= 0) {
-        this.$emit('selectAnswer', {isCorrect: true, index: this.index})
-        clearInterval(this.timer)
+        clearInterval(this.timer);
       }
       --this.time
     },
 
     pad(n) {
       return (n < 10 ? '0' : '') + n;
-    }
+    },
+
+    continueClicked(){
+      this.continueEnabled=false;
+      this.$emit("nextQuestion");
+    },
+
+
   }
 }
 </script>
 
 <style lang="scss" scoped>
-.button {
+.continue-button{
+ position: fixed;
+ bottom: 20px;
+ left: 50%;
+ transform: translateX(-50%);
+ max-width: 370px;
+ text-align: center;
+}
+
+.radial-timer{
+  margin: auto;
+}
+
+.go-button {
   z-index: 20;
   height: 50px;
   width: 100%;
