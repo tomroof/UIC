@@ -127,14 +127,14 @@ export default {
       id: 'remember_for_children_three_to_six_audio'
     },
     {
-      src_boy: 'thats-right-flouride.mp3',
-      src_girl: 'thats-right-flouride.mp3',
-      id: 'thats_right_flouride_audio'
+      src_boy: 'thats-right-fluoride.mp3',
+      src_girl: 'thats-right-fluoride.mp3',
+      id: 'thats_right_fluoride_audio'
     },
     {
-      src_boy: 'remember-flouride.mp3',
-      src_girl: 'remember-flouride.mp3',
-      id: 'remember_flouride_audio'
+      src_boy: 'remember-fluoride.mp3',
+      src_girl: 'remember-fluoride.mp3',
+      id: 'remember_fluoride_audio'
     },
   ],
 
