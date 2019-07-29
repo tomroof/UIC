@@ -120,16 +120,14 @@ export default () => {
       text: i18n.t("message.HowMuchToothPaste"),
       desc: '',
       id: '8',
-      type: 'icons',
+      type: 'iconsSimple',
       url_prefix: 'how-much-toothpaste',
       answers: [
         {
-          text: i18n.t("message.Readingabook"),
           image: 'book.svg',
           isCorrect: false
         },
         {
-          text: i18n.t("message.CavityMonsters"),
           image: 'monster.png',
           isCorrect: true
         },
