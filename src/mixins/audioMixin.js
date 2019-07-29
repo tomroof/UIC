@@ -22,6 +22,7 @@ export default {
     AudioManager.playAudio(to_play, this.$store.state.gender,
     function() {
       contEnabler.continueEnabled = beforeState;
+      if(callback)
         callback();
     })
   }

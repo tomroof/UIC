@@ -32,6 +32,7 @@ import SelectQuestion from '@/components/questions/SelectQuestion'
 import GoQuestion from '@/components/questions/GoQuestion'
 import BrushQuestion from '@/components/questions/BrushQuestion'
 import TeethQuestion from '@/components/questions/TeethQuestion'
+import IconsSimpleQuestion from '@/components/questions/IconsSimpleQuestion'
 // popups
 import RewardCard from '@/components/cards/RewardCard'
 import ModuleStartDialog from '@/components/dialogs/ModuleStartDialog'
@@ -80,7 +81,8 @@ export default {
     GoQuestion,
     BrushQuestion,
     RewardCard,
-    TeethQuestion
+    TeethQuestion,
+    IconsSimpleQuestion
   },
 
   mounted() {
@@ -114,6 +116,8 @@ export default {
               return "BrushQuestion";
         case "teeth":
               return "TeethQuestion";
+        case "iconsSimple":
+              return "IconsSimpleQuestion";
       }
     },
 
@@ -183,7 +187,7 @@ export default {
 
 
     nextPage() {
-      console.log('this.currentQuestion', this.currentQuestion)
+      //console.log('this.currentQuestion', this.currentQuestion)
       // end of module case --- show reward card and wait for it to call agian
       if (this.currentQuestion.endOfModule) {
         if (this.showRewardCard) {

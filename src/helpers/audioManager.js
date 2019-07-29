@@ -106,6 +106,36 @@ export default {
       src_girl: 'babyteeth_module3-audio.mp3',
       id: 'babyteeth_module3_audio'
     },
+    {
+      src_boy: 'thats-right-for-children-under-three.mp3',
+      src_girl: 'thats-right-for-children-under-three.mp3',
+      id: 'thats_right_for_children_under_three_audio'
+    },
+    {
+      src_boy: 'remember-for-children-under-three.mp3',
+      src_girl: 'remember-for-children-under-three.mp3',
+      id: 'remember_for_children_under_three_audio'
+    },
+    {
+      src_boy: 'thats-right-for-children-three-to-six.mp3',
+      src_girl: 'thats-right-for-children-three-to-six.mp3',
+      id: 'thats_right_for_children_three_to_six_audio'
+    },
+    {
+      src_boy: 'remember-for-children-three-to-six.mp3',
+      src_girl: 'remember-for-children-three-to-six.mp3',
+      id: 'remember_for_children_three_to_six_audio'
+    },
+    {
+      src_boy: 'thats-right-flouride.mp3',
+      src_girl: 'thats-right-flouride.mp3',
+      id: 'thats_right_flouride_audio'
+    },
+    {
+      src_boy: 'remember-flouride.mp3',
+      src_girl: 'remember-flouride.mp3',
+      id: 'remember_flouride_audio'
+    },
   ],
 
   playAudio (id, gender, callback) {

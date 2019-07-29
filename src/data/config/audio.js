@@ -12,6 +12,12 @@ export default () => {
     audio_calc_question_1: i18n.t('message.audio_calc_question_1'),
     audio_calc_question_2: i18n.t('message.audio_calc_question_2'),
     audio_calc_question_3_4: i18n.t('message.audio_calc_question_3_4'),
-    audio_babyteeth_module3_audio: i18n.t('message.audio_babyteeth_module3_audio')
+    audio_babyteeth_module3_audio: i18n.t('message.audio_babyteeth_module3_audio'),
+    thats_right_for_children_under_three_audio: i18n.t('message.thats_right_for_children_under_three_audio'),
+    remember_for_children_under_three_audio: i18n.t('message.remember_for_children_under_three_audio'),
+    thats_right_for_children_three_to_six_audio: i18n.t('message.thats_right_for_children_three_to_six_audio'),
+    remember_for_children_three_to_six_audio: i18n.t('message.remember_for_children_three_to_six_audio'),
+    thats_right_flouride_audio: i18n.t('message.thats_right_flouride_audio'),
+    remember_flouride_audio: i18n.t('message.remember_flouride_audio')
   }
 }
