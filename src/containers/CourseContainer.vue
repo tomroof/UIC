@@ -187,7 +187,7 @@ export default {
 
 
     nextPage() {
-      console.log('this.currentQuestion', this.currentQuestion)
+      //console.log('this.currentQuestion', this.currentQuestion)
       // end of module case --- show reward card and wait for it to call agian
       if (this.currentQuestion.endOfModule) {
         if (this.showRewardCard) {

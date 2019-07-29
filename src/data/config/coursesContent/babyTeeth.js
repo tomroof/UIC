@@ -120,7 +120,7 @@ export default () => {
       text: i18n.t("message.HowMuchToothPaste"),
       desc: '',
       id: '8',
-      type: 'iconSimple',
+      type: 'iconsSimple',
       url_prefix: 'how-much-toothpaste',
       audioHooks:{
         "questionRight":getAudio.thats_right_for_children_under_three_audio,
