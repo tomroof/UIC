@@ -110,16 +110,34 @@ export default {
 
   playAudio (id, gender, callback) {
     let sound = this.sounds.find((s)=>s.id === id)
-    let path = gender === 'boy' ? '@/assets/audio/' + sound.src_boy : '@/assets/audio/' + sound.src_girl;
-    var audio = new Audio(require(path));
+    if(!sound){
+      console.log("could not find sounds by id: ",id)
+      if(callback)
+        return callback();
+      return;
+    }
+    var audio;
+    if (gender === 'boy') {
+      audio = new Audio(require('@/assets/audio/' + sound.src_boy));
+    } else {
+      audio = new Audio(require('@/assets/audio/' + sound.src_girl));
+    }
     audio.onended = function() {
           if (callback) {
             callback();
           }
         };
-        setTimeout(function(){
-          console.log("Now playing: ", id, "from ", path);
-          audio.play();
-        },0);
+    audio.addEventListener("canplay",function(){
+
+      var promise = audio.play();
+      if (promise !== undefined) {
+          promise.then(_ => {
+              console.log("Now playing: ", id, " from ", audio.currentSrc);
+            }).catch(error => {
+              console.log(error, "can't play audio if user ");
+              // we should promt user with "Play audio on this page? Yes. No."
+            });
+      }
+    }, { once: true });
   }
 }
