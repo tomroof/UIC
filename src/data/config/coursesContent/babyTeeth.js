@@ -120,8 +120,54 @@ export default () => {
       text: i18n.t("message.HowMuchToothPaste"),
       desc: '',
       id: '8',
+      type: 'iconSimple',
+      url_prefix: 'how-much-toothpaste',
+      audioHooks:{
+        "questionRight":getAudio.thats_right_for_children_under_three_audio,
+        "questionWrong":getAudio.remember_for_children_under_three_audio,
+      },
+      answers: [
+        {
+          image: 'book.svg',
+          isCorrect: false
+        },
+        {
+          image: 'monster.png',
+          isCorrect: true
+        },
+      ]
+    },
+    {
+      text: i18n.t("message.HowMuchToothPaste"),
+      desc: '',
+      id: '11',
       type: 'iconsSimple',
       url_prefix: 'how-much-toothpaste',
+      audioHooks:{
+        "questionRight":getAudio.thats_right_for_children_three_to_six_audio,
+        "questionWrong":getAudio.remember_for_children_three_to_six_audio,
+      },
+      answers: [
+        {
+          image: 'book.svg',
+          isCorrect: false
+        },
+        {
+          image: 'monster.png',
+          isCorrect: true
+        },
+      ]
+    },
+    {
+      text: i18n.t("message.HowMuchToothPaste"),
+      desc: '',
+      id: '12',
+      type: 'iconsSimple',
+      url_prefix: 'how-much-toothpaste',
+      audioHooks:{
+        "questionRight":getAudio.thats_right_flouride_audio,
+        "questionWrong":getAudio.remember_flouride_audio,
+      },
       answers: [
         {
           image: 'book.svg',
