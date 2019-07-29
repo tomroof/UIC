@@ -109,26 +109,17 @@ export default {
   ],
 
   playAudio (id, gender, callback) {
-    this.sounds.map((sound) => {
-      if (sound.id === id) {
-        var audio;
-        if (gender === 'boy') {
-          audio = new Audio(require('@/assets/audio/' + sound.src_boy));
-        } else {
-          audio = new Audio(require('@/assets/audio/' + sound.src_girl));
-        }
-
-        audio.onended = function() {
+    let sound = this.sounds.find((s)=>s.id === id)
+    let path = gender === 'boy' ? '@/assets/audio/' + sound.src_boy : '@/assets/audio/' + sound.src_girl;
+    var audio = new Audio(require(path));
+    audio.onended = function() {
           if (callback) {
-            callback()
+            callback();
           }
         };
-
-        setTimeout(() => {
-          audio.play()
-        }, 0)
-        return
-      }
-    })
+        setTimeout(function(){
+          console.log("Now playing: ", id, "from ", path);
+          audio.play();
+        },0);
   }
 }

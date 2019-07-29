@@ -1,7 +1,7 @@
 import { i18n } from '@/lang'
 import BabyTeethCourse from '@/data/config/coursesContent/babyTeeth'
 import CavityPrevention from '@/data/config/coursesContent/cavityPrevention'
-
+import BrushSelfieCourse from '@/data/config/coursesContent/brushSelfie.js'
 export default () => {
   return [
     {
@@ -34,9 +34,10 @@ export default () => {
       disabled_image: require('@/assets/memory_disabled.svg'),
       id: 2,
       url_prefix: 'brush-selfie',
-      active: false,
+      active: true,
       progress: 0,
-      active_page: 0
+      active_page: 0,
+      content: BrushSelfieCourse(),
     },
     {
       name: i18n.t("message.BrushTimer"),

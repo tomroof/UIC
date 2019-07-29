@@ -2,7 +2,7 @@
   <div>
   <BaseQuestion :questionCard="questionCard">
     <div class="question-content" slot="questionContent">
-      <button v-show="!isAudioEnd" class="go-button" @click="playAudio('goClicked', endedAudio)">GO</button>
+      <button v-show="!isAudioEnd" class="go-button" @click="clickGo">GO</button>
         <div v-show="isAudioEnd" :class="{'text-wrapper': true, 'appear': isAudioEnd}">
           <transition name="fade" mode="out-in">
             <div class="text" :key="textIndex">
@@ -61,9 +61,6 @@ export default {
       return config().restText
     },
 
-    getI18nAudio() {
-      return config().audio
-    },
 
     timeInterval(){
       return this.questionCard.timeInterval
@@ -77,6 +74,11 @@ export default {
 
   methods: {
     ...AudioMixin,
+
+    clickGo(){
+      console.log("goLciked")
+      this.playAudio('goClicked', this.endedAudio);
+    },
 
     endedAudio() {
       console.log('endedAudio')

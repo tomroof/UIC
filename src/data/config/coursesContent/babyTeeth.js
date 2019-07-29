@@ -8,13 +8,6 @@ export default () => {
   name: i18n.t("message.BabyTeeth"),
   questions: [
     {
-        text: 'How many teeth do you have?',
-        desc: 'Count your teeth and enter the number below',
-        id: '3',
-        type: 'teeth',
-        url_prefix: 'how-many-teeth',
-    },
-    {
       text: "Which of these things do you need teeth for?",
       id: '1',
       type: 'select',
