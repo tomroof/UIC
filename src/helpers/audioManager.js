@@ -157,7 +157,7 @@ export default {
             callback();
           }
         };
-    audio.addEventListener("canplay",function(){
+    audio.addEventListener("loadedmetadata", function() {
 
       var promise = audio.play();
       if (promise !== undefined) {
