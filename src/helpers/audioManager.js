@@ -158,7 +158,6 @@ export default {
           }
         };
     audio.addEventListener("canplay",function(){
-
       var promise = audio.play();
       if (promise !== undefined) {
           promise.then(_ => {
