@@ -2,7 +2,7 @@
   <div>
   <BaseQuestion :questionCard="questionCard">
     <div class="question-content" slot="questionContent">
-      <button v-show="!isAudioEnd" class="go-button" @click="clickGo">GO</button>
+      <button v-show="!isAudioEnd" class="go-button" @click="clickGo">{{getI18n.questions.Go}}</button>
         <div v-show="isAudioEnd" :class="{'text-wrapper': true, 'appear': isAudioEnd}">
           <transition name="fade" mode="out-in">
             <div class="text" :key="textIndex">
@@ -76,7 +76,6 @@ export default {
     ...AudioMixin,
 
     clickGo(){
-      console.log("goLciked")
       this.playAudio('goClicked', this.endedAudio);
     },
 
