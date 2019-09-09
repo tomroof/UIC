@@ -114,8 +114,8 @@ export default () => {
   },
 
   questions:{
-    StartBrushTimer: i18n.t("message.StartBrushTimer"),
-    Go: i18n.t("message.Go"),
+    StartBrushTimer: i18n.t("message.startBrushTimer"),
+    Go: i18n.t("message.go"),
   },
 
   goodJob: {
