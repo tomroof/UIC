@@ -18,6 +18,7 @@ const messages = {
 // Create VueI18n instance with options
 export const i18n = new VueI18n({
   locale: localStorage.getItem('lang') || 'en', // set locale
+  fallbackLocale: 'en',
   debug: true,
   messages
 })
