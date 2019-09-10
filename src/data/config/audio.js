@@ -17,7 +17,7 @@ export default () => {
     remember_for_children_under_three_audio: i18n.t('message.remember_for_children_under_three_audio'),
     thats_right_for_children_three_to_six_audio: i18n.t('message.thats_right_for_children_three_to_six_audio'),
     remember_for_children_three_to_six_audio: i18n.t('message.remember_for_children_three_to_six_audio'),
-    thats_right_flouride_audio: i18n.t('message.thats_right_flouride_audio'),
-    remember_flouride_audio: i18n.t('message.remember_flouride_audio')
+    thats_right_fluoride_audio: i18n.t('message.thats_right_fluoride_audio'),
+    remember_fluoride_audio: i18n.t('message.remember_fluoride_audio')
   }
 }

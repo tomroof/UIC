@@ -236,9 +236,9 @@ export default {
   thats_right_for_children_under_three_audio: 'thats_right_for_children_under_three_audio',
   remember_for_children_under_three_audio: 'remember_for_children_under_three_audio',
   thats_right_for_children_three_to_six_audio: 'thats_right_for_children_three_to_six_audio',
-  thats_right_flouride_audio: 'thats_right_flouride_audio',
+  thats_right_fluoride_audio: 'thats_right_fluoride_audio',
   remember_for_children_three_to_six_audio: 'remember_for_children_three_to_six_audio',
-  remember_flouride_audio: 'remember_flouride_audio',
+  remember_fluoride_audio: 'remember_fluoride_audio',
   video1: 'module1-male.mp4',
   video1b: 'module1b-male.mp4',
   video2: 'module1-female.mp4',
@@ -281,6 +281,9 @@ export default {
   bottlesSippy:'Bottles and Sippy Cups',
   babyFirstDental:'Baby’s First Dental Visit',
   go:"GO",
-  startBrushTimer:"Start Brush Timer"
-
+  startBrushTimer:"Start Brush Timer",
+  HowMuchToothPasteChild: 'How much toothpaste for children ages 3-6?',
+  ShouldIUseFluoride: 'Should I use fluoride free toothpaste?',
+  YesFluoride: 'Yes, because fluoride tastes bad',
+  NoFluoride: 'No, fluoride helps prevent cavities',
 }

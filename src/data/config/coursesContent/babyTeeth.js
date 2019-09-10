@@ -128,17 +128,17 @@ export default () => {
       },
       answers: [
         {
-          image: 'book.svg',
+          image: 'toothpaste-child.svg',
           isCorrect: false
         },
         {
-          image: 'monster.png',
+          image: 'toothpaste-baby.svg',
           isCorrect: true
         },
       ]
     },
     {
-      text: i18n.t("message.HowMuchToothPaste"),
+      text: i18n.t("message.HowMuchToothPasteChild"),
       desc: '',
       id: '11',
       type: 'iconsSimple',
@@ -149,32 +149,34 @@ export default () => {
       },
       answers: [
         {
-          image: 'book.svg',
-          isCorrect: false
+          image: 'toothpaste-child.svg',
+          isCorrect: true
         },
         {
-          image: 'monster.png',
-          isCorrect: true
+          image: 'toothpaste-adult.svg',
+          isCorrect: false
         },
       ]
     },
     {
-      text: i18n.t("message.HowMuchToothPaste"),
+      text: i18n.t("message.ShouldIUseFluoride"),
       desc: '',
       id: '12',
-      type: 'iconsSimple',
-      url_prefix: 'how-much-toothpaste',
+      type: 'icons',
+      url_prefix: 'should-i-use-fluoride',
       audioHooks:{
-        "questionRight":getAudio.thats_right_flouride_audio,
-        "questionWrong":getAudio.remember_flouride_audio,
+        "questionRight":getAudio.thats_right_fluoride_audio,
+        "questionWrong":getAudio.remember_fluoride_audio,
       },
       answers: [
         {
-          image: 'book.svg',
+          text: i18n.t("message.YesFluoride"),
+          image: 'toothpaste-child.svg',
           isCorrect: false
         },
         {
-          image: 'monster.png',
+          text: i18n.t("message.NoFluoride"),
+          image: 'toothpaste-child.svg',
           isCorrect: true
         },
       ]
