@@ -144,17 +144,18 @@ export default {
     },
 
     onPlayerEnded (player) {
+
+
       this.finishedVideoPlaying = true
       this.showPlayButton = true
 
       if(!this.isWatched)
         this.$store.commit('markWatched',this.videoId);
-
+      document.exitFullscreen()
+      player.tech_.exitFullScreen();
       player.currentTime(0);
       player.controlBar.hide();
       player.bigPlayButton.show();
-
-
 
     },
 
