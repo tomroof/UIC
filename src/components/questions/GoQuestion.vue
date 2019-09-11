@@ -45,6 +45,7 @@ export default {
       },
       textIndex: 0,
       isAudioEnd: false,
+      isGoActive: false,
     }
   },
 
@@ -76,6 +77,9 @@ export default {
     ...AudioMixin,
 
     clickGo(){
+      if(this.isGoActive)
+        return;
+      this.isGoActive = true;
       this.playAudio('goClicked', this.endedAudio);
     },
 
@@ -98,6 +102,7 @@ export default {
       setTimeout(() => {
         clearInterval(indexInterval)
         this.continueEnabled = true;
+        this.isGoActive = false;
       }, playTime)
 
     },

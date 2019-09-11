@@ -1,3 +1,4 @@
+let currentAudio = null;
 export default {
   name: 'AudioManager',
   sounds: [
@@ -138,10 +139,17 @@ export default {
     },
   ],
 
+
+
   playAudio (id, gender, callback) {
+    if(currentAudio){
+      currentAudio.pause();
+      currentAudio.onended();
+    }
+
     let sound = this.sounds.find((s)=>s.id === id)
     if(!sound){
-      console.log("could not find sounds by id: ",id)
+      console.log("could not find sound by id: ",id)
       if(callback)
         return callback();
       return;
@@ -163,9 +171,11 @@ export default {
       if (promise !== undefined) {
           promise.then(_ => {
               console.log("Now playing: ", id, " from ", audio.currentSrc);
+              currentAudio = audio;
             }).catch(error => {
-              console.log(error, "can't play audio if user ");
+              console.log(error, "can't play audio until user interacts with the page");
               // we should promt user with "Play audio on this page? Yes. No."
+              audio.onended();
             });
       }
     }, { once: true });
