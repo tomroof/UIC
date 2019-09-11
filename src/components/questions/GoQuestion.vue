@@ -97,7 +97,7 @@ export default {
         }
       }, this.timeInterval)
 
-      const playTime = answerLength * (this.timeInterval * 2) - 1
+      const playTime = answerLength * this.timeInterval  - 1
 
       setTimeout(() => {
         clearInterval(indexInterval)
