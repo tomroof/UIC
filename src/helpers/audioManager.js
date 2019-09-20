@@ -137,6 +137,41 @@ export default {
       src_girl: 'remember-fluoride.mp3',
       id: 'remember_fluoride_audio'
     },
+    {
+      src_boy: 'esp-how-we-use-our-teeth-1.mp3',
+      src_girl: 'esp-how-we-use-our-teeth-1.mp3',
+      id: 'babyteeth_module3_audio_esp'
+    },
+    {
+      src_boy: 'esp-how-much-toothpaste-1.mp3',
+      src_girl: 'esp-how-much-toothpaste-1.mp3',
+      id: 'thats_right_for_children_under_three_audio_esp'
+    },
+    {
+      src_boy: 'esp-how-much-toothpaste-2.mp3',
+      src_girl: 'esp-how-much-toothpaste-2.mp3',
+      id: 'remember_for_children_under_three_audio_esp'
+    },
+    {
+      src_boy: 'esp-how-much-toothpaste-3.mp3',
+      src_girl: 'esp-how-much-toothpaste-3.mp3',
+      id: 'thats_right_for_children_three_to_six_audio_esp'
+    },
+    {
+      src_boy: 'esp-how-much-toothpaste-4.mp3',
+      src_girl: 'esp-how-much-toothpaste-4.mp3',
+      id: 'remember_for_children_three_to_six_audio_esp'
+    },
+    {
+      src_boy: 'esp-how-much-toothpaste-5.mp3',
+      src_girl: 'esp-how-much-toothpaste-5.mp3',
+      id: 'thats_right_fluoride_audio_esp'
+    },
+    {
+      src_boy: 'esp-how-much-toothpaste-6.mp3',
+      src_girl: 'esp-how-much-toothpaste-6.mp3',
+      id: 'remember_fluoride_audio_esp'
+    },
   ],
 
 
