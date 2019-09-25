@@ -1,3 +1,4 @@
+let currentAudio = null;
 export default {
   name: 'AudioManager',
   sounds: [
@@ -136,12 +137,53 @@ export default {
       src_girl: 'remember-fluoride.mp3',
       id: 'remember_fluoride_audio'
     },
+    {
+      src_boy: 'esp-how-we-use-our-teeth-1.mp3',
+      src_girl: 'esp-how-we-use-our-teeth-1.mp3',
+      id: 'babyteeth_module3_audio_esp'
+    },
+    {
+      src_boy: 'esp-how-much-toothpaste-1.mp3',
+      src_girl: 'esp-how-much-toothpaste-1.mp3',
+      id: 'thats_right_for_children_under_three_audio_esp'
+    },
+    {
+      src_boy: 'esp-how-much-toothpaste-2.mp3',
+      src_girl: 'esp-how-much-toothpaste-2.mp3',
+      id: 'remember_for_children_under_three_audio_esp'
+    },
+    {
+      src_boy: 'esp-how-much-toothpaste-3.mp3',
+      src_girl: 'esp-how-much-toothpaste-3.mp3',
+      id: 'thats_right_for_children_three_to_six_audio_esp'
+    },
+    {
+      src_boy: 'esp-how-much-toothpaste-4.mp3',
+      src_girl: 'esp-how-much-toothpaste-4.mp3',
+      id: 'remember_for_children_three_to_six_audio_esp'
+    },
+    {
+      src_boy: 'esp-how-much-toothpaste-5.mp3',
+      src_girl: 'esp-how-much-toothpaste-5.mp3',
+      id: 'thats_right_fluoride_audio_esp'
+    },
+    {
+      src_boy: 'esp-how-much-toothpaste-6.mp3',
+      src_girl: 'esp-how-much-toothpaste-6.mp3',
+      id: 'remember_fluoride_audio_esp'
+    },
   ],
 
+
+
   playAudio (id, gender, callback) {
+    if(currentAudio){
+      currentAudio.pause();
+    }
+
     let sound = this.sounds.find((s)=>s.id === id)
     if(!sound){
-      console.log("could not find sounds by id: ",id)
+      console.log("could not find sound by id: ",id)
       if(callback)
         return callback();
       return;
@@ -152,20 +194,18 @@ export default {
     } else {
       audio = new Audio(require('@/assets/audio/' + sound.src_girl));
     }
-    audio.onended = function() {
-          if (callback) {
-            callback();
-          }
-        };
     audio.addEventListener("loadedmetadata", function() {
 
       var promise = audio.play();
       if (promise !== undefined) {
           promise.then(_ => {
               console.log("Now playing: ", id, " from ", audio.currentSrc);
+              currentAudio = audio;
             }).catch(error => {
-              console.log(error, "can't play audio if user ");
+              console.log(error, "can't play audio until user interacts with the page");
               // we should promt user with "Play audio on this page? Yes. No."
+            }).finally(()=>{
+                callback();
             });
       }
     }, { once: true });

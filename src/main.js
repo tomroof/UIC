@@ -14,7 +14,7 @@ import 'video.js/dist/video-js.css'
 import 'vue-video-player/src/custom-theme.css'
 import VueI18n from 'vue-i18n'
 
-Vue.use(VueVideoPlayer, { global: true, componentId: "video-player" })
+Vue.use(VueVideoPlayer, { global: true, playsinline: true,componentId: "video-player" })
 
 Vue.use(VueYouTubeEmbed)
 

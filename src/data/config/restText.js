@@ -113,6 +113,11 @@ export default () => {
     enter: i18n.t("message.Enter")
   },
 
+  questions:{
+    StartBrushTimer: i18n.t("message.startBrushTimer"),
+    Go: i18n.t("message.go"),
+  },
+
   goodJob: {
     goodJob: i18n.t("message.GoodJob"),
     complete: i18n.t("message.Youcompletedamodule"),

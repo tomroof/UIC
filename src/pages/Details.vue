@@ -50,14 +50,18 @@ export default {
   computed: {
     ...mapGetters(['getCourses']),
     course () {
-      for (var i = 0; i < this.getCourses.length; i++) {
-        var q = this.getCourses[i];
+      for (var i = 0; i < this.getI18nCourses.length; i++) {
+        var q = this.getI18nCourses[i];
         if (q.url_prefix === this.$route.params.url_prefix) {
           return q
         }
       }
     },
 
+
+    getI18nCourses() {
+      return  config().courses
+    },
     getI18n() {
       return config().restText
     },

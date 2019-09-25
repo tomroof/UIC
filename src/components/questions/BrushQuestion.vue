@@ -4,7 +4,7 @@
     <div class="question-content" slot="questionContent">
       <div class="content" v-if="!isStartTimer">
         <img class="image" :src="require(`../../assets/${questionCard.image}`)" alt="brush">
-        <button class="go-button" @click="startTimer">Start Brush Timer</button>
+        <button class="go-button" @click="startTimer">{{getI18n.questions.StartBrushTimer}}</button>
       </div>
       <RadialProgressBar v-else
                      class="radial-timer"
