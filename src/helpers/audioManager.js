@@ -179,7 +179,6 @@ export default {
   playAudio (id, gender, callback) {
     if(currentAudio){
       currentAudio.pause();
-      currentAudio.onended();
     }
 
     let sound = this.sounds.find((s)=>s.id === id)
@@ -195,11 +194,6 @@ export default {
     } else {
       audio = new Audio(require('@/assets/audio/' + sound.src_girl));
     }
-    audio.onended = function() {
-          if (callback) {
-            callback();
-          }
-        };
     audio.addEventListener("loadedmetadata", function() {
 
       var promise = audio.play();
@@ -210,7 +204,8 @@ export default {
             }).catch(error => {
               console.log(error, "can't play audio until user interacts with the page");
               // we should promt user with "Play audio on this page? Yes. No."
-              audio.onended();
+            }).finally(()=>{
+                callback();
             });
       }
     }, { once: true });

@@ -1,7 +1,4 @@
 import { i18n } from '@/lang'
-import audio from '@/data/config/audio'
-
-let getAudio = audio();
 
 export default () => {
  return {
@@ -72,7 +69,7 @@ export default () => {
       type: 'go',
       url_prefix: 'thirty-three-thirsty-thieves',
       audioHooks: {
-        "goClicked": getAudio.audio_babyteeth_module3_audio,
+        "goClicked": 'audio_babyteeth_module3_audio',
       },
       timeInterval: 2000,
       answers: [i18n.t('message.chant1'), i18n.t('message.chant2'), i18n.t('message.chant3'), i18n.t('message.chant4')]
@@ -123,8 +120,8 @@ export default () => {
       type: 'iconsSimple',
       url_prefix: 'how-much-toothpaste',
       audioHooks:{
-        "questionRight":getAudio.thats_right_for_children_under_three_audio,
-        "questionWrong":getAudio.remember_for_children_under_three_audio,
+        "questionRight":'thats_right_for_children_under_three_audio',
+        "questionWrong":'remember_for_children_under_three_audio',
       },
       answers: [
         {
@@ -144,8 +141,8 @@ export default () => {
       type: 'iconsSimple',
       url_prefix: 'how-much-toothpaste',
       audioHooks:{
-        "questionRight":getAudio.thats_right_for_children_three_to_six_audio,
-        "questionWrong":getAudio.remember_for_children_three_to_six_audio,
+        "questionRight":'thats_right_for_children_three_to_six_audio',
+        "questionWrong":'remember_for_children_three_to_six_audio',
       },
       answers: [
         {
@@ -165,8 +162,8 @@ export default () => {
       type: 'icons',
       url_prefix: 'should-i-use-fluoride',
       audioHooks:{
-        "questionRight":getAudio.thats_right_fluoride_audio,
-        "questionWrong":getAudio.remember_fluoride_audio,
+        "questionRight":'thats_right_fluoride_audio',
+        "questionWrong":'remember_fluoride_audio',
       },
       answers: [
         {

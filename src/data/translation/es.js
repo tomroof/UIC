@@ -256,7 +256,7 @@ export default {
   babyteethvideo1: 'baby-teeth_module1-esp.mp4',
   babyteethvideo2: 'baby-teeth_module2-esp.mp4',
   babyteethvideo3: 'baby-teeth_module3-esp.mp4',
-  babyteethvideo4: 'baby-teeth_module4.mp4',
+  //babyteethvideo4: 'baby-teeth_module4.mp4',
   babyteethvideo5: 'baby-teeth_module5-esp.mp4',
   babyteethvideo6: 'baby-teeth_module6-esp.mp4',
   HowMuchToothPaste: '¿Cuánta pasta dental para dientes de leche?',
@@ -282,5 +282,9 @@ export default {
   bottlesSippy:'Botellas y Copas Sippy',
   babyFirstDental:'Primera visita dental del bebé',
   go:"IR",
-  startBrushTimer:"Iniciar temporizador de pincel"
+  startBrushTimer:"Iniciar temporizador de pincel",
+  HowMuchToothPasteChild: 'TODO',
+  ShouldIUseFluoride: 'TODO',
+  YesFluoride: 'TODO',
+  NoFluoride: 'TODO',
 }

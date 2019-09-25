@@ -151,7 +151,8 @@ export default {
 
       if(!this.isWatched)
         this.$store.commit('markWatched',this.videoId);
-      document.exitFullscreen()
+      if(window.fullscreen)
+          document.exitFullscreen()
       player.tech_.exitFullScreen();
       player.currentTime(0);
       player.controlBar.hide();

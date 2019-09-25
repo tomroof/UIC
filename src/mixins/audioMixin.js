@@ -1,6 +1,7 @@
 
 import AudioManager from '@/helpers/audioManager'
 
+
 export default {
   playAudio(HookName, callback) {
     let audioHooks = this.question.audioHooks;
@@ -9,7 +10,7 @@ export default {
         return callback();
       else return;
     }
-    let to_play = audioHooks[HookName];
+    let to_play = this.getI18nAudio[audioHooks[HookName]];
 
     if (!to_play) {
       if (callback)

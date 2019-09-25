@@ -7,7 +7,7 @@
           <AnswerIconCard
             :answer="answer"
             :selected="answer.selected"
-            @click="handleAnswerClick(answer, question)"/>
+            @click="handleAnswerClick(answer, question,index)"/>
         </div>
       </div>
     </div>
@@ -79,10 +79,10 @@ import AudioMixin from '@/mixins/audioMixin'
     },
 
     methods: {
-      handleAnswerClick (answer) {
+      handleAnswerClick (answer, question,index) {
         this.continueEnabled = true;
         this.questionCard.answers.forEach( (a) => a.selected = false);
-        this.questionCard.answers.find((a) => a.text === answer.text).selected = true;
+        this.questionCard.answers[index].selected = true;
       },
 
       continueClicked(){
