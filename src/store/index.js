@@ -104,6 +104,11 @@ export default new Vuex.Store({
       state.uuid = id
     },
 
+    reloadCourses(state){
+      state.courses= config().courses
+      state.achievements=config().achievements
+    },
+
     markWatched(state,url){
       // Vue can't detect added properties to objects - Vue.set is a manual way
       Vue.set(state.finishedVideos, url, true);
