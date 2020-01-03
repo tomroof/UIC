@@ -78,7 +78,7 @@ export default {
   height: 100%;
 }
 .copyright {
-  padding: 5px;
+  padding: 20px;
   margin: auto auto 0;
   font-family: "Zilla Slab";
   font-size: 15px;
