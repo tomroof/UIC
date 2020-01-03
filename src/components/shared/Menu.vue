@@ -3,8 +3,9 @@
     <div class="container">
       <NavigationControls
         :back="false"
-        :close='true'
-        @closeClick="$emit('closeClick')"/>
+        :close="true"
+        @closeClick="$emit('closeClick')"
+      />
       <base-card @click="goToRoute('/courses')">
         <img class="card-photo" src="@/assets/courses-img.jpg" />
         <div class="text">{{ getI18n.topics }}</div>
@@ -17,29 +18,32 @@
 
       <div class="cards-row">
         <base-card @click="goToRoute('/account')">
-          <div class="avatar-menu"
+          <div
+            class="avatar-menu"
             :style="{ backgroundImage: `url(${$store.state.character})` }"
-          >
-          </div>
+          ></div>
           <div class="text">{{ getI18n.profile }}</div>
         </base-card>
 
         <base-card @click="goToRoute('/about')">
           <img class="card-photo about-menu" src="@/assets/logo.svg" />
-          <div class="text"> {{ getI18n.about }}</div>
+          <div class="text">{{ getI18n.about }}</div>
         </base-card>
       </div>
     </div>
+    <span class="copyright"
+      >©Copyright 2019 The Board of Trustees of the University of Illinois</span
+    >
   </div>
 </template>
 
 <script>
-import BaseCard from '@/components/cards/BaseCard'
-import NavigationControls from '@/components/NavigationControls'
-import config from '@/data/config'
+import BaseCard from "@/components/cards/BaseCard";
+import NavigationControls from "@/components/NavigationControls";
+import config from "@/data/config";
 
 export default {
-  name: 'Menu',
+  name: "Menu",
 
   components: {
     BaseCard,
@@ -48,22 +52,22 @@ export default {
 
   computed: {
     getI18n() {
-      return config().restText.menu
-    },
+      return config().restText.menu;
+    }
   },
 
   methods: {
-    goToRoute (route) {
-      this.$emit('closeClick')
-      this.$router.push(route)
+    goToRoute(route) {
+      this.$emit("closeClick");
+      this.$router.push(route);
     }
   }
-}
+};
 </script>
 
 <style lang="scss" scoped>
 .menu {
-  background-image: linear-gradient(19deg, #5EA58E 10%, #0A6D60 81%);
+  background-image: linear-gradient(19deg, #5ea58e 10%, #0a6d60 81%);
 
   display: flex;
   flex-direction: column;
@@ -73,6 +77,13 @@ export default {
   width: 100%;
   height: 100%;
 }
+.copyright {
+  padding: 5px;
+  margin: auto auto 0;
+  font-family: "Zilla Slab";
+  font-size: 15px;
+  color: #ffffff;
+}
 
 .card {
   margin-bottom: 15px;
@@ -81,9 +92,9 @@ export default {
   cursor: pointer;
 
   .text {
-    font-family: 'Zilla Slab';
+    font-family: "Zilla Slab";
     font-size: 18px;
-    color: #FFFFFF;
+    color: #ffffff;
     letter-spacing: 0;
     text-align: center;
     padding: 5px;
@@ -107,7 +118,7 @@ export default {
   background-size: contain;
   background-repeat: no-repeat;
   overflow: hidden;
-  background-color: #FFEBAE;
+  background-color: #ffebae;
 }
 .about-menu {
   height: 86px;
@@ -115,7 +126,7 @@ export default {
   background-size: contain;
   background-repeat: no-repeat;
   overflow: hidden;
-  background-color: #83B9D1;
+  background-color: #83b9d1;
   padding: 5px;
 }
 </style>
