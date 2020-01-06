@@ -83,6 +83,7 @@ export default {
   font-family: "Zilla Slab";
   font-size: 15px;
   color: #ffffff;
+  text-align: center;
 }
 
 .card {
